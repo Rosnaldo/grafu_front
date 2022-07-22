@@ -6,18 +6,21 @@ import 'package:grafu/module/principal/playday/invited_card.dart';
 class BuildInvitedsPopup {
   static Future<void> showMyDialog(
     BuildContext context,
+    List<Invited> inviteds,
   ) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
-      builder: (BuildContext context) => const InvitedsPopup(),
+      builder: (BuildContext context) => InvitedsPopup(inviteds: inviteds),
     );
   }
 }
 
 class InvitedsPopup extends StatefulWidget {
+  final List<Invited> inviteds;
   const InvitedsPopup({
     Key? key,
+    required this.inviteds,
   }) : super(key: key);
 
   @override
@@ -25,51 +28,6 @@ class InvitedsPopup extends StatefulWidget {
 }
 
 class InvitedsPopupState extends State<InvitedsPopup> {
-  final List<Invited> inviteds = [
-    Invited(
-      name: 'Joaninha da Cunha',
-      avatar:
-          'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0',
-      status: 'Confirmado',
-    ),
-    Invited(
-      name: 'Joaninha da Cunha',
-      avatar:
-          'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0',
-      status: 'Confirmado',
-    ),
-    Invited(
-      name: 'Joaninha da Cunha',
-      avatar:
-          'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0',
-      status: 'Confirmado',
-    ),
-    Invited(
-      name: 'Joaninha da Cunha',
-      avatar:
-          'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0',
-      status: 'Confirmado',
-    ),
-    Invited(
-      name: 'Joaninha da Cunha',
-      avatar:
-          'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0',
-      status: 'Confirmado',
-    ),
-    Invited(
-      name: 'Joaninha da Cunha',
-      avatar:
-          'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0',
-      status: 'Confirmado',
-    ),
-    Invited(
-      name: 'Joaninha da Cunha',
-      avatar:
-          'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0',
-      status: 'Confirmado',
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -78,7 +36,7 @@ class InvitedsPopupState extends State<InvitedsPopup> {
         height: 230.0,
         child: SingleChildScrollView(
           child: ListBody(
-            children: inviteds
+            children: widget.inviteds
                 .map(
                   (invited) => InvitedCard(
                     name: invited.name,

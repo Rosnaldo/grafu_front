@@ -5,30 +5,12 @@ import 'package:grafu/module/principal/playday/invited_card.dart';
 import 'package:grafu/module/principal/playday/inviteds_popup/index.dart';
 
 class InvitedList extends StatelessWidget {
-  InvitedList({
-    Key? key,
-  }) : super(key: key);
+  final List<Invited> inviteds;
 
-  final List<Invited> inviteds = [
-    Invited(
-      name: 'Joaninha da Cunha',
-      avatar:
-          'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0',
-      status: 'Confirmado',
-    ),
-    Invited(
-      name: 'Joaninha da Cunha',
-      avatar:
-          'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0',
-      status: 'Confirmado',
-    ),
-    Invited(
-      name: 'Joaninha da Cunha',
-      avatar:
-          'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0',
-      status: 'Confirmado',
-    ),
-  ];
+  const InvitedList({
+    Key? key,
+    required this.inviteds,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +40,7 @@ class InvitedList extends StatelessWidget {
         ElevatedButton.icon(
           icon: const Icon(Icons.group, size: 15.0),
           onPressed: () => {
-            BuildInvitedsPopup.showMyDialog(context),
+            BuildInvitedsPopup.showMyDialog(context, inviteds),
           },
           label: const Text(
             'Ver convidados',
