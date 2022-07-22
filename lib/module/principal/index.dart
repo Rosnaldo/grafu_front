@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:grafu/components/navigate/store.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:grafu/module/principal/gallery/index.dart';
+import 'package:grafu/module/principal/playday/index.dart';
+import 'package:grafu/module/principal/playday/playday_date.dart';
+import 'package:grafu/module/principal/profile/index.dart';
+import 'package:grafu/module/principal/store.dart';
 
-import 'package:grafu/pages/profile/index.dart';
-import 'package:grafu/pages/playday/index.dart';
-
-class Navigate extends StatefulWidget {
-  const Navigate({Key? key}) : super(key: key);
+class PrincipalPage extends StatefulWidget {
+  const PrincipalPage({Key? key}) : super(key: key);
 
   @override
-  NavigateState createState() => NavigateState();
+  PrincipalPageState createState() => PrincipalPageState();
 }
 
-class NavigateState extends State<Navigate> {
+class PrincipalPageState extends State<PrincipalPage> {
   final store = ScreenStore();
   final pageViewController = PageController();
 
@@ -24,15 +26,16 @@ class NavigateState extends State<Navigate> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: Scaffold(
-      body: PageView(
-        controller: pageViewController,
-        children: [
-          const ProfilePage(),
-          PlaydayPage(),
-        ],
-      ),
-      bottomNavigationBar: AnimatedBuilder(
+      home: Scaffold(
+        body: PageView(
+          controller: pageViewController,
+          children: [
+            const ProfilePage(),
+            PlaydayPage(),
+            GalleryPage(),
+          ],
+        ),
+        bottomNavigationBar: AnimatedBuilder(
           animation: pageViewController,
           builder: (context, snapshot) {
             return BottomNavigationBar(
@@ -51,9 +54,15 @@ class NavigateState extends State<Navigate> {
                   label: 'Evento',
                   icon: Icon(Icons.event_available),
                 ),
+                BottomNavigationBarItem(
+                  label: 'Fotos',
+                  icon: Icon(Icons.collections),
+                ),
               ],
             );
-          }),
-    ));
+          },
+        ),
+      ),
+    );
   }
 }

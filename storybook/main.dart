@@ -4,15 +4,15 @@ import 'package:storybook_flutter/storybook_flutter.dart';
 import 'package:grafu/components/toggle/index.dart';
 import 'package:grafu/components/switch_button/index.dart';
 
-import 'package:grafu/pages/gallery/index.dart';
-import 'package:grafu/pages/playday/inviteds_popup/index.dart';
-import 'package:grafu/pages/profile/update_photo_popup/index.dart';
-import 'package:grafu/pages/playday/invited_card.dart';
-import 'package:grafu/pages/playday/carousel.dart';
-import 'package:grafu/pages/playday/index.dart';
-import 'package:grafu/pages/profile/index.dart';
-import 'package:grafu/pages/login/index.dart';
-import 'package:grafu/pages/register/index.dart';
+import 'package:grafu/module/principal/gallery/index.dart';
+import 'package:grafu/module/principal/playday/inviteds_popup/index.dart';
+import 'package:grafu/module/principal/profile/update_photo_popup/index.dart';
+import 'package:grafu/module/principal/playday/invited_card.dart';
+import 'package:grafu/module/principal/playday/carousel.dart';
+import 'package:grafu/module/principal/playday/index.dart';
+import 'package:grafu/module/principal/profile/index.dart';
+import 'package:grafu/module/login/index.dart';
+import 'package:grafu/module/register/index.dart';
 
 void main() {
   runApp(const MyApp());

@@ -1,32 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
-import 'package:grafu/pages/profile/index.dart';
-import 'package:grafu/pages/playday/index.dart';
-import 'package:grafu/router_generator.dart';
+import 'package:grafu/app_module.dart';
+import 'package:grafu/app_widget.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+main() {
+  Modular.to.addListener(() {
+    debugPrint(Modular.to.path);
+  });
 
-class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  MyAppState createState() => MyAppState();
-}
-
-class MyAppState extends State<MyApp> {
-  int currentIndex = 0;
-  final screens = [
-    const ProfilePage(),
-    PlaydayPage(),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      initialRoute: '/login',
-      onGenerateRoute: RouteGenerator.generateRoute,
-    );
-  }
+  runApp(ModularApp(module: AppModule(), child: const AppWidget()));
 }
