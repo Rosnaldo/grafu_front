@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/module/principal/gallery/index.dart';
 import 'package:grafu/module/principal/playday/index.dart';
-import 'package:grafu/module/principal/playday/playday_date.dart';
 import 'package:grafu/module/principal/profile/index.dart';
-import 'package:grafu/module/principal/store.dart';
 
 class PrincipalPage extends StatefulWidget {
   const PrincipalPage({Key? key}) : super(key: key);
@@ -14,7 +11,6 @@ class PrincipalPage extends StatefulWidget {
 }
 
 class PrincipalPageState extends State<PrincipalPage> {
-  final store = ScreenStore();
   final pageViewController = PageController();
 
   @override
