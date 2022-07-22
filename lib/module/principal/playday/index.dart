@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:grafu/models/invited.dart';
-import 'package:grafu/pages/playday/buy_ticket.dart';
-import 'package:grafu/pages/playday/playday_date.dart';
-import 'package:grafu/pages/playday/footer.dart';
-import 'package:grafu/pages/playday/invited_list.dart';
-import 'package:grafu/pages/playday/line.dart';
-import 'package:grafu/pages/playday/location.dart';
-import 'package:grafu/pages/playday/see_gallery.dart';
-import 'package:grafu/pages/playday/timeline.dart';
+import 'package:grafu/module/principal/playday/buy_ticket.dart';
+import 'package:grafu/module/principal/playday/playday_date.dart';
+import 'package:grafu/module/principal/playday/footer.dart';
+import 'package:grafu/module/principal/playday/invited_list.dart';
+import 'package:grafu/module/principal/playday/line.dart';
+import 'package:grafu/module/principal/playday/location.dart';
+import 'package:grafu/module/principal/playday/timeline.dart';
 
 import 'carousel.dart';
 
@@ -51,7 +50,6 @@ class PlaydayPage extends StatelessWidget {
             children: <Widget>[
               Carousel(imgList: imgList),
               const SizedBox(height: 4.0),
-              const SeeGallery(),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(

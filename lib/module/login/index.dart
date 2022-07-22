@@ -59,7 +59,7 @@ class LoginPage extends StatelessWidget {
                 focusNode: loginFocusNode,
                 onPressed: () => {
                   if (_formKey.currentState!.validate())
-                    {Navigator.of(context).pushNamed('/principal')}
+                    {Navigator.of(context).pushNamed('/principal/playday')}
                 },
                 child: const Text('Login'),
               ),

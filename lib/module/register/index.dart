@@ -63,7 +63,7 @@ class RegisterPage extends StatelessWidget {
                 children: [
                   TextButton(
                     onPressed: () {
-                      Navigator.of(context).pushNamed('/login');
+                      Navigator.of(context).pushNamed('/');
                     },
                     style: TextButton.styleFrom(
                       primary: Colors.pink,
@@ -84,7 +84,7 @@ class RegisterPage extends StatelessWidget {
                 focusNode: registerFocusNode,
                 onPressed: () => {
                   if (_formKey.currentState!.validate())
-                    {Navigator.of(context).pushNamed('/principal')}
+                    {Navigator.of(context).pushNamed('/principal/playday')}
                 },
                 child: const Text('Cadastrar'),
               ),

@@ -28,28 +28,8 @@ class GalleryPage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          child: StickyHeader(
-              header: Container(
-                height: 50.0,
-                color: Colors.blueGrey[700],
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                alignment: Alignment.centerLeft,
-                child: ElevatedButton.icon(
-                  style: ButtonStyle(
-                    elevation: MaterialStateProperty.all(0.0),
-                    shadowColor:
-                        MaterialStateProperty.all(Colors.blueGrey[700]),
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.blueGrey[700]),
-                  ),
-                  onPressed: () =>
-                      {Navigator.of(context).pushNamed('/principal')},
-                  icon: const Icon(Icons.arrow_back),
-                  label: const Text('Voltar'),
-                ),
-              ),
-              content: Column(
-                  children: images.map((image) => buildImage(image)).toList())),
+          child: Column(
+              children: images.map((image) => buildImage(image)).toList()),
         ),
       ),
     );

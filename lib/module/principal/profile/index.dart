@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grafu/pages/profile/update_photo_popup/index.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:grafu/module/principal/profile/update_photo_popup/index.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({
@@ -91,7 +92,7 @@ class ProfilePage extends StatelessWidget {
                 side: BorderSide(width: 1.0, color: Colors.pink.shade200),
               ),
               onPressed: () {
-                Navigator.of(context).pushNamed('/login');
+                Modular.to.navigate('/');
               },
               label:
                   Icon(Icons.logout, color: Colors.pink.shade200, size: 16.0),
