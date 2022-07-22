@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class BuyTicket extends StatelessWidget {
+  final double price;
+
   const BuyTicket({
     Key? key,
+    required this.price,
   }) : super(key: key);
 
   @override
@@ -11,11 +14,11 @@ class BuyTicket extends StatelessWidget {
       children: [
         Row(
           mainAxisSize: MainAxisSize.min,
-          children: const <Widget>[
-            Text('Valor:'),
+          children: <Widget>[
+            const Text('Valor:'),
             Text(
-              'R\$ 30',
-              style: TextStyle(
+              'R\$ ${price.toString()}',
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20.0,
               ),

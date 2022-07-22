@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:sticky_headers/sticky_headers.dart';
-
 class GalleryPage extends StatelessWidget {
   GalleryPage({Key? key}) : super(key: key);
 

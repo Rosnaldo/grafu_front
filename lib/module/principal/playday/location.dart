@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/models/address.dart';
 
 class Location extends StatelessWidget {
+  final Address address;
+
   const Location({
     Key? key,
+    required this.address,
   }) : super(key: key);
-
-  final district = 'Alphaville / Lagoa dos Ingleses';
-  final street = 'Av. Picadilly';
-  final city = 'Nova Lima';
-  final state = 'MG';
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +25,7 @@ class Location extends StatelessWidget {
         const SizedBox(height: 12.0),
         Row(
           children: [
-            Text(district,
+            Text(address.district,
                 style: const TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.w700,
@@ -35,14 +34,14 @@ class Location extends StatelessWidget {
         ),
         Row(
           children: [
-            Text(street),
+            Text(address.street),
           ],
         ),
         Row(
           children: [
-            Text('$city,'),
+            Text('${address.city},'),
             const SizedBox(width: 10.0),
-            Text(state),
+            Text(address.state),
           ],
         ),
         ElevatedButton.icon(

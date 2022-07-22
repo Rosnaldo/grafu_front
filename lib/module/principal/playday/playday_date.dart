@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class PlaydayDate extends StatelessWidget {
+  final String date;
+
   const PlaydayDate({
     Key? key,
+    required this.date,
   }) : super(key: key);
-
-  final String playdayDate =
-      '10 de julho de 2022, 15h - 14 de agosto de 2022, 19h';
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class PlaydayDate extends StatelessWidget {
         const SizedBox(width: 5.0),
         Flexible(
           child: Text(
-            playdayDate,
+            date,
             style: const TextStyle(
               fontSize: 14.0,
               fontWeight: FontWeight.bold,

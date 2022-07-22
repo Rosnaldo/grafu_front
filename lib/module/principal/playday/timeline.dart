@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/models/playday.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class PlaydayTimeline extends StatelessWidget {
+  final Playday playday;
+
   const PlaydayTimeline({
     Key? key,
+    required this.playday,
   }) : super(key: key);
 
   @override
@@ -21,10 +25,10 @@ class PlaydayTimeline extends StatelessWidget {
           endChild: Container(
             margin: const EdgeInsets.all(4.5),
             child: Row(
-              children: const [
+              children: [
                 Text(
-                  '1.º lote R\$ 10.0 - vagas 0/10',
-                  style: TextStyle(
+                  '1.º lote R\$ ${playday.firstLot.price} - vagas ${playday.firstLot.vacancyFilled}/${playday.firstLot.vacancyFilled}',
+                  style: const TextStyle(
                     color: Colors.blueAccent,
                     fontSize: 15.0,
                     fontWeight: FontWeight.w700,
@@ -34,31 +38,37 @@ class PlaydayTimeline extends StatelessWidget {
             ),
           ),
         ),
-        TimelineTile(
-          alignment: TimelineAlign.manual,
-          lineXY: 0.0,
-          indicatorStyle: const IndicatorStyle(width: 10.0),
-          endChild: Container(
-            margin: const EdgeInsets.all(4.5),
-            child: const Text(
-              '2.º lote R\$ 20.0 - vagas 0/10',
-              style: TextStyle(fontSize: 12.0, color: Colors.black87),
-            ),
-          ),
-        ),
-        TimelineTile(
-          alignment: TimelineAlign.manual,
-          lineXY: 0.0,
-          isLast: true,
-          indicatorStyle: const IndicatorStyle(width: 10.0),
-          endChild: Container(
-            margin: const EdgeInsets.all(4.5),
-            child: const Text(
-              '3.º lote R\$ 30.0 - vagas 0/10',
-              style: TextStyle(fontSize: 12.0, color: Colors.black87),
-            ),
-          ),
-        ),
+        (playday.secoundLot != null)
+            ? TimelineTile(
+                alignment: TimelineAlign.manual,
+                lineXY: 0.0,
+                indicatorStyle: const IndicatorStyle(width: 10.0),
+                endChild: Container(
+                  margin: const EdgeInsets.all(4.5),
+                  child: Text(
+                    '2.º lote R\$ ${playday.secoundLot!.price} - vagas ${playday.secoundLot!.vacancyFilled}/${playday.secoundLot!.vacancyFilled}',
+                    style:
+                        const TextStyle(fontSize: 12.0, color: Colors.black87),
+                  ),
+                ),
+              )
+            : Container(),
+        (playday.thirdLot != null)
+            ? TimelineTile(
+                alignment: TimelineAlign.manual,
+                lineXY: 0.0,
+                isLast: true,
+                indicatorStyle: const IndicatorStyle(width: 10.0),
+                endChild: Container(
+                  margin: const EdgeInsets.all(4.5),
+                  child: Text(
+                    '3.º lote R\$ ${playday.thirdLot!.price} - vagas ${playday.thirdLot!.vacancyFilled}/${playday.thirdLot!.vacancyFilled}',
+                    style:
+                        const TextStyle(fontSize: 12.0, color: Colors.black87),
+                  ),
+                ),
+              )
+            : Container(),
       ],
     );
   }
