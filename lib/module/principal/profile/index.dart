@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:grafu/mocks/user.dart';
 import 'package:grafu/module/principal/profile/update_photo_popup/index.dart';
+import 'package:grafu/state/global_state.dart';
+import 'package:grafu/store/global_store.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({
@@ -55,7 +56,8 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = MakeUser.make();
+    final store = Modular.get<GlobalStore>();
+    final state = store.value as SuccessGlobalState;
 
     return Scaffold(
       body: Center(
@@ -68,7 +70,7 @@ class ProfilePage extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Stack(
                 children: [
-                  buildImage(context, user.avatar),
+                  buildImage(context, state.user.avatar),
                   Positioned(
                     bottom: 0,
                     right: 8,
@@ -78,10 +80,10 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             Text(
-              user.name,
+              state.user.name,
               style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
-            Text(user.email),
+            Text(state.user.email),
             const SizedBox(
               height: 20,
             ),

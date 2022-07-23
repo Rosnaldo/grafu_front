@@ -3,8 +3,8 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/module/principal/gallery/index.dart';
 import 'package:grafu/module/principal/playday/index.dart';
 import 'package:grafu/module/principal/profile/index.dart';
-import 'package:grafu/state/user_state.dart';
-import 'package:grafu/store/user_store.dart';
+import 'package:grafu/state/global_state.dart';
+import 'package:grafu/store/global_store.dart';
 
 class PrincipalPage extends StatefulWidget {
   const PrincipalPage({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class PrincipalPage extends StatefulWidget {
 
 class PrincipalPageState extends State<PrincipalPage> {
   final pageViewController = PageController();
-  final store = Modular.get<UserStore>();
+  final store = Modular.get<GlobalStore>();
 
   @override
   void initState() {
@@ -42,12 +42,12 @@ class PrincipalPageState extends State<PrincipalPage> {
           },
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              label: 'Perfil',
-              icon: Icon(Icons.person),
-            ),
-            BottomNavigationBarItem(
               label: 'Evento',
               icon: Icon(Icons.event_available),
+            ),
+            BottomNavigationBarItem(
+              label: 'Perfil',
+              icon: Icon(Icons.person),
             ),
             BottomNavigationBarItem(
               label: 'Fotos',
@@ -62,9 +62,9 @@ class PrincipalPageState extends State<PrincipalPage> {
   Widget buildPageView() {
     return PageView(
       controller: pageViewController,
-      children: [
-        const ProfilePage(),
+      children: const [
         PlaydayPage(),
+        ProfilePage(),
         GalleryPage(),
       ],
     );
@@ -78,19 +78,19 @@ class PrincipalPageState extends State<PrincipalPage> {
   }
 
   Widget buildNavigatePages(_, state, __) {
-    if (state is LoadingUserState) {
+    if (state is LoadingGlobalState) {
       return const Center(
         child: CircularProgressIndicator(),
       );
     }
 
-    if (state is ErrorUserState) {
+    if (state is ErrorGlobalState) {
       return Center(
         child: Text(state.message),
       );
     }
 
-    if (state is SuccessUserState) {
+    if (state is SuccessGlobalState) {
       return Container(
         child: buildScaffold(),
       );
@@ -102,7 +102,7 @@ class PrincipalPageState extends State<PrincipalPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ValueListenableBuilder<UserState>(
+      home: ValueListenableBuilder<GlobalState>(
         valueListenable: store,
         builder: buildNavigatePages,
       ),

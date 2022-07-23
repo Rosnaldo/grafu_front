@@ -41,10 +41,12 @@ class Playday {
       address: Address.fromMap(map['address']),
       gallery: map['gallery'] ?? [],
       firstLot: Lot.fromMap(map['firstLot']),
-      secoundLot: Lot.fromMap(map['secoundLot']),
-      thirdLot: Lot.fromMap(map['thirdLot']),
-      fourthLot: Lot.fromMap(map['fourthLot']),
-      fifthLot: Lot.fromMap(map['fifthLot']),
+      secoundLot:
+          (map['secoundLot'] != null) ? Lot.fromMap(map['secoundLot']) : null,
+      thirdLot: (map['thirdLot'] != null) ? Lot.fromMap(map['thirdLot']) : null,
+      fourthLot:
+          (map['fourthLot'] != null) ? Lot.fromMap(map['fourthLot']) : null,
+      fifthLot: (map['fifthLot'] != null) ? Lot.fromMap(map['fifthLot']) : null,
     );
   }
 }

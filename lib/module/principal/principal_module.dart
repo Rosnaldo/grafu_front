@@ -3,22 +3,26 @@ import 'package:grafu/module/principal/gallery/index.dart';
 import 'package:grafu/module/principal/index.dart';
 import 'package:grafu/module/principal/playday/index.dart';
 import 'package:grafu/module/principal/profile/index.dart';
+import 'package:grafu/repositories/invited_repository.dart';
+import 'package:grafu/repositories/playday_repository.dart';
 import 'package:grafu/repositories/user_repository.dart';
-import 'package:grafu/store/user_store.dart';
+import 'package:grafu/store/global_store.dart';
 
 class PrincipalModule extends Module {
   @override
   List<Bind> get binds => [
         Bind.factory((i) => UserRepository()),
-        Bind.singleton((i) => UserStore(i())),
+        Bind.factory((i) => PlaydayRepository()),
+        Bind.factory((i) => InvitedRepository()),
+        Bind.singleton((i) => GlobalStore(i(), i(), i())),
       ];
 
   @override
   List<ModularRoute> get routes => [
         ChildRoute('/', child: (_, __) => const PrincipalPage(), children: [
           ChildRoute('/profile', child: (context, args) => const ProfilePage()),
-          ChildRoute('/playday', child: (context, args) => PlaydayPage()),
-          ChildRoute('/gallery', child: (context, args) => GalleryPage()),
+          ChildRoute('/playday', child: (context, args) => const PlaydayPage()),
+          ChildRoute('/gallery', child: (context, args) => const GalleryPage()),
         ]),
       ];
 }

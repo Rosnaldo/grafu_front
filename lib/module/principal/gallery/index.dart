@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:grafu/mocks/playday.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:grafu/state/global_state.dart';
+import 'package:grafu/store/global_store.dart';
 
 class GalleryPage extends StatelessWidget {
-  final List<String> images = MakePlayday.make().gallery;
-
-  GalleryPage({
+  const GalleryPage({
     Key? key,
   }) : super(key: key);
 
@@ -22,11 +22,16 @@ class GalleryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final store = Modular.get<GlobalStore>();
+    final state = store.value as SuccessGlobalState;
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
-              children: images.map((image) => buildImage(image)).toList()),
+              children: state.playday.gallery
+                  .map((image) => buildImage(image))
+                  .toList()),
         ),
       ),
     );
