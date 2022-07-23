@@ -21,4 +21,30 @@ class Playday {
     this.fourthLot,
     this.fifthLot,
   });
+
+  Map<String, dynamic> toMap() {
+    return {
+      'date': date,
+      'address': address,
+      'gallery': gallery,
+      'firstLot': firstLot,
+      'secoundLot': secoundLot,
+      'thirdLot': thirdLot,
+      'fourthLot': fourthLot,
+      'fifthLot': fifthLot,
+    };
+  }
+
+  factory Playday.fromMap(Map<String, dynamic> map) {
+    return Playday(
+      date: map['date'] ?? '',
+      address: Address.fromMap(map['address']),
+      gallery: map['gallery'] ?? [],
+      firstLot: Lot.fromMap(map['firstLot']),
+      secoundLot: Lot.fromMap(map['secoundLot']),
+      thirdLot: Lot.fromMap(map['thirdLot']),
+      fourthLot: Lot.fromMap(map['fourthLot']),
+      fifthLot: Lot.fromMap(map['fifthLot']),
+    );
+  }
 }

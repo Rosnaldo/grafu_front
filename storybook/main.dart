@@ -38,7 +38,7 @@ class HomeWidget extends StatelessWidget {
         ),
         Story(
           name: 'Profile',
-          builder: (context) => const ProfilePage(),
+          builder: (context) => ProfilePage(),
         ),
         Story(
           name: 'Playday',

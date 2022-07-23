@@ -1,27 +1,27 @@
-class Invited {
+class User {
   String name;
+  String email;
   String avatar;
-  String status;
 
-  Invited({
+  User({
     required this.name,
+    required this.email,
     required this.avatar,
-    required this.status,
   });
 
   Map<String, dynamic> toMap() {
     return {
       'name': name,
+      'email': email,
       'avatar': avatar,
-      'status': status,
     };
   }
 
-  factory Invited.fromMap(Map<String, dynamic> map) {
-    return Invited(
+  factory User.fromMap(Map<String, dynamic> map) {
+    return User(
       name: map['name'] ?? '',
+      email: map['email'] ?? '',
       avatar: map['avatar'] ?? '',
-      status: map['status'] ?? '',
     );
   }
 }

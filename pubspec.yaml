@@ -34,6 +34,7 @@ dependencies:
   flutter_modular: ^5.0.3
   image_cropper: ^2.0.3
   image_picker: ^0.8.5+3
+  provider: ^6.0.3
   smooth_page_indicator: ^1.0.0+2
   sticky_headers: ^0.3.0+2
   storybook_flutter: ^0.11.1

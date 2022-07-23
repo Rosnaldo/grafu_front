@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:grafu/mocks/user.dart';
 import 'package:grafu/module/principal/profile/update_photo_popup/index.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({
     Key? key,
   }) : super(key: key);
-
-  final String image =
-      'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0';
-  final String name = 'Andrey K Tsuzuki';
-  final String email = 'andreytsuzuki@gmail.com';
 
   Widget buildImage(BuildContext context, String image) => ClipOval(
         child: Material(
@@ -59,6 +55,8 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = MakeUser.make();
+
     return Scaffold(
       body: Center(
         child: Column(
@@ -70,7 +68,7 @@ class ProfilePage extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: Stack(
                 children: [
-                  buildImage(context, image),
+                  buildImage(context, user.avatar),
                   Positioned(
                     bottom: 0,
                     right: 8,
@@ -80,10 +78,10 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
             Text(
-              name,
+              user.name,
               style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
-            Text(email),
+            Text(user.email),
             const SizedBox(
               height: 20,
             ),
