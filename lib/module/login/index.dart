@@ -2,14 +2,23 @@ import 'package:flutter/material.dart';
 
 import 'package:grafu/components/password_form_field/index.dart';
 import 'package:grafu/components/email_form_field/index.dart';
+import 'package:grafu/module/register/register_model.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  const LoginPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => LoginPageState();
+}
+
+class LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
   final loginFocusNode = FocusNode();
-
-  LoginPage({Key? key}) : super(key: key);
+  var registerModel = RegisterModel.init();
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +34,16 @@ class LoginPage extends StatelessWidget {
                 label: 'email',
                 focusNode: emailFocusNode,
                 nextFocusNode: passwordFocusNode,
+                onSaved: (value) =>
+                    registerModel = registerModel.copyWith(email: value),
               ),
               const SizedBox(height: 16),
               PassworFormField(
                 label: 'senha',
                 focusNode: passwordFocusNode,
                 nextFocusNode: emailFocusNode,
+                onSaved: (value) =>
+                    registerModel = registerModel.copyWith(password: value),
               ),
               const SizedBox(height: 5),
               Row(
@@ -42,13 +55,11 @@ class LoginPage extends StatelessWidget {
                     },
                     style: TextButton.styleFrom(
                       primary: Colors.pink,
-                      backgroundColor: Colors.white,
                     ),
                     child: const Text(
                       'Primeira vez? (cadastrar)',
                       style: TextStyle(
                         fontSize: 15,
-                        backgroundColor: Colors.white,
                       ),
                     ),
                   ),
@@ -69,6 +80,4 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-
-  setState(bool Function() param0) {}
 }

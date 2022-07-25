@@ -4,12 +4,18 @@ class PassworFormField extends StatefulWidget {
   final String label;
   final FocusNode focusNode;
   final FocusNode nextFocusNode;
+  final void Function(String?)? onSaved;
+  final void Function(String?)? onChanged;
+  final String? Function(String?)? validator;
 
   const PassworFormField({
     Key? key,
     required this.label,
     required this.focusNode,
     required this.nextFocusNode,
+    required this.onSaved,
+    this.onChanged,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -22,13 +28,17 @@ class PassworFormFieldState extends State<PassworFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       focusNode: widget.focusNode,
       onFieldSubmitted: (_) => widget.nextFocusNode.requestFocus(),
+      onSaved: widget.onSaved,
+      onChanged: widget.onChanged,
       obscureText: _obscurePassword,
       keyboardType: TextInputType.visiblePassword,
+      validator: widget.validator,
       decoration: InputDecoration(
         labelText: widget.label,
-        hintText: '********',
+        hintText: 'Preencha a senha',
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(4.0),
