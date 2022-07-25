@@ -1,8 +1,8 @@
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:grafu/module/principal/gallery/index.dart';
-import 'package:grafu/module/principal/index.dart';
-import 'package:grafu/module/principal/playday/index.dart';
-import 'package:grafu/module/principal/profile/index.dart';
+import 'package:grafu/module/principal/business/gallery/index.dart';
+import 'package:grafu/module/principal/business/playday/index.dart';
+import 'package:grafu/module/principal/business/profile/index.dart';
+import 'package:grafu/module/principal/business/index.dart';
 import 'package:grafu/repositories/invited_repository.dart';
 import 'package:grafu/repositories/playday_repository.dart';
 import 'package:grafu/repositories/user_repository.dart';

@@ -4,7 +4,13 @@ import 'package:grafu/repositories/playday_repository.dart';
 import 'package:grafu/repositories/user_repository.dart';
 import 'package:grafu/state/global_state.dart';
 
-class GlobalStore extends ValueNotifier<GlobalState> {
+abstract class IGlobalStore extends ValueNotifier<GlobalState> {
+  IGlobalStore(super.value);
+
+  Future fetch() async {}
+}
+
+class GlobalStore extends IGlobalStore {
   late final UserRepository userRepository;
   late final PlaydayRepository playdayRepository;
   late final InvitedRepository invitedRepository;
@@ -13,7 +19,8 @@ class GlobalStore extends ValueNotifier<GlobalState> {
       this.userRepository, this.playdayRepository, this.invitedRepository)
       : super(InitialGlobalState());
 
-  Future fetchUser() async {
+  @override
+  Future fetch() async {
     value = LoadingGlobalState();
     try {
       final user = await userRepository.get();

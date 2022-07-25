@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:grafu/models/invited.dart';
-import 'package:grafu/module/principal/playday/invited_card.dart';
+import 'package:grafu/module/principal/container/playday/invited_card.dart';
 
 class BuildInvitedsPopup {
   static Future<void> showMyDialog(

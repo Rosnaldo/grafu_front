@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:grafu/module/principal/profile/update_photo_popup/index.dart';
+import 'package:grafu/module/principal/container/profile/update_photo_popup/index.dart';
 import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/global_store.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({
-    Key? key,
-  }) : super(key: key);
+class ProfilePageContainer extends StatelessWidget {
+  final IGlobalStore store;
+
+  const ProfilePageContainer({Key? key, required this.store}) : super(key: key);
 
   Widget buildImage(BuildContext context, String image) => ClipOval(
         child: Material(
@@ -56,7 +56,6 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final store = Modular.get<GlobalStore>();
     final state = store.value as SuccessGlobalState;
 
     return Scaffold(

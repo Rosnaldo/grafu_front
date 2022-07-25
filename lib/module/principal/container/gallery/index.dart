@@ -3,9 +3,12 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/global_store.dart';
 
-class GalleryPage extends StatelessWidget {
-  const GalleryPage({
+class GalleryPageContainer extends StatelessWidget {
+  final IGlobalStore store;
+
+  const GalleryPageContainer({
     Key? key,
+    required this.store,
   }) : super(key: key);
 
   Widget buildImage(String image) {
@@ -22,7 +25,6 @@ class GalleryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final store = Modular.get<GlobalStore>();
     final state = store.value as SuccessGlobalState;
 
     return Scaffold(

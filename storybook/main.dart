@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:grafu/module/principal/playday/index.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
-import 'package:grafu/module/principal/gallery/index.dart';
-import 'package:grafu/module/principal/profile/index.dart';
+import 'package:grafu/module/principal/container/gallery/index.dart';
+import 'package:grafu/module/principal/container/playday/index.dart';
+import 'package:grafu/module/principal/container/profile/index.dart';
+import 'package:grafu/store/mock_global_store.dart';
+
 import 'package:grafu/module/login/index.dart';
 import 'package:grafu/module/register/index.dart';
 
@@ -14,7 +16,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(home: HomeWidget());
@@ -30,23 +31,23 @@ class HomeWidget extends StatelessWidget {
       stories: [
         Story(
           name: 'Login',
-          builder: (context) => LoginPage(),
+          builder: (context) => const LoginPage(),
         ),
         Story(
           name: 'Register',
-          builder: (context) => RegisterPage(),
+          builder: (context) => const RegisterPage(),
         ),
         Story(
           name: 'Profile',
-          builder: (context) => ProfilePage(),
+          builder: (context) => ProfilePageContainer(store: MockGlobalStore()),
         ),
         Story(
           name: 'Playday',
-          builder: (context) => PlaydayPage(),
+          builder: (context) => PlaydayPageContainer(store: MockGlobalStore()),
         ),
         Story(
           name: 'Gallery',
-          builder: (context) => GalleryPage(),
+          builder: (context) => GalleryPageContainer(store: MockGlobalStore()),
         ),
       ],
     );

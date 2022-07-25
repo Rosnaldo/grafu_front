@@ -1,44 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:grafu/module/principal/gallery/index.dart';
-import 'package:grafu/module/principal/playday/index.dart';
-import 'package:grafu/module/principal/profile/index.dart';
+import 'package:grafu/module/principal/business/gallery/index.dart';
+import 'package:grafu/module/principal/business/playday/index.dart';
+import 'package:grafu/module/principal/business/profile/index.dart';
 import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/global_store.dart';
 
-class PrincipalPage extends StatefulWidget {
-  const PrincipalPage({Key? key}) : super(key: key);
+class PrincipalPageContainer extends StatefulWidget {
+  final PageController pageViewController;
+  final IGlobalStore store;
+
+  const PrincipalPageContainer({
+    Key? key,
+    required this.pageViewController,
+    required this.store,
+  }) : super(key: key);
 
   @override
-  PrincipalPageState createState() => PrincipalPageState();
+  PrincipalPageContainerState createState() => PrincipalPageContainerState();
 }
 
-class PrincipalPageState extends State<PrincipalPage> {
-  final pageViewController = PageController();
-  final store = Modular.get<GlobalStore>();
-
-  @override
-  void initState() {
-    super.initState();
-    store.fetchUser();
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    pageViewController.dispose();
-  }
-
+class PrincipalPageContainerState extends State<PrincipalPageContainer> {
   Widget buildBottomNavigationBar() {
     return AnimatedBuilder(
-      animation: pageViewController,
+      animation: widget.pageViewController,
       builder: (context, snapshot) {
         return BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          currentIndex: pageViewController.page?.round() ?? 0,
+          currentIndex: widget.pageViewController.page?.round() ?? 0,
           selectedItemColor: Colors.blue,
           onTap: (index) {
-            pageViewController.jumpToPage(index);
+            widget.pageViewController.jumpToPage(index);
           },
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -61,7 +52,7 @@ class PrincipalPageState extends State<PrincipalPage> {
 
   Widget buildPageView() {
     return PageView(
-      controller: pageViewController,
+      controller: widget.pageViewController,
       children: const [
         PlaydayPage(),
         ProfilePage(),
@@ -103,7 +94,7 @@ class PrincipalPageState extends State<PrincipalPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: ValueListenableBuilder<GlobalState>(
-        valueListenable: store,
+        valueListenable: widget.store,
         builder: buildNavigatePages,
       ),
     );

@@ -3,24 +3,27 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/mocks/invited.dart';
 
 import 'package:grafu/mocks/playday.dart';
-import 'package:grafu/module/principal/playday/buy_ticket.dart';
-import 'package:grafu/module/principal/playday/playday_date.dart';
-import 'package:grafu/module/principal/playday/footer.dart';
-import 'package:grafu/module/principal/playday/invited_list.dart';
-import 'package:grafu/module/principal/playday/line.dart';
-import 'package:grafu/module/principal/playday/location.dart';
-import 'package:grafu/module/principal/playday/timeline.dart';
+import 'package:grafu/module/principal/container/playday/buy_ticket.dart';
+import 'package:grafu/module/principal/container/playday/playday_date.dart';
+import 'package:grafu/module/principal/container/playday/footer.dart';
+import 'package:grafu/module/principal/container/playday/invited_list.dart';
+import 'package:grafu/module/principal/container/playday/line.dart';
+import 'package:grafu/module/principal/container/playday/location.dart';
+import 'package:grafu/module/principal/container/playday/timeline.dart';
 import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/global_store.dart';
 
 import 'carousel.dart';
 
-class PlaydayPage extends StatelessWidget {
-  const PlaydayPage({Key? key}) : super(key: key);
+class PlaydayPageContainer extends StatelessWidget {
+  final IGlobalStore store;
+  const PlaydayPageContainer({
+    Key? key,
+    required this.store,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final store = Modular.get<GlobalStore>();
     final state = store.value as SuccessGlobalState;
 
     return Scaffold(

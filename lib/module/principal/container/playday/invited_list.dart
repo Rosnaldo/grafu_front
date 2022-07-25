@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/models/invited.dart';
 
-import 'package:grafu/module/principal/playday/invited_card.dart';
-import 'package:grafu/module/principal/playday/inviteds_popup/index.dart';
+import 'package:grafu/module/principal/container/playday/invited_card.dart';
+import 'package:grafu/module/principal/container/playday/inviteds_popup/index.dart';
 
 class InvitedList extends StatelessWidget {
   final List<Invited> inviteds;
