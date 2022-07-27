@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/global_store.dart';
 
@@ -27,14 +26,12 @@ class GalleryPageContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final state = store.value as SuccessGlobalState;
 
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-              children: state.playday.gallery
-                  .map((image) => buildImage(image))
-                  .toList()),
-        ),
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Column(
+            children: state.playday.gallery
+                .map((image) => buildImage(image))
+                .toList()),
       ),
     );
   }
