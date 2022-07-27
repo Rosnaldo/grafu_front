@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/module/login/index.dart';
 import 'package:grafu/module/principal/principal_module.dart';
 import 'package:grafu/module/register/index.dart';
+import 'package:grafu/module/reset/index.dart';
 
 class AppModule extends Module {
   @override
@@ -11,8 +12,9 @@ class AppModule extends Module {
 
   @override
   List<ModularRoute> get routes => [
-        ChildRoute('/', child: (context, args) => LoginPage()),
-        ChildRoute('/register', child: (context, args) => RegisterPage()),
+        ChildRoute('/', child: (context, args) => const LoginPage()),
+        ChildRoute('/register', child: (context, args) => const RegisterPage()),
+        ChildRoute('/reset', child: (context, args) => const ResetPage()),
         ModuleRoute('/principal', module: PrincipalModule()),
         WildcardRoute(
             child: (_, __) => const Scaffold(

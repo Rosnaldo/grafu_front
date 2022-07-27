@@ -30,125 +30,165 @@ class RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            padding: const EdgeInsets.all(10),
-            children: <Widget>[
-              NameFormField(
-                  label: 'nome completo',
-                  hintText: 'Preencha seu nome completo',
-                  onSaved: (value) =>
-                      registerModel = registerModel.copyWith(name: value),
-                  focusNode: nameFocusNode,
-                  nextFocusNode: emailFocusNode,
-                  validator: (text) {
-                    if (text == null || text.isEmpty) {
-                      return 'Nome completo obrigatório';
-                    }
-                    return null;
-                  }),
-              const SizedBox(height: 16),
-              EmailFormField(
-                  label: 'email',
-                  focusNode: emailFocusNode,
-                  nextFocusNode: passwordFocusNode,
-                  onSaved: (value) {
-                    registerModel = registerModel.copyWith(email: value);
-                  },
-                  validator: (text) {
-                    if (text == null || text.isEmpty) {
-                      return 'Email obrigatório';
-                    }
-                    if (!RegExp(
-                            r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
-                        .hasMatch(text)) {
-                      return 'Email inválido';
-                    }
-                    return null;
-                  }),
-              const SizedBox(height: 16),
-              SwitchButton(
-                option1:
-                    SwitchButtonOption(label: 'masculino', icon: Icons.male),
-                option2:
-                    SwitchButtonOption(label: 'feminino', icon: Icons.female),
-                isSelected: isMale,
-              ),
-              const SizedBox(height: 16),
-              PassworFormField(
-                  label: 'senha',
-                  focusNode: passwordFocusNode,
-                  nextFocusNode: confirmFocusNode,
-                  onSaved: (value) =>
-                      registerModel = registerModel.copyWith(password: value),
-                  onChanged: (value) {
-                    registerModel = registerModel.copyWith(password: value);
-                  },
-                  validator: (text) {
-                    if (text == null || text.isEmpty) {
-                      return 'Senha obrigatório';
-                    }
-                    if (text.length <= 8) {
-                      return 'Senha deve ter ao menos 8 caracteres';
-                    }
-                    if (!RegExp(
-                            r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%*()])[a-zA-Z\d!@#$%*()]+$")
-                        .hasMatch(text)) {
-                      return r'Senha deve ter 1 letra minúscula, 1 maiúscula, um número e caracter especial !@#$%*()';
-                    }
-                    return null;
-                  }),
-              const SizedBox(height: 16),
-              PassworFormField(
-                  label: 'confirmar',
-                  focusNode: confirmFocusNode,
-                  nextFocusNode: registerFocusNode,
-                  onSaved: (value) =>
-                      registerModel = registerModel.copyWith(confirm: value),
-                  onChanged: (value) {
-                    registerModel = registerModel.copyWith(confirm: value);
-                  },
-                  validator: (text) {
-                    if (text == null || text.isEmpty) {
-                      return 'Confirmação da senha obrigatório';
-                    }
-                    if (registerModel.password != registerModel.confirm) {
-                      return 'Confirmação e senha não são iguais';
-                    }
-                    return null;
-                  }),
-              const SizedBox(height: 5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/');
-                    },
-                    style: TextButton.styleFrom(
-                      primary: Colors.pink,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Form(
+                key: _formKey,
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.all(10),
+                  children: <Widget>[
+                    NameFormField(
+                        label: 'nome completo',
+                        hintText: 'Preencha seu nome completo',
+                        onSaved: (value) =>
+                            registerModel = registerModel.copyWith(name: value),
+                        focusNode: nameFocusNode,
+                        nextFocusNode: emailFocusNode,
+                        validator: (text) {
+                          if (text == null || text.isEmpty) {
+                            return 'Nome completo obrigatório';
+                          }
+                          return null;
+                        }),
+                    const SizedBox(height: 16),
+                    EmailFormField(
+                        label: 'email',
+                        focusNode: emailFocusNode,
+                        nextFocusNode: passwordFocusNode,
+                        onSaved: (value) {
+                          registerModel = registerModel.copyWith(email: value);
+                        },
+                        validator: (text) {
+                          if (text == null || text.isEmpty) {
+                            return 'Email obrigatório';
+                          }
+                          if (!RegExp(
+                                  r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
+                              .hasMatch(text)) {
+                            return 'Email inválido';
+                          }
+                          return null;
+                        }),
+                    const SizedBox(height: 16),
+                    SwitchButton(
+                      option1: SwitchButtonOption(
+                          label: 'masculino', icon: Icons.male),
+                      option2: SwitchButtonOption(
+                          label: 'feminino', icon: Icons.female),
+                      isSelected: isMale,
                     ),
-                    child: const Text(
-                      'Já está cadastrado? (login)',
-                      style: TextStyle(
-                        fontSize: 15,
+                    const SizedBox(height: 16),
+                    PassworFormField(
+                        label: 'senha',
+                        focusNode: passwordFocusNode,
+                        nextFocusNode: confirmFocusNode,
+                        onSaved: (value) => registerModel =
+                            registerModel.copyWith(password: value),
+                        onChanged: (value) {
+                          registerModel =
+                              registerModel.copyWith(password: value);
+                        },
+                        validator: (text) {
+                          if (text == null || text.isEmpty) {
+                            return 'Senha obrigatório';
+                          }
+                          if (text.length <= 8) {
+                            return 'Senha deve ter ao menos 8 caracteres';
+                          }
+                          if (!RegExp(
+                                  r"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%*()])[a-zA-Z\d!@#$%*()]+$")
+                              .hasMatch(text)) {
+                            return r'Senha deve ter 1 letra minúscula, 1 maiúscula, um número e caracter especial !@#$%*()';
+                          }
+                          return null;
+                        }),
+                    const SizedBox(height: 16),
+                    PassworFormField(
+                        label: 'confirmar',
+                        focusNode: confirmFocusNode,
+                        nextFocusNode: registerFocusNode,
+                        onSaved: (value) => registerModel =
+                            registerModel.copyWith(confirm: value),
+                        onChanged: (value) {
+                          registerModel =
+                              registerModel.copyWith(confirm: value);
+                        },
+                        validator: (text) {
+                          if (text == null || text.isEmpty) {
+                            return 'Confirmação da senha obrigatório';
+                          }
+                          if (registerModel.password != registerModel.confirm) {
+                            return 'Confirmação e senha não são iguais';
+                          }
+                          return null;
+                        }),
+                    const SizedBox(height: 5),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/');
+                      },
+                      style: TextButton.styleFrom(
+                        textStyle: const TextStyle(height: 1.0),
+                        padding: const EdgeInsets.symmetric(vertical: 0.0),
+                        alignment: Alignment.centerLeft,
+                        primary: Colors.pink,
+                      ),
+                      child: const Text(
+                        'Já está cadastrado? (login)',
+                        style: TextStyle(
+                          fontSize: 15,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: 20),
+                    ElevatedButton(
+                      focusNode: registerFocusNode,
+                      onPressed: () => {
+                        if (_formKey.currentState!.validate())
+                          {
+                            _formKey.currentState!.save(),
+                            Navigator.of(context)
+                                .pushNamed('/principal/playday')
+                          }
+                      },
+                      child: const Text('Cadastrar'),
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                focusNode: registerFocusNode,
-                onPressed: () => {
-                  if (_formKey.currentState!.validate())
-                    {
-                      _formKey.currentState!.save(),
-                      Navigator.of(context).pushNamed('/principal/playday')
-                    }
-                },
-                child: const Text('Cadastrar'),
+              const SizedBox(
+                child: Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text('ou'),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
+                child: SizedBox(
+                  width: double.maxFinite,
+                  child: ElevatedButton(
+                    onPressed: () => {},
+                    child: const Text('facebook'),
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
+                child: SizedBox(
+                  width: double.maxFinite,
+                  child: ElevatedButton(
+                    onPressed: () => {},
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.redAccent)),
+                    child: const Text('google'),
+                  ),
+                ),
               ),
             ],
           ),
