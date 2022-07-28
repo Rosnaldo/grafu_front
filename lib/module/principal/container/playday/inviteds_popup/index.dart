@@ -4,77 +4,56 @@ import 'package:grafu/models/invited.dart';
 import 'package:grafu/module/principal/container/playday/invited_card.dart';
 
 class BuildInvitedsPopup {
-  static Future<void> showMyDialog(
+  static Future<Future<Object?>> showMyDialog(
     BuildContext context,
     List<Invited> inviteds,
   ) async {
-    return showDialog<void>(
+    return showGeneralDialog(
       context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) => InvitedsPopup(inviteds: inviteds),
-    );
-  }
-}
-
-class InvitedsPopup extends StatefulWidget {
-  final List<Invited> inviteds;
-  const InvitedsPopup({
-    Key? key,
-    required this.inviteds,
-  }) : super(key: key);
-
-  @override
-  State<InvitedsPopup> createState() => InvitedsPopupState();
-}
-
-class InvitedsPopupState extends State<InvitedsPopup> {
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      buttonPadding: EdgeInsets.zero,
-      actionsPadding: const EdgeInsets.symmetric(horizontal: 2.0),
-      titlePadding:
-          const EdgeInsets.symmetric(vertical: 12.0, horizontal: 15.0),
-      contentPadding: const EdgeInsets.all(15.0),
-      title: const Text('Convidados'),
-      content: SizedBox(
-        height: 230.0,
-        child: SingleChildScrollView(
-          child: ListBody(
-            children: widget.inviteds
-                .map(
-                  (invited) => InvitedCard(
-                    name: invited.name,
-                    avatar: invited.avatar,
-                    status: invited.status,
-                  ),
-                )
-                .toList(),
-          ),
-        ),
-      ),
-      actions: <Widget>[
-        Container(
-          margin: const EdgeInsets.symmetric(vertical: 0.0, horizontal: 15.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  side: const BorderSide(width: 1.0, color: Colors.blue),
-                ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text(
-                  'Cancel',
-                  style: TextStyle(color: Colors.blue),
+      barrierDismissible: true,
+      barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
+      transitionDuration: const Duration(microseconds: 200),
+      pageBuilder: (BuildContext context, Animation first, Animation second) {
+        return MaterialApp(
+          home: Scaffold(
+            body: Center(
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                padding: const EdgeInsets.all(20.0),
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: IconButton(
+                        icon: const Icon(Icons.close),
+                        iconSize: 20,
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                    ),
+                    SingleChildScrollView(
+                      child: ListBody(
+                        children: inviteds
+                            .map(
+                              (invited) => InvitedCard(
+                                name: invited.name,
+                                avatar: invited.avatar,
+                                status: invited.status,
+                              ),
+                            )
+                            .toList(),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-            ],
+            ),
           ),
-        ),
-      ],
+        );
+      },
     );
   }
 }
