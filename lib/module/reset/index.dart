@@ -42,7 +42,9 @@ class ResetPageState extends State<ResetPage> {
               ),
               ElevatedButton(
                 focusNode: sendFocusNode,
-                onPressed: () => {Navigator.of(context).pushNamed('/')},
+                onPressed: () => {
+                  Navigator.of(context).pushNamed('/reset-email-message'),
+                },
                 child: const Text('Enviar'),
               ),
             ],

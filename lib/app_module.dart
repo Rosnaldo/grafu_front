@@ -5,6 +5,7 @@ import 'package:grafu/module/login/index.dart';
 import 'package:grafu/module/principal/principal_module.dart';
 import 'package:grafu/module/register/index.dart';
 import 'package:grafu/module/reset/index.dart';
+import 'package:grafu/module/reset_email_message/index.dart';
 
 class AppModule extends Module {
   @override
@@ -15,6 +16,8 @@ class AppModule extends Module {
         ChildRoute('/', child: (context, args) => const LoginPage()),
         ChildRoute('/register', child: (context, args) => const RegisterPage()),
         ChildRoute('/reset', child: (context, args) => const ResetPage()),
+        ChildRoute('/reset-email-message',
+            child: (context, args) => const ResetEmailMessagePage()),
         ModuleRoute('/principal', module: PrincipalModule()),
         WildcardRoute(
             child: (_, __) => const Scaffold(
