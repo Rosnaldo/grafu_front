@@ -28,6 +28,7 @@ class InvitedList extends StatelessWidget {
         const SizedBox(height: 12.0),
         Column(
             children: inviteds
+                .sublist(0, 3)
                 .map(
                   (invited) => InvitedCard(
                     name: invited.name,

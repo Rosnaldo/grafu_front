@@ -27,6 +27,8 @@ class GlobalStore extends IGlobalStore {
       final playday = await playdayRepository.get();
       final inviteds = await invitedRepository.get();
 
+      await Future.delayed(const Duration(seconds: 1));
+
       value = SuccessGlobalState(user, playday, inviteds);
     } catch (e) {
       value = ErrorGlobalState(e.toString());
