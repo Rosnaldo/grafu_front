@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/components/link_redirect/index.dart';
 
 import 'package:grafu/components/password_form_field/index.dart';
 import 'package:grafu/components/email_form_field/index.dart';
@@ -126,22 +127,9 @@ class RegisterPageState extends State<RegisterPage> {
                           return null;
                         }),
                     const SizedBox(height: 5),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pushNamed('/');
-                      },
-                      style: TextButton.styleFrom(
-                        textStyle: const TextStyle(height: 1.0),
-                        padding: const EdgeInsets.symmetric(vertical: 0.0),
-                        alignment: Alignment.centerLeft,
-                        primary: Colors.pink,
-                      ),
-                      child: const Text(
-                        'Já está cadastrado? (login)',
-                        style: TextStyle(
-                          fontSize: 15,
-                        ),
-                      ),
+                    const LinkRedirect(
+                      title: 'Já está cadastrado? (login)',
+                      redirectLink: '/',
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(

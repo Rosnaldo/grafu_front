@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/components/link_redirect/index.dart';
 
 import 'package:grafu/components/password_form_field/index.dart';
 import 'package:grafu/components/email_form_field/index.dart';
@@ -50,39 +51,13 @@ class LoginPageState extends State<LoginPage> {
                         registerModel = registerModel.copyWith(password: value),
                   ),
                   const SizedBox(height: 5),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/register');
-                    },
-                    style: TextButton.styleFrom(
-                      textStyle: const TextStyle(height: 1.0),
-                      padding: const EdgeInsets.symmetric(vertical: 0.0),
-                      alignment: Alignment.centerLeft,
-                      primary: Colors.pink,
-                    ),
-                    child: const Text(
-                      'Primeira vez? (cadastrar)',
-                      style: TextStyle(
-                        fontSize: 15,
-                      ),
-                    ),
+                  const LinkRedirect(
+                    title: 'Primeira vez? (cadastrar)',
+                    redirectLink: '/register',
                   ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/reset');
-                    },
-                    style: TextButton.styleFrom(
-                      textStyle: const TextStyle(height: 1.0),
-                      padding: const EdgeInsets.symmetric(vertical: 0.0),
-                      alignment: Alignment.centerLeft,
-                      primary: Colors.pink,
-                    ),
-                    child: const Text(
-                      'Esqueceu a senha?',
-                      style: TextStyle(
-                        fontSize: 15,
-                      ),
-                    ),
+                  const LinkRedirect(
+                    title: 'Esqueceu a senha?',
+                    redirectLink: '/reset',
                   ),
                   const SizedBox(height: 20),
                   ElevatedButton(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/components/email_form_field/index.dart';
+import 'package:grafu/components/link_redirect/index.dart';
 
 class ResetPage extends StatefulWidget {
   const ResetPage({
@@ -35,10 +36,13 @@ class ResetPageState extends State<ResetPage> {
                   email = value as String;
                 },
               ),
-              const SizedBox(height: 10.0),
+              const LinkRedirect(
+                title: 'Voltar para login',
+                redirectLink: '/',
+              ),
               ElevatedButton(
                 focusNode: sendFocusNode,
-                onPressed: () => {Navigator.of(context).pushNamed('/login')},
+                onPressed: () => {Navigator.of(context).pushNamed('/')},
                 child: const Text('Enviar'),
               ),
             ],
