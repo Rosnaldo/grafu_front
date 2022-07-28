@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/module/principal/container/grid/index.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
 import 'package:grafu/module/principal/container/gallery/index.dart';
@@ -48,6 +49,10 @@ class HomeWidget extends StatelessWidget {
         Story(
           name: 'Gallery',
           builder: (context) => GalleryPageContainer(store: MockGlobalStore()),
+        ),
+        Story(
+          name: 'Grid',
+          builder: (context) => GridPageContainer(store: MockGlobalStore()),
         ),
       ],
     );

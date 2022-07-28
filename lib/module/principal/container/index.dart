@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/module/principal/business/gallery/index.dart';
+import 'package:grafu/module/principal/business/grid/index.dart';
 import 'package:grafu/module/principal/business/playday/index.dart';
 import 'package:grafu/module/principal/business/profile/index.dart';
 import 'package:grafu/state/global_state.dart';
@@ -34,15 +35,31 @@ class PrincipalPageContainerState extends State<PrincipalPageContainer> {
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               label: 'Evento',
-              icon: Icon(Icons.event_available),
+              icon: Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Icon(Icons.event_available),
+              ),
             ),
             BottomNavigationBarItem(
               label: 'Perfil',
-              icon: Icon(Icons.person),
+              icon: Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Icon(Icons.person),
+              ),
             ),
             BottomNavigationBarItem(
-              label: 'Fotos',
-              icon: Icon(Icons.collections),
+              label: 'Galleria',
+              icon: Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Icon(Icons.table_rows),
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: 'Grid',
+              icon: Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Icon(Icons.grid_view),
+              ),
             ),
           ],
         );
@@ -57,6 +74,7 @@ class PrincipalPageContainerState extends State<PrincipalPageContainer> {
         PlaydayPage(),
         ProfilePage(),
         GalleryPage(),
+        GridPage(),
       ],
     );
   }

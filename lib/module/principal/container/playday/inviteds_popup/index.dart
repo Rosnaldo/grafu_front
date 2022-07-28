@@ -31,6 +31,11 @@ class InvitedsPopupState extends State<InvitedsPopup> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      buttonPadding: EdgeInsets.zero,
+      actionsPadding: const EdgeInsets.symmetric(horizontal: 2.0),
+      titlePadding:
+          const EdgeInsets.symmetric(vertical: 12.0, horizontal: 15.0),
+      contentPadding: const EdgeInsets.all(15.0),
       title: const Text('Convidados'),
       content: SizedBox(
         height: 230.0,

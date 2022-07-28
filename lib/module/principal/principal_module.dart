@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/module/principal/business/gallery/index.dart';
+import 'package:grafu/module/principal/business/grid/index.dart';
 import 'package:grafu/module/principal/business/playday/index.dart';
 import 'package:grafu/module/principal/business/profile/index.dart';
 import 'package:grafu/module/principal/business/index.dart';
@@ -23,6 +24,7 @@ class PrincipalModule extends Module {
           ChildRoute('/profile', child: (context, args) => const ProfilePage()),
           ChildRoute('/playday', child: (context, args) => const PlaydayPage()),
           ChildRoute('/gallery', child: (context, args) => const GalleryPage()),
+          ChildRoute('/grid', child: (context, args) => const GridPage()),
         ]),
       ];
 }
