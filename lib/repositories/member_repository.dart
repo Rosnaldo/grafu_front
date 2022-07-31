@@ -24,7 +24,7 @@ class MemberRepository {
       {
         "name": "Mayrana Brito",
         "avatar":
-            "https://media-exp1.licdn.com/dms/image/C4D03AQExKff88zXkMQ/profile-displayphoto-shrink_800_800/0/1647887645658?e=1664409600&v=beta&t=q7IXyx_soGecI-WzFSNFPtUbG0aT7rvcwrW0ckl_1dk",
+            "https://media-exp1.licdn.com/dms/image/C4D03AQG3j392gmNRfQ/profile-displayphoto-shrink_800_800/0/1622327303559?e=1665014400&v=beta&t=3sy3EDBNl507QBSEALd1BMbVBsEReWuyPS2VqBixo64",
         "status": MemberStatus.pending,
       },
       {

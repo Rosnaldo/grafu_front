@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 import 'package:grafu/components/switch_button/index.dart';
-import 'package:grafu/utils.dart';
+import 'package:grafu/utils/image_platform.dart';
+import 'package:grafu/utils/pick_media.dart';
 
 class BuildUpdatePhotoPopup {
   static Future<void> showMyDialog(
@@ -26,9 +25,15 @@ class UpdatePhotoPopup extends StatefulWidget {
   State<UpdatePhotoPopup> createState() => UpdatePhotoPopupState();
 }
 
+class ImageStore extends ValueNotifier<String> {
+  ImageStore() : super('');
+
+  setImage(v) => value = v;
+}
+
 class UpdatePhotoPopupState extends State<UpdatePhotoPopup> {
   final isGallery = [false, true];
-  String image = '';
+  ImageStore imageStore = ImageStore();
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +41,11 @@ class UpdatePhotoPopupState extends State<UpdatePhotoPopup> {
       content: SingleChildScrollView(
         child: ListBody(
           children: [
-            (image == '') ? Container() : Image.file(File(image)),
+            AnimatedBuilder(
+                animation: imageStore,
+                builder: (context, child) {
+                  return ImagePlatform.image(imageStore: imageStore);
+                }),
             const SizedBox(height: 10.0),
             SwitchButton(
               option1:
@@ -54,11 +63,12 @@ class UpdatePhotoPopupState extends State<UpdatePhotoPopup> {
             children: [
               ElevatedButton(
                 onPressed: () async {
-                  final file = await Utils.pickMedia(isGallery: isGallery);
+                  final file = await PickMedia.execute(
+                      isGallery: isGallery, context: context);
 
                   if (file == null) return;
 
-                  setState(() => {image = file});
+                  imageStore.setImage(file);
                 },
                 child: const Text('Carregar foto'),
               ),

@@ -16,6 +16,7 @@ dependencies:
   google_maps_flutter: ^2.1.10
   google_maps_flutter_web: ^0.4.0+1
   image_cropper: ^2.0.3
+  image_cropper_for_web: ^0.0.4
   image_picker: ^0.8.5+3
   rename: ^2.0.1
   smooth_page_indicator: ^1.0.0+2

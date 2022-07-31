@@ -36,15 +36,23 @@ class BuildMembersPopup {
                     ),
                     SingleChildScrollView(
                       child: ListBody(
-                        children: members
-                            .map(
-                              (member) => MemberCard(
-                                name: member.name,
-                                avatar: member.avatar,
-                                status: member.status,
-                              ),
-                            )
-                            .toList(),
+                        children: [
+                          const Text(
+                            'Convidados',
+                            style: TextStyle(
+                                fontSize: 17.0, fontWeight: FontWeight.w700),
+                          ),
+                          const SizedBox(height: 10),
+                          ...members
+                              .map(
+                                (member) => MemberCard(
+                                  name: member.name,
+                                  avatar: member.avatar,
+                                  status: member.status,
+                                ),
+                              )
+                              .toList()
+                        ],
                       ),
                     ),
                   ],

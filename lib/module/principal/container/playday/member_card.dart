@@ -24,7 +24,7 @@ class MemberCard extends StatelessWidget {
           children: [
             CircleAvatar(
               backgroundImage: NetworkImage(avatar),
-              radius: 12.0,
+              radius: 18.0,
             ),
             Expanded(
               flex: 1,

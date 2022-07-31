@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:grafu/module/principal/container/playday/buy_ticket.dart';
+import 'package:grafu/module/principal/container/playday/invite.dart';
 import 'package:grafu/module/principal/container/playday/playday_date.dart';
 import 'package:grafu/module/principal/container/playday/footer.dart';
 import 'package:grafu/module/principal/container/playday/member_list.dart';
@@ -50,7 +51,11 @@ class PlaydayPageContainer extends StatelessWidget {
                   ),
                   const SizedBox(height: 12.0),
                   PlaydayTimeline(playday: state.playday),
+                  const SizedBox(height: 12.0),
+                  const Line(),
+                  Invite(),
                   const SizedBox(height: 15.0),
+                  const Line(),
                   BuyTicket(price: state.playday.firstLot.price),
                 ],
               ),
