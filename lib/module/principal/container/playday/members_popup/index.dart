@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:grafu/models/invited.dart';
-import 'package:grafu/module/principal/container/playday/invited_card.dart';
+import 'package:grafu/models/member.dart';
+import 'package:grafu/module/principal/container/playday/member_card.dart';
 
-class BuildInvitedsPopup {
+class BuildMembersPopup {
   static Future<Future<Object?>> showMyDialog(
     BuildContext context,
-    List<Invited> inviteds,
+    List<Member> members,
   ) async {
     return showGeneralDialog(
       context: context,
@@ -36,12 +36,12 @@ class BuildInvitedsPopup {
                     ),
                     SingleChildScrollView(
                       child: ListBody(
-                        children: inviteds
+                        children: members
                             .map(
-                              (invited) => InvitedCard(
-                                name: invited.name,
-                                avatar: invited.avatar,
-                                status: invited.status,
+                              (member) => MemberCard(
+                                name: member.name,
+                                avatar: member.avatar,
+                                status: member.status,
                               ),
                             )
                             .toList(),

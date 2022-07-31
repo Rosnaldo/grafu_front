@@ -4,7 +4,7 @@ import 'package:grafu/module/principal/business/grid/index.dart';
 import 'package:grafu/module/principal/business/playday/index.dart';
 import 'package:grafu/module/principal/business/profile/index.dart';
 import 'package:grafu/module/principal/business/index.dart';
-import 'package:grafu/repositories/invited_repository.dart';
+import 'package:grafu/repositories/member_repository.dart';
 import 'package:grafu/repositories/playday_repository.dart';
 import 'package:grafu/repositories/user_repository.dart';
 import 'package:grafu/store/global_store.dart';
@@ -14,7 +14,7 @@ class PrincipalModule extends Module {
   List<Bind> get binds => [
         Bind.factory((i) => UserRepository()),
         Bind.factory((i) => PlaydayRepository()),
-        Bind.factory((i) => InvitedRepository()),
+        Bind.factory((i) => MemberRepository()),
         Bind.singleton((i) => GlobalStore(i(), i(), i())),
       ];
 

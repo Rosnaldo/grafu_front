@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:grafu/models/invited.dart';
+import 'package:grafu/models/member.dart';
 
-import 'package:grafu/module/principal/container/playday/invited_card.dart';
-import 'package:grafu/module/principal/container/playday/inviteds_popup/index.dart';
+import 'package:grafu/module/principal/container/playday/member_card.dart';
+import 'package:grafu/module/principal/container/playday/members_popup/index.dart';
 
-class InvitedList extends StatelessWidget {
-  final List<Invited> inviteds;
+class MemberList extends StatelessWidget {
+  final List<Member> members;
 
-  const InvitedList({
+  const MemberList({
     Key? key,
-    required this.inviteds,
+    required this.members,
   }) : super(key: key);
 
   @override
@@ -27,13 +27,13 @@ class InvitedList extends StatelessWidget {
         ),
         const SizedBox(height: 12.0),
         Column(
-            children: inviteds
+            children: members
                 .sublist(0, 3)
                 .map(
-                  (invited) => InvitedCard(
-                    name: invited.name,
-                    avatar: invited.avatar,
-                    status: invited.status,
+                  (member) => MemberCard(
+                    name: member.name,
+                    avatar: member.avatar,
+                    status: member.status,
                   ),
                 )
                 .toList()),
@@ -41,7 +41,7 @@ class InvitedList extends StatelessWidget {
         ElevatedButton.icon(
           icon: const Icon(Icons.group, size: 15.0),
           onPressed: () => {
-            BuildInvitedsPopup.showMyDialog(context, inviteds),
+            BuildMembersPopup.showMyDialog(context, members),
           },
           label: const Text(
             'Ver convidados',

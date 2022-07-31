@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:grafu/models/invited.dart';
+import 'package:grafu/models/member.dart';
 
-class InvitedCard extends StatelessWidget {
+class MemberCard extends StatelessWidget {
   final String avatar;
   final String name;
-  final InvitedStatus status;
+  final MemberStatus status;
 
-  const InvitedCard({
+  const MemberCard({
     Key? key,
     required this.name,
     required this.avatar,
@@ -34,9 +34,9 @@ class InvitedCard extends StatelessWidget {
               ),
             ),
             Text(
-              Invited.statusMapper(status),
+              Member.statusMapper(status),
               style: TextStyle(
-                color: (status == InvitedStatus.confirmed)
+                color: (status == MemberStatus.confirmed)
                     ? Colors.lightGreen
                     : Colors.orangeAccent,
                 fontWeight: FontWeight.bold,

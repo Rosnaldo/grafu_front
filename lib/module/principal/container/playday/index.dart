@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:grafu/module/principal/container/playday/buy_ticket.dart';
 import 'package:grafu/module/principal/container/playday/playday_date.dart';
 import 'package:grafu/module/principal/container/playday/footer.dart';
-import 'package:grafu/module/principal/container/playday/invited_list.dart';
+import 'package:grafu/module/principal/container/playday/member_list.dart';
 import 'package:grafu/module/principal/container/playday/line.dart';
 import 'package:grafu/module/principal/container/playday/location.dart';
 import 'package:grafu/module/principal/container/playday/timeline.dart';
@@ -35,7 +35,7 @@ class PlaydayPageContainer extends StatelessWidget {
                 children: [
                   PlaydayDate(date: state.playday.date),
                   const Line(),
-                  InvitedList(inviteds: state.inviteds),
+                  MemberList(members: state.members),
                   const Line(),
                   Location(address: state.playday.address),
                   const Line(),

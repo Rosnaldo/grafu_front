@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class ExpandedInviteds extends StatelessWidget {
+class ExpandedMembers extends StatelessWidget {
   final List<String> list;
 
-  const ExpandedInviteds({
+  const ExpandedMembers({
     Key? key,
     required this.list,
   }) : super(key: key);
@@ -14,7 +14,7 @@ class ExpandedInviteds extends StatelessWidget {
       title: const Text('Convidados'),
       children: <Widget>[
         ...list.map(
-          (invited) => Text(invited),
+          (member) => Text(member),
         ),
       ],
     );

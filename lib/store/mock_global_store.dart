@@ -1,4 +1,4 @@
-import 'package:grafu/mocks/invited.dart';
+import 'package:grafu/mocks/member.dart';
 import 'package:grafu/mocks/playday.dart';
 import 'package:grafu/mocks/user.dart';
 import 'package:grafu/state/global_state.dart';
@@ -9,7 +9,7 @@ class MockGlobalStore extends IGlobalStore {
       : super(SuccessGlobalState(
           MakeUser.make(),
           MakePlayday.make(),
-          MakeInviteds.make(),
+          MakeMembers.make(),
         ));
 
   @override
