@@ -14,11 +14,32 @@ class BuildImagePopup {
         return MaterialApp(
           home: Scaffold(
             body: Center(
-              child: Image.network(
-                image,
-                fit: BoxFit.fitWidth,
-                width: MediaQuery.of(context).size.width * 1,
-                height: MediaQuery.of(context).size.height * 1,
+              child: Stack(
+                children: [
+                  Image.network(
+                    image,
+                    fit: BoxFit.fitWidth,
+                    width: MediaQuery.of(context).size.width * 1,
+                    height: MediaQuery.of(context).size.height * 1,
+                  ),
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: CircleAvatar(
+                        radius: 20,
+                        backgroundColor: Colors.white.withOpacity(0.45),
+                        child: IconButton(
+                          icon: const Icon(Icons.close, color: Colors.black),
+                          iconSize: 15,
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
