@@ -15,26 +15,28 @@ class ResetEmailMessagePageState extends State<ResetEmailMessagePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
-              Align(
-                alignment: Alignment.center,
-                child: Text('Email para resetar a senha foi enviado.'),
-              ),
-              Align(
-                alignment: Alignment.center,
-                child: Text('Cheque o seu email.'),
-              ),
-              Align(
-                child: LinkRedirect(
-                  title: 'Voltar para login',
-                  redirectLink: '/',
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 30.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: const [
+                Align(
+                  alignment: Alignment.center,
+                  child: Text('Email para resetar a senha foi enviado.'),
                 ),
-              ),
-            ],
+                Align(
+                  alignment: Alignment.center,
+                  child: Text('Cheque o seu email.'),
+                ),
+                Align(
+                  child: LinkRedirect(
+                    title: 'Voltar para login',
+                    redirectLink: '/',
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

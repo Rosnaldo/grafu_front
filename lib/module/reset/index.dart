@@ -21,33 +21,35 @@ class ResetPageState extends State<ResetPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            padding: const EdgeInsets.all(10),
-            children: <Widget>[
-              EmailFormField(
-                label: 'email',
-                focusNode: emailFocusNode,
-                nextFocusNode: sendFocusNode,
-                onSaved: (value) {
-                  email = value as String;
-                },
-              ),
-              const LinkRedirect(
-                title: 'Voltar para login',
-                redirectLink: '/',
-              ),
-              ElevatedButton(
-                focusNode: sendFocusNode,
-                onPressed: () => {
-                  Navigator.of(context).pushNamed('/reset-email-message'),
-                },
-                child: const Text('Enviar'),
-              ),
-            ],
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(10),
+              children: <Widget>[
+                EmailFormField(
+                  label: 'email',
+                  focusNode: emailFocusNode,
+                  nextFocusNode: sendFocusNode,
+                  onSaved: (value) {
+                    email = value as String;
+                  },
+                ),
+                const LinkRedirect(
+                  title: 'Voltar para login',
+                  redirectLink: '/',
+                ),
+                ElevatedButton(
+                  focusNode: sendFocusNode,
+                  onPressed: () => {
+                    Navigator.of(context).pushNamed('/reset-email-message'),
+                  },
+                  child: const Text('Enviar'),
+                ),
+              ],
+            ),
           ),
         ),
       ),

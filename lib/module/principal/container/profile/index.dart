@@ -59,48 +59,51 @@ class ProfilePageContainer extends StatelessWidget {
     final state = store.value as SuccessGlobalState;
 
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 60,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Stack(
-                children: [
-                  buildImage(context, state.user.avatar),
-                  Positioned(
-                    bottom: 0,
-                    right: 8,
-                    child: buildEditIcon(context),
-                  ),
-                ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 60,
               ),
-            ),
-            Text(
-              state.user.name,
-              style: const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-            ),
-            Text(state.user.email),
-            const SizedBox(
-              height: 20,
-            ),
-            OutlinedButton.icon(
-              style: OutlinedButton.styleFrom(
-                side: BorderSide(width: 1.0, color: Colors.pink.shade200),
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Stack(
+                  children: [
+                    buildImage(context, state.user.avatar),
+                    Positioned(
+                      bottom: 0,
+                      right: 8,
+                      child: buildEditIcon(context),
+                    ),
+                  ],
+                ),
               ),
-              onPressed: () {
-                Modular.to.navigate('/');
-              },
-              label:
-                  Icon(Icons.logout, color: Colors.pink.shade200, size: 16.0),
-              icon: Text(
-                'Fazer logout',
-                style: TextStyle(color: Colors.pink.shade200),
+              Text(
+                state.user.name,
+                style:
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
-            ),
-          ],
+              Text(state.user.email),
+              const SizedBox(
+                height: 20,
+              ),
+              OutlinedButton.icon(
+                style: OutlinedButton.styleFrom(
+                  side: BorderSide(width: 1.0, color: Colors.pink.shade200),
+                ),
+                onPressed: () {
+                  Modular.to.navigate('/');
+                },
+                label:
+                    Icon(Icons.logout, color: Colors.pink.shade200, size: 16.0),
+                icon: Text(
+                  'Fazer logout',
+                  style: TextStyle(color: Colors.pink.shade200),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
