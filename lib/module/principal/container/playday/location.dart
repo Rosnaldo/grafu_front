@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:grafu/models/address.dart';
 
-class Location extends StatelessWidget {
+class Location extends StatefulWidget {
   final Address address;
 
   const Location({
@@ -13,10 +13,15 @@ class Location extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<Location> createState() => LocationState();
+}
+
+class LocationState extends State<Location> {
+  @override
   Widget build(BuildContext context) {
     final Completer<GoogleMapController> controller = Completer();
 
-    const CameraPosition kLake = CameraPosition(
+    const CameraPosition position = CameraPosition(
       bearing: 192.8334901395799,
       target: LatLng(37.43296265331129, -122.08832357078792),
       tilt: 59.440717697143555,
@@ -37,7 +42,7 @@ class Location extends StatelessWidget {
         const SizedBox(height: 12.0),
         Row(
           children: [
-            Text(address.district,
+            Text(widget.address.district,
                 style: const TextStyle(
                   fontSize: 15.0,
                   fontWeight: FontWeight.w700,
@@ -46,14 +51,14 @@ class Location extends StatelessWidget {
         ),
         Row(
           children: [
-            Text(address.street),
+            Text(widget.address.street),
           ],
         ),
         Row(
           children: [
-            Text('${address.city},'),
+            Text('${widget.address.city},'),
             const SizedBox(width: 10.0),
-            Text(address.state),
+            Text(widget.address.state),
           ],
         ),
         const SizedBox(height: 10.0),
@@ -61,8 +66,8 @@ class Location extends StatelessWidget {
           width: double.maxFinite,
           height: 250.0,
           child: GoogleMap(
-            mapType: MapType.terrain,
-            initialCameraPosition: kLake,
+            mapType: MapType.normal,
+            initialCameraPosition: position,
             onMapCreated: (GoogleMapController c) {
               controller.complete(c);
             },
