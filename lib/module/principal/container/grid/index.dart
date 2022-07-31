@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/components/image_popup/index.dart';
 import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/global_store.dart';
 
@@ -10,10 +11,15 @@ class GridPageContainer extends StatelessWidget {
     required this.store,
   }) : super(key: key);
 
-  Widget buildImage(String image) {
-    return Image.network(
-      image,
+  Widget buildImage(String image, BuildContext context) {
+    return Ink.image(
+      image: NetworkImage(image),
       fit: BoxFit.cover,
+      child: InkWell(
+        onTap: () => {
+          BuildImagePopup.showMyDialog(context, image),
+        },
+      ),
     );
   }
 
@@ -29,7 +35,7 @@ class GridPageContainer extends StatelessWidget {
             crossAxisSpacing: 4.0,
           ),
           children:
-              state.playday.gallery.map((image) => buildImage(image)).toList()),
+              state.playday.gallery.map((image) => buildImage(image, context)).toList()),
     );
   }
 }
