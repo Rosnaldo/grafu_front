@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:grafu/components/link_redirect/index.dart';
 
@@ -27,8 +28,21 @@ class RegisterPageState extends State<RegisterPage> {
   final isMale = [false, true];
   var registerModel = RegisterModel.init();
 
+  Future signUp() async {
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: registerModel.email,
+        password: registerModel.password,
+      );
+    } on FirebaseAuthException catch (e) {
+      debugPrint(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    NavigatorState navigator = Navigator.of(context);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -134,13 +148,12 @@ class RegisterPageState extends State<RegisterPage> {
                     const SizedBox(height: 20),
                     ElevatedButton(
                       focusNode: registerFocusNode,
-                      onPressed: () => {
-                        if (_formKey.currentState!.validate())
-                          {
-                            _formKey.currentState!.save(),
-                            Navigator.of(context)
-                                .pushNamed('/principal/playday')
-                          }
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                          await signUp();
+                          navigator.pushNamed('/principal/playday');
+                        }
                       },
                       child: const Text('Cadastrar'),
                     ),

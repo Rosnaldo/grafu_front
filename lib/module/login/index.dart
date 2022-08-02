@@ -1,9 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:grafu/components/link_redirect/index.dart';
 
 import 'package:grafu/components/password_form_field/index.dart';
 import 'package:grafu/components/email_form_field/index.dart';
-import 'package:grafu/module/register/register_model.dart';
+import 'package:grafu/module/login/login_model.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -19,10 +20,23 @@ class LoginPageState extends State<LoginPage> {
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
   final loginFocusNode = FocusNode();
-  var registerModel = RegisterModel.init();
+  var loginModel = LoginModel.init();
+
+  Future signIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: loginModel.email,
+        password: loginModel.password,
+      );
+    } on FirebaseAuthException catch (e) {
+      debugPrint(e.toString());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    NavigatorState navigator = Navigator.of(context);
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -41,15 +55,27 @@ class LoginPageState extends State<LoginPage> {
                       focusNode: emailFocusNode,
                       nextFocusNode: passwordFocusNode,
                       onSaved: (value) =>
-                          registerModel = registerModel.copyWith(email: value),
+                          loginModel = loginModel.copyWith(email: value),
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
+                          return 'Email obrigatório';
+                        }
+                        return null;
+                      },
                     ),
                     const SizedBox(height: 16),
                     PassworFormField(
                       label: 'senha',
                       focusNode: passwordFocusNode,
                       nextFocusNode: emailFocusNode,
-                      onSaved: (value) => registerModel =
-                          registerModel.copyWith(password: value),
+                      onSaved: (value) =>
+                          loginModel = loginModel.copyWith(password: value),
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
+                          return 'Senha obrigatório';
+                        }
+                        return null;
+                      },
                     ),
                     const SizedBox(height: 5),
                     const LinkRedirect(
@@ -63,12 +89,12 @@ class LoginPageState extends State<LoginPage> {
                     const SizedBox(height: 20),
                     ElevatedButton(
                       focusNode: loginFocusNode,
-                      onPressed: () => {
-                        if (_formKey.currentState!.validate())
-                          {
-                            Navigator.of(context)
-                                .pushNamed('/principal/playday')
-                          }
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                          await signIn();
+                          navigator.pushNamed('/principal/playday');
+                        }
                       },
                       child: const Text('Login'),
                     ),
