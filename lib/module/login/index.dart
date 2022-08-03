@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:grafu/components/link_redirect/index.dart';
@@ -5,6 +7,7 @@ import 'package:grafu/components/link_redirect/index.dart';
 import 'package:grafu/components/password_form_field/index.dart';
 import 'package:grafu/components/email_form_field/index.dart';
 import 'package:grafu/module/login/login_model.dart';
+import 'package:grafu/utils/failure.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({
@@ -29,13 +32,20 @@ class LoginPageState extends State<LoginPage> {
         password: loginModel.password,
       );
     } on FirebaseAuthException catch (e) {
-      debugPrint(e.toString());
+      if (e.code == 'wrong-password') {
+        throw Failure('Senha ou email invalido.');
+      }
+      if (e.code == 'user-not-found') {
+        throw Failure('Email não cadastrado.');
+      }
+      throw Failure(e.toString());
     }
   }
 
   @override
   Widget build(BuildContext context) {
     NavigatorState navigator = Navigator.of(context);
+    ScaffoldMessengerState scaffMess = ScaffoldMessenger.of(context);
 
     return Scaffold(
       body: SafeArea(
@@ -59,6 +69,11 @@ class LoginPageState extends State<LoginPage> {
                       validator: (text) {
                         if (text == null || text.isEmpty) {
                           return 'Email obrigatório';
+                        }
+                        if (!RegExp(
+                                r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
+                            .hasMatch(text)) {
+                          return 'Email inválido';
                         }
                         return null;
                       },
@@ -92,8 +107,14 @@ class LoginPageState extends State<LoginPage> {
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
-                          await signIn();
-                          navigator.pushNamed('/principal/playday');
+                          try {
+                            await signIn();
+                            navigator.pushNamed('/principal/playday');
+                          } catch (e) {
+                            scaffMess.showSnackBar(SnackBar(
+                              content: Text(e.toString()),
+                            ));
+                          }
                         }
                       },
                       child: const Text('Login'),

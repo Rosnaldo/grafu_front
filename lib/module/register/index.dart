@@ -1,11 +1,13 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fpdart/fpdart.dart' hide State;
 import 'package:grafu/components/link_redirect/index.dart';
 
 import 'package:grafu/components/password_form_field/index.dart';
 import 'package:grafu/components/email_form_field/index.dart';
 import 'package:grafu/components/switch_button/index.dart';
 import 'package:grafu/module/register/register_model.dart';
+import 'package:grafu/utils/failure.dart';
 
 import 'name_form_field/index.dart';
 
@@ -35,13 +37,17 @@ class RegisterPageState extends State<RegisterPage> {
         password: registerModel.password,
       );
     } on FirebaseAuthException catch (e) {
-      debugPrint(e.toString());
+      if (e.code == 'email-already-in-use') {
+        throw Failure('Email já cadastrado.');
+      }
+      throw Failure(e.toString());
     }
   }
 
   @override
   Widget build(BuildContext context) {
     NavigatorState navigator = Navigator.of(context);
+    ScaffoldMessengerState scaffMess = ScaffoldMessenger.of(context);
 
     return Scaffold(
       body: SafeArea(
@@ -151,8 +157,14 @@ class RegisterPageState extends State<RegisterPage> {
                       onPressed: () async {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
-                          await signUp();
-                          navigator.pushNamed('/principal/playday');
+                          try {
+                            await signUp();
+                            navigator.pushNamed('/principal/playday');
+                          } catch (e) {
+                            scaffMess.showSnackBar(SnackBar(
+                              content: Text(e.toString()),
+                            ));
+                          }
                         }
                       },
                       child: const Text('Cadastrar'),
