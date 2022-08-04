@@ -25,6 +25,7 @@ class LoginPageState extends State<LoginPage> {
   final passwordFocusNode = FocusNode();
   final loginFocusNode = FocusNode();
   var loginModel = LoginModel.init();
+  final signInWithGoogle = SignInWithGoogle();
 
   Future signIn() async {
     try {
@@ -47,7 +48,6 @@ class LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     NavigatorState navigator = Navigator.of(context);
     ScaffoldMessengerState scaffMess = ScaffoldMessenger.of(context);
-    final gog = GoogleSignInProvider();
 
     return Scaffold(
       body: SafeArea(
@@ -148,7 +148,14 @@ class LoginPageState extends State<LoginPage> {
                   width: double.maxFinite,
                   child: ElevatedButton(
                     onPressed: () async {
-                      await gog.googleLogin();
+                      try {
+                        await signInWithGoogle.execute();
+                        navigator.pushNamed('/principal/playday');
+                      } catch (e) {
+                        scaffMess.showSnackBar(SnackBar(
+                          content: Text(e.toString()),
+                        ));
+                      }
                     },
                     style: ButtonStyle(
                         backgroundColor:
