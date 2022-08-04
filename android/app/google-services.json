@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "756062203722",
+    "project_id": "grafu-357616",
+    "storage_bucket": "grafu-357616.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756062203722:android:e212e7e35daf6e51321bb3",
+        "android_client_info": {
+          "package_name": "br.com.grafu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "756062203722-pc77a16nqo8qfq1e31tc1a6o63vai7p1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvDa4kLbCbEXEm-L7_38TA_rDZGkRB40g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "756062203722-pc77a16nqo8qfq1e31tc1a6o63vai7p1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

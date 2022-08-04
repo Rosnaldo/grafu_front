@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:grafu/components/email_form_field/index.dart';
 import 'package:grafu/components/link_redirect/index.dart';
-import 'package:grafu/module/reset_email_message/reset_model.dart';
+import 'package:grafu/module/reset/reset_model.dart';
 import 'package:grafu/utils/failure.dart';
 
 class ResetPage extends StatefulWidget {

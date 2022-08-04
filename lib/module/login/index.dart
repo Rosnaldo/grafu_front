@@ -6,6 +6,7 @@ import 'package:grafu/components/link_redirect/index.dart';
 
 import 'package:grafu/components/password_form_field/index.dart';
 import 'package:grafu/components/email_form_field/index.dart';
+import 'package:grafu/module/login/google_signin.dart';
 import 'package:grafu/module/login/login_model.dart';
 import 'package:grafu/utils/failure.dart';
 
@@ -46,6 +47,7 @@ class LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     NavigatorState navigator = Navigator.of(context);
     ScaffoldMessengerState scaffMess = ScaffoldMessenger.of(context);
+    final gog = GoogleSignInProvider();
 
     return Scaffold(
       body: SafeArea(
@@ -145,7 +147,9 @@ class LoginPageState extends State<LoginPage> {
                 child: SizedBox(
                   width: double.maxFinite,
                   child: ElevatedButton(
-                    onPressed: () => {},
+                    onPressed: () async {
+                      await gog.googleLogin();
+                    },
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.redAccent)),
