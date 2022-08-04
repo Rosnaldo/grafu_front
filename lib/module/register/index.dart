@@ -35,6 +35,8 @@ class RegisterPageState extends State<RegisterPage> {
         email: registerModel.email,
         password: registerModel.password,
       );
+      final user = FirebaseAuth.instance.currentUser!;
+      await user.sendEmailVerification();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'email-already-in-use') {
         throw Failure('Email já cadastrado.');
@@ -158,7 +160,7 @@ class RegisterPageState extends State<RegisterPage> {
                           _formKey.currentState!.save();
                           try {
                             await signUp();
-                            navigator.pushNamed('/principal/playday');
+                            navigator.pushNamed('/verify-email-message');
                           } catch (e) {
                             scaffMess.showSnackBar(SnackBar(
                               content: Text(e.toString()),

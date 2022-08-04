@@ -33,6 +33,10 @@ class LoginPageState extends State<LoginPage> {
         email: loginModel.email,
         password: loginModel.password,
       );
+      final isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
+      if (!isEmailVerified) {
+        throw Failure('Email não foi ativado ainda.');
+      }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password') {
         throw Failure('Senha ou email invalido.');
