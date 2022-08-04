@@ -6,15 +6,18 @@ import 'package:grafu/components/email_form_field/index.dart';
 import 'package:grafu/components/switch_button/index.dart';
 import 'package:grafu/module/register/container/register_model.dart';
 import 'package:grafu/module/register/services/sign_up/index.dart';
+import 'package:grafu/services/google_signin/index.dart';
 
 import 'name_form_field/index.dart';
 
 class RegisterPageContainer extends StatefulWidget {
   final ISignUp signUp;
+  final ISignInWithGoogle signInWithGoogle;
 
   const RegisterPageContainer({
     Key? key,
     required this.signUp,
+    required this.signInWithGoogle,
   }) : super(key: key);
 
   @override
@@ -182,7 +185,16 @@ class RegisterPageContainerState extends State<RegisterPageContainer> {
                 child: SizedBox(
                   width: double.maxFinite,
                   child: ElevatedButton(
-                    onPressed: () => {},
+                    onPressed: () async {
+                      try {
+                        await widget.signInWithGoogle.execute();
+                        navigator.pushNamed('/principal/playday');
+                      } catch (e) {
+                        scaffMess.showSnackBar(SnackBar(
+                          content: Text(e.toString()),
+                        ));
+                      }
+                    },
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.redAccent)),

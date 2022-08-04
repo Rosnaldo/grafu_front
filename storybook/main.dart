@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/module/register/container/index.dart';
 import 'package:grafu/module/register/services/sign_up/mock.dart';
+import 'package:grafu/services/google_signin/mock.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
 import 'package:grafu/module/login/container/index.dart';
-import 'package:grafu/module/login/services/google_signin/mock.dart';
 import 'package:grafu/module/login/services/sign_in/mock.dart';
 import 'package:grafu/module/principal/container/grid/index.dart';
 
@@ -44,8 +44,7 @@ class HomeWidget extends StatelessWidget {
         Story(
           name: 'Register',
           builder: (context) => RegisterPageContainer(
-            signUp: MockSignUp(),
-          ),
+              signUp: MockSignUp(), signInWithGoogle: MockSignInWithGoogle()),
         ),
         Story(
           name: 'Profile',
