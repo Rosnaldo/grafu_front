@@ -4,7 +4,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 import 'package:grafu/app_module.dart';
 import 'package:grafu/app_widget.dart';
@@ -14,8 +13,6 @@ main() async {
   Modular.to.addListener(() {
     debugPrint(Modular.to.path);
   });
-
-  setUrlStrategy(PathUrlStrategy());
 
   WidgetsFlutterBinding.ensureInitialized();
 
