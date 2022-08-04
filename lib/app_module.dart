@@ -3,7 +3,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:grafu/module/login/business/index.dart';
 import 'package:grafu/module/principal/principal_module.dart';
-import 'package:grafu/module/register/index.dart';
+import 'package:grafu/module/register/business/index.dart';
 import 'package:grafu/module/reset/index.dart';
 import 'package:grafu/module/reset_email_message/index.dart';
 import 'package:grafu/module/verify_email_message/index.dart';

@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/module/register/container/index.dart';
+import 'package:grafu/module/register/services/sign_up/mock.dart';
+import 'package:storybook_flutter/storybook_flutter.dart';
 
 import 'package:grafu/module/login/container/index.dart';
 import 'package:grafu/module/login/services/google_signin/mock.dart';
 import 'package:grafu/module/login/services/sign_in/mock.dart';
 import 'package:grafu/module/principal/container/grid/index.dart';
-import 'package:storybook_flutter/storybook_flutter.dart';
 
 import 'package:grafu/module/principal/container/gallery/index.dart';
 import 'package:grafu/module/principal/container/playday/index.dart';
 import 'package:grafu/module/principal/container/profile/index.dart';
-import 'package:grafu/store/mock_global_store.dart';
 
-import 'package:grafu/module/register/index.dart';
+import 'package:grafu/store/mock_global_store.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,7 +43,9 @@ class HomeWidget extends StatelessWidget {
         ),
         Story(
           name: 'Register',
-          builder: (context) => const RegisterPage(),
+          builder: (context) => RegisterPageContainer(
+            signUp: MockSignUp(),
+          ),
         ),
         Story(
           name: 'Profile',

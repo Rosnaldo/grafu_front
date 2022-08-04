@@ -1,25 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:grafu/components/link_redirect/index.dart';
 
 import 'package:grafu/components/password_form_field/index.dart';
 import 'package:grafu/components/email_form_field/index.dart';
 import 'package:grafu/components/switch_button/index.dart';
-import 'package:grafu/module/register/register_model.dart';
-import 'package:grafu/utils/failure.dart';
+import 'package:grafu/module/register/container/register_model.dart';
+import 'package:grafu/module/register/services/sign_up/index.dart';
 
 import 'name_form_field/index.dart';
 
-class RegisterPage extends StatefulWidget {
-  const RegisterPage({
+class RegisterPageContainer extends StatefulWidget {
+  final ISignUp signUp;
+
+  const RegisterPageContainer({
     Key? key,
+    required this.signUp,
   }) : super(key: key);
 
   @override
-  State<RegisterPage> createState() => RegisterPageState();
+  State<RegisterPageContainer> createState() => RegisterPageContainerState();
 }
 
-class RegisterPageState extends State<RegisterPage> {
+class RegisterPageContainerState extends State<RegisterPageContainer> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final nameFocusNode = FocusNode();
   final emailFocusNode = FocusNode();
@@ -28,22 +30,6 @@ class RegisterPageState extends State<RegisterPage> {
   final registerFocusNode = FocusNode();
   final isMale = [false, true];
   var registerModel = RegisterModel.init();
-
-  Future signUp() async {
-    try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: registerModel.email,
-        password: registerModel.password,
-      );
-      final user = FirebaseAuth.instance.currentUser!;
-      await user.sendEmailVerification();
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'email-already-in-use') {
-        throw Failure('Email já cadastrado.');
-      }
-      throw Failure(e.toString());
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -159,7 +145,7 @@ class RegisterPageState extends State<RegisterPage> {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
                           try {
-                            await signUp();
+                            await widget.signUp.execute(registerModel);
                             navigator.pushNamed('/verify-email-message');
                           } catch (e) {
                             scaffMess.showSnackBar(SnackBar(
