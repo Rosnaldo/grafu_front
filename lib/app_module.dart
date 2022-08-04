@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'package:grafu/module/login/index.dart';
+import 'package:grafu/module/login/business/index.dart';
 import 'package:grafu/module/principal/principal_module.dart';
 import 'package:grafu/module/register/index.dart';
 import 'package:grafu/module/reset/index.dart';

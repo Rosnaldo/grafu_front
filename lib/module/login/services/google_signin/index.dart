@@ -3,16 +3,23 @@ import 'package:flutter/foundation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class SignInWithGoogle {
-  bool isWeb() {
-    return kIsWeb;
-  }
+abstract class ISignInWithGoogle {
+  ISignInWithGoogle();
 
+  Future execute() async {}
+}
+
+class SignInWithGoogle extends ISignInWithGoogle {
+  @override
   Future<UserCredential> execute() async {
     if (isWeb()) {
       return web();
     }
     return androidIos();
+  }
+
+  bool isWeb() {
+    return kIsWeb;
   }
 
   Future<UserCredential> web() async {

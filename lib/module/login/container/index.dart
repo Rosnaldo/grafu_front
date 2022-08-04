@@ -1,52 +1,32 @@
-import 'dart:async';
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:grafu/components/link_redirect/index.dart';
 
 import 'package:grafu/components/password_form_field/index.dart';
 import 'package:grafu/components/email_form_field/index.dart';
-import 'package:grafu/module/login/google_signin.dart';
-import 'package:grafu/module/login/login_model.dart';
-import 'package:grafu/utils/failure.dart';
+import 'package:grafu/module/login/services/google_signin/index.dart';
+import 'package:grafu/module/login/container/login_model.dart';
+import 'package:grafu/module/login/services/sign_in/index.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({
+class LoginPageContainer extends StatefulWidget {
+  final ISignIn signIn;
+  final ISignInWithGoogle signInWithGoogle;
+
+  const LoginPageContainer({
     Key? key,
+    required this.signIn,
+    required this.signInWithGoogle,
   }) : super(key: key);
 
   @override
-  State<LoginPage> createState() => LoginPageState();
+  State<LoginPageContainer> createState() => LoginPageContainerState();
 }
 
-class LoginPageState extends State<LoginPage> {
+class LoginPageContainerState extends State<LoginPageContainer> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
   final loginFocusNode = FocusNode();
   var loginModel = LoginModel.init();
-  final signInWithGoogle = SignInWithGoogle();
-
-  Future signIn() async {
-    try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: loginModel.email,
-        password: loginModel.password,
-      );
-      final isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
-      if (!isEmailVerified) {
-        throw Failure('Email não foi ativado ainda.');
-      }
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'wrong-password') {
-        throw Failure('Senha ou email invalido.');
-      }
-      if (e.code == 'user-not-found') {
-        throw Failure('Email não cadastrado.');
-      }
-      throw Failure(e.toString());
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +94,7 @@ class LoginPageState extends State<LoginPage> {
                         if (_formKey.currentState!.validate()) {
                           _formKey.currentState!.save();
                           try {
-                            await signIn();
+                            await widget.signIn.execute(loginModel);
                             navigator.pushNamed('/principal/playday');
                           } catch (e) {
                             scaffMess.showSnackBar(SnackBar(
@@ -153,7 +133,7 @@ class LoginPageState extends State<LoginPage> {
                   child: ElevatedButton(
                     onPressed: () async {
                       try {
-                        await signInWithGoogle.execute();
+                        await widget.signInWithGoogle.execute();
                         navigator.pushNamed('/principal/playday');
                       } catch (e) {
                         scaffMess.showSnackBar(SnackBar(

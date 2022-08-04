@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+
+import 'package:grafu/module/login/container/index.dart';
+import 'package:grafu/module/login/services/google_signin/mock.dart';
+import 'package:grafu/module/login/services/sign_in/mock.dart';
 import 'package:grafu/module/principal/container/grid/index.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
@@ -7,7 +11,6 @@ import 'package:grafu/module/principal/container/playday/index.dart';
 import 'package:grafu/module/principal/container/profile/index.dart';
 import 'package:grafu/store/mock_global_store.dart';
 
-import 'package:grafu/module/login/index.dart';
 import 'package:grafu/module/register/index.dart';
 
 void main() {
@@ -32,7 +35,10 @@ class HomeWidget extends StatelessWidget {
       stories: [
         Story(
           name: 'Login',
-          builder: (context) => const LoginPage(),
+          builder: (context) => LoginPageContainer(
+            signIn: MockSignIn(),
+            signInWithGoogle: MockSignInWithGoogle(),
+          ),
         ),
         Story(
           name: 'Register',
