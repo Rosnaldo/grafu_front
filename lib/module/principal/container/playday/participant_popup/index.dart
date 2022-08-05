@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:grafu/models/member.dart';
-import 'package:grafu/module/principal/container/playday/member_card.dart';
+import 'package:grafu/models/participant.dart';
+import 'package:grafu/module/principal/container/playday/participant_card.dart';
 
-class BuildMembersPopup {
+class BuildParticipantsPopup {
   static Future<Future<Object?>> showMyDialog(
     BuildContext context,
-    List<Member> members,
+    List<Participant> participants,
   ) async {
     return showGeneralDialog(
       context: context,
@@ -43,12 +43,12 @@ class BuildMembersPopup {
                                 fontSize: 17.0, fontWeight: FontWeight.w700),
                           ),
                           const SizedBox(height: 10),
-                          ...members
+                          ...participants
                               .map(
-                                (member) => MemberCard(
-                                  name: member.name,
-                                  avatar: member.avatar,
-                                  status: member.status,
+                                (participant) => ParticipantCard(
+                                  name: participant.name,
+                                  avatar: participant.avatar,
+                                  status: participant.status,
                                 ),
                               )
                               .toList()

@@ -1,26 +1,26 @@
 const confirmed = 'confirmed';
 const pending = 'pending';
 
-enum MemberStatus {
+enum ParticipantStatus {
   confirmed,
   pending,
 }
 
-class Member {
+class Participant {
   String name;
   String avatar;
-  MemberStatus status;
+  ParticipantStatus status;
 
-  Member({
+  Participant({
     required this.name,
     required this.avatar,
     required this.status,
   });
 
-  static String statusMapper(MemberStatus status) {
-    Map<MemberStatus, String> map = {
-      MemberStatus.confirmed: 'confirmado',
-      MemberStatus.pending: 'pendente',
+  static String statusMapper(ParticipantStatus status) {
+    Map<ParticipantStatus, String> map = {
+      ParticipantStatus.confirmed: 'confirmado',
+      ParticipantStatus.pending: 'pendente',
     };
 
     return map[status]!;
@@ -34,11 +34,11 @@ class Member {
     };
   }
 
-  factory Member.fromMap(Map<String, dynamic> map) {
-    return Member(
+  factory Participant.fromMap(Map<String, dynamic> map) {
+    return Participant(
       name: map['name'] ?? '',
       avatar: map['avatar'] ?? '',
-      status: map['status'] ?? MemberStatus.pending,
+      status: map['status'] ?? ParticipantStatus.pending,
     );
   }
 }
