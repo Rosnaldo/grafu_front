@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:photo_view/photo_view.dart';
 
 class BuildImagePopup {
   static Future<Future<Object?>> showMyDialog(
@@ -16,11 +17,8 @@ class BuildImagePopup {
             body: Center(
               child: Stack(
                 children: [
-                  Image.network(
-                    image,
-                    fit: BoxFit.fitWidth,
-                    width: MediaQuery.of(context).size.width * 1,
-                    height: MediaQuery.of(context).size.height * 1,
+                  PhotoView(
+                    imageProvider: NetworkImage(image),
                   ),
                   Align(
                     alignment: Alignment.topRight,
