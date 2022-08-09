@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:grafu/guards/auth_guard.dart';
 
 import 'package:grafu/module/login/business/index.dart';
 import 'package:grafu/module/principal/principal_module.dart';
@@ -21,7 +22,11 @@ class AppModule extends Module {
             child: (context, args) => const ResetEmailMessagePage()),
         ChildRoute('/verify-email-message',
             child: (context, args) => const VerifyEmailMessagePage()),
-        ModuleRoute('/principal', module: PrincipalModule()),
+        ModuleRoute(
+          '/principal',
+          module: PrincipalModule(),
+          guards: [AuthGuard()],
+        ),
         WildcardRoute(
             child: (_, __) => const Scaffold(
                     body: Center(
