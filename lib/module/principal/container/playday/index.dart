@@ -7,7 +7,7 @@ import 'package:grafu/module/principal/container/playday/playday_date.dart';
 import 'package:grafu/module/principal/container/playday/footer.dart';
 import 'package:grafu/module/principal/container/playday/participant_list.dart';
 import 'package:grafu/module/principal/container/playday/line.dart';
-// import 'package:grafu/module/principal/container/playday/location.dart';
+import 'package:grafu/module/principal/container/playday/location.dart';
 import 'package:grafu/module/principal/container/playday/timeline.dart';
 import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/global_store.dart';
@@ -28,45 +28,47 @@ class PlaydayPageContainer extends StatelessWidget {
 
     // debugPrint(user.toString());
 
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Carousel(imgList: state.playday.gallery),
-            const SizedBox(height: 4.0),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  PlaydayDate(date: state.playday.date),
-                  const Line(),
-                  ParticipantList(participants: state.participants),
-                  const Line(),
-                  // Location(address: state.playday.address),
-                  const Line(),
-                  Row(
-                    children: const [
-                      Text(
-                        'Ingresso',
-                        style: TextStyle(
-                            fontSize: 17.0, fontWeight: FontWeight.w700),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 12.0),
-                  PlaydayTimeline(playday: state.playday),
-                  const SizedBox(height: 12.0),
-                  const Line(),
-                  Invite(),
-                  const SizedBox(height: 15.0),
-                  const Line(),
-                  BuyTicket(price: state.playday.firstLot.price),
-                ],
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Carousel(imgList: state.playday.gallery),
+              const SizedBox(height: 4.0),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    PlaydayDate(date: state.playday.date),
+                    const Line(),
+                    ParticipantList(participants: state.participants),
+                    const Line(),
+                    Location(address: state.playday.address),
+                    const Line(),
+                    Row(
+                      children: const [
+                        Text(
+                          'Ingresso',
+                          style: TextStyle(
+                              fontSize: 17.0, fontWeight: FontWeight.w700),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 12.0),
+                    PlaydayTimeline(playday: state.playday),
+                    const SizedBox(height: 12.0),
+                    const Line(),
+                    Invite(),
+                    const SizedBox(height: 15.0),
+                    const Line(),
+                    BuyTicket(price: state.playday.firstLot.price),
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 20.0),
-            const Footer(),
-          ],
+              const SizedBox(height: 20.0),
+              const Footer(),
+            ],
+          ),
         ),
       ),
     );

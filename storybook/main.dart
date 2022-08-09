@@ -9,7 +9,6 @@ import 'package:storybook_flutter/storybook_flutter.dart';
 
 import 'package:grafu/module/login/container/index.dart';
 import 'package:grafu/module/login/services/sign_in/mock.dart';
-import 'package:grafu/module/principal/container/grid/index.dart';
 
 import 'package:grafu/module/principal/container/gallery/index.dart';
 import 'package:grafu/module/principal/container/playday/index.dart';
@@ -60,10 +59,6 @@ class HomeWidget extends StatelessWidget {
         Story(
           name: 'Gallery',
           builder: (context) => GalleryPageContainer(store: MockGlobalStore()),
-        ),
-        Story(
-          name: 'Grid',
-          builder: (context) => GridPageContainer(store: MockGlobalStore()),
         ),
         Story(
           name: 'Reset Email',

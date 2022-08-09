@@ -52,6 +52,17 @@ class UpdatePhotoPopupState extends State<UpdatePhotoPopup> {
                   SwitchButtonOption(label: 'camera', icon: Icons.photo_camera),
               option2: SwitchButtonOption(label: 'galeria', icon: Icons.photo),
               isSelected: isGallery,
+              onPressed: (int newIndex) {
+                setState(() {
+                  for (int index = 0; index < isGallery.length; index++) {
+                    if (index == newIndex) {
+                      isGallery[index] = true;
+                    } else {
+                      isGallery[index] = false;
+                    }
+                  }
+                });
+              },
             ),
           ],
         ),

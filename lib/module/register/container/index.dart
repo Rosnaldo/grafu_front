@@ -3,7 +3,6 @@ import 'package:grafu/components/link_redirect/index.dart';
 
 import 'package:grafu/components/password_form_field/index.dart';
 import 'package:grafu/components/email_form_field/index.dart';
-import 'package:grafu/components/switch_button/index.dart';
 import 'package:grafu/module/register/container/register_model.dart';
 import 'package:grafu/module/register/services/sign_up/index.dart';
 import 'package:grafu/services/google_signin/index.dart';
@@ -83,14 +82,6 @@ class RegisterPageContainerState extends State<RegisterPageContainer> {
                           }
                           return null;
                         }),
-                    const SizedBox(height: 16),
-                    SwitchButton(
-                      option1: SwitchButtonOption(
-                          label: 'masculino', icon: Icons.male),
-                      option2: SwitchButtonOption(
-                          label: 'feminino', icon: Icons.female),
-                      isSelected: isMale,
-                    ),
                     const SizedBox(height: 16),
                     PassworFormField(
                         label: 'senha',

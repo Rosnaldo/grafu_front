@@ -14,12 +14,14 @@ class SwitchButton extends StatefulWidget {
   final SwitchButtonOption option1;
   final SwitchButtonOption option2;
   final List<bool> isSelected;
+  final void Function(int)? onPressed;
 
   const SwitchButton({
     Key? key,
     required this.option1,
     required this.option2,
     required this.isSelected,
+    required this.onPressed,
   }) : super(key: key);
 
   @override
@@ -40,6 +42,7 @@ class SwitchButtonState extends State<SwitchButton> {
           selectedColor: Colors.white,
           color: Colors.black,
           fillColor: Colors.purpleAccent,
+          onPressed: widget.onPressed,
           children: [
             SizedBox(
               child: Padding(
@@ -70,17 +73,6 @@ class SwitchButtonState extends State<SwitchButton> {
               ),
             ),
           ],
-          onPressed: (int newIndex) {
-            setState(() {
-              for (int index = 0; index < widget.isSelected.length; index++) {
-                if (index == newIndex) {
-                  widget.isSelected[index] = true;
-                } else {
-                  widget.isSelected[index] = false;
-                }
-              }
-            });
-          },
         );
       }),
     );
