@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/module/principal/container/profile/update_photo_popup/index.dart';
@@ -92,7 +93,8 @@ class ProfilePageContainer extends StatelessWidget {
                 style: OutlinedButton.styleFrom(
                   side: BorderSide(width: 1.0, color: Colors.pink.shade200),
                 ),
-                onPressed: () {
+                onPressed: () async {
+                  FirebaseAuth.instance.signOut();
                   Modular.to.navigate('/');
                 },
                 label:
