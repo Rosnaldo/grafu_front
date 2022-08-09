@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/module/register/container/index.dart';
 import 'package:grafu/module/register/services/sign_up/mock.dart';
+import 'package:grafu/module/reset/index.dart';
+import 'package:grafu/module/reset_email_message/index.dart';
+import 'package:grafu/module/verify_email_message/index.dart';
 import 'package:grafu/services/google_signin/mock.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
@@ -61,6 +64,18 @@ class HomeWidget extends StatelessWidget {
         Story(
           name: 'Grid',
           builder: (context) => GridPageContainer(store: MockGlobalStore()),
+        ),
+        Story(
+          name: 'Reset Email',
+          builder: (context) => const ResetPage(),
+        ),
+        Story(
+          name: 'Reset Email Message',
+          builder: (context) => const ResetEmailMessagePage(),
+        ),
+        Story(
+          name: 'Verify Email Message',
+          builder: (context) => const VerifyEmailMessagePage(),
         ),
       ],
     );
