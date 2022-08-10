@@ -3,6 +3,8 @@ import 'package:grafu/components/link_redirect/index.dart';
 
 import 'package:grafu/components/password_form_field/index.dart';
 import 'package:grafu/components/email_form_field/index.dart';
+import 'package:grafu/module/register/container/age_form_field/index.dart';
+import 'package:grafu/module/register/container/profession_form_field/index.dart';
 import 'package:grafu/module/register/container/register_model.dart';
 import 'package:grafu/module/register/services/sign_up/index.dart';
 import 'package:grafu/services/google_signin/index.dart';
@@ -26,6 +28,8 @@ class RegisterPageContainer extends StatefulWidget {
 class RegisterPageContainerState extends State<RegisterPageContainer> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final nameFocusNode = FocusNode();
+  final ageFocusNode = FocusNode();
+  final professionFocusNode = FocusNode();
   final emailFocusNode = FocusNode();
   final passwordFocusNode = FocusNode();
   final confirmFocusNode = FocusNode();
@@ -51,7 +55,7 @@ class RegisterPageContainerState extends State<RegisterPageContainer> {
                   padding: const EdgeInsets.all(10),
                   children: <Widget>[
                     NameFormField(
-                        label: 'nome completo',
+                        label: 'nome completo (obrigatório)',
                         hintText: 'Preencha seu nome completo',
                         onSaved: (value) =>
                             registerModel = registerModel.copyWith(name: value),
@@ -65,9 +69,9 @@ class RegisterPageContainerState extends State<RegisterPageContainer> {
                         }),
                     const SizedBox(height: 16),
                     EmailFormField(
-                        label: 'email',
+                        label: 'email (obrigatório)',
                         focusNode: emailFocusNode,
-                        nextFocusNode: passwordFocusNode,
+                        nextFocusNode: ageFocusNode,
                         onSaved: (value) {
                           registerModel = registerModel.copyWith(email: value);
                         },
@@ -83,8 +87,39 @@ class RegisterPageContainerState extends State<RegisterPageContainer> {
                           return null;
                         }),
                     const SizedBox(height: 16),
+                    AgeFormField(
+                        label: 'idade',
+                        hintText: 'Preencha sua idade',
+                        onSaved: (value) => registerModel = registerModel
+                            .copyWith(age: int.tryParse(value ?? '')),
+                        focusNode: ageFocusNode,
+                        nextFocusNode: professionFocusNode,
+                        validator: (text) {
+                          if (text == null || text.isEmpty) {
+                            return null;
+                          }
+                          if (!int.tryParse(text)!.isNaN) {
+                            return 'Idade deve ser um número';
+                          }
+                          return null;
+                        }),
+                    const SizedBox(height: 16),
+                    ProfessionFormField(
+                        label: 'profissão',
+                        hintText: 'Preencha sua profissão',
+                        onSaved: (value) => registerModel =
+                            registerModel.copyWith(profession: value),
+                        focusNode: professionFocusNode,
+                        nextFocusNode: passwordFocusNode,
+                        validator: (text) {
+                          if (text == null || text.isEmpty) {
+                            return null;
+                          }
+                          return null;
+                        }),
+                    const SizedBox(height: 16),
                     PassworFormField(
-                        label: 'senha',
+                        label: 'senha (obrigatório)',
                         focusNode: passwordFocusNode,
                         nextFocusNode: confirmFocusNode,
                         onSaved: (value) => registerModel =
@@ -109,7 +144,7 @@ class RegisterPageContainerState extends State<RegisterPageContainer> {
                         }),
                     const SizedBox(height: 16),
                     PassworFormField(
-                        label: 'confirmar',
+                        label: 'confirmar (obrigatório)',
                         focusNode: confirmFocusNode,
                         nextFocusNode: registerFocusNode,
                         onSaved: (value) => registerModel =
