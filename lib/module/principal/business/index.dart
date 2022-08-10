@@ -3,6 +3,10 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/module/principal/container/index.dart';
 import 'package:grafu/store/global_store.dart';
 
+import 'package:grafu/module/principal/business/gallery/index.dart';
+import 'package:grafu/module/principal/business/playday/index.dart';
+import 'package:grafu/module/principal/business/profile/index.dart';
+
 class PrincipalPage extends StatefulWidget {
   const PrincipalPage({
     Key? key,
@@ -33,6 +37,11 @@ class PrincipalPageState extends State<PrincipalPage> {
     return PrincipalPageContainer(
       pageViewController: pageViewController,
       store: store,
+      widgetChildren: const [
+        PlaydayPage(),
+        ProfilePage(),
+        GalleryPage(),
+      ],
     );
   }
 }

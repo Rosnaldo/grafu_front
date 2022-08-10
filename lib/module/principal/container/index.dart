@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:grafu/module/principal/business/gallery/index.dart';
-import 'package:grafu/module/principal/business/playday/index.dart';
-import 'package:grafu/module/principal/business/profile/index.dart';
 import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/global_store.dart';
 
 class PrincipalPageContainer extends StatefulWidget {
   final PageController pageViewController;
   final IGlobalStore store;
+  final List<Widget> widgetChildren;
 
   const PrincipalPageContainer({
     Key? key,
     required this.pageViewController,
     required this.store,
+    required this.widgetChildren,
   }) : super(key: key);
 
   @override
@@ -62,11 +61,7 @@ class PrincipalPageContainerState extends State<PrincipalPageContainer> {
   Widget buildPageView() {
     return PageView(
       controller: widget.pageViewController,
-      children: const [
-        PlaydayPage(),
-        ProfilePage(),
-        GalleryPage(),
-      ],
+      children: widget.widgetChildren,
     );
   }
 

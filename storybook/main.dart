@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/module/principal/container/index.dart';
 import 'package:grafu/module/register/container/index.dart';
 import 'package:grafu/module/register/services/sign_up/mock.dart';
 import 'package:grafu/module/reset/index.dart';
@@ -51,6 +52,17 @@ class HomeWidget extends StatelessWidget {
         Story(
           name: 'Profile',
           builder: (context) => ProfilePageContainer(store: MockGlobalStore()),
+        ),
+        Story(
+          name: 'Principal',
+          builder: (context) => PrincipalPageContainer(
+              pageViewController: PageController(),
+              store: MockGlobalStore(),
+              widgetChildren: [
+                PlaydayPageContainer(store: MockGlobalStore()),
+                ProfilePageContainer(store: MockGlobalStore()),
+                GalleryPageContainer(store: MockGlobalStore()),
+              ]),
         ),
         Story(
           name: 'Playday',
