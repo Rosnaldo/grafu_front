@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grafu/models/participant.dart';
 
 import 'package:grafu/module/principal/container/playday/participant_card.dart';
-import 'package:grafu/module/principal/container/playday/participant_popup/index.dart';
+import 'package:grafu/module/principal/container/playday/participants_popup/index.dart';
 
 class ParticipantList extends StatelessWidget {
   final List<Participant> participants;
