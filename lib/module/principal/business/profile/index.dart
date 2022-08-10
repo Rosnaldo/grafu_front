@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/module/principal/container/profile/index.dart';
+import 'package:grafu/services/google_signout/index.dart';
 import 'package:grafu/store/global_store.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -14,6 +15,7 @@ class ProfilePage extends StatelessWidget {
 
     return ProfilePageContainer(
       store: store,
+      signOut: SignOut(),
     );
   }
 }

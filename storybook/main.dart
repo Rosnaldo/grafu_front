@@ -6,6 +6,8 @@ import 'package:grafu/module/reset/index.dart';
 import 'package:grafu/module/reset_email_message/index.dart';
 import 'package:grafu/module/verify_email_message/index.dart';
 import 'package:grafu/services/google_signin/mock.dart';
+import 'package:grafu/services/google_signout/index.dart';
+import 'package:grafu/services/google_signout/mock.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
 import 'package:grafu/module/login/container/index.dart';
@@ -51,7 +53,10 @@ class HomeWidget extends StatelessWidget {
         ),
         Story(
           name: 'Profile',
-          builder: (context) => ProfilePageContainer(store: MockGlobalStore()),
+          builder: (context) => ProfilePageContainer(
+            store: MockGlobalStore(),
+            signOut: MockSignOut(),
+          ),
         ),
         Story(
           name: 'Principal',
@@ -60,7 +65,8 @@ class HomeWidget extends StatelessWidget {
               store: MockGlobalStore(),
               widgetChildren: [
                 PlaydayPageContainer(store: MockGlobalStore()),
-                ProfilePageContainer(store: MockGlobalStore()),
+                ProfilePageContainer(
+                    store: MockGlobalStore(), signOut: MockSignOut()),
                 GalleryPageContainer(store: MockGlobalStore()),
               ]),
         ),

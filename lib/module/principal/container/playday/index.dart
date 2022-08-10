@@ -16,6 +16,7 @@ import 'carousel.dart';
 
 class PlaydayPageContainer extends StatelessWidget {
   final IGlobalStore store;
+
   const PlaydayPageContainer({
     Key? key,
     required this.store,
