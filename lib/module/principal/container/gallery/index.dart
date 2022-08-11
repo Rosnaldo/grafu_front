@@ -85,7 +85,7 @@ class GalleryPageContainer extends StatelessWidget {
                 children: [
                   SwitchButton(
                     option1: SwitchButtonOption(
-                        label: 'Galeria', icon: Icons.table_rows),
+                        label: 'Coluna', icon: Icons.table_rows),
                     option2: SwitchButtonOption(
                         label: 'Grid', icon: Icons.grid_view),
                     isSelected: galleryStore.value,

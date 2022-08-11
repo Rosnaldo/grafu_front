@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // import 'package:grafu/models/convenience.dart';
 
 import 'package:grafu/module/principal/container/playday/buy_ticket.dart';
+import 'package:grafu/module/principal/container/playday/description.dart';
 import 'package:grafu/module/principal/container/playday/invite.dart';
 import 'package:grafu/module/principal/container/playday/conveniences.dart';
 import 'package:grafu/module/principal/container/playday/playday_date.dart';
@@ -43,6 +44,8 @@ class PlaydayPageContainer extends StatelessWidget {
                 child: Column(
                   children: [
                     PlaydayDate(date: state.playday.date),
+                    const Line(),
+                    const Description(),
                     const Line(),
                     ParticipantList(participants: state.participants),
                     const Line(),
