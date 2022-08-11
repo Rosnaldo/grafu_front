@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:grafu/guards/auth_guard.dart';
+// import 'package:grafu/guards/auth_guard.dart';
 
 import 'package:grafu/module/login/business/index.dart';
 import 'package:grafu/module/principal/principal_module.dart';
@@ -25,7 +25,7 @@ class AppModule extends Module {
         ModuleRoute(
           '/principal',
           module: PrincipalModule(),
-          guards: [AuthGuard()],
+          // guards: [AuthGuard()],
         ),
         WildcardRoute(
             child: (_, __) => const Scaffold(

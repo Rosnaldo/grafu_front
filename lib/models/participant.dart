@@ -1,11 +1,12 @@
-const confirmed = 'confirmed';
-const pending = 'pending';
+import 'package:json_annotation/json_annotation.dart';
+part 'participant.g.dart';
 
 enum ParticipantStatus {
   confirmed,
   pending,
 }
 
+@JsonSerializable()
 class Participant {
   String name;
   String avatar;
@@ -26,19 +27,8 @@ class Participant {
     return map[status]!;
   }
 
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'avatar': avatar,
-      'status': status,
-    };
-  }
+  factory Participant.fromJson(Map<String, dynamic> json) =>
+      _$ParticipantFromJson(json);
 
-  factory Participant.fromMap(Map<String, dynamic> map) {
-    return Participant(
-      name: map['name'] ?? '',
-      avatar: map['avatar'] ?? '',
-      status: map['status'] ?? ParticipantStatus.pending,
-    );
-  }
+  Map<String, dynamic> toJson() => _$ParticipantToJson(this);
 }

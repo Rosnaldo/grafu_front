@@ -1,6 +1,11 @@
+import 'package:json_annotation/json_annotation.dart';
 import 'package:grafu/models/address.dart';
+import 'package:grafu/models/convenience.dart';
 import 'package:grafu/models/lot.dart';
 
+part 'playday.g.dart';
+
+@JsonSerializable()
 class Playday {
   String date;
   Address address;
@@ -10,6 +15,7 @@ class Playday {
   Lot? fourthLot;
   Lot? fifthLot;
   List<String> gallery;
+  List<Convenience> conveniences;
 
   Playday({
     required this.date,
@@ -20,33 +26,11 @@ class Playday {
     this.thirdLot,
     this.fourthLot,
     this.fifthLot,
+    required this.conveniences,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'date': date,
-      'address': address,
-      'gallery': gallery,
-      'firstLot': firstLot,
-      'secoundLot': secoundLot,
-      'thirdLot': thirdLot,
-      'fourthLot': fourthLot,
-      'fifthLot': fifthLot,
-    };
-  }
+  factory Playday.fromJson(Map<String, dynamic> json) =>
+      _$PlaydayFromJson(json);
 
-  factory Playday.fromMap(Map<String, dynamic> map) {
-    return Playday(
-      date: map['date'] ?? '',
-      address: Address.fromMap(map['address']),
-      gallery: map['gallery'] ?? [],
-      firstLot: Lot.fromMap(map['firstLot']),
-      secoundLot:
-          (map['secoundLot'] != null) ? Lot.fromMap(map['secoundLot']) : null,
-      thirdLot: (map['thirdLot'] != null) ? Lot.fromMap(map['thirdLot']) : null,
-      fourthLot:
-          (map['fourthLot'] != null) ? Lot.fromMap(map['fourthLot']) : null,
-      fifthLot: (map['fifthLot'] != null) ? Lot.fromMap(map['fifthLot']) : null,
-    );
-  }
+  Map<String, dynamic> toJson() => _$PlaydayToJson(this);
 }

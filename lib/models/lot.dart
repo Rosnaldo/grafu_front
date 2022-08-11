@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'lot.g.dart';
+
+@JsonSerializable()
 class Lot {
   double price;
   int vacancyExistent;
@@ -9,19 +14,7 @@ class Lot {
     required this.vacancyFilled,
   });
 
-  Map<String, dynamic> toMap() {
-    return {
-      'price': price,
-      'vacancyExistent': vacancyExistent,
-      'vacancyFilled': vacancyFilled,
-    };
-  }
+  factory Lot.fromJson(Map<String, dynamic> json) => _$LotFromJson(json);
 
-  factory Lot.fromMap(Map<String, dynamic> map) {
-    return Lot(
-      price: map['price'] ?? '',
-      vacancyExistent: map['vacancyExistent'] ?? '',
-      vacancyFilled: map['vacancyFilled'] ?? '',
-    );
-  }
+  Map<String, dynamic> toJson() => _$LotToJson(this);
 }

@@ -1,8 +1,10 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+// import 'package:grafu/models/convenience.dart';
 
 import 'package:grafu/module/principal/container/playday/buy_ticket.dart';
 import 'package:grafu/module/principal/container/playday/invite.dart';
+import 'package:grafu/module/principal/container/playday/conveniences.dart';
 import 'package:grafu/module/principal/container/playday/playday_date.dart';
 import 'package:grafu/module/principal/container/playday/footer.dart';
 import 'package:grafu/module/principal/container/playday/participant_list.dart';
@@ -43,6 +45,10 @@ class PlaydayPageContainer extends StatelessWidget {
                     PlaydayDate(date: state.playday.date),
                     const Line(),
                     ParticipantList(participants: state.participants),
+                    const Line(),
+                    Conveniences(
+                      conveniences: state.playday.conveniences,
+                    ),
                     const Line(),
                     Location(address: state.playday.address),
                     const Line(),

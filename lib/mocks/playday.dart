@@ -1,4 +1,5 @@
 import 'package:grafu/models/address.dart';
+import 'package:grafu/models/convenience.dart';
 import 'package:grafu/models/lot.dart';
 import 'package:grafu/models/playday.dart';
 
@@ -27,6 +28,32 @@ class MakePlayday {
         vacancyExistent: 10,
         vacancyFilled: 0,
       ),
+      conveniences: [
+        Convenience(
+          type: ConvenienceType.park,
+          items: ['Churrasqueira', 'jardim'],
+        ),
+        Convenience(
+          type: ConvenienceType.food,
+          items: ['Café da manhã', 'Almoço', 'janta'],
+        ),
+        Convenience(
+          type: ConvenienceType.internet,
+          items: ['Cobertura total de internet wireless'],
+        ),
+        Convenience(
+          type: ConvenienceType.sleep,
+          items: ['Quarto individual', 'Chuveiro'],
+        ),
+        Convenience(
+          type: ConvenienceType.parking,
+          items: ['Vagas para 10 carros'],
+        ),
+        Convenience(
+          type: ConvenienceType.pool,
+          items: ['Piscina para criança'],
+        ),
+      ],
       gallery: [
         'https://images.unsplash.com/photo-1520342868574-5fa3804e551c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=6ff92caffcdd63681a35134a6770ed3b&auto=format&fit=crop&w=1951&q=80',
         'https://images.unsplash.com/photo-1522205408450-add114ad53fe?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=368f45b0888aeb0b7b08e3a1084d3ede&auto=format&fit=crop&w=1950&q=80',
