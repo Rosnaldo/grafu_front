@@ -19,6 +19,11 @@ class Invite extends StatelessWidget {
           'Convidar amigo',
           style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w700),
         ),
+        const SizedBox(height: 10.0),
+        const Text(
+          'Caso dois amigos que você convidadou reservem o ingresso você terá direito a um terceiro ingresso inteiramente gratuito',
+          textAlign: TextAlign.center,
+        ),
         Form(
           key: _formKey,
           child: ListView(
