@@ -31,9 +31,7 @@ class ParticipantList extends StatelessWidget {
                 .sublist(0, 3)
                 .map(
                   (participant) => ParticipantCard(
-                    name: participant.name,
-                    avatar: participant.avatar,
-                    status: participant.status,
+                    participant: participant,
                   ),
                 )
                 .toList()),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/module/principal/business/playday/index.dart';
+import 'package:provider/provider.dart';
 
 class BuildParticipantDetailPopup {
   static Future<void> showMyDialog(
@@ -24,6 +26,8 @@ class ParticipantDetailPopup extends StatefulWidget {
 class ParticipantDetailPopupState extends State<ParticipantDetailPopup> {
   @override
   Widget build(BuildContext context) {
+    final participant = context.watch<SelectedParticipantPopup>().participant;
+
     return AlertDialog(
       scrollable: true,
       content: Column(
@@ -41,47 +45,51 @@ class ParticipantDetailPopupState extends State<ParticipantDetailPopup> {
           const SizedBox(height: 10.0),
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: Image.network(
-                height: 200.0,
-                'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0'),
+            child: Image.network(height: 200.0, participant.avatar),
           ),
           const SizedBox(height: 16.0),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
-              children: const [
-                Text(
+              children: [
+                const Text(
                   'Name: ',
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.0),
                 ),
-                Text('Andrey Kenji Tsuzuki'),
+                Text(participant.name),
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: const [
-                Text(
-                  'Profissão: ',
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.0),
-                ),
-                Text('desenvolvedor'),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              children: const [
-                Text(
-                  'Idade: ',
-                  style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.0),
-                ),
-                Text('30'),
-              ],
-            ),
-          ),
+          (participant.profession != null)
+              ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      const Text(
+                        'Profissão: ',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 15.0),
+                      ),
+                      Text(participant.profession ?? ''),
+                    ],
+                  ),
+                )
+              : Container(),
+          (participant.age != null)
+              ? Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      const Text(
+                        'Idade: ',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600, fontSize: 15.0),
+                      ),
+                      Text(participant.age.toString()),
+                    ],
+                  ),
+                )
+              : Container(),
         ],
       ),
     );

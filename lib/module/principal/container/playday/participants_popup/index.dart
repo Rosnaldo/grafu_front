@@ -45,11 +45,8 @@ class BuildParticipantsPopup {
                           const SizedBox(height: 10),
                           ...participants
                               .map(
-                                (participant) => ParticipantCard(
-                                  name: participant.name,
-                                  avatar: participant.avatar,
-                                  status: participant.status,
-                                ),
+                                (participant) =>
+                                    ParticipantCard(participant: participant),
                               )
                               .toList()
                         ],
