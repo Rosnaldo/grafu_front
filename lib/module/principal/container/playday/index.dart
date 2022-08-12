@@ -1,5 +1,6 @@
 // import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:grafu/models/participant.dart';
 // import 'package:grafu/models/convenience.dart';
 
 import 'package:grafu/module/principal/container/playday/buy_ticket.dart';
@@ -19,10 +20,12 @@ import 'carousel.dart';
 
 class PlaydayPageContainer extends StatelessWidget {
   final IGlobalStore store;
+  final Widget Function(Participant participant) participantCard;
 
   const PlaydayPageContainer({
     Key? key,
     required this.store,
+    required this.participantCard,
   }) : super(key: key);
 
   @override
@@ -47,7 +50,10 @@ class PlaydayPageContainer extends StatelessWidget {
                     const Line(),
                     const Description(),
                     const Line(),
-                    ParticipantList(participants: state.participants),
+                    ParticipantList(
+                      participants: state.participants,
+                      participantCard: participantCard,
+                    ),
                     const Line(),
                     Conveniences(
                       conveniences: state.playday.conveniences,

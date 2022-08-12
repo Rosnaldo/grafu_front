@@ -8,8 +8,11 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => SelectedParticipantPopup(),
+    return MultiProvider(
+      providers: [
+        ListenableProvider<SelectedParticipantPopup>(
+            create: (_) => SelectedParticipantPopup()),
+      ],
       child: MaterialApp.router(
         routeInformationParser: Modular.routeInformationParser,
         routerDelegate: Modular.routerDelegate,

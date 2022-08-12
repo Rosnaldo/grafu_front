@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/models/participant.dart';
-
-import 'package:grafu/module/principal/container/playday/participant_card.dart';
-import 'package:grafu/module/principal/container/playday/participants_popup/index.dart';
+import 'package:grafu/module/principal/business/playday/participants_popup/index.dart';
 
 class ParticipantList extends StatelessWidget {
   final List<Participant> participants;
+  final Widget Function(Participant participant) participantCard;
 
   const ParticipantList({
     Key? key,
     required this.participants,
+    required this.participantCard,
   }) : super(key: key);
 
   @override
@@ -30,16 +30,15 @@ class ParticipantList extends StatelessWidget {
             children: participants
                 .sublist(0, 3)
                 .map(
-                  (participant) => ParticipantCard(
-                    participant: participant,
-                  ),
+                  (participant) => participantCard(participant),
                 )
                 .toList()),
         const SizedBox(height: 10.0),
         ElevatedButton.icon(
           icon: const Icon(Icons.group, size: 15.0),
           onPressed: () => {
-            BuildParticipantsPopup.showMyDialog(context, participants),
+            BuildParticipantsPopup.showMyDialog(
+                context, participants, participantCard),
           },
           label: const Text(
             'Ver convidados',

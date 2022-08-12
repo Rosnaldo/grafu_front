@@ -1,26 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/models/participant.dart';
-import 'package:grafu/module/principal/business/playday/index.dart';
-import 'package:grafu/module/principal/container/playday/participant_detail_popup/index.dart';
-import 'package:provider/provider.dart';
 
-class ParticipantCard extends StatelessWidget {
+class ParticipantCardContainer extends StatelessWidget {
   final Participant participant;
+  final Function onTapCb;
 
-  const ParticipantCard({
+  const ParticipantCardContainer({
     Key? key,
     required this.participant,
+    required this.onTapCb,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Provider.of<SelectedParticipantPopup>(context, listen: false)
-            .setParticipant(participant);
-
-        BuildParticipantDetailPopup.showMyDialog(context);
-      },
+      onTap: () => onTapCb(context),
       child: Card(
         margin: const EdgeInsets.all(1.0),
         child: Padding(

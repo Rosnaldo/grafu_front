@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/mocks/participant.dart';
+import 'package:grafu/module/principal/business/playday/participant_card/mock.dart';
+import 'package:grafu/module/principal/business/playday/participant_detail_popup/mock.dart';
 import 'package:grafu/module/principal/container/index.dart';
+import 'package:grafu/module/principal/container/playday/index.dart';
 import 'package:grafu/module/register/container/index.dart';
 import 'package:grafu/module/register/services/sign_up/mock.dart';
 import 'package:grafu/module/reset/index.dart';
@@ -13,7 +17,6 @@ import 'package:grafu/module/login/container/index.dart';
 import 'package:grafu/module/login/services/sign_in/mock.dart';
 
 import 'package:grafu/module/principal/container/gallery/index.dart';
-import 'package:grafu/module/principal/container/playday/index.dart';
 import 'package:grafu/module/principal/container/profile/index.dart';
 
 import 'package:grafu/store/mock_global_store.dart';
@@ -63,7 +66,14 @@ class HomeWidget extends StatelessWidget {
               pageViewController: PageController(),
               store: MockGlobalStore(),
               widgetChildren: [
-                PlaydayPageContainer(store: MockGlobalStore()),
+                PlaydayPageContainer(
+                  store: MockGlobalStore(),
+                  participantCard: (participant) => MockParticipantCard(
+                    participant: MakeParticipants.make()[0],
+                    buildParticipantDetailPopup:
+                        MockBuildParticipantDetailPopup(),
+                  ),
+                ),
                 ProfilePageContainer(
                     store: MockGlobalStore(), signOut: MockSignOut()),
                 GalleryPageContainer(store: MockGlobalStore()),
@@ -71,7 +81,13 @@ class HomeWidget extends StatelessWidget {
         ),
         Story(
           name: 'Playday',
-          builder: (context) => PlaydayPageContainer(store: MockGlobalStore()),
+          builder: (context) => PlaydayPageContainer(
+            store: MockGlobalStore(),
+            participantCard: (participant) => MockParticipantCard(
+              participant: MakeParticipants.make()[0],
+              buildParticipantDetailPopup: MockBuildParticipantDetailPopup(),
+            ),
+          ),
         ),
         Story(
           name: 'Gallery',

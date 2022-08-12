@@ -1,33 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:grafu/module/principal/business/playday/index.dart';
-import 'package:provider/provider.dart';
+import 'package:grafu/models/participant.dart';
 
-class BuildParticipantDetailPopup {
-  static Future<void> showMyDialog(
-    BuildContext context,
-  ) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) => const ParticipantDetailPopup(),
-    );
-  }
-}
+class ParticipantDetailPopupContainer extends StatefulWidget {
+  final Participant participant;
 
-class ParticipantDetailPopup extends StatefulWidget {
-  const ParticipantDetailPopup({
+  const ParticipantDetailPopupContainer({
     Key? key,
+    required this.participant,
   }) : super(key: key);
 
   @override
-  State<ParticipantDetailPopup> createState() => ParticipantDetailPopupState();
+  State<ParticipantDetailPopupContainer> createState() =>
+      ParticipantDetailPopupContainerState();
 }
 
-class ParticipantDetailPopupState extends State<ParticipantDetailPopup> {
+class ParticipantDetailPopupContainerState
+    extends State<ParticipantDetailPopupContainer> {
   @override
   Widget build(BuildContext context) {
-    final participant = context.watch<SelectedParticipantPopup>().participant;
-
     return AlertDialog(
       scrollable: true,
       content: Column(
@@ -45,7 +35,7 @@ class ParticipantDetailPopupState extends State<ParticipantDetailPopup> {
           const SizedBox(height: 10.0),
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: Image.network(height: 200.0, participant.avatar),
+            child: Image.network(height: 200.0, widget.participant.avatar),
           ),
           const SizedBox(height: 16.0),
           Padding(
@@ -56,11 +46,11 @@ class ParticipantDetailPopupState extends State<ParticipantDetailPopup> {
                   'Name: ',
                   style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15.0),
                 ),
-                Text(participant.name),
+                Text(widget.participant.name),
               ],
             ),
           ),
-          (participant.profession != null)
+          (widget.participant.profession != null)
               ? Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -70,12 +60,12 @@ class ParticipantDetailPopupState extends State<ParticipantDetailPopup> {
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 15.0),
                       ),
-                      Text(participant.profession ?? ''),
+                      Text(widget.participant.profession ?? ''),
                     ],
                   ),
                 )
               : Container(),
-          (participant.age != null)
+          (widget.participant.age != null)
               ? Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -85,7 +75,7 @@ class ParticipantDetailPopupState extends State<ParticipantDetailPopup> {
                         style: TextStyle(
                             fontWeight: FontWeight.w600, fontSize: 15.0),
                       ),
-                      Text(participant.age.toString()),
+                      Text(widget.participant.age.toString()),
                     ],
                   ),
                 )

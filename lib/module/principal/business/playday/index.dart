@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/models/participant.dart';
+import 'package:grafu/module/principal/business/playday/participant_card/index.dart';
+import 'package:grafu/module/principal/business/playday/participant_detail_popup/index.dart';
 import 'package:grafu/module/principal/container/playday/index.dart';
 import 'package:grafu/store/global_store.dart';
 
@@ -26,6 +28,10 @@ class PlaydayPage extends StatelessWidget {
 
     return PlaydayPageContainer(
       store: store,
+      participantCard: (participant) => ParticipantCard(
+        participant: participant,
+        buildParticipantDetailPopup: BuildParticipantDetailPopup(),
+      ),
     );
   }
 }
