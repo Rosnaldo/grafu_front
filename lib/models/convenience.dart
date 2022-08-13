@@ -3,11 +3,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'convenience.g.dart';
 
-enum ParticipantStatus {
-  confirmed,
-  pending,
-}
-
 enum ConvenienceType {
   park,
   food,

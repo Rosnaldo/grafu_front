@@ -37,6 +37,7 @@ class PassworFormFieldState extends State<PassworFormField> {
       keyboardType: TextInputType.visiblePassword,
       validator: widget.validator,
       decoration: InputDecoration(
+        errorMaxLines: 2,
         labelText: widget.label,
         hintText: 'Preencha a senha',
         border: const OutlineInputBorder(

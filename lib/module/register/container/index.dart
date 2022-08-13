@@ -98,25 +98,20 @@ class RegisterPageContainerState extends State<RegisterPageContainer> {
                           if (text == null || text.isEmpty) {
                             return null;
                           }
-                          if (!int.tryParse(text)!.isNaN) {
+                          if (int.tryParse(text) == null) {
                             return 'Idade deve ser um número';
                           }
                           return null;
                         }),
                     const SizedBox(height: 16),
                     ProfessionFormField(
-                        label: 'profissão',
-                        hintText: 'Preencha sua profissão',
-                        onSaved: (value) => registerModel =
-                            registerModel.copyWith(profession: value),
-                        focusNode: professionFocusNode,
-                        nextFocusNode: passwordFocusNode,
-                        validator: (text) {
-                          if (text == null || text.isEmpty) {
-                            return null;
-                          }
-                          return null;
-                        }),
+                      label: 'profissão',
+                      hintText: 'Preencha sua profissão',
+                      onSaved: (value) => registerModel =
+                          registerModel.copyWith(profession: value),
+                      focusNode: professionFocusNode,
+                      nextFocusNode: passwordFocusNode,
+                    ),
                     const SizedBox(height: 16),
                     PassworFormField(
                         label: 'senha (obrigatório)',
