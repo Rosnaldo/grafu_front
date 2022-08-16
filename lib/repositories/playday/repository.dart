@@ -15,6 +15,6 @@ class PlaydayByIdRepository {
     final jsonData = json.encode(response.data);
     final responsePlayday = ResponsePlayday.fromJson(jsonData);
 
-    return PlaydayResponseMapper.toEntity(responsePlayday);
+    return ResponsePlaydayMapper.toEntity(responsePlayday);
   }
 }

@@ -1,17 +1,16 @@
+import 'package:equatable/equatable.dart';
 import 'package:grafu/models/playday.dart';
-import 'package:json_annotation/json_annotation.dart';
 
-class User {
-  String id;
-  String name;
-  String email;
-  String avatar;
-  int? age;
-  String? profession;
-  @JsonKey(name: 'AdminPlayday')
-  List<Playday>? adminPlayday = [];
+class User extends Equatable {
+  final String id;
+  final String name;
+  final String email;
+  final String avatar;
+  final int? age;
+  final String? profession;
+  final List<Playday>? adminPlayday;
 
-  User({
+  const User({
     required this.id,
     required this.name,
     required this.email,
@@ -20,4 +19,11 @@ class User {
     this.profession,
     this.adminPlayday,
   });
+
+  @override
+  List<Object?> get props =>
+      [id, name, email, avatar, age, profession, adminPlayday];
+
+  @override
+  bool get stringify => true;
 }

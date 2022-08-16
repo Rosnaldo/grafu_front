@@ -5,7 +5,7 @@ import 'package:grafu/models/playday.dart';
 
 class MakePlayday {
   static Playday make() {
-    return Playday(
+    return const Playday(
         id: '',
         date: '10 de julho de 2022, 15h - 14 de agosto de 2022, 19h',
         address: Address(

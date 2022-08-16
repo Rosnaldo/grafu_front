@@ -2,7 +2,7 @@ import 'package:grafu/models/participant.dart';
 
 class MakeParticipants {
   static List<Participant> make() {
-    return [
+    return const [
       Participant(
         id: '',
         name: 'Joaninha da Cunha',

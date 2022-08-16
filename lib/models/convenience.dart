@@ -1,3 +1,4 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 enum ConvenienceType {
@@ -10,11 +11,11 @@ enum ConvenienceType {
   notFound,
 }
 
-class Convenience {
-  ConvenienceType type;
-  List<String> items;
+class Convenience extends Equatable {
+  final ConvenienceType type;
+  final List<String> items;
 
-  Convenience({
+  const Convenience({
     required this.type,
     required this.items,
   });
@@ -59,4 +60,13 @@ class Convenience {
 
     return icon;
   }
+
+  @override
+  List<Object?> get props => [
+        type,
+        items,
+      ];
+
+  @override
+  bool get stringify => true;
 }

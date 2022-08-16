@@ -6,7 +6,13 @@ import 'package:grafu/repositories/participant/mapper.dart';
 import 'package:grafu/repositories/participant/response_participant.dart';
 import 'package:grafu/repositories/playday/response_playday.dart';
 
-class PlaydayResponseMapper {
+class ResponsePlaydayMapper {
+  static Playday jsonToEntity(String jsonS) {
+    final responsePlayday = ResponsePlayday.fromJson(jsonS);
+
+    return ResponsePlaydayMapper.toEntity(responsePlayday);
+  }
+
   static Playday toEntity(ResponsePlayday r) {
     return Playday(
         id: r.id,
@@ -17,7 +23,11 @@ class PlaydayResponseMapper {
           state: r.addressState,
           street: r.addressStreet,
         ),
-        firstLot: Lot(price: 1, vacancyExistent: 1, vacancyFilled: 1),
+        firstLot: Lot(
+          price: r.lot1Price,
+          vacancyExistent: r.lot1VacancyExistent,
+          vacancyFilled: r.lot1VacancyFilled,
+        ),
         secoundLot: (r.lot2Price != null)
             ? Lot(
                 price: r.lot2Price!,
@@ -50,12 +60,12 @@ class PlaydayResponseMapper {
         participants: mapParticipants(r.participants.toList()),
         conveniences: [
           Convenience(
-            items: r.convenienceFood.toList(),
-            type: ConvenienceType.food,
-          ),
-          Convenience(
             items: r.conveniencePark.toList(),
             type: ConvenienceType.park,
+          ),
+          Convenience(
+            items: r.convenienceFood.toList(),
+            type: ConvenienceType.food,
           ),
           Convenience(
             items: r.convenienceInternet.toList(),

@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 
 import 'package:grafu/models/user.dart';
 import 'package:grafu/repositories/user/mapper.dart';
-import 'package:grafu/repositories/user/response_user.dart';
 
 class UserByEmailRepository {
   Future<User> get(email) async {
@@ -12,9 +11,8 @@ class UserByEmailRepository {
       'https://grafu-back.herokuapp.com/v1/user/$email?playday=true',
     );
 
-    final jsonData = json.encode(response.data);
-    final responsePlayday = ResponseUser.fromJson(jsonData);
+    final jsonS = json.encode(response.data);
 
-    return UserResponseMapper.toEntity(responsePlayday);
+    return UserResponseMapper.jsonToEntity(jsonS);
   }
 }

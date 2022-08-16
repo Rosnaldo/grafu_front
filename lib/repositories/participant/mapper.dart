@@ -16,7 +16,7 @@ class ParticipantResponseMapper {
   static ParticipantStatus mapStatus(String status) {
     Map<String, ParticipantStatus> map = {
       'pending': ParticipantStatus.pending,
-      'confirmed': ParticipantStatus.pending,
+      'confirmed': ParticipantStatus.confirmed,
     };
 
     return map[status]!;

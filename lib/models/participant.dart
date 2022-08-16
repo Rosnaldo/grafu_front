@@ -1,17 +1,19 @@
+import 'package:equatable/equatable.dart';
+
 enum ParticipantStatus {
   confirmed,
   pending,
 }
 
-class Participant {
-  String id;
-  String name;
-  String avatar;
-  int? age;
-  String? profession;
-  ParticipantStatus status;
+class Participant extends Equatable {
+  final String id;
+  final String name;
+  final String avatar;
+  final int? age;
+  final String? profession;
+  final ParticipantStatus status;
 
-  Participant({
+  const Participant({
     required this.id,
     required this.name,
     required this.avatar,
@@ -21,7 +23,7 @@ class Participant {
   });
 
   static Participant init() {
-    return Participant(
+    return const Participant(
         id: '',
         name: '',
         avatar:
@@ -37,4 +39,17 @@ class Participant {
 
     return map[status]!;
   }
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        avatar,
+        status,
+        age,
+        profession,
+      ];
+
+  @override
+  bool get stringify => true;
 }
