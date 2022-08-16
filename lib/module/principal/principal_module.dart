@@ -3,18 +3,16 @@ import 'package:grafu/module/principal/business/gallery/index.dart';
 import 'package:grafu/module/principal/business/playday/index.dart';
 import 'package:grafu/module/principal/business/profile/index.dart';
 import 'package:grafu/module/principal/business/index.dart';
-import 'package:grafu/repositories/participant_repository.dart';
-import 'package:grafu/repositories/playday_repository.dart';
-import 'package:grafu/repositories/user_repository.dart';
+import 'package:grafu/repositories/playday/repository.dart';
+import 'package:grafu/repositories/user/repository.dart';
 import 'package:grafu/store/global_store.dart';
 
 class PrincipalModule extends Module {
   @override
   List<Bind> get binds => [
-        Bind.factory((i) => UserRepository()),
-        Bind.factory((i) => PlaydayRepository()),
-        Bind.factory((i) => ParticipantRepository()),
-        Bind.singleton((i) => GlobalStore(i(), i(), i())),
+        Bind.factory((i) => UserByEmailRepository()),
+        Bind.factory((i) => PlaydayByIdRepository()),
+        Bind.singleton((i) => GlobalStore(i(), i())),
       ];
 
   @override

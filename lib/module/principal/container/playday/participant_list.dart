@@ -28,7 +28,7 @@ class ParticipantList extends StatelessWidget {
         const SizedBox(height: 12.0),
         Column(
             children: participants
-                .sublist(0, 3)
+                .sublist(0, 2)
                 .map(
                   (participant) => participantCard(participant),
                 )

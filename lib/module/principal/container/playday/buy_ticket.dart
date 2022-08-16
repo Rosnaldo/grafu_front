@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BuyTicket extends StatelessWidget {
-  final double price;
+  final int price;
 
   const BuyTicket({
     Key? key,

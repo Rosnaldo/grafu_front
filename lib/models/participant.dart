@@ -1,13 +1,10 @@
-import 'package:json_annotation/json_annotation.dart';
-part 'participant.g.dart';
-
 enum ParticipantStatus {
   confirmed,
   pending,
 }
 
-@JsonSerializable()
 class Participant {
+  String id;
   String name;
   String avatar;
   int? age;
@@ -15,6 +12,7 @@ class Participant {
   ParticipantStatus status;
 
   Participant({
+    required this.id,
     required this.name,
     required this.avatar,
     required this.status,
@@ -24,6 +22,7 @@ class Participant {
 
   static Participant init() {
     return Participant(
+        id: '',
         name: '',
         avatar:
             'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0',
@@ -38,9 +37,4 @@ class Participant {
 
     return map[status]!;
   }
-
-  factory Participant.fromJson(Map<String, dynamic> json) =>
-      _$ParticipantFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ParticipantToJson(this);
 }

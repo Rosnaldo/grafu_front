@@ -1,7 +1,5 @@
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:grafu/models/participant.dart';
-// import 'package:grafu/models/convenience.dart';
 
 import 'package:grafu/module/principal/container/playday/buy_ticket.dart';
 import 'package:grafu/module/principal/container/playday/description.dart';
@@ -31,9 +29,6 @@ class PlaydayPageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = store.value as SuccessGlobalState;
-    // var user = FirebaseAuth.instance.currentUser;
-
-    // debugPrint(user.toString());
 
     return Scaffold(
       body: SafeArea(

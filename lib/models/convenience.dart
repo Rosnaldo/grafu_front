@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:json_annotation/json_annotation.dart';
-
-part 'convenience.g.dart';
 
 enum ConvenienceType {
   park,
@@ -13,7 +10,6 @@ enum ConvenienceType {
   notFound,
 }
 
-@JsonSerializable()
 class Convenience {
   ConvenienceType type;
   List<String> items;
@@ -63,9 +59,4 @@ class Convenience {
 
     return icon;
   }
-
-  factory Convenience.fromJson(Map<String, dynamic> json) =>
-      _$ConvenienceFromJson(json);
-
-  Map<String, dynamic> toJson() => _$ConvenienceToJson(this);
 }
