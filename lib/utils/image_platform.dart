@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -20,24 +18,12 @@ class ImagePlatform {
   }
 
   static Widget image({
-    required ValueNotifier<String> imageStore,
+    required ValueNotifier<String?> imageStore,
   }) {
-    if (imageStore.value == '') {
+    if (imageStore.value == null) {
       return Container();
     }
 
-    if (isMobile() && isWeb()) {
-      return Image.network(imageStore.value);
-    }
-
-    if (isMobile()) {
-      return Image.file(File(imageStore.value));
-    }
-
-    if (isNotebook()) {
-      return Image.network(imageStore.value);
-    }
-
-    return Container();
+    return Image.network(imageStore.value!);
   }
 }

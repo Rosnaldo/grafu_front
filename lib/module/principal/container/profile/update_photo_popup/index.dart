@@ -1,6 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
 
-import 'package:grafu/components/switch_button/index.dart';
+import 'package:flutter/material.dart';
+import 'package:grafu/services/firestore/index.dart';
+
+import 'package:grafu/utils/cropper/mobile_ui_helper.dart';
 import 'package:grafu/utils/image_platform.dart';
 import 'package:grafu/utils/pick_media.dart';
 
@@ -25,47 +28,27 @@ class UpdatePhotoPopup extends StatefulWidget {
   State<UpdatePhotoPopup> createState() => UpdatePhotoPopupState();
 }
 
-class ImageStore extends ValueNotifier<String> {
-  ImageStore() : super('');
+class ImageStore extends ValueNotifier<String?> {
+  ImageStore() : super(null);
 
-  setImage(v) => value = v;
+  setValue(v) => value = v;
 }
 
 class UpdatePhotoPopupState extends State<UpdatePhotoPopup> {
-  final isGallery = [false, true];
   ImageStore imageStore = ImageStore();
+  FirestoreService firestoreService = FirestoreService();
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       content: SingleChildScrollView(
-        child: ListBody(
-          children: [
-            AnimatedBuilder(
-                animation: imageStore,
-                builder: (context, child) {
-                  return ImagePlatform.image(imageStore: imageStore);
-                }),
-            const SizedBox(height: 10.0),
-            SwitchButton(
-              option1:
-                  SwitchButtonOption(label: 'camera', icon: Icons.photo_camera),
-              option2: SwitchButtonOption(label: 'galeria', icon: Icons.photo),
-              isSelected: isGallery,
-              onPressed: (int newIndex) {
-                setState(() {
-                  for (int index = 0; index < isGallery.length; index++) {
-                    if (index == newIndex) {
-                      isGallery[index] = true;
-                    } else {
-                      isGallery[index] = false;
-                    }
-                  }
-                });
-              },
-            ),
-          ],
-        ),
+        child: AnimatedBuilder(
+            animation: imageStore,
+            builder: (context, child) {
+              return ClipOval(
+                child: ImagePlatform.image(imageStore: imageStore),
+              );
+            }),
       ),
       actions: <Widget>[
         Container(
@@ -74,12 +57,13 @@ class UpdatePhotoPopupState extends State<UpdatePhotoPopup> {
             children: [
               ElevatedButton(
                 onPressed: () async {
-                  final file = await PickMedia.execute(
-                      isGallery: isGallery, context: context);
+                  final bytes = await PickMedia.execute(
+                    uiSettings: buildUiSettings(context),
+                  );
 
-                  if (file == null) return;
+                  final urlDownload = firestoreService.uploadImage(bytes!);
 
-                  imageStore.setImage(file);
+                  imageStore.setValue(urlDownload);
                 },
                 child: const Text('Carregar foto'),
               ),

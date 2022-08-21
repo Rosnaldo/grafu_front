@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:grafu/mocks/participant.dart';
+import 'package:grafu/mocks/playday.dart';
+import 'package:grafu/mocks/user.dart';
 
 import 'package:grafu/repositories/playday/repository.dart';
 import 'package:grafu/repositories/user/repository.dart';
@@ -22,16 +24,17 @@ class GlobalStore extends IGlobalStore {
   Future fetch() async {
     value = LoadingGlobalState();
     try {
-      final userAuth = FirebaseAuth.instance.currentUser;
-      final user = await userRepository.get(userAuth!.email);
+      // final userAuth = FirebaseAuth.instance.currentUser;
+      // final user = await userRepository.get(userAuth!.email);
 
-      const playdayId = '1bb79eaa-457f-4380-acaa-c7af614668cf';
-      final playday = await playdayRepository.get(playdayId);
+      // const playdayId = '1bb79eaa-457f-4380-acaa-c7af614668cf';
+      // final playday = await playdayRepository.get(playdayId);
 
-      debugPrint(playday.participants[0].name);
-      debugPrint(playday.participants[1].name);
+      // final participants = playday.participants;
 
-      final participants = playday.participants;
+      final user = MakeUser.make();
+      final playday = MakePlayday.make();
+      final participants = MakeParticipants.make();
 
       value = SuccessGlobalState(user, playday, participants);
     } catch (e) {
