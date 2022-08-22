@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:grafu/models/participant.dart';
 
-class BuildParticipantsPopupContainer extends StatelessWidget {
+class ParticipantsPopupContainer extends StatelessWidget {
   final List<Participant> participants;
   final Widget Function(Participant participant) participantCard;
 
-  const BuildParticipantsPopupContainer({
+  const ParticipantsPopupContainer({
     Key? key,
     required this.participants,
     required this.participantCard,

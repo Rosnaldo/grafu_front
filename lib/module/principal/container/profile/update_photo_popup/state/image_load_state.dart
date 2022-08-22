@@ -1,20 +1,16 @@
-abstract class ImageLoadState {}
+abstract class ImageUploadState {}
 
-class InitialImageLoadState extends ImageLoadState {
-  final String image;
-
-  InitialImageLoadState(this.image);
+class InitialImageUploadState extends ImageUploadState {
+  InitialImageUploadState();
 }
 
-class SuccessImageLoadState extends ImageLoadState {
-  final String image;
-
-  SuccessImageLoadState(this.image);
+class SuccessImageUploadState extends ImageUploadState {
+  SuccessImageUploadState();
 }
 
-class LoadingImageLoadState extends ImageLoadState {}
+class LoadingImageUploadState extends ImageUploadState {}
 
-class ErrorImageLoadState extends ImageLoadState {
+class ErrorImageUploadState extends ImageUploadState {
   final String message;
-  ErrorImageLoadState(this.message);
+  ErrorImageUploadState(this.message);
 }

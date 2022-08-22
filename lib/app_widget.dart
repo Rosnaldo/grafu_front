@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:grafu/module/principal/business/playday/index.dart';
+import 'package:grafu/module/principal/business/playday/participant_detail_popup/state.dart';
 import 'package:provider/provider.dart';
 
 class AppWidget extends StatelessWidget {

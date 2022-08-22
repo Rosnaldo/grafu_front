@@ -5,19 +5,23 @@ import 'package:grafu/module/principal/container/profile/index.dart';
 import 'package:grafu/services/google_signout/index.dart';
 import 'package:grafu/store/global_store.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({
-    Key? key,
-  }) : super(key: key);
+class ProfilePage extends StatefulWidget {
+  const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  ProfilePageState createState() => ProfilePageState();
+}
+
+class ProfilePageState extends State<ProfilePage> {
+  onTapCb(context, user) {
+    // Provider.of<UpdateAvatarPopup>(context, listen: false).setUser(user);
+    final buildUpdatePhotoPopup = BuildUpdatePhotoPopup();
+    buildUpdatePhotoPopup.showMyDialog(context);
+  }
 
   @override
   Widget build(BuildContext context) {
     final store = Modular.get<GlobalStore>();
-
-    onTapCb(context) {
-      final buildUpdatePhotoPopup = BuildUpdatePhotoPopup();
-      buildUpdatePhotoPopup.showMyDialog(context);
-    }
 
     return ProfilePageContainer(
       store: store,

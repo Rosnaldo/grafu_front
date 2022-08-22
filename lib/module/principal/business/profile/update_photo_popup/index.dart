@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:grafu/module/principal/container/profile/update_photo_popup/index.dart';
-import 'package:grafu/module/principal/container/profile/update_photo_popup/store/image_load_store.dart';
-import 'package:grafu/services/firestore/index.dart';
 
 abstract class IBuildUpdatePhotoPopup {
   Future<void> showMyDialog(BuildContext context) async {}
@@ -27,8 +25,6 @@ class UpdatePhotoPopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return UpdatePhotoPopupContainer(
-      store: ImageUploadStore(),
-    );
+    return const UpdatePhotoPopupContainer();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:grafu/models/user.dart';
 import 'package:grafu/services/google_signout/index.dart';
 import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/global_store.dart';
@@ -16,23 +17,23 @@ class ProfilePageContainer extends StatelessWidget {
     required this.onTapCb,
   }) : super(key: key);
 
-  Widget buildImage(BuildContext context, String image) => ClipOval(
+  Widget buildImage(BuildContext context, User user) => ClipOval(
         child: Material(
           color: Colors.transparent,
           child: Ink.image(
-            image: NetworkImage(image),
+            image: NetworkImage(user.avatar),
             fit: BoxFit.cover,
             width: 128,
             height: 128,
             child: InkWell(
-              onTap: () => onTapCb(context),
+              onTap: () => onTapCb(context, user),
             ),
           ),
         ),
       );
 
-  Widget buildEditIcon(BuildContext context) => InkWell(
-        onTap: () => onTapCb(context),
+  Widget buildEditIcon(BuildContext context, User user) => InkWell(
+        onTap: () => onTapCb(context, user),
         child: buildCircle(
           color: Colors.white,
           all: 1.5,
@@ -77,11 +78,11 @@ class ProfilePageContainer extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: Stack(
                   children: [
-                    buildImage(context, state.user.avatar),
+                    buildImage(context, state.user),
                     Positioned(
                       bottom: 0,
                       right: 8,
-                      child: buildEditIcon(context),
+                      child: buildEditIcon(context, state.user),
                     ),
                   ],
                 ),

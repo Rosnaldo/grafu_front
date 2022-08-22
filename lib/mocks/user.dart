@@ -3,7 +3,7 @@ import 'package:grafu/models/user.dart';
 class MakeUser {
   static User make() {
     return const User(
-      id: '',
+      id: '6288baef-a9fe-4c55-a15e-eb07c7fc0c0a',
       name: 'Andrey K Tsuzuki',
       email: 'andreytsuzuki@gmail.com',
       avatar:

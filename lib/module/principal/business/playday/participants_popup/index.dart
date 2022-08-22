@@ -15,8 +15,10 @@ class BuildParticipantsPopup {
       barrierLabel: MaterialLocalizations.of(context).modalBarrierDismissLabel,
       transitionDuration: const Duration(microseconds: 200),
       pageBuilder: (BuildContext context, Animation first, Animation second) {
-        return BuildParticipantsPopupContainer(
-            participants: participants, participantCard: participantCard);
+        return ParticipantsPopupContainer(
+          participants: participants,
+          participantCard: participantCard,
+        );
       },
     );
   }

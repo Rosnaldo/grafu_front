@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grafu/module/principal/business/playday/index.dart';
+import 'package:grafu/module/principal/business/playday/participant_detail_popup/state.dart';
 import 'package:grafu/module/principal/container/playday/participant_detail_popup/index.dart';
 import 'package:provider/provider.dart';
 
@@ -25,7 +25,7 @@ class ParticipantDetailPopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final participant = context.watch<SelectedParticipantPopup>().participant;
+    final participant = context.read<SelectedParticipantPopup>().participant;
 
     return ParticipantDetailPopupContainer(participant: participant);
   }

@@ -24,6 +24,15 @@ class ImagePlatform {
       return Container();
     }
 
-    return Image.network(image);
+    return ClipOval(
+      child: Material(
+        child: Ink.image(
+          image: NetworkImage(image),
+          fit: BoxFit.cover,
+          width: 128,
+          height: 128,
+        ),
+      ),
+    );
   }
 }

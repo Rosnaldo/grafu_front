@@ -4,8 +4,8 @@ import 'package:grafu/module/principal/container/profile/update_photo_popup/stat
 import 'package:grafu/module/principal/container/profile/update_photo_popup/store/image_load_store.dart';
 
 class MockImageUploadStore extends IImageUploadStore {
-  MockImageUploadStore() : super(InitialImageLoadState(''));
+  MockImageUploadStore() : super(InitialImageUploadState());
 
   @override
-  Future loadImage(Uint8List bytes) async {}
+  Future loadImage(Uint8List bytes, String userId) async {}
 }
