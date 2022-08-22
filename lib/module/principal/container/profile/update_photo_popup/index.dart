@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:grafu/services/firestore/index.dart';
+import 'package:grafu/module/principal/container/profile/update_photo_popup/state/image_load_state.dart';
+import 'package:grafu/module/principal/container/profile/update_photo_popup/store/image_load_store.dart';
 
 import 'package:grafu/utils/cropper/mobile_ui_helper.dart';
 import 'package:grafu/utils/image_platform.dart';
 import 'package:grafu/utils/pick_media.dart';
 
 class UpdatePhotoPopupContainer extends StatefulWidget {
-  final IFirestoreService firestoreService;
+  final IImageUploadStore store;
 
   const UpdatePhotoPopupContainer({
     Key? key,
-    required this.firestoreService,
+    required this.store,
   }) : super(key: key);
 
   @override
@@ -18,24 +19,41 @@ class UpdatePhotoPopupContainer extends StatefulWidget {
       UpdatePhotoPopupContainerState();
 }
 
-class ImageStore extends ValueNotifier<String?> {
-  ImageStore() : super(null);
-
-  setValue(v) => value = v;
-}
-
 class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
-  ImageStore imageStore = ImageStore();
+  Widget buildImage<GlobalState>(_, ImageLoadState state, __) {
+    if (state is LoadingImageLoadState) {
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    }
+
+    if (state is ErrorImageLoadState) {
+      return Center(
+        child: Text(state.message),
+      );
+    }
+
+    if (state is SuccessImageLoadState) {
+      return Container(
+        child: ImagePlatform.image(image: state.image),
+      );
+    }
+
+    return Container();
+  }
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       content: SingleChildScrollView(
         child: AnimatedBuilder(
-            animation: imageStore,
+            animation: widget.store,
             builder: (context, child) {
               return ClipOval(
-                child: ImagePlatform.image(imageStore: imageStore),
+                child: ValueListenableBuilder<ImageLoadState>(
+                  valueListenable: widget.store,
+                  builder: buildImage,
+                ),
               );
             }),
       ),
@@ -50,10 +68,7 @@ class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
                     uiSettings: buildUiSettings(context),
                   );
 
-                  final urlDownload =
-                      widget.firestoreService.uploadImage(bytes!);
-
-                  imageStore.setValue(urlDownload);
+                  widget.store.loadImage(bytes!);
                 },
                 child: const Text('Carregar foto'),
               ),

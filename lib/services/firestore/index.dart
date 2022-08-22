@@ -4,24 +4,20 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:uuid/uuid.dart';
 
 abstract class IFirestoreService {
-  IFirestoreService();
-
-  Future uploadImage(Uint8List uint8List) async {}
+  Future<String> uploadImage(Uint8List uint8List) async {
+    return '';
+  }
 }
 
 class FirestoreService extends IFirestoreService {
-  late Reference ref;
-
-  construct() {
+  @override
+  Future<String> uploadImage(Uint8List uint8List) async {
     final storage = FirebaseStorage.instanceFor(
       bucket: 'gs://grafu-357616.appspot.com',
     );
 
-    ref = storage.ref('avatar-images');
-  }
+    final ref = storage.ref('avatar-images');
 
-  @override
-  Future<String> uploadImage(Uint8List uint8List) async {
     final uploadTask = ref.child(const Uuid().v4()).putData(uint8List);
 
     final snapshot = await uploadTask.whenComplete(() {});

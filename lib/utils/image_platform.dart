@@ -18,12 +18,12 @@ class ImagePlatform {
   }
 
   static Widget image({
-    required ValueNotifier<String?> imageStore,
+    required String? image,
   }) {
-    if (imageStore.value == null) {
+    if (image == null) {
       return Container();
     }
 
-    return Image.network(imageStore.value!);
+    return Image.network(image);
   }
 }
