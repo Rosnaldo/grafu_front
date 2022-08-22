@@ -1,25 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:grafu/mocks/participant.dart';
-import 'package:grafu/module/principal/business/playday/participant_card/mock.dart';
-import 'package:grafu/module/principal/business/playday/participant_detail_popup/mock.dart';
-import 'package:grafu/module/principal/container/index.dart';
-import 'package:grafu/module/principal/container/playday/index.dart';
-import 'package:grafu/module/register/container/index.dart';
-import 'package:grafu/module/register/services/sign_up/mock.dart';
+import 'package:grafu/module/principal/mock/index.dart';
+import 'package:storybook_flutter/storybook_flutter.dart';
+
+import 'package:grafu/module/login/mock/index.dart';
+import 'package:grafu/module/principal/mock/gallery/index.dart';
+import 'package:grafu/module/principal/mock/playday/index.dart';
+import 'package:grafu/module/principal/mock/profile/index.dart';
+import 'package:grafu/module/register/mock/index.dart';
 import 'package:grafu/module/reset/index.dart';
 import 'package:grafu/module/reset_email_message/index.dart';
 import 'package:grafu/module/verify_email_message/index.dart';
-import 'package:grafu/services/google_signin/mock.dart';
-import 'package:grafu/services/google_signout/mock.dart';
-import 'package:storybook_flutter/storybook_flutter.dart';
-
-import 'package:grafu/module/login/container/index.dart';
-import 'package:grafu/module/login/services/sign_in/mock.dart';
-
-import 'package:grafu/module/principal/container/gallery/index.dart';
-import 'package:grafu/module/principal/container/profile/index.dart';
-
-import 'package:grafu/store/mock_global_store.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,55 +33,27 @@ class HomeWidget extends StatelessWidget {
       stories: [
         Story(
           name: 'Login',
-          builder: (context) => LoginPageContainer(
-            signIn: MockSignIn(),
-            signInWithGoogle: MockSignInWithGoogle(),
-          ),
+          builder: (context) => const MockLoginPage(),
         ),
         Story(
           name: 'Register',
-          builder: (context) => RegisterPageContainer(
-              signUp: MockSignUp(), signInWithGoogle: MockSignInWithGoogle()),
+          builder: (context) => const MockRegisterPage(),
         ),
         Story(
           name: 'Profile',
-          builder: (context) => ProfilePageContainer(
-            store: MockGlobalStore(),
-            signOut: MockSignOut(),
-          ),
+          builder: (context) => const MockProfilePage(),
         ),
         Story(
           name: 'Principal',
-          builder: (context) => PrincipalPageContainer(
-              pageViewController: PageController(),
-              store: MockGlobalStore(),
-              widgetChildren: [
-                PlaydayPageContainer(
-                  store: MockGlobalStore(),
-                  participantCard: (participant) => MockParticipantCard(
-                    participant: MakeParticipants.make()[0],
-                    buildParticipantDetailPopup:
-                        MockBuildParticipantDetailPopup(),
-                  ),
-                ),
-                ProfilePageContainer(
-                    store: MockGlobalStore(), signOut: MockSignOut()),
-                GalleryPageContainer(store: MockGlobalStore()),
-              ]),
+          builder: (context) => const MockPrincipalPage(),
         ),
         Story(
           name: 'Playday',
-          builder: (context) => PlaydayPageContainer(
-            store: MockGlobalStore(),
-            participantCard: (participant) => MockParticipantCard(
-              participant: MakeParticipants.make()[0],
-              buildParticipantDetailPopup: MockBuildParticipantDetailPopup(),
-            ),
-          ),
+          builder: (context) => const MockPlaydayPage(),
         ),
         Story(
           name: 'Gallery',
-          builder: (context) => GalleryPageContainer(store: MockGlobalStore()),
+          builder: (context) => const MockGalleryPage(),
         ),
         Story(
           name: 'Reset Email',

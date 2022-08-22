@@ -4,8 +4,8 @@ import 'package:grafu/components/link_redirect/index.dart';
 import 'package:grafu/components/password_form_field/index.dart';
 import 'package:grafu/components/email_form_field/index.dart';
 import 'package:grafu/module/login/container/login_model.dart';
-import 'package:grafu/module/login/services/sign_in/index.dart';
 import 'package:grafu/services/google_signin/index.dart';
+import 'package:grafu/services/sign_in/index.dart';
 
 class LoginPageContainer extends StatefulWidget {
   final ISignIn signIn;

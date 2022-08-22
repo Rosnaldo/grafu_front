@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:grafu/services/firestore/index.dart';
 
@@ -7,25 +5,17 @@ import 'package:grafu/utils/cropper/mobile_ui_helper.dart';
 import 'package:grafu/utils/image_platform.dart';
 import 'package:grafu/utils/pick_media.dart';
 
-class BuildUpdatePhotoPopup {
-  static Future<void> showMyDialog(
-    BuildContext context,
-  ) async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) => const UpdatePhotoPopup(),
-    );
-  }
-}
+class UpdatePhotoPopupContainer extends StatefulWidget {
+  final IFirestoreService firestoreService;
 
-class UpdatePhotoPopup extends StatefulWidget {
-  const UpdatePhotoPopup({
+  const UpdatePhotoPopupContainer({
     Key? key,
+    required this.firestoreService,
   }) : super(key: key);
 
   @override
-  State<UpdatePhotoPopup> createState() => UpdatePhotoPopupState();
+  State<UpdatePhotoPopupContainer> createState() =>
+      UpdatePhotoPopupContainerState();
 }
 
 class ImageStore extends ValueNotifier<String?> {
@@ -34,9 +24,8 @@ class ImageStore extends ValueNotifier<String?> {
   setValue(v) => value = v;
 }
 
-class UpdatePhotoPopupState extends State<UpdatePhotoPopup> {
+class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
   ImageStore imageStore = ImageStore();
-  FirestoreService firestoreService = FirestoreService();
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +50,8 @@ class UpdatePhotoPopupState extends State<UpdatePhotoPopup> {
                     uiSettings: buildUiSettings(context),
                   );
 
-                  final urlDownload = firestoreService.uploadImage(bytes!);
+                  final urlDownload =
+                      widget.firestoreService.uploadImage(bytes!);
 
                   imageStore.setValue(urlDownload);
                 },

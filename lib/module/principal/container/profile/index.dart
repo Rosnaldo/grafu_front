@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:grafu/module/principal/container/profile/update_photo_popup/index.dart';
 import 'package:grafu/services/google_signout/index.dart';
 import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/global_store.dart';
@@ -8,10 +7,14 @@ import 'package:grafu/store/global_store.dart';
 class ProfilePageContainer extends StatelessWidget {
   final IGlobalStore store;
   final ISignOut signOut;
+  final Function onTapCb;
 
-  const ProfilePageContainer(
-      {Key? key, required this.store, required this.signOut})
-      : super(key: key);
+  const ProfilePageContainer({
+    Key? key,
+    required this.store,
+    required this.signOut,
+    required this.onTapCb,
+  }) : super(key: key);
 
   Widget buildImage(BuildContext context, String image) => ClipOval(
         child: Material(
@@ -22,14 +25,14 @@ class ProfilePageContainer extends StatelessWidget {
             width: 128,
             height: 128,
             child: InkWell(
-              onTap: () => BuildUpdatePhotoPopup.showMyDialog(context),
+              onTap: () => onTapCb(context),
             ),
           ),
         ),
       );
 
   Widget buildEditIcon(BuildContext context) => InkWell(
-        onTap: () => BuildUpdatePhotoPopup.showMyDialog(context),
+        onTap: () => onTapCb(context),
         child: buildCircle(
           color: Colors.white,
           all: 1.5,
