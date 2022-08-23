@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/models/user.dart';
 import 'package:grafu/services/google_signout/index.dart';
-import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/global_store.dart';
+import 'package:grafu/store/user_store.dart';
 
 class ProfilePageContainer extends StatelessWidget {
   final IGlobalStore store;
@@ -64,7 +65,7 @@ class ProfilePageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final state = store.value as SuccessGlobalState;
+    final userStore = Modular.get<UserStore>();
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -76,23 +77,25 @@ class ProfilePageContainer extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Stack(
-                  children: [
-                    buildImage(context, state.user),
-                    Positioned(
-                      bottom: 0,
-                      right: 8,
-                      child: buildEditIcon(context, state.user),
-                    ),
-                  ],
-                ),
+                child: Observer(builder: (_) {
+                  return Stack(
+                    children: [
+                      buildImage(context, userStore.user),
+                      Positioned(
+                        bottom: 0,
+                        right: 8,
+                        child: buildEditIcon(context, userStore.user),
+                      ),
+                    ],
+                  );
+                }),
               ),
               Text(
-                state.user.name,
+                userStore.user.name,
                 style:
                     const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
-              Text(state.user.email),
+              Text(userStore.user.email),
               const SizedBox(
                 height: 20,
               ),

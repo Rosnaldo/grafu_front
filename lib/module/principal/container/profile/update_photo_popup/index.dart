@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:grafu/module/principal/container/profile/update_photo_popup/state/image_load_state.dart';
-import 'package:grafu/module/principal/container/profile/update_photo_popup/store/image_load_store.dart';
-import 'package:grafu/state/global_state.dart';
-import 'package:grafu/store/global_store.dart';
+import 'package:grafu/module/principal/container/profile/update_photo_popup/state/avatar_load_state.dart';
+import 'package:grafu/module/principal/container/profile/update_photo_popup/store/avatar_load_store.dart';
+import 'package:grafu/store/user_store.dart';
 
 import 'package:grafu/utils/cropper/mobile_ui_helper.dart';
 import 'package:grafu/utils/image_platform.dart';
@@ -20,25 +19,25 @@ class UpdatePhotoPopupContainer extends StatefulWidget {
 }
 
 class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
-  Widget buildImage(ImageUploadState imageState, SuccessGlobalState state) {
-    if (imageState is InitialImageUploadState) {
-      return Center(child: ImagePlatform.image(image: state.user.avatar));
+  Widget buildImage(AvatarUploadState imageState, UserStore userStore) {
+    if (imageState is InitialAvatarUploadState) {
+      return Center(child: ImagePlatform.image(image: userStore.user.avatar));
     }
 
-    if (imageState is LoadingImageUploadState) {
+    if (imageState is LoadingAvatarUploadState) {
       return const Center(
         child: CircularProgressIndicator(),
       );
     }
 
-    if (imageState is ErrorImageUploadState) {
+    if (imageState is ErrorAvatarUploadState) {
       return Center(
         child: Text(imageState.message),
       );
     }
 
-    if (imageState is SuccessImageUploadState) {
-      return Center(child: ImagePlatform.image(image: state.user.avatar));
+    if (imageState is SuccessAvatarUploadState) {
+      return Center(child: ImagePlatform.image(image: userStore.user.avatar));
     }
 
     return Container();
@@ -46,16 +45,15 @@ class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
 
   @override
   Widget build(BuildContext context) {
-    final imageStore = ImageUploadStore();
-    final store = Modular.get<GlobalStore>();
-    final state = store.value as SuccessGlobalState;
+    final uploadStore = ImageUploadStore();
+    final userStore = Modular.get<UserStore>();
 
-    return ValueListenableBuilder<ImageUploadState>(
-      valueListenable: imageStore,
-      builder: (_, ImageUploadState imageState, __) {
+    return ValueListenableBuilder<AvatarUploadState>(
+      valueListenable: uploadStore,
+      builder: (_, AvatarUploadState uploadState, __) {
         return AlertDialog(
           content: SingleChildScrollView(
-            child: buildImage(imageState, state),
+            child: buildImage(uploadState, userStore),
           ),
           actions: <Widget>[
             Container(
@@ -68,9 +66,14 @@ class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
                       final bytes = await PickMedia.execute(
                         uiSettings: buildUiSettings(context),
                       );
-                      final userId = state.user.id;
+                      final userId = userStore.user.id;
 
-                      imageStore.loadImage(bytes!, userId);
+                      await uploadStore.loadImage(bytes!, userId);
+                      final avatar =
+                          (uploadStore.value as SuccessAvatarUploadState)
+                              .avatar;
+                      userStore
+                          .setUser(userStore.user.copyWith(avatar: avatar));
                     },
                     child: const Text('Carregar foto'),
                   ),

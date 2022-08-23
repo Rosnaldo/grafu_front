@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/models/participant.dart';
 import 'package:grafu/module/principal/business/playday/participants_popup/index.dart';
+import 'package:grafu/store/user_store.dart';
 
 class ParticipantList extends StatelessWidget {
   final List<Participant> participants;
@@ -14,6 +17,8 @@ class ParticipantList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userStore = Modular.get<UserStore>();
+
     return Column(
       children: [
         Row(
@@ -26,13 +31,24 @@ class ParticipantList extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 12.0),
-        Column(
-            children: participants
-                .sublist(0, 2)
-                .map(
-                  (participant) => participantCard(participant),
-                )
-                .toList()),
+        Column(children: [
+          Observer(builder: (_) {
+            return participantCard(Participant(
+              id: userStore.user.id,
+              avatar: userStore.user.avatar,
+              name: userStore.user.name,
+              age: userStore.user.age,
+              profession: userStore.user.profession,
+              status: ParticipantStatus.confirmed,
+            ));
+          }),
+          ...participants
+              .sublist(0, 2)
+              .map(
+                (participant) => participantCard(participant),
+              )
+              .toList()
+        ]),
         const SizedBox(height: 10.0),
         ElevatedButton.icon(
           icon: const Icon(Icons.group, size: 15.0),

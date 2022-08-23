@@ -6,6 +6,7 @@ import 'package:grafu/mocks/user.dart';
 import 'package:grafu/repositories/playday/repository.dart';
 import 'package:grafu/repositories/user/repository.dart';
 import 'package:grafu/state/global_state.dart';
+import 'package:grafu/store/user_store.dart';
 
 abstract class IGlobalStore extends ValueNotifier<GlobalState> {
   IGlobalStore(super.value);
@@ -16,8 +17,9 @@ abstract class IGlobalStore extends ValueNotifier<GlobalState> {
 class GlobalStore extends IGlobalStore {
   late final UserByEmailRepository userRepository;
   late final PlaydayByIdRepository playdayRepository;
+  late final UserStore userStore;
 
-  GlobalStore(this.userRepository, this.playdayRepository)
+  GlobalStore(this.userRepository, this.playdayRepository, this.userStore)
       : super(InitialGlobalState());
 
   @override
@@ -33,6 +35,7 @@ class GlobalStore extends IGlobalStore {
       // final participants = playday.participants;
 
       final user = MakeUser.make();
+      userStore.setUser(user);
       final playday = MakePlayday.make();
       final participants = MakeParticipants.make();
 
