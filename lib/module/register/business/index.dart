@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 import 'package:grafu/module/register/container/index.dart';
 import 'package:grafu/services/google_signin/index.dart';
@@ -11,9 +12,11 @@ class RegisterPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final signInWithGoogle = Modular.get<SignInWithGoogle>();
+
     return RegisterPageContainer(
       signUp: SignUp(),
-      signInWithGoogle: SignInWithGoogle(),
+      signInWithGoogle: signInWithGoogle,
     );
   }
 }

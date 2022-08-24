@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class ISignInWithGoogle {
@@ -10,8 +11,12 @@ abstract class ISignInWithGoogle {
 }
 
 class SignInWithGoogle extends ISignInWithGoogle {
+  late final FlutterSecureStorage secureStorage;
+
+  SignInWithGoogle(this.secureStorage) : super();
+
   @override
-  Future<UserCredential> execute() async {
+  Future execute() async {
     if (isWeb()) {
       return web();
     }
@@ -22,31 +27,32 @@ class SignInWithGoogle extends ISignInWithGoogle {
     return kIsWeb;
   }
 
-  Future<UserCredential> web() async {
+  Future web() async {
     GoogleAuthProvider googleProvider = GoogleAuthProvider();
 
     googleProvider
         .addScope('https://www.googleapis.com/auth/contacts.readonly');
     googleProvider.setCustomParameters({'login_hint': 'user@example.com'});
 
-    return await FirebaseAuth.instance.signInWithPopup(googleProvider);
+    final credential =
+        await FirebaseAuth.instance.signInWithPopup(googleProvider);
+
+    final token = await credential.user!.getIdToken();
+    await secureStorage.write(key: 'token', value: token);
   }
 
-  Future<UserCredential> androidIos() async {
-    // Trigger the authentication flow
+  Future androidIos() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-    // Obtain the auth details from the request
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
 
-    // Create a new credential
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
     );
 
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
+    final token = credential.idToken;
+    await secureStorage.write(key: 'token', value: token);
   }
 }

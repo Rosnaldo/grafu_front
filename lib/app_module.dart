@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-// import 'package:grafu/guards/auth_guard.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
+import 'package:grafu/guards/auth_guard.dart';
 import 'package:grafu/module/login/business/index.dart';
 import 'package:grafu/module/principal/principal_module.dart';
 import 'package:grafu/module/register/business/index.dart';
 import 'package:grafu/module/reset/index.dart';
 import 'package:grafu/module/reset_email_message/index.dart';
 import 'package:grafu/module/verify_email_message/index.dart';
+import 'package:grafu/services/google_signin/index.dart';
+import 'package:grafu/services/sign_in/index.dart';
+import 'package:grafu/services/signout/index.dart';
 
 class AppModule extends Module {
   @override
-  List<Bind> get binds => [];
+  List<Bind> get binds => [
+        Bind.lazySingleton((i) => const FlutterSecureStorage()),
+        Bind.lazySingleton((i) => SignIn(i())),
+        Bind.lazySingleton((i) => SignOut(i())),
+        Bind.lazySingleton((i) => SignInWithGoogle(i())),
+      ];
 
   @override
   List<ModularRoute> get routes => [
@@ -25,7 +34,7 @@ class AppModule extends Module {
         ModuleRoute(
           '/principal',
           module: PrincipalModule(),
-          // guards: [AuthGuard()],
+          guards: [AuthGuard()],
         ),
         WildcardRoute(
             child: (_, __) => const Scaffold(

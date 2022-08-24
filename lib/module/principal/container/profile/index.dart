@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/models/user.dart';
-import 'package:grafu/services/google_signout/index.dart';
+import 'package:grafu/services/signout/index.dart';
 import 'package:grafu/store/global_store.dart';
 import 'package:grafu/store/user_store.dart';
 

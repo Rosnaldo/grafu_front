@@ -9,6 +9,8 @@ abstract class ISignUp {
 }
 
 class SignUp extends ISignUp {
+  SignUp() : super();
+
   @override
   Future execute(RegisterModel registerModel) async {
     try {

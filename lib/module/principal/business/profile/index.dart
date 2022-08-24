@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/module/principal/business/profile/update_photo_popup/index.dart';
 import 'package:grafu/module/principal/container/profile/index.dart';
-import 'package:grafu/services/google_signout/index.dart';
+import 'package:grafu/services/signout/index.dart';
 import 'package:grafu/store/global_store.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -14,7 +14,6 @@ class ProfilePage extends StatefulWidget {
 
 class ProfilePageState extends State<ProfilePage> {
   onTapCb(context, user) {
-    // Provider.of<UpdateAvatarPopup>(context, listen: false).setUser(user);
     final buildUpdatePhotoPopup = BuildUpdatePhotoPopup();
     buildUpdatePhotoPopup.showMyDialog(context);
   }
@@ -22,10 +21,11 @@ class ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final store = Modular.get<GlobalStore>();
+    final signOut = Modular.get<SignOut>();
 
     return ProfilePageContainer(
       store: store,
-      signOut: SignOut(),
+      signOut: signOut,
       onTapCb: onTapCb,
     );
   }

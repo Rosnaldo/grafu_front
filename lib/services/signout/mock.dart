@@ -1,4 +1,4 @@
-import 'package:grafu/services/google_signout/index.dart';
+import 'package:grafu/services/signout/index.dart';
 
 class MockSignOut extends ISignOut {
   @override
