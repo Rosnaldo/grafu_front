@@ -7,7 +7,7 @@ class MakeUser {
       name: 'Andrey K Tsuzuki',
       email: 'andreytsuzuki@gmail.com',
       avatar:
-          'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0',
+          'https://firebasestorage.googleapis.com/v0/b/grafu-357616.appspot.com/o/avatar-images%2F400bef51-543c-49f3-b3b1-312e02299d6b?alt=media&token=b410801f-8612-4f42-a5ef-a4e9d089eb80',
     );
   }
 }

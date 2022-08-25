@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'package:grafu/guards/auth_guard.dart';
 import 'package:grafu/module/login/business/index.dart';
@@ -12,14 +11,15 @@ import 'package:grafu/module/verify_email_message/index.dart';
 import 'package:grafu/services/google_signin/index.dart';
 import 'package:grafu/services/sign_in/index.dart';
 import 'package:grafu/services/signout/index.dart';
+import 'package:grafu/store/initial_email_store.dart';
 
 class AppModule extends Module {
   @override
   List<Bind> get binds => [
-        Bind.lazySingleton((i) => const FlutterSecureStorage()),
-        Bind.lazySingleton((i) => SignIn(i())),
-        Bind.lazySingleton((i) => SignOut(i())),
-        Bind.lazySingleton((i) => SignInWithGoogle(i())),
+        Bind.lazySingleton((i) => InitialEmailStore()),
+        Bind.lazySingleton((i) => SignIn()),
+        Bind.lazySingleton((i) => SignOut()),
+        Bind.lazySingleton((i) => SignInWithGoogle()),
       ];
 
   @override

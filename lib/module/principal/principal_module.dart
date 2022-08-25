@@ -14,7 +14,7 @@ class PrincipalModule extends Module {
         Bind.lazySingleton((i) => UserByEmailRepository()),
         Bind.lazySingleton((i) => PlaydayByIdRepository()),
         Bind.lazySingleton((i) => UserStore()),
-        Bind.lazySingleton((i) => GlobalStore(i(), i(), i())),
+        Bind.lazySingleton((i) => GlobalStore(i(), i(), i(), i())),
       ];
 
   @override

@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 abstract class ISignOut {
   ISignOut();
@@ -8,13 +7,10 @@ abstract class ISignOut {
 }
 
 class SignOut extends ISignOut {
-  late final FlutterSecureStorage secureStorage;
-
-  SignOut(this.secureStorage) : super();
+  SignOut() : super();
 
   @override
   Future<void> execute() async {
     FirebaseAuth.instance.signOut();
-    await secureStorage.delete(key: 'token');
   }
 }

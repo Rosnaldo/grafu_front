@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class ISignInWithGoogle {
@@ -11,9 +10,7 @@ abstract class ISignInWithGoogle {
 }
 
 class SignInWithGoogle extends ISignInWithGoogle {
-  late final FlutterSecureStorage secureStorage;
-
-  SignInWithGoogle(this.secureStorage) : super();
+  SignInWithGoogle() : super();
 
   @override
   Future execute() async {
@@ -34,11 +31,7 @@ class SignInWithGoogle extends ISignInWithGoogle {
         .addScope('https://www.googleapis.com/auth/contacts.readonly');
     googleProvider.setCustomParameters({'login_hint': 'user@example.com'});
 
-    final credential =
-        await FirebaseAuth.instance.signInWithPopup(googleProvider);
-
-    final token = await credential.user!.getIdToken();
-    await secureStorage.write(key: 'token', value: token);
+    await FirebaseAuth.instance.signInWithPopup(googleProvider);
   }
 
   Future androidIos() async {
@@ -47,12 +40,9 @@ class SignInWithGoogle extends ISignInWithGoogle {
     final GoogleSignInAuthentication? googleAuth =
         await googleUser?.authentication;
 
-    final credential = GoogleAuthProvider.credential(
+    GoogleAuthProvider.credential(
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
     );
-
-    final token = credential.idToken;
-    await secureStorage.write(key: 'token', value: token);
   }
 }
