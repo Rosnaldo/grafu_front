@@ -28,6 +28,7 @@ class SignInWithGoogle extends ISignInWithGoogle {
   }
 
   Future web() async {
+    // await FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
     GoogleAuthProvider googleProvider = GoogleAuthProvider();
 
     googleProvider
@@ -45,6 +46,7 @@ class SignInWithGoogle extends ISignInWithGoogle {
   }
 
   Future androidIos() async {
+    // await FirebaseAuth.instance.setPersistence(Persistence.LOCAL);
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     final GoogleSignInAuthentication? googleAuth =

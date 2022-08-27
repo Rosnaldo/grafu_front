@@ -6,7 +6,6 @@ import 'package:grafu/store/global_store.dart';
 import 'package:grafu/module/principal/business/gallery/index.dart';
 import 'package:grafu/module/principal/business/playday/index.dart';
 import 'package:grafu/module/principal/business/profile/index.dart';
-import 'package:grafu/store/login_store.dart';
 
 class PrincipalPage extends StatefulWidget {
   const PrincipalPage({
@@ -20,7 +19,6 @@ class PrincipalPage extends StatefulWidget {
 class PrincipalPageState extends State<PrincipalPage> {
   final pageViewController = PageController();
   final store = Modular.get<GlobalStore>();
-  final loginStore = Modular.get<LoginStore>();
 
   @override
   void initState() {

@@ -14,7 +14,7 @@ import 'package:grafu/module/principal/container/playday/location.dart';
 import 'package:grafu/module/principal/container/playday/timeline.dart';
 import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/global_store.dart';
-import 'package:grafu/store/login_store.dart';
+import 'package:grafu/store/signin_store.dart';
 
 import 'carousel.dart';
 
@@ -31,10 +31,10 @@ class PlaydayPageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = store.value as SuccessGlobalState;
-    final loginStore = Modular.get<LoginStore>();
+    final signinStore = Modular.get<SigninStore>();
 
     int findLoggedParticipant(List<Participant> list) {
-      return list.indexWhere((p) => p.email == loginStore.email);
+      return list.indexWhere((p) => p.email == signinStore.email);
     }
 
     List<Participant> orderParticipants(List<Participant> list) {

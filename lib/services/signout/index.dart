@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:grafu/store/login_store.dart';
+import 'package:grafu/store/signin_store.dart';
 
 abstract class ISignOut {
   ISignOut();
@@ -8,13 +8,13 @@ abstract class ISignOut {
 }
 
 class SignOut extends ISignOut {
-  late final LoginStore loginStore;
+  late final SigninStore signinStore;
 
-  SignOut(this.loginStore) : super();
+  SignOut(this.signinStore) : super();
 
   @override
   Future<void> execute() async {
     await FirebaseAuth.instance.signOut();
-    loginStore.signout();
+    await signinStore.removeLogin();
   }
 }

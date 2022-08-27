@@ -4,7 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/models/user.dart';
 import 'package:grafu/services/signout/index.dart';
 import 'package:grafu/store/global_store.dart';
-import 'package:grafu/store/login_store.dart';
+import 'package:grafu/store/signin_store.dart';
 import 'package:grafu/store/user_store.dart';
 
 class ProfilePageContainer extends StatelessWidget {
@@ -82,10 +82,10 @@ class ProfilePageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userStore = Modular.get<UserStore>();
-    final loginStore = Modular.get<LoginStore>();
+    final signinStore = Modular.get<SigninStore>();
 
     List<Widget> signedWidgets() {
-      return (loginStore.isSigned)
+      return (signinStore.isSignin)
           ? [
               Padding(
                 padding: const EdgeInsets.all(20.0),
