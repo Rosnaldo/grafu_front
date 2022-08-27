@@ -1,8 +1,9 @@
 import 'package:equatable/equatable.dart';
 
 enum ParticipantStatus {
-  confirmed,
+  unregistered,
   pending,
+  confirmed,
 }
 
 class Participant extends Equatable {

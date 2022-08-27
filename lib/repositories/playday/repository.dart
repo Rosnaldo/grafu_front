@@ -7,9 +7,9 @@ import 'package:grafu/repositories/playday/mapper.dart';
 import 'package:grafu/repositories/playday/response_playday.dart';
 
 class PlaydayByIdRepository {
-  Future<Playday> get(id) async {
+  Future<Playday> get(playdayId) async {
     final response = await Dio().get(
-      'https://grafu-back.herokuapp.com/v1/playday/1bb79eaa-457f-4380-acaa-c7af614668cf?participant_user=true',
+      'https://grafu-back.herokuapp.com/v1/playday/$playdayId?participant_user=true',
     );
 
     final jsonData = json.encode(response.data);

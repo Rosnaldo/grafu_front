@@ -22,6 +22,7 @@ class SignUp extends ISignUp {
         password: registerModel.password,
       );
       final user = FirebaseAuth.instance.currentUser!;
+
       await user.sendEmailVerification();
 
       await userRegisterRepository.execute(

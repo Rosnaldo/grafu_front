@@ -3,6 +3,7 @@ import 'package:grafu/module/principal/business/gallery/index.dart';
 import 'package:grafu/module/principal/business/playday/index.dart';
 import 'package:grafu/module/principal/business/profile/index.dart';
 import 'package:grafu/module/principal/business/index.dart';
+import 'package:grafu/repositories/participant/repository_register.dart';
 import 'package:grafu/repositories/playday/repository.dart';
 import 'package:grafu/repositories/user/repository.dart';
 import 'package:grafu/store/global_store.dart';
@@ -11,10 +12,11 @@ import 'package:grafu/store/user_store.dart';
 class PrincipalModule extends Module {
   @override
   List<Bind> get binds => [
+        Bind.lazySingleton((i) => ParticipantRegisterRepository()),
         Bind.lazySingleton((i) => UserByEmailRepository()),
         Bind.lazySingleton((i) => PlaydayByIdRepository()),
         Bind.lazySingleton((i) => UserStore()),
-        Bind.lazySingleton((i) => GlobalStore(i(), i(), i(), i())),
+        Bind.lazySingleton((i) => GlobalStore(i(), i(), i(), i(), i())),
       ];
 
   @override

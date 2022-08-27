@@ -13,7 +13,7 @@ class UserRegisterRepository {
     String? profession,
   }) async {
     final response = await Dio().post(
-      'https://grafu-back.herokuapp.com/v1/user',
+      'https://grafu-back.herokuapp.com/v1/user/register',
       data: {
         'email': email,
         'name': name,
