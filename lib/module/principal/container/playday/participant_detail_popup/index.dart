@@ -35,7 +35,10 @@ class ParticipantDetailPopupContainerState
           const SizedBox(height: 10.0),
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
-            child: Image.network(height: 200.0, widget.participant.avatar),
+            child: Image.network(
+                height: 200.0,
+                widget.participant.avatar ??
+                    'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'),
           ),
           const SizedBox(height: 16.0),
           Padding(

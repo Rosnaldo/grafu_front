@@ -9,7 +9,7 @@ class Participant extends Equatable {
   final String id;
   final String email;
   final String name;
-  final String avatar;
+  final String? avatar;
   final int? age;
   final String? profession;
   final ParticipantStatus status;
@@ -18,8 +18,8 @@ class Participant extends Equatable {
     required this.id,
     required this.name,
     required this.email,
-    required this.avatar,
     required this.status,
+    this.avatar,
     this.age,
     this.profession,
   });

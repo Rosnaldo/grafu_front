@@ -8,18 +8,22 @@ import 'package:grafu/module/register/business/index.dart';
 import 'package:grafu/module/reset/index.dart';
 import 'package:grafu/module/reset_email_message/index.dart';
 import 'package:grafu/module/verify_email_message/index.dart';
+import 'package:grafu/repositories/user/repository_register.dart';
 import 'package:grafu/services/google_signin/index.dart';
 import 'package:grafu/services/sign_in/index.dart';
+import 'package:grafu/services/sign_up/index.dart';
 import 'package:grafu/services/signout/index.dart';
 import 'package:grafu/store/login_store.dart';
 
 class AppModule extends Module {
   @override
   List<Bind> get binds => [
+        Bind.lazySingleton((i) => UserRegisterRepository()),
         Bind.lazySingleton((i) => LoginStore()),
+        Bind.lazySingleton((i) => SignUp(i())),
         Bind.lazySingleton((i) => SignIn(i())),
         Bind.lazySingleton((i) => SignOut(i())),
-        Bind.lazySingleton((i) => SignInWithGoogle()),
+        Bind.lazySingleton((i) => SignInWithGoogle(i())),
       ];
 
   @override

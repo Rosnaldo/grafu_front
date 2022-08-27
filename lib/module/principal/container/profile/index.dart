@@ -37,7 +37,8 @@ class ProfilePageContainer extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: Ink.image(
-            image: NetworkImage(user.avatar),
+            image: NetworkImage(user.avatar ??
+                'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'),
             fit: BoxFit.cover,
             width: 128,
             height: 128,

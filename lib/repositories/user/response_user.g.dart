@@ -26,11 +26,15 @@ class _$ResponseUserSerializer implements StructuredSerializer<ResponseUser> {
       'email',
       serializers.serialize(object.email,
           specifiedType: const FullType(String)),
-      'avatar',
-      serializers.serialize(object.avatar,
-          specifiedType: const FullType(String)),
     ];
     Object? value;
+    value = object.avatar;
+    if (value != null) {
+      result
+        ..add('avatar')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     value = object.age;
     if (value != null) {
       result
@@ -73,7 +77,7 @@ class _$ResponseUserSerializer implements StructuredSerializer<ResponseUser> {
           break;
         case 'avatar':
           result.avatar = serializers.deserialize(value,
-              specifiedType: const FullType(String))! as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'age':
           result.age = serializers.deserialize(value,
@@ -98,7 +102,7 @@ class _$ResponseUser extends ResponseUser {
   @override
   final String email;
   @override
-  final String avatar;
+  final String? avatar;
   @override
   final int? age;
   @override
@@ -111,14 +115,13 @@ class _$ResponseUser extends ResponseUser {
       {required this.id,
       required this.name,
       required this.email,
-      required this.avatar,
+      this.avatar,
       this.age,
       this.profession})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, r'ResponseUser', 'id');
     BuiltValueNullFieldError.checkNotNull(name, r'ResponseUser', 'name');
     BuiltValueNullFieldError.checkNotNull(email, r'ResponseUser', 'email');
-    BuiltValueNullFieldError.checkNotNull(avatar, r'ResponseUser', 'avatar');
   }
 
   @override
@@ -230,8 +233,7 @@ class ResponseUserBuilder
                 name, r'ResponseUser', 'name'),
             email: BuiltValueNullFieldError.checkNotNull(
                 email, r'ResponseUser', 'email'),
-            avatar: BuiltValueNullFieldError.checkNotNull(
-                avatar, r'ResponseUser', 'avatar'),
+            avatar: avatar,
             age: age,
             profession: profession);
     replace(_$result);

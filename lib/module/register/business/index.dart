@@ -13,9 +13,10 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final signInWithGoogle = Modular.get<SignInWithGoogle>();
+    final signUp = Modular.get<SignUp>();
 
     return RegisterPageContainer(
-      signUp: SignUp(),
+      signUp: signUp,
       signInWithGoogle: signInWithGoogle,
     );
   }

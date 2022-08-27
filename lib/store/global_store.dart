@@ -31,7 +31,7 @@ class GlobalStore extends IGlobalStore {
         userStore.setUser(user);
       }
 
-      const playdayId = '1bb79eaa-457f-4380-acaa-c7af614668cf';
+      const playdayId = '6618fa37-5de2-49cb-9d72-e828da3eab1e';
       final playday = await playdayRepository.get(playdayId);
 
       final participants = playday.participants;

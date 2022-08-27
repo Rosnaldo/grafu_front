@@ -5,7 +5,7 @@ class User extends Equatable {
   final String id;
   final String name;
   final String email;
-  final String avatar;
+  final String? avatar;
   final int? age;
   final String? profession;
   final List<Playday>? adminPlayday;
