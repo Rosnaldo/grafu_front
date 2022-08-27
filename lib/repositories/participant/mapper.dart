@@ -5,8 +5,9 @@ class ParticipantResponseMapper {
   static Participant toEntity(ResponseParticipant r) {
     return Participant(
       id: r.id,
-      avatar: r.user.avatar,
       name: r.user.name,
+      email: r.user.email,
+      avatar: r.user.avatar,
       status: mapStatus(r.status),
       age: r.user.age,
       profession: r.user.profession,

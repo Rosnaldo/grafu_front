@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/models/participant.dart';
 
 import 'package:grafu/module/principal/container/playday/buy_ticket.dart';
@@ -13,6 +14,7 @@ import 'package:grafu/module/principal/container/playday/location.dart';
 import 'package:grafu/module/principal/container/playday/timeline.dart';
 import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/global_store.dart';
+import 'package:grafu/store/login_store.dart';
 
 import 'carousel.dart';
 
@@ -29,6 +31,25 @@ class PlaydayPageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final state = store.value as SuccessGlobalState;
+    final loginStore = Modular.get<LoginStore>();
+
+    int findLoggedParticipant(List<Participant> list) {
+      return list.indexWhere((p) => p.email == loginStore.email);
+    }
+
+    List<Participant> orderParticipants(List<Participant> list) {
+      final int index = findLoggedParticipant(list);
+
+      if (index == -1) {
+        return list;
+      }
+
+      return [
+        list[index],
+        ...list.sublist(0, index),
+        ...list.sublist(index + 1, list.length),
+      ];
+    }
 
     return Scaffold(
       body: SafeArea(
@@ -46,7 +67,7 @@ class PlaydayPageContainer extends StatelessWidget {
                     const Description(),
                     const Line(),
                     ParticipantList(
-                      participants: state.participants,
+                      participants: orderParticipants(state.participants),
                       participantCard: participantCard,
                     ),
                     const Line(),

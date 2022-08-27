@@ -6,12 +6,14 @@ class PrincipalPageContainer extends StatefulWidget {
   final PageController pageViewController;
   final IGlobalStore store;
   final List<Widget> widgetChildren;
+  final List<BottomNavigationBarItem> buildListBottomNavigationBarItem;
 
   const PrincipalPageContainer({
     Key? key,
     required this.pageViewController,
     required this.store,
     required this.widgetChildren,
+    required this.buildListBottomNavigationBarItem,
   }) : super(key: key);
 
   @override
@@ -30,29 +32,7 @@ class PrincipalPageContainerState extends State<PrincipalPageContainer> {
           onTap: (index) {
             widget.pageViewController.jumpToPage(index);
           },
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              label: 'Evento',
-              icon: Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Icon(Icons.event_available),
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: 'Perfil',
-              icon: Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Icon(Icons.person),
-              ),
-            ),
-            BottomNavigationBarItem(
-              label: 'Galleria',
-              icon: Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Icon(Icons.table_rows),
-              ),
-            ),
-          ],
+          items: widget.buildListBottomNavigationBarItem,
         );
       },
     );

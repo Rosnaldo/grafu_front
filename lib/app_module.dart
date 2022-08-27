@@ -11,12 +11,12 @@ import 'package:grafu/module/verify_email_message/index.dart';
 import 'package:grafu/services/google_signin/index.dart';
 import 'package:grafu/services/sign_in/index.dart';
 import 'package:grafu/services/signout/index.dart';
-import 'package:grafu/store/initial_email_store.dart';
+import 'package:grafu/store/login_store.dart';
 
 class AppModule extends Module {
   @override
   List<Bind> get binds => [
-        Bind.lazySingleton((i) => InitialEmailStore()),
+        Bind.lazySingleton((i) => LoginStore()),
         Bind.lazySingleton((i) => SignIn()),
         Bind.lazySingleton((i) => SignOut()),
         Bind.lazySingleton((i) => SignInWithGoogle()),
@@ -37,9 +37,10 @@ class AppModule extends Module {
           guards: [AuthGuard()],
         ),
         WildcardRoute(
-            child: (_, __) => const Scaffold(
-                    body: Center(
-                  child: Text('Pagina não existe'),
-                )))
+          child: (_, __) => const Scaffold(
+              body: Center(
+            child: Text('Pagina não existe'),
+          )),
+        )
       ];
 }
