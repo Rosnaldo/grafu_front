@@ -35,19 +35,10 @@ class PrincipalPageState extends State<PrincipalPage> {
   }
 
   List<Widget> widgetChildren() {
-    final List<Widget> stack = [];
-    stack.add(const PlaydayPage());
-    if (loginStore.isLogged) {
-      stack.add(const ProfilePage());
-    }
-    stack.add(const GalleryPage());
-
-    return stack;
+    return const <Widget>[PlaydayPage(), ProfilePage(), GalleryPage()];
   }
 
   List<BottomNavigationBarItem> buildListBottomNavigationBarItem() {
-    List<BottomNavigationBarItem> stack = [];
-
     const evento = BottomNavigationBarItem(
       label: 'Evento',
       icon: Padding(
@@ -72,13 +63,11 @@ class PrincipalPageState extends State<PrincipalPage> {
       ),
     );
 
-    stack.add(evento);
-    if (loginStore.isLogged) {
-      stack.add(perfil);
-    }
-    stack.add(galeria);
-
-    return stack;
+    return <BottomNavigationBarItem>[
+      evento,
+      perfil,
+      galeria,
+    ];
   }
 
   @override

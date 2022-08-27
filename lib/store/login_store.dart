@@ -9,10 +9,15 @@ abstract class LoginStoreBase with Store {
   String? email;
 
   @computed
-  bool get isLogged => email != null;
+  bool get isSigned => email != null;
 
   @action
   setEmail(String e) {
     email = e;
+  }
+
+  @action
+  signout() {
+    email = null;
   }
 }

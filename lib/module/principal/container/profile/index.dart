@@ -4,6 +4,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/models/user.dart';
 import 'package:grafu/services/signout/index.dart';
 import 'package:grafu/store/global_store.dart';
+import 'package:grafu/store/login_store.dart';
 import 'package:grafu/store/user_store.dart';
 
 class ProfilePageContainer extends StatelessWidget {
@@ -18,7 +19,21 @@ class ProfilePageContainer extends StatelessWidget {
     required this.onTapCb,
   }) : super(key: key);
 
-  Widget buildImage(BuildContext context, User user) => ClipOval(
+  Widget buildNoAvatar() => ClipOval(
+        child: Material(
+          color: Colors.transparent,
+          child: Ink.image(
+            image: const NetworkImage(
+              'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
+            ),
+            fit: BoxFit.cover,
+            width: 128,
+            height: 128,
+          ),
+        ),
+      );
+
+  Widget buildAvatar(BuildContext context, User user) => ClipOval(
         child: Material(
           color: Colors.transparent,
           child: Ink.image(
@@ -66,21 +81,17 @@ class ProfilePageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userStore = Modular.get<UserStore>();
+    final loginStore = Modular.get<LoginStore>();
 
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: [
-              const SizedBox(
-                height: 60,
-              ),
+    List<Widget> signedWidgets() {
+      return (loginStore.isSigned)
+          ? [
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Observer(builder: (_) {
                   return Stack(
                     children: [
-                      buildImage(context, userStore.user),
+                      buildAvatar(context, userStore.user),
                       Positioned(
                         bottom: 0,
                         right: 8,
@@ -114,7 +125,41 @@ class ProfilePageContainer extends StatelessWidget {
                   style: TextStyle(color: Colors.pink.shade200),
                 ),
               ),
-            ],
+            ]
+          : [
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: Observer(builder: (_) {
+                  return Stack(
+                    children: [
+                      buildNoAvatar(),
+                    ],
+                  );
+                }),
+              ),
+              OutlinedButton.icon(
+                style: OutlinedButton.styleFrom(
+                  side: BorderSide(width: 1.0, color: Colors.pink.shade200),
+                ),
+                onPressed: () async {
+                  await signOut.execute();
+                  Modular.to.navigate('/');
+                },
+                label:
+                    Icon(Icons.logout, color: Colors.pink.shade200, size: 16.0),
+                icon: Text(
+                  'Fazer login',
+                  style: TextStyle(color: Colors.pink.shade200),
+                ),
+              ),
+            ];
+    }
+
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: signedWidgets(),
           ),
         ),
       ),

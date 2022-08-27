@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:grafu/store/login_store.dart';
 
 class AuthGuard extends RouteGuard {
   AuthGuard() : super(redirectTo: '/');
@@ -20,12 +19,10 @@ class AuthGuard extends RouteGuard {
 
   @override
   Future<bool> canActivate(String path, ModularRoute route) async {
-    final loginStore = Modular.get<LoginStore>();
     final currentUser = await getCurrentUser();
     if (currentUser == null) {
-      return true;
+      return false;
     }
-    loginStore.setEmail(currentUser.email!);
     return true;
   }
 }

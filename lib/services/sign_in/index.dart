@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:grafu/store/login_store.dart';
 import 'package:grafu/utils/failure.dart';
 import 'package:grafu/module/login/container/login_model.dart';
 
@@ -9,7 +10,9 @@ abstract class ISignIn {
 }
 
 class SignIn extends ISignIn {
-  SignIn() : super();
+  late final LoginStore loginStore;
+
+  SignIn(this.loginStore) : super();
 
   @override
   Future execute(LoginModel loginModel) async {
@@ -20,10 +23,13 @@ class SignIn extends ISignIn {
         password: loginModel.password,
       );
 
+      final currentUser = FirebaseAuth.instance.currentUser;
+
       final isEmailVerified = FirebaseAuth.instance.currentUser!.emailVerified;
       if (!isEmailVerified) {
         throw Failure('Email não foi ativado ainda.');
       }
+      loginStore.setEmail(currentUser!.email!);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'wrong-password') {
         throw Failure('Senha ou email invalido.');

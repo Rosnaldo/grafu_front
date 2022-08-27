@@ -26,7 +26,7 @@ class GlobalStore extends IGlobalStore {
   Future fetch() async {
     value = LoadingGlobalState();
     try {
-      if (loginStore.isLogged) {
+      if (loginStore.isSigned) {
         final user = await userRepository.get(loginStore.email);
         userStore.setUser(user);
       }

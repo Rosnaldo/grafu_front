@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'package:grafu/guards/auth_guard.dart';
+// import 'package:grafu/guards/auth_guard.dart';
 import 'package:grafu/module/login/business/index.dart';
 import 'package:grafu/module/principal/principal_module.dart';
 import 'package:grafu/module/register/business/index.dart';
@@ -17,8 +17,8 @@ class AppModule extends Module {
   @override
   List<Bind> get binds => [
         Bind.lazySingleton((i) => LoginStore()),
-        Bind.lazySingleton((i) => SignIn()),
-        Bind.lazySingleton((i) => SignOut()),
+        Bind.lazySingleton((i) => SignIn(i())),
+        Bind.lazySingleton((i) => SignOut(i())),
         Bind.lazySingleton((i) => SignInWithGoogle()),
       ];
 
@@ -34,13 +34,13 @@ class AppModule extends Module {
         ModuleRoute(
           '/principal',
           module: PrincipalModule(),
-          guards: [AuthGuard()],
+          // guards: [AuthGuard()],
         ),
         WildcardRoute(
           child: (_, __) => const Scaffold(
               body: Center(
             child: Text('Pagina não existe'),
           )),
-        )
+        ),
       ];
 }
