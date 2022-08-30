@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/models/participant.dart';
 
 import 'package:grafu/module/principal/container/playday/buy_ticket.dart';
@@ -13,25 +12,26 @@ import 'package:grafu/module/principal/container/playday/line.dart';
 import 'package:grafu/module/principal/container/playday/location.dart';
 import 'package:grafu/module/principal/container/playday/timeline.dart';
 import 'package:grafu/state/global_state.dart';
-import 'package:grafu/store/global_store.dart';
-import 'package:grafu/store/signin_store.dart';
+import 'package:grafu/store/global_store/index.dart';
+import 'package:grafu/store/signin_store/index.dart';
 
 import 'carousel.dart';
 
 class PlaydayPageContainer extends StatelessWidget {
   final IGlobalStore store;
+  final ISigninStore signinStore;
   final Widget Function(Participant participant) participantCard;
 
   const PlaydayPageContainer({
     Key? key,
     required this.store,
     required this.participantCard,
+    required this.signinStore,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final state = store.value as SuccessGlobalState;
-    final signinStore = Modular.get<SigninStore>();
 
     int findLoggedParticipant(List<Participant> list) {
       return list.indexWhere((p) => p.email == signinStore.email);

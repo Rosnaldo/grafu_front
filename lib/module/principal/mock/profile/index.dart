@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:grafu/module/principal/business/profile/update_photo_popup/mock.dart';
 import 'package:grafu/module/principal/container/profile/index.dart';
 import 'package:grafu/services/signout/mock.dart';
-import 'package:grafu/store/mock_global_store.dart';
+import 'package:grafu/store/global_store/mock.dart';
+import 'package:grafu/store/mock.dart';
+import 'package:grafu/store/signin_store/mock.dart';
 
 class MockProfilePage extends StatelessWidget {
   const MockProfilePage({
@@ -19,6 +21,8 @@ class MockProfilePage extends StatelessWidget {
     return ProfilePageContainer(
       store: MockGlobalStore(),
       signOut: MockSignOut(),
+      signinStore: MockSigninStore(),
+      userStore: MockUserStore(),
       onTapCb: onTapCb,
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/module/principal/container/gallery/index.dart';
-import 'package:grafu/store/mock_global_store.dart';
+import 'package:grafu/store/global_store/mock.dart';
 
 class MockGalleryPage extends StatelessWidget {
   const MockGalleryPage({

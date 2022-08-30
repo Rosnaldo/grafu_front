@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/state/global_state.dart';
-import 'package:grafu/store/global_store.dart';
+import 'package:grafu/store/global_store/index.dart';
 
 class PrincipalPageContainer extends StatefulWidget {
   final PageController pageViewController;

@@ -3,20 +3,24 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/models/user.dart';
 import 'package:grafu/services/signout/index.dart';
-import 'package:grafu/store/global_store.dart';
-import 'package:grafu/store/signin_store.dart';
+import 'package:grafu/store/global_store/index.dart';
+import 'package:grafu/store/signin_store/index.dart';
 import 'package:grafu/store/user_store.dart';
 
 class ProfilePageContainer extends StatelessWidget {
   final IGlobalStore store;
   final ISignOut signOut;
   final Function onTapCb;
+  final ISigninStore signinStore;
+  final IUserStore userStore;
 
   const ProfilePageContainer({
     Key? key,
     required this.store,
     required this.signOut,
     required this.onTapCb,
+    required this.signinStore,
+    required this.userStore,
   }) : super(key: key);
 
   Widget buildNoAvatar() => ClipOval(
@@ -81,9 +85,6 @@ class ProfilePageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userStore = Modular.get<UserStore>();
-    final signinStore = Modular.get<SigninStore>();
-
     List<Widget> signedWidgets() {
       return (signinStore.isSignin)
           ? [
@@ -92,22 +93,22 @@ class ProfilePageContainer extends StatelessWidget {
                 child: Observer(builder: (_) {
                   return Stack(
                     children: [
-                      buildAvatar(context, userStore.user),
+                      buildAvatar(context, userStore.getUser()),
                       Positioned(
                         bottom: 0,
                         right: 8,
-                        child: buildEditIcon(context, userStore.user),
+                        child: buildEditIcon(context, userStore.getUser()),
                       ),
                     ],
                   );
                 }),
               ),
               Text(
-                userStore.user.name,
+                userStore.getUser().name,
                 style:
                     const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
-              Text(userStore.user.email),
+              Text(userStore.getUser().email),
               const SizedBox(
                 height: 20,
               ),

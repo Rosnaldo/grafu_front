@@ -14,7 +14,7 @@ import 'package:grafu/services/google_signin/index.dart';
 import 'package:grafu/services/sign_in/index.dart';
 import 'package:grafu/services/sign_up/index.dart';
 import 'package:grafu/services/signout/index.dart';
-import 'package:grafu/store/signin_store.dart';
+import 'package:grafu/store/signin_store/index.dart';
 
 class AppModule extends Module {
   @override

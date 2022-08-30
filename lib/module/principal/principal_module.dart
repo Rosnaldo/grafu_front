@@ -6,7 +6,7 @@ import 'package:grafu/module/principal/business/index.dart';
 import 'package:grafu/repositories/participant/repository_register.dart';
 import 'package:grafu/repositories/playday/repository.dart';
 import 'package:grafu/repositories/user/repository.dart';
-import 'package:grafu/store/global_store.dart';
+import 'package:grafu/store/global_store/index.dart';
 import 'package:grafu/store/user_store.dart';
 
 class PrincipalModule extends Module {

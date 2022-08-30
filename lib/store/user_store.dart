@@ -5,14 +5,37 @@ import 'package:grafu/models/user.dart';
 
 part 'user_store.g.dart';
 
-class UserStore = UserStoreBase with _$UserStore;
+abstract class IUserStore {
+  final User user = MakeUser.make();
+  getUser() {}
+  setUser(User u) {}
+}
 
-abstract class UserStoreBase with Store {
+class UserStore extends IUserStore {
+  final userMobx = UserMobx();
+
+  @override
+  getUser() {
+    return userMobx.getUser;
+  }
+
+  @override
+  setUser(User u) {
+    userMobx.setUser(u);
+  }
+}
+
+class UserMobx = UserMobxBase with _$UserMobx;
+
+abstract class UserMobxBase with Store {
   @observable
-  User user = MakeUser.make();
+  User _user = MakeUser.make();
+
+  @computed
+  User get getUser => _user;
 
   @action
   setUser(User u) {
-    user = u;
+    _user = u;
   }
 }

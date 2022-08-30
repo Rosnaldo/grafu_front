@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:grafu/store/signin_store.dart';
+import 'package:grafu/store/signin_store/index.dart';
 import 'package:grafu/utils/failure.dart';
 import 'package:grafu/module/login/container/login_model.dart';
 
