@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/link.dart';
 
 class BuyTicket extends StatelessWidget {
   final int price;
@@ -25,16 +26,14 @@ class BuyTicket extends StatelessWidget {
             ),
           ],
         ),
-        OutlinedButton(
-          style: OutlinedButton.styleFrom(
-            side: BorderSide(width: 1.0, color: Colors.pink.shade200),
-          ),
-          onPressed: () => {},
-          child: Text(
-            'Reservar ingresso',
-            style: TextStyle(color: Colors.pink.shade200),
-          ),
-        ),
+        Link(
+            uri: Uri.parse('https://buy.stripe.com/test_6oE3cSdzg4yDc7efYY'),
+            builder: (_, followLink) {
+              return ElevatedButton(
+                onPressed: followLink,
+                child: const Text('Reservar'),
+              );
+            })
       ],
     );
   }
