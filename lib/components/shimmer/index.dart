@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 class ShimmerWidget extends StatelessWidget {
   final double width;
@@ -19,16 +18,12 @@ class ShimmerWidget extends StatelessWidget {
   }) : shapeBorder = const CircleBorder();
 
   @override
-  Widget build(BuildContext context) => Shimmer.fromColors(
-        baseColor: Colors.grey[400]!,
-        highlightColor: Colors.grey[300]!,
-        child: Container(
-          width: width,
-          height: height,
-          decoration: ShapeDecoration(
-            color: Colors.grey[400]!,
-            shape: shapeBorder,
-          ),
+  Widget build(BuildContext context) => Container(
+        width: width,
+        height: height,
+        decoration: ShapeDecoration(
+          color: Colors.grey[400]!,
+          shape: shapeBorder,
         ),
       );
 }
