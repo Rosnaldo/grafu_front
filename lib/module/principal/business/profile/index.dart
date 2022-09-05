@@ -5,7 +5,7 @@ import 'package:grafu/module/principal/container/profile/index.dart';
 import 'package:grafu/services/signout/index.dart';
 import 'package:grafu/store/global_store/index.dart';
 import 'package:grafu/store/signin_store/index.dart';
-import 'package:grafu/store/user_store.dart';
+import 'package:grafu/store/user_store/user_store.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);

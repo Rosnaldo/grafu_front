@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/module/principal/container/profile/update_photo_popup/state/avatar_load_state.dart';
 import 'package:grafu/module/principal/container/profile/update_photo_popup/store/avatar_load_store.dart';
-import 'package:grafu/store/user_store.dart';
+import 'package:grafu/store/user_store/user_store.dart';
 
 import 'package:grafu/utils/cropper/mobile_ui_helper.dart';
 import 'package:grafu/utils/image_platform.dart';
@@ -21,7 +21,8 @@ class UpdatePhotoPopupContainer extends StatefulWidget {
 class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
   Widget buildImage(AvatarUploadState imageState, UserStore userStore) {
     if (imageState is InitialAvatarUploadState) {
-      return Center(child: ImagePlatform.image(image: userStore.user.avatar));
+      return Center(
+          child: ImagePlatform.image(image: userStore.getUser().avatar));
     }
 
     if (imageState is LoadingAvatarUploadState) {
@@ -37,7 +38,8 @@ class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
     }
 
     if (imageState is SuccessAvatarUploadState) {
-      return Center(child: ImagePlatform.image(image: userStore.user.avatar));
+      return Center(
+          child: ImagePlatform.image(image: userStore.getUser().avatar));
     }
 
     return Container();
@@ -66,14 +68,15 @@ class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
                       final bytes = await PickMedia.execute(
                         uiSettings: buildUiSettings(context),
                       );
-                      final userId = userStore.user.id;
+                      final user = userStore.getUser();
 
-                      await uploadStore.loadImage(bytes!, userId);
+                      await uploadStore.loadImage(bytes!, user.id);
                       final avatar =
                           (uploadStore.value as SuccessAvatarUploadState)
                               .avatar;
-                      userStore
-                          .setUser(userStore.user.copyWith(avatar: avatar));
+                      userStore.setUser(
+                        user.copyWith(avatar: avatar),
+                      );
                     },
                     child: const Text('Carregar foto'),
                   ),

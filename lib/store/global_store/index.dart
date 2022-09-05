@@ -5,7 +5,7 @@ import 'package:grafu/repositories/playday/repository.dart';
 import 'package:grafu/repositories/user/repository.dart';
 import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/signin_store/index.dart';
-import 'package:grafu/store/user_store.dart';
+import 'package:grafu/store/user_store/user_store.dart';
 
 abstract class IGlobalStore extends ValueNotifier<GlobalState> {
   IGlobalStore(super.value);

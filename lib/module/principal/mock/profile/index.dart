@@ -3,7 +3,7 @@ import 'package:grafu/module/principal/business/profile/update_photo_popup/mock.
 import 'package:grafu/module/principal/container/profile/index.dart';
 import 'package:grafu/services/signout/mock.dart';
 import 'package:grafu/store/global_store/mock.dart';
-import 'package:grafu/store/mock.dart';
+import 'package:grafu/store/user_store/mock.dart';
 import 'package:grafu/store/signin_store/mock.dart';
 
 class MockProfilePage extends StatelessWidget {
