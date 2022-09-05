@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/module/principal/container/gallery/index.dart';
-import 'package:grafu/store/global_store/index.dart';
+import 'package:grafu/store/global_store/store.dart';
 
 class GalleryPage extends StatelessWidget {
   const GalleryPage({

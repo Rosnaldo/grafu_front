@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/components/shimmer/index.dart';
-import 'package:grafu/state/global_state.dart';
-import 'package:grafu/store/global_store/index.dart';
+import 'package:grafu/store/global_store/state.dart';
+import 'package:grafu/store/global_store/store.dart';
 
 class PrincipalPageContainer extends StatefulWidget {
   final PageController pageViewController;
-  final IGlobalStore store;
+  final IGlobalStore globalStore;
   final List<Widget> widgetChildren;
   final List<BottomNavigationBarItem> buildListBottomNavigationBarItem;
 
   const PrincipalPageContainer({
     Key? key,
     required this.pageViewController,
-    required this.store,
+    required this.globalStore,
     required this.widgetChildren,
     required this.buildListBottomNavigationBarItem,
   }) : super(key: key);
@@ -141,7 +141,7 @@ class PrincipalPageContainerState extends State<PrincipalPageContainer> {
     return Scaffold(
       body: MaterialApp(
         home: ValueListenableBuilder<GlobalState>(
-          valueListenable: widget.store,
+          valueListenable: widget.globalStore,
           builder: buildNavigatePages,
         ),
       ),

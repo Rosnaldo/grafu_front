@@ -5,14 +5,15 @@ import 'package:grafu/module/principal/container/playday/buy_ticket.dart';
 import 'package:grafu/module/principal/container/playday/description.dart';
 import 'package:grafu/module/principal/container/playday/invite.dart';
 import 'package:grafu/module/principal/container/playday/conveniences.dart';
+import 'package:grafu/module/principal/container/playday/is_invited_message.dart';
 import 'package:grafu/module/principal/container/playday/playday_date.dart';
 import 'package:grafu/module/principal/container/playday/footer.dart';
 import 'package:grafu/module/principal/container/playday/participant_list.dart';
 import 'package:grafu/module/principal/container/playday/line.dart';
 import 'package:grafu/module/principal/container/playday/location.dart';
 import 'package:grafu/module/principal/container/playday/timeline.dart';
-import 'package:grafu/state/global_state.dart';
-import 'package:grafu/store/global_store/index.dart';
+import 'package:grafu/store/global_store/state.dart';
+import 'package:grafu/store/global_store/store.dart';
 import 'package:grafu/store/signin_store/index.dart';
 
 import 'carousel.dart';
@@ -64,6 +65,7 @@ class PlaydayPageContainer extends StatelessWidget {
                   children: [
                     PlaydayDate(date: state.playday.date),
                     const Line(),
+                    const IsInvitedMessage(),
                     const Description(),
                     const Line(),
                     ParticipantList(

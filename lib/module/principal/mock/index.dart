@@ -14,7 +14,7 @@ class MockPrincipalPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return PrincipalPageContainer(
       pageViewController: PageController(),
-      store: MockGlobalStore(),
+      globalStore: MockGlobalStore(),
       widgetChildren: const [
         MockPlaydayPage(),
         MockProfilePage(),

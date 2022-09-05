@@ -1,5 +1,5 @@
 import 'package:grafu/models/participant.dart';
-import 'package:grafu/repositories/participant/response_participant.dart';
+import 'package:grafu/repositories/participant/response/response_participant.dart';
 
 class ParticipantResponseMapper {
   static Participant toEntity(ResponseParticipant r) {
@@ -18,6 +18,7 @@ class ParticipantResponseMapper {
     Map<String, ParticipantStatus> map = {
       'pending': ParticipantStatus.pending,
       'confirmed': ParticipantStatus.confirmed,
+      'unregistered': ParticipantStatus.unregistered,
     };
 
     return map[status]!;

@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:grafu/repositories/participant/response_participant.dart';
+import 'package:grafu/repositories/participant/response/response_participant.dart';
 import 'package:grafu/repositories/serializers/serializers.dart';
 
 part 'response_playday.g.dart';

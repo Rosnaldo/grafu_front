@@ -17,10 +17,15 @@ class ImageUploadStore extends IImageUploadStore {
   @override
   Future loadImage(Uint8List bytes, String userId) async {
     value = LoadingAvatarUploadState();
+
+    final firestore = FirestoreService();
     try {
       final repository = UserUpdateAvatarRepository();
-      final urlDownload = await FirestoreService().uploadImage(bytes);
+      final urlDownload = await firestore.uploadImage(bytes);
       await repository.put(userId, urlDownload);
+
+      // print(urlDownload);
+      // await firestore.removeImage(imageUuid);
       value = SuccessAvatarUploadState(urlDownload);
     } catch (e) {
       value = ErrorAvatarUploadState(e.toString());

@@ -7,6 +7,8 @@ abstract class IFirestoreService {
   Future<String> uploadImage(Uint8List uint8List) async {
     return '';
   }
+
+  Future removeImage(String imageUuid) async {}
 }
 
 class FirestoreService extends IFirestoreService {
@@ -24,5 +26,16 @@ class FirestoreService extends IFirestoreService {
     final urlDownload = await snapshot.ref.getDownloadURL();
 
     return urlDownload;
+  }
+
+  @override
+  Future removeImage(String imageUuid) async {
+    final storage = FirebaseStorage.instanceFor(
+      bucket: 'gs://grafu-357616.appspot.com',
+    );
+
+    final ref = storage.ref('avatar-images').child(imageUuid);
+
+    await ref.delete();
   }
 }

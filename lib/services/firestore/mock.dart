@@ -7,4 +7,7 @@ class MockFirestoreService extends IFirestoreService {
   Future<String> uploadImage(Uint8List uint8List) async {
     return '';
   }
+
+  @override
+  Future removeImage(String imageUuid) async {}
 }

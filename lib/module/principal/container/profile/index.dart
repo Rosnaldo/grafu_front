@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/models/user.dart';
 import 'package:grafu/services/signout/index.dart';
-import 'package:grafu/store/global_store/index.dart';
+import 'package:grafu/store/global_store/store.dart';
 import 'package:grafu/store/signin_store/index.dart';
 import 'package:grafu/store/user_store/user_store.dart';
 

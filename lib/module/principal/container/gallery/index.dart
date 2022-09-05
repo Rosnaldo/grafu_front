@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/components/image_popup/index.dart';
 import 'package:grafu/components/switch_button/index.dart';
-import 'package:grafu/state/global_state.dart';
-import 'package:grafu/store/global_store/index.dart';
+import 'package:grafu/store/global_store/state.dart';
+import 'package:grafu/store/global_store/store.dart';
 
 class GalleryStore extends ValueNotifier<List<bool>> {
   GalleryStore() : super([true, false]);

@@ -2,8 +2,8 @@ import 'package:grafu/models/address.dart';
 import 'package:grafu/models/convenience.dart';
 import 'package:grafu/models/lot.dart';
 import 'package:grafu/models/playday.dart';
-import 'package:grafu/repositories/participant/mapper.dart';
-import 'package:grafu/repositories/participant/response_participant.dart';
+import 'package:grafu/repositories/participant/response/mapper.dart';
+import 'package:grafu/repositories/participant/response/response_participant.dart';
 import 'package:grafu/repositories/playday/response_playday.dart';
 
 class ResponsePlaydayMapper {

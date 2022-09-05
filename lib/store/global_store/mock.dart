@@ -1,7 +1,7 @@
 import 'package:grafu/mocks/participant.dart';
 import 'package:grafu/mocks/playday.dart';
-import 'package:grafu/state/global_state.dart';
-import 'package:grafu/store/global_store/index.dart';
+import 'package:grafu/store/global_store/state.dart';
+import 'package:grafu/store/global_store/store.dart';
 
 class MockGlobalStore extends IGlobalStore {
   MockGlobalStore()

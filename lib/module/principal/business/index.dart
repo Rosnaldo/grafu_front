@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/module/principal/container/index.dart';
-import 'package:grafu/store/global_store/index.dart';
+import 'package:grafu/store/global_store/store.dart';
 
 import 'package:grafu/module/principal/business/gallery/index.dart';
 import 'package:grafu/module/principal/business/playday/index.dart';
@@ -18,12 +18,12 @@ class PrincipalPage extends StatefulWidget {
 
 class PrincipalPageState extends State<PrincipalPage> {
   final pageViewController = PageController();
-  final store = Modular.get<GlobalStore>();
+  final globalStore = Modular.get<GlobalStore>();
 
   @override
   void initState() {
     super.initState();
-    store.fetch();
+    globalStore.fetch();
   }
 
   @override
@@ -72,7 +72,7 @@ class PrincipalPageState extends State<PrincipalPage> {
   Widget build(BuildContext context) {
     return PrincipalPageContainer(
       pageViewController: pageViewController,
-      store: store,
+      globalStore: globalStore,
       widgetChildren: widgetChildren(),
       buildListBottomNavigationBarItem: buildListBottomNavigationBarItem(),
     );
