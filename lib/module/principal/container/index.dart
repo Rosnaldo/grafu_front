@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/components/shimmer/index.dart';
 import 'package:grafu/state/global_state.dart';
 import 'package:grafu/store/global_store/index.dart';
+import 'package:shimmer/shimmer.dart';
 
 class PrincipalPageContainer extends StatefulWidget {
   final PageController pageViewController;
@@ -52,13 +54,57 @@ class PrincipalPageContainerState extends State<PrincipalPageContainer> {
     );
   }
 
+  Widget buildShimmerEffect() {
+    return Padding(
+      padding: const EdgeInsets.all(12.0),
+      child: Column(
+        children: const [
+          ShimmerWidget.rectangular(height: 180),
+          SizedBox(height: 5.0),
+          ListTile(
+            contentPadding: EdgeInsets.all(10.0),
+            leading: ShimmerWidget.circular(width: 25, height: 25),
+            title: ShimmerWidget.rectangular(height: 20),
+          ),
+          SizedBox(height: 15.0),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: ShimmerWidget.rectangular(
+              height: 20,
+              width: 100,
+            ),
+          ),
+          SizedBox(height: 15.0),
+          ShimmerWidget.rectangular(height: 20),
+          SizedBox(height: 5.0),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: ShimmerWidget.rectangular(
+              height: 20,
+              width: 220,
+            ),
+          ),
+          SizedBox(height: 5.0),
+          ShimmerWidget.rectangular(height: 20),
+          SizedBox(height: 5.0),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: ShimmerWidget.rectangular(
+              height: 20,
+              width: 220,
+            ),
+          ),
+          SizedBox(height: 5.0),
+          ShimmerWidget.rectangular(height: 20),
+        ],
+      ),
+    );
+  }
+
   Widget buildNavigatePages(_, GlobalState state, __) {
     if (state is LoadingGlobalState) {
-      return const Center(
-        child: Padding(
-          padding: EdgeInsets.all(12.0),
-          child: CircularProgressIndicator(),
-        ),
+      return Center(
+        child: buildShimmerEffect(),
       );
     }
 
@@ -74,15 +120,17 @@ class PrincipalPageContainerState extends State<PrincipalPageContainer> {
       );
     }
 
-    return Container();
+    return Column();
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ValueListenableBuilder<GlobalState>(
-        valueListenable: widget.store,
-        builder: buildNavigatePages,
+    return Scaffold(
+      body: MaterialApp(
+        home: ValueListenableBuilder<GlobalState>(
+          valueListenable: widget.store,
+          builder: buildNavigatePages,
+        ),
       ),
     );
   }
