@@ -6,7 +6,7 @@ class MockUserStore extends IUserStore {
   MockUserStore() : super();
 
   @override
-  getUser() {
+  User getUser() {
     return MakeUser.make();
   }
 

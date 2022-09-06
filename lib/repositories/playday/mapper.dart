@@ -16,6 +16,7 @@ class ResponsePlaydayMapper {
   static Playday toEntity(ResponsePlayday r) {
     return Playday(
         id: r.id,
+        adminId: r.adminId,
         date: r.date,
         address: Address(
           city: r.addressCity,

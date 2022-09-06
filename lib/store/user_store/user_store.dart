@@ -7,7 +7,10 @@ part 'user_store.g.dart';
 
 abstract class IUserStore {
   final User user = MakeUser.make();
-  getUser() {}
+  User getUser() {
+    return user;
+  }
+
   setUser(User u) {}
 }
 
@@ -15,7 +18,7 @@ class UserStore extends IUserStore {
   final userMobx = UserMobx();
 
   @override
-  getUser() {
+  User getUser() {
     return userMobx.getUser;
   }
 

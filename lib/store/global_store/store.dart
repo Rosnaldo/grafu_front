@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:grafu/models/participant.dart';
+import 'package:grafu/models/playday.dart';
 import 'package:grafu/repositories/participant/check_invite_status/index.dart';
 import 'package:grafu/repositories/participant/register/index.dart';
 
@@ -6,6 +8,7 @@ import 'package:grafu/repositories/playday/repository.dart';
 import 'package:grafu/repositories/user/repository.dart';
 import 'package:grafu/store/global_store/state.dart';
 import 'package:grafu/store/is_invited_store/is_invited_store.dart';
+import 'package:grafu/store/participant_store/my_participant_store.dart';
 import 'package:grafu/store/signin_store/index.dart';
 import 'package:grafu/store/user_store/user_store.dart';
 
@@ -24,6 +27,8 @@ class GlobalStore extends IGlobalStore {
   late final UserStore userStore;
   late final SigninStore signinStore;
   late final IsInvitedStore isInvitedStore;
+  late final MyParticipantStore myParticipantStore;
+  late final Playday playday;
 
   GlobalStore(
     this.playdayRepository,
@@ -33,6 +38,7 @@ class GlobalStore extends IGlobalStore {
     this.userStore,
     this.signinStore,
     this.isInvitedStore,
+    this.myParticipantStore,
   ) : super(InitialGlobalState());
 
   Future setUpParticipantStatus() async {
@@ -59,9 +65,33 @@ class GlobalStore extends IGlobalStore {
       }
 
       if (participantStatus == 'pending' || participantStatus == 'confirmed') {
+        setUpMyParticipant();
         isInvitedStore.setIsInvited(true);
       }
     }
+  }
+
+  removeMyParticipantFromList(int index) {
+    final listWithoutMyParticipant = [
+      ...playday.participants.sublist(0, index),
+      ...playday.participants.sublist(index + 1, playday.participants.length),
+    ];
+    playday.copyWith(participants: listWithoutMyParticipant);
+  }
+
+  setUpMyParticipant() {
+    final index =
+        playday.participants.indexWhere((p) => p.email == signinStore.email);
+    final myParticipant = Participant(
+        id: playday.participants[index].id,
+        name: userStore.getUser().name,
+        email: userStore.getUser().email,
+        avatar: userStore.getUser().avatar,
+        age: userStore.getUser().age,
+        profession: userStore.getUser().profession,
+        status: playday.participants[index].status);
+    removeMyParticipantFromList(index);
+    myParticipantStore.setMyParticipant(myParticipant);
   }
 
   @override
@@ -70,8 +100,8 @@ class GlobalStore extends IGlobalStore {
     value = LoadingGlobalState();
 
     try {
+      playday = await playdayRepository.get(playdayId);
       await setUpParticipantStatus();
-      final playday = await playdayRepository.get(playdayId);
       final participants = playday.participants;
 
       value = SuccessGlobalState(playday, participants);

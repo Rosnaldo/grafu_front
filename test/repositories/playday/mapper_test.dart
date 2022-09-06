@@ -69,6 +69,7 @@ void main() {
         equals(
           const Playday(
             id: '1bb79eaa-457f-4380-acaa-c7af614668cf',
+            adminId: '63aa07c0-6c2b-4c18-947f-959718eed5a4',
             date: '10 de julho de 2022, 15h - 14 de agosto de 2022, 19h',
             address: Address(
               district: 'Alphaville / Lagoa dos Ingleses',

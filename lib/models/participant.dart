@@ -25,6 +25,26 @@ class Participant extends Equatable {
     this.profession,
   });
 
+  Participant copyWith({
+    String? id,
+    String? name,
+    String? email,
+    ParticipantStatus? status,
+    String? avatar,
+    int? age,
+    String? profession,
+  }) {
+    return Participant(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      email: email ?? this.email,
+      avatar: avatar ?? this.avatar,
+      status: status ?? this.status,
+      age: age ?? this.age,
+      profession: profession ?? this.profession,
+    );
+  }
+
   static Participant init() {
     return const Participant(
         id: '',

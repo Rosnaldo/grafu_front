@@ -8,6 +8,7 @@ class MakePlayday {
   static Playday make() {
     return Playday(
       id: '',
+      adminId: '',
       date: '10 de julho de 2022, 15h - 14 de agosto de 2022, 19h',
       address: const Address(
         district: 'Alphaville / Lagoa dos Ingleses',

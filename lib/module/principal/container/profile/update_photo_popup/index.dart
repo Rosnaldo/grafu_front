@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/module/principal/container/profile/update_photo_popup/state/avatar_load_state.dart';
 import 'package:grafu/module/principal/container/profile/update_photo_popup/store/avatar_load_store.dart';
+import 'package:grafu/store/participant_store/my_participant_store.dart';
 import 'package:grafu/store/user_store/user_store.dart';
 
 import 'package:grafu/utils/cropper/mobile_ui_helper.dart';
@@ -49,6 +50,7 @@ class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
   Widget build(BuildContext context) {
     final uploadStore = ImageUploadStore();
     final userStore = Modular.get<UserStore>();
+    final myParticipantStore = Modular.get<MyParticipantStore>();
 
     return ValueListenableBuilder<AvatarUploadState>(
       valueListenable: uploadStore,
@@ -70,13 +72,18 @@ class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
                       );
                       final user = userStore.getUser();
 
-                      await uploadStore.loadImage(bytes!, user.id);
+                      await uploadStore.loadImage(bytes!, user);
                       final avatar =
                           (uploadStore.value as SuccessAvatarUploadState)
                               .avatar;
+
                       userStore.setUser(
                         user.copyWith(avatar: avatar),
                       );
+
+                      myParticipantStore.setMyParticipant(myParticipantStore
+                          .getMyParticipant()
+                          .copyWith(avatar: avatar));
                     },
                     child: const Text('Carregar foto'),
                   ),

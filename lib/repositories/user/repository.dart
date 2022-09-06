@@ -8,7 +8,7 @@ import 'package:grafu/repositories/user/mapper.dart';
 class UserByEmailRepository {
   Future<User> get(email) async {
     final response = await Dio().get(
-      'https://grafu-back.herokuapp.com/v1/user/$email?playday=true',
+      'https://grafu-back.herokuapp.com/v1/user/$email',
     );
 
     final jsonS = json.encode(response.data);
