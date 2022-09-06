@@ -32,7 +32,7 @@ class ParticipantList extends StatelessWidget {
             return participantCard(participants[0]);
           }),
           ...participants
-              .sublist(1, 2)
+              .sublist(1, participants.length)
               .map(
                 (participant) => participantCard(participant),
               )
