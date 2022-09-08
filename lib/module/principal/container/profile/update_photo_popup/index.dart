@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/module/principal/container/profile/update_photo_popup/state/avatar_load_state.dart';
 import 'package:grafu/module/principal/container/profile/update_photo_popup/store/avatar_load_store.dart';
 import 'package:grafu/store/participant_store/my_participant_store.dart';
@@ -10,8 +9,15 @@ import 'package:grafu/utils/image_platform.dart';
 import 'package:grafu/utils/pick_media.dart';
 
 class UpdatePhotoPopupContainer extends StatefulWidget {
+  final IUserStore userStore;
+  final IImageUploadStore uploadStore;
+  final IMyParticipantStore myParticipantStore;
+
   const UpdatePhotoPopupContainer({
     Key? key,
+    required this.userStore,
+    required this.uploadStore,
+    required this.myParticipantStore,
   }) : super(key: key);
 
   @override
@@ -20,7 +26,7 @@ class UpdatePhotoPopupContainer extends StatefulWidget {
 }
 
 class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
-  Widget buildImage(AvatarUploadState imageState, UserStore userStore) {
+  Widget buildImage(AvatarUploadState imageState, IUserStore userStore) {
     if (imageState is InitialAvatarUploadState) {
       return Center(
         child: ImagePlatform.image(
@@ -53,16 +59,12 @@ class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
 
   @override
   Widget build(BuildContext context) {
-    final uploadStore = ImageUploadStore();
-    final userStore = Modular.get<UserStore>();
-    final myParticipantStore = Modular.get<MyParticipantStore>();
-
     return ValueListenableBuilder<AvatarUploadState>(
-      valueListenable: uploadStore,
+      valueListenable: widget.uploadStore,
       builder: (_, AvatarUploadState uploadState, __) {
         return AlertDialog(
           content: SingleChildScrollView(
-            child: buildImage(uploadState, userStore),
+            child: buildImage(uploadState, widget.userStore),
           ),
           actions: <Widget>[
             Container(
@@ -75,8 +77,8 @@ class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
                       final bytes = await PickMedia.execute(
                         uiSettings: buildUiSettings(context),
                       );
-                      await uploadStore.loadImage(
-                          bytes!, userStore, myParticipantStore);
+                      await widget.uploadStore.loadImage(
+                          bytes!, widget.userStore, widget.myParticipantStore);
                     },
                     child: const Text('Carregar foto'),
                   ),

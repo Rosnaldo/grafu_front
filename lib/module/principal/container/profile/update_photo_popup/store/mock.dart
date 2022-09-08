@@ -9,5 +9,6 @@ class MockImageUploadStore extends IImageUploadStore {
   MockImageUploadStore() : super(InitialAvatarUploadState());
 
   @override
-  Future loadImage(Uint8List bytes, UserStore userStore, MyParticipantStore myParticipantStore) async {}
+  Future loadImage(Uint8List bytes, IUserStore userStore,
+      IMyParticipantStore myParticipantStore) async {}
 }

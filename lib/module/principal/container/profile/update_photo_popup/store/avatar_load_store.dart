@@ -10,8 +10,8 @@ import 'package:grafu/store/user_store/user_store.dart';
 abstract class IImageUploadStore extends ValueNotifier<AvatarUploadState> {
   IImageUploadStore(super.value);
 
-  Future loadImage(Uint8List bytes, UserStore userStore,
-      MyParticipantStore myParticipantStore) async {}
+  Future loadImage(Uint8List bytes, IUserStore userStore,
+      IMyParticipantStore myParticipantStore) async {}
 }
 
 class ImageUploadStore extends IImageUploadStore {
@@ -20,8 +20,8 @@ class ImageUploadStore extends IImageUploadStore {
   @override
   Future loadImage(
     Uint8List bytes,
-    UserStore userStore,
-    MyParticipantStore myParticipantStore,
+    IUserStore userStore,
+    IMyParticipantStore myParticipantStore,
   ) async {
     value = LoadingAvatarUploadState();
 
