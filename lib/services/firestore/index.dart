@@ -1,41 +1,55 @@
 import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:grafu/models/avatar.dart';
+import 'package:grafu/utils/failure.dart';
 import 'package:uuid/uuid.dart';
 
 abstract class IFirestoreService {
-  Future<String> uploadImage(Uint8List uint8List) async {
-    return '';
-  }
+  Future uploadImage(Uint8List uint8List) async {}
 
   Future removeImage(String imageUuid) async {}
 }
 
 class FirestoreService extends IFirestoreService {
+  FirestoreService() : super();
+
   @override
-  Future<String> uploadImage(Uint8List uint8List) async {
+  Future uploadImage(Uint8List uint8List) async {
     final storage = FirebaseStorage.instanceFor(
       bucket: 'gs://grafu-357616.appspot.com',
     );
+    final uuid = const Uuid().v4();
+    final ref = storage.ref('avatar-images').child(uuid);
 
-    final ref = storage.ref('avatar-images');
-
-    final uploadTask = ref.child(const Uuid().v4()).putData(uint8List);
-
+    final uploadTask = ref.putData(uint8List);
     final snapshot = await uploadTask.whenComplete(() {});
     final urlDownload = await snapshot.ref.getDownloadURL();
 
-    return urlDownload;
+    return Avatar(url: urlDownload, uuid: uuid);
   }
 
   @override
-  Future removeImage(String imageUuid) async {
-    final storage = FirebaseStorage.instanceFor(
-      bucket: 'gs://grafu-357616.appspot.com',
-    );
+  Future removeImage(String? imageUuid) async {
+    try {
+      final storage = FirebaseStorage.instanceFor(
+        bucket: 'gs://grafu-357616.appspot.com',
+      );
 
-    final ref = storage.ref('avatar-images').child(imageUuid);
+      if (imageUuid == null) {
+        return;
+      }
 
-    await ref.delete();
+      final ref = storage.ref('avatar-images').child('imageUuid');
+
+      await ref.delete();
+    } on FirebaseException catch (e) {
+      if (e.code == 'object-not-found') {
+        return;
+      }
+      throw Failure(e.toString());
+    } catch (e) {
+      throw Failure(e.toString());
+    }
   }
 }

@@ -23,7 +23,12 @@ class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
   Widget buildImage(AvatarUploadState imageState, UserStore userStore) {
     if (imageState is InitialAvatarUploadState) {
       return Center(
-          child: ImagePlatform.image(image: userStore.getUser().avatar));
+        child: ImagePlatform.image(
+          image: userStore.getUser().avatar != null
+              ? userStore.getUser().avatar!.url
+              : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
+        ),
+      );
     }
 
     if (imageState is LoadingAvatarUploadState) {
@@ -40,7 +45,7 @@ class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
 
     if (imageState is SuccessAvatarUploadState) {
       return Center(
-          child: ImagePlatform.image(image: userStore.getUser().avatar));
+          child: ImagePlatform.image(image: userStore.getUser().avatar!.url));
     }
 
     return Container();
@@ -70,20 +75,8 @@ class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
                       final bytes = await PickMedia.execute(
                         uiSettings: buildUiSettings(context),
                       );
-                      final user = userStore.getUser();
-
-                      await uploadStore.loadImage(bytes!, user);
-                      final avatar =
-                          (uploadStore.value as SuccessAvatarUploadState)
-                              .avatar;
-
-                      userStore.setUser(
-                        user.copyWith(avatar: avatar),
-                      );
-
-                      myParticipantStore.setMyParticipant(myParticipantStore
-                          .getMyParticipant()
-                          .copyWith(avatar: avatar));
+                      await uploadStore.loadImage(
+                          bytes!, userStore, myParticipantStore);
                     },
                     child: const Text('Carregar foto'),
                   ),

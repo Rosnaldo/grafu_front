@@ -41,7 +41,7 @@ class ParticipantList extends StatelessWidget {
         const SizedBox(height: 12.0),
         Column(children: [
           Observer(builder: (_) {
-            if (isInvitedStore.isInvited && signinStore.isSignin) {
+            if (isInvitedStore.getIsInvited() && signinStore.isSignin) {
               return participantCard(myParticipantStore.getMyParticipant());
             }
             return Container();

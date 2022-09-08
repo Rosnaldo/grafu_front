@@ -1,11 +1,12 @@
 import 'package:equatable/equatable.dart';
+import 'package:grafu/models/avatar.dart';
 import 'package:grafu/models/playday.dart';
 
 class User extends Equatable {
   final String id;
   final String name;
   final String email;
-  final String? avatar;
+  final Avatar? avatar;
   final int? age;
   final String? profession;
   final List<Playday>? adminPlayday;
@@ -24,7 +25,7 @@ class User extends Equatable {
     String? id,
     String? name,
     String? email,
-    String? avatar,
+    Avatar? avatar,
     int? age,
     String? profession,
     List<Playday>? adminPlayday,

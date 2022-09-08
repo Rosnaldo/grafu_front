@@ -6,9 +6,8 @@ import 'package:grafu/models/user.dart';
 part 'user_store.g.dart';
 
 abstract class IUserStore {
-  final User user = MakeUser.make();
   User getUser() {
-    return user;
+    return MakeUser.make();
   }
 
   setUser(User u) {}

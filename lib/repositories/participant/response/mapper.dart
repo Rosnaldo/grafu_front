@@ -1,3 +1,4 @@
+import 'package:grafu/models/avatar.dart';
 import 'package:grafu/models/participant.dart';
 import 'package:grafu/repositories/participant/response/response_participant.dart';
 
@@ -7,7 +8,9 @@ class ParticipantResponseMapper {
       id: r.id,
       name: r.user.name,
       email: r.user.email,
-      avatar: r.user.avatar,
+      avatar: r.user.avatarUrl != null
+          ? Avatar(url: r.user.avatarUrl!, uuid: r.user.avatarUuid!)
+          : null,
       status: mapStatus(r.status),
       age: r.user.age,
       profession: r.user.profession,

@@ -13,7 +13,8 @@ abstract class ResponseUser
   String get id;
   String get name;
   String get email;
-  String? get avatar;
+  String? get avatarUrl;
+  String? get avatarUuid;
   int? get age;
   String? get profession;
 

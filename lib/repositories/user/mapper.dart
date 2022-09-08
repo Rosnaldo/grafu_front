@@ -1,3 +1,4 @@
+import 'package:grafu/models/avatar.dart';
 import 'package:grafu/models/user.dart';
 import 'package:grafu/repositories/user/response_user.dart';
 
@@ -11,7 +12,12 @@ class UserResponseMapper {
   static User toEntity(ResponseUser r) {
     return User(
       id: r.id,
-      avatar: r.avatar,
+      avatar: r.avatarUrl != null
+          ? Avatar(
+              url: r.avatarUrl!,
+              uuid: r.avatarUuid!,
+            )
+          : null,
       name: r.name,
       email: r.email,
       age: r.age,

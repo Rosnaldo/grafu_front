@@ -5,8 +5,7 @@ class InitialAvatarUploadState extends AvatarUploadState {
 }
 
 class SuccessAvatarUploadState extends AvatarUploadState {
-  final String avatar;
-  SuccessAvatarUploadState(this.avatar);
+  SuccessAvatarUploadState();
 }
 
 class LoadingAvatarUploadState extends AvatarUploadState {}

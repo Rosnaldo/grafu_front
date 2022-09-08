@@ -42,7 +42,7 @@ class GlobalStore extends IGlobalStore {
   ) : super(InitialGlobalState());
 
   Future setUpParticipantStatus() async {
-    const playdayId = '26bdf87b-4917-4d59-87ad-3fa1dd6ce6a8';
+    const playdayId = 'fcae0492-0e36-49d0-a674-932c547e81d0';
     await signinStore.load();
 
     if (signinStore.isSignin) {
@@ -71,40 +71,52 @@ class GlobalStore extends IGlobalStore {
     }
   }
 
-  removeMyParticipantFromList(int index) {
+  getParticipantsWithoutMyParticipant() {
+    final index = getMyParticipantIndex();
+
+    if (index == -1) {
+      return playday.participants;
+    }
+
     final listWithoutMyParticipant = [
       ...playday.participants.sublist(0, index),
       ...playday.participants.sublist(index + 1, playday.participants.length),
     ];
-    playday.copyWith(participants: listWithoutMyParticipant);
+    return listWithoutMyParticipant;
+  }
+
+  int getMyParticipantIndex() {
+    return playday.participants.indexWhere((p) => p.email == signinStore.email);
   }
 
   setUpMyParticipant() {
-    final index =
-        playday.participants.indexWhere((p) => p.email == signinStore.email);
+    final index = getMyParticipantIndex();
+
     final myParticipant = Participant(
-        id: playday.participants[index].id,
-        name: userStore.getUser().name,
-        email: userStore.getUser().email,
-        avatar: userStore.getUser().avatar,
-        age: userStore.getUser().age,
-        profession: userStore.getUser().profession,
-        status: playday.participants[index].status);
-    removeMyParticipantFromList(index);
+      id: playday.participants[index].id,
+      name: userStore.getUser().name,
+      email: userStore.getUser().email,
+      avatar: userStore.getUser().avatar,
+      age: userStore.getUser().age,
+      profession: userStore.getUser().profession,
+      status: playday.participants[index].status,
+    );
+
     myParticipantStore.setMyParticipant(myParticipant);
   }
 
   @override
   Future fetch() async {
-    const playdayId = '26bdf87b-4917-4d59-87ad-3fa1dd6ce6a8';
+    const playdayId = 'fcae0492-0e36-49d0-a674-932c547e81d0';
     value = LoadingGlobalState();
 
     try {
       playday = await playdayRepository.get(playdayId);
       await setUpParticipantStatus();
-      final participants = playday.participants;
 
-      value = SuccessGlobalState(playday, participants);
+      final participantsWithoutMy = getParticipantsWithoutMyParticipant();
+
+      value = SuccessGlobalState(playday, participantsWithoutMy);
     } catch (e) {
       value = ErrorGlobalState(e.toString());
     }

@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:grafu/models/address.dart';
+import 'package:grafu/models/avatar.dart';
 import 'package:grafu/models/convenience.dart';
 import 'package:grafu/models/lot.dart';
 import 'package:grafu/models/participant.dart';
@@ -53,8 +54,9 @@ void main() {
             "id": "63aa07c0-6c2b-4c18-947f-959718eed5a4",
             "name": "Andrey Tsuzuki",
             "email": "andreytsuzuki@gmail.com",
-            "avatar":
-                "https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0"
+            "avatarUrl":
+                "https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0",
+            "avatarUuid": "C4D03AQFXAsqjqMZjSw"
           }
         },
       ]
@@ -110,8 +112,11 @@ void main() {
                 id: '70c7482f-b0bc-450d-b393-04207e03fc21',
                 email: 'andreytsuzuki@gmail.com',
                 name: 'Andrey Tsuzuki',
-                avatar:
-                    'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0',
+                avatar: Avatar(
+                  url:
+                      'https://media-exp1.licdn.com/dms/image/C4D03AQFXAsqjqMZjSw/profile-displayphoto-shrink_800_800/0/1598561454891?e=1663200000&v=beta&t=d9HE6iKFhvYYZV2iPLDQIeLfVK2vjuURE1acSOKN2s0',
+                  uuid: 'C4D03AQFXAsqjqMZjSw',
+                ),
                 status: ParticipantStatus.confirmed,
               )
             ],

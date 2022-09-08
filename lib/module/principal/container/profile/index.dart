@@ -41,8 +41,9 @@ class ProfilePageContainer extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: Ink.image(
-            image: NetworkImage(user.avatar ??
-                'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png'),
+            image: NetworkImage(
+              user.avatar!.url,
+            ),
             fit: BoxFit.cover,
             width: 128,
             height: 128,
@@ -93,7 +94,9 @@ class ProfilePageContainer extends StatelessWidget {
                 child: Observer(builder: (_) {
                   return Stack(
                     children: [
-                      buildAvatar(context, userStore.getUser()),
+                      (userStore.getUser().avatar != null)
+                          ? buildAvatar(context, userStore.getUser())
+                          : buildNoAvatar(),
                       Positioned(
                         bottom: 0,
                         right: 8,

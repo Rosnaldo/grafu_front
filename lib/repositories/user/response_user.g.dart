@@ -28,10 +28,17 @@ class _$ResponseUserSerializer implements StructuredSerializer<ResponseUser> {
           specifiedType: const FullType(String)),
     ];
     Object? value;
-    value = object.avatar;
+    value = object.avatarUrl;
     if (value != null) {
       result
-        ..add('avatar')
+        ..add('avatarUrl')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    value = object.avatarUuid;
+    if (value != null) {
+      result
+        ..add('avatarUuid')
         ..add(serializers.serialize(value,
             specifiedType: const FullType(String)));
     }
@@ -75,8 +82,12 @@ class _$ResponseUserSerializer implements StructuredSerializer<ResponseUser> {
           result.email = serializers.deserialize(value,
               specifiedType: const FullType(String))! as String;
           break;
-        case 'avatar':
-          result.avatar = serializers.deserialize(value,
+        case 'avatarUrl':
+          result.avatarUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String?;
+          break;
+        case 'avatarUuid':
+          result.avatarUuid = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String?;
           break;
         case 'age':
@@ -102,7 +113,9 @@ class _$ResponseUser extends ResponseUser {
   @override
   final String email;
   @override
-  final String? avatar;
+  final String? avatarUrl;
+  @override
+  final String? avatarUuid;
   @override
   final int? age;
   @override
@@ -115,7 +128,8 @@ class _$ResponseUser extends ResponseUser {
       {required this.id,
       required this.name,
       required this.email,
-      this.avatar,
+      this.avatarUrl,
+      this.avatarUuid,
       this.age,
       this.profession})
       : super._() {
@@ -138,7 +152,8 @@ class _$ResponseUser extends ResponseUser {
         id == other.id &&
         name == other.name &&
         email == other.email &&
-        avatar == other.avatar &&
+        avatarUrl == other.avatarUrl &&
+        avatarUuid == other.avatarUuid &&
         age == other.age &&
         profession == other.profession;
   }
@@ -147,8 +162,12 @@ class _$ResponseUser extends ResponseUser {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc($jc($jc($jc(0, id.hashCode), name.hashCode), email.hashCode),
-                avatar.hashCode),
+            $jc(
+                $jc(
+                    $jc($jc($jc(0, id.hashCode), name.hashCode),
+                        email.hashCode),
+                    avatarUrl.hashCode),
+                avatarUuid.hashCode),
             age.hashCode),
         profession.hashCode));
   }
@@ -159,7 +178,8 @@ class _$ResponseUser extends ResponseUser {
           ..add('id', id)
           ..add('name', name)
           ..add('email', email)
-          ..add('avatar', avatar)
+          ..add('avatarUrl', avatarUrl)
+          ..add('avatarUuid', avatarUuid)
           ..add('age', age)
           ..add('profession', profession))
         .toString();
@@ -182,9 +202,13 @@ class ResponseUserBuilder
   String? get email => _$this._email;
   set email(String? email) => _$this._email = email;
 
-  String? _avatar;
-  String? get avatar => _$this._avatar;
-  set avatar(String? avatar) => _$this._avatar = avatar;
+  String? _avatarUrl;
+  String? get avatarUrl => _$this._avatarUrl;
+  set avatarUrl(String? avatarUrl) => _$this._avatarUrl = avatarUrl;
+
+  String? _avatarUuid;
+  String? get avatarUuid => _$this._avatarUuid;
+  set avatarUuid(String? avatarUuid) => _$this._avatarUuid = avatarUuid;
 
   int? _age;
   int? get age => _$this._age;
@@ -202,7 +226,8 @@ class ResponseUserBuilder
       _id = $v.id;
       _name = $v.name;
       _email = $v.email;
-      _avatar = $v.avatar;
+      _avatarUrl = $v.avatarUrl;
+      _avatarUuid = $v.avatarUuid;
       _age = $v.age;
       _profession = $v.profession;
       _$v = null;
@@ -233,7 +258,8 @@ class ResponseUserBuilder
                 name, r'ResponseUser', 'name'),
             email: BuiltValueNullFieldError.checkNotNull(
                 email, r'ResponseUser', 'email'),
-            avatar: avatar,
+            avatarUrl: avatarUrl,
+            avatarUuid: avatarUuid,
             age: age,
             profession: profession);
     replace(_$result);

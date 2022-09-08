@@ -3,7 +3,6 @@ import 'package:mobx/mobx.dart';
 part 'is_invited_store.g.dart';
 
 abstract class IIsInvitedStore {
-  final bool isInvited = false;
   getIsInvited() {}
   setIsInvited(bool i) {}
 }

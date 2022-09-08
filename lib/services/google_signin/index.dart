@@ -41,7 +41,7 @@ class SignInWithGoogle extends ISignInWithGoogle {
     await userRegisterRepository.execute(
       name: currentUser!.displayName ?? '',
       email: currentUser.email!,
-      avatar: currentUser.photoURL,
+      avatarUrl: currentUser.photoURL,
     );
   }
 
@@ -61,7 +61,7 @@ class SignInWithGoogle extends ISignInWithGoogle {
     await userRegisterRepository.execute(
       name: currentUser!.displayName ?? '',
       email: currentUser.email!,
-      avatar: currentUser.photoURL,
+      avatarUrl: currentUser.photoURL,
     );
   }
 }

@@ -8,7 +8,8 @@ class UserRegisterRepository {
   Future<void> execute({
     required String email,
     required String name,
-    String? avatar,
+    String? avatarUrl,
+    String? avatarUuid,
     int? age,
     String? profession,
   }) async {
@@ -17,7 +18,8 @@ class UserRegisterRepository {
       data: {
         'email': email,
         'name': name,
-        'avatar': avatar,
+        'avatarUrl': avatarUrl,
+        'avatarUuid': avatarUuid,
         'age': age,
         'profession':
             (profession == null || profession.isEmpty) ? null : profession,

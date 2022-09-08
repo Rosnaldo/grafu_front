@@ -27,7 +27,7 @@ class SignUp extends ISignUp {
 
       await userRegisterRepository.execute(
         name: registerModel.name,
-        avatar: user.photoURL,
+        avatarUrl: user.photoURL,
         email: registerModel.email,
         age: registerModel.age,
         profession: registerModel.profession,
