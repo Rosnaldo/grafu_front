@@ -37,4 +37,14 @@
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBTmW5pslkyXxVT42mED3VM1qn4moZ_sQA"/>
     </application>
+    <queries>
+    <intent>
+        <action android:name="android.intent.action.VIEW" />
+        <data android:scheme="sms" />
+    </intent>
+    <intent>
+        <action android:name="android.intent.action.VIEW" />
+        <data android:scheme="tel" />
+    </intent>
+    </queries>
 </manifest>
