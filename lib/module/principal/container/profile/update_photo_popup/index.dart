@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/components/image_cache/index.dart';
+
 import 'package:grafu/module/principal/container/profile/update_photo_popup/state/avatar_load_state.dart';
 import 'package:grafu/module/principal/container/profile/update_photo_popup/store/avatar_load_store.dart';
 import 'package:grafu/store/participant_store/my_participant_store.dart';
 import 'package:grafu/store/user_store/user_store.dart';
-
 import 'package:grafu/utils/cropper/mobile_ui_helper.dart';
-import 'package:grafu/utils/image_platform.dart';
 import 'package:grafu/utils/pick_media.dart';
 
 class UpdatePhotoPopupContainer extends StatefulWidget {
@@ -29,10 +29,12 @@ class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
   Widget buildImage(AvatarUploadState imageState, IUserStore userStore) {
     if (imageState is InitialAvatarUploadState) {
       return Center(
-        child: ImagePlatform.image(
-          image: userStore.getUser().avatar != null
-              ? userStore.getUser().avatar!.url
-              : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
+        child: Image(
+          image: BuildImageCache.build(
+            url: userStore.getUser().avatar?.url,
+            maxWidth: 128,
+            maxHeight: 128,
+          ),
         ),
       );
     }
@@ -51,7 +53,14 @@ class UpdatePhotoPopupContainerState extends State<UpdatePhotoPopupContainer> {
 
     if (imageState is SuccessAvatarUploadState) {
       return Center(
-          child: ImagePlatform.image(image: userStore.getUser().avatar!.url));
+        child: Image(
+          image: BuildImageCache.build(
+            url: userStore.getUser().avatar?.url,
+            maxWidth: 100,
+            maxHeight: 100,
+          ),
+        ),
+      );
     }
 
     return Container();

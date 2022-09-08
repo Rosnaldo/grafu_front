@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/components/image_cache/index.dart';
 import 'package:grafu/components/image_popup/index.dart';
 import 'package:grafu/components/switch_button/index.dart';
 import 'package:grafu/store/global_store/state.dart';
@@ -30,7 +31,9 @@ class GalleryPageContainer extends StatelessWidget {
         ...gallery
             .map((image) => Column(children: [
                   Ink.image(
-                    image: NetworkImage(image),
+                    image: BuildImageCache.build(
+                      url: image,
+                    ),
                     fit: BoxFit.fitWidth,
                     width: MediaQuery.of(context).size.width * 1,
                     height: 220,
@@ -60,7 +63,9 @@ class GalleryPageContainer extends StatelessWidget {
         ),
         children: gallery
             .map((image) => Ink.image(
-                  image: NetworkImage(image),
+                  image: BuildImageCache.build(
+                    url: image,
+                  ),
                   fit: BoxFit.cover,
                   child: InkWell(
                     onTap: () => {

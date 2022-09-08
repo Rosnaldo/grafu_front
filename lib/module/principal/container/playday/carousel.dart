@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:grafu/components/image_cache/index.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class Carousel extends StatefulWidget {
@@ -48,8 +49,10 @@ class CarouselState extends State<Carousel> {
         margin: const EdgeInsets.symmetric(horizontal: 0),
         color: Colors.grey,
         width: double.infinity,
-        child: Image.network(
-          urlImage,
+        child: Image(
+          image: BuildImageCache.build(
+            url: urlImage,
+          ),
           fit: BoxFit.cover,
         ),
       );

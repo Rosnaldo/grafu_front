@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:grafu/components/image_cache/index.dart';
 import 'package:grafu/models/user.dart';
 import 'package:grafu/services/signout/index.dart';
 import 'package:grafu/store/global_store/store.dart';
@@ -27,8 +28,11 @@ class ProfilePageContainer extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: Ink.image(
-            image: const NetworkImage(
-              'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
+            image: BuildImageCache.build(
+              url:
+                  'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
+              maxWidth: 128,
+              maxHeight: 128,
             ),
             fit: BoxFit.cover,
             width: 128,
@@ -41,8 +45,10 @@ class ProfilePageContainer extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: Ink.image(
-            image: NetworkImage(
-              user.avatar!.url,
+            image: BuildImageCache.build(
+              url: userStore.getUser().avatar?.url,
+              maxWidth: 128,
+              maxHeight: 128,
             ),
             fit: BoxFit.cover,
             width: 128,
