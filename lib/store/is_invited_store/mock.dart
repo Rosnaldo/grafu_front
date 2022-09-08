@@ -5,7 +5,7 @@ class MockIsInvitedStore extends IIsInvitedStore {
 
   @override
   getIsInvited() {
-    return false;
+    return true;
   }
 
   @override

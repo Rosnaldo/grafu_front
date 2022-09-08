@@ -55,7 +55,10 @@ class PlaydayPageContainer extends StatelessWidget {
                   children: [
                     PlaydayDate(date: state.playday.date),
                     const Line(),
-                    const IsInvitedMessage(),
+                    IsInvitedMessage(
+                      isInvitedStore: isInvitedStore,
+                      signinStore: signinStore,
+                    ),
                     const Description(),
                     const Line(),
                     ParticipantList(

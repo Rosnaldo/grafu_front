@@ -9,7 +9,7 @@ class MakeUser {
       email: 'andreytsuzuki@gmail.com',
       avatar: Avatar(
         url:
-            'https://firebasestorage.googleapis.com/v0/b/grafu-357616.appspot.com/o/avatar-images%2F400bef51-543c-49f3-b3b1-312e02299d6b?alt=media&token=b410801f-8612-4f42-a5ef-a4e9d089eb80',
+            'https://media-exp1.licdn.com/dms/image/C4D03AQG3j392gmNRfQ/profile-displayphoto-shrink_800_800/0/1622327303559?e=1665014400&v=beta&t=3sy3EDBNl507QBSEALd1BMbVBsEReWuyPS2VqBixo64',
         uuid: '00bef51-543c-49f3-b3b1-312e02299d6b',
       ),
     );

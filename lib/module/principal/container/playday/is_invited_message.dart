@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/store/is_invited_store/is_invited_store.dart';
 import 'package:grafu/store/signin_store/index.dart';
 
 class IsInvitedMessage extends StatelessWidget {
+  final IIsInvitedStore isInvitedStore;
+  final ISigninStore signinStore;
+
   const IsInvitedMessage({
     Key? key,
+    required this.isInvitedStore,
+    required this.signinStore,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final isInvitedStore = Modular.get<IsInvitedStore>();
-    final signinStore = Modular.get<ISigninStore>();
-
     if (!signinStore.isSignin) {
       return const Padding(
         padding: EdgeInsets.all(12.0),
