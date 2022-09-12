@@ -23,6 +23,7 @@ other tools: Firebase(Authentication and image storage) and Stripe (Payment) <br
 
 ## Features 
 • login and register <br>
+• login social google <br>
 • form errors feedback <br>
 • backend errors feedback <br>
 • session memorization control (user not to log out alone) <br>
