@@ -1,4 +1,6 @@
-# Grafu Frontedn
+# Grafu Frontend
+
+Api repository: [https://github.com/Rosnaldo/grafu_back/blob/main/README.md](https://github.com/Rosnaldo/grafu_back/blob/main/README.md)
 
 ## Screenshots
 <p align="center">
