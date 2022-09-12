@@ -1,12 +1,40 @@
 # Grafu Frontedn
 
+## Screenshots
+<p align="center">
+  <img src="./screenshots/login.png" width="200" title="hover text">
+  <img src="./screenshots/register.png" width="200" title="hover text">
+  <img src="./screenshots/profile.png" width="200" title="hover text">
+  <img src="./screenshots/gallery.png" width="200" title="hover text">
+  <img src="./screenshots/playday1.png" width="200" title="hover text">
+  <img src="./screenshots/playday2.png" width="200" title="hover text">
+  <img src="./screenshots/playday3.png" width="200" title="hover text">
+  <img src="./screenshots/playday4.png" width="200" title="hover text">
+</p>
+
+<br>
+
 ## Specifications 
 platforms: Web | Android | Ios <br>
 framework: Flutter <br>
 other tools: Firebase(Authentication and image storage) and Stripe (Payment) <br>
 
 <br>
- 
+
+## Features 
+• login and register
+• form errors feedback
+• backend errors feedback
+• session memorization control (user not to log out alone)
+• email verification (activate user by email)
+• avatar photo upload
+• avatar image crop
+• google maps street location
+• images with cache
+• payment integration with stripe
+
+<br>
+
 ## Architeture decisitons
 • State management ValueNotifier and Mobx <br>
 • Modular Architeture <br>
@@ -25,20 +53,6 @@ Since container does not depend on business layer but on an abstraction, the bus
 The isn't a single page that is not in the storybook catalog. <br>
 Entities, services and repositories are divided into separed layers respecting Clean Architeture principles. <br>
 Also all services are been injected. <br>
-
-<br>
-
-## Screenshots
-<p align="center">
-  <img src="./screenshots/login.png" width="200" title="hover text">
-  <img src="./screenshots/register.png" width="200" title="hover text">
-  <img src="./screenshots/profile.png" width="200" title="hover text">
-  <img src="./screenshots/gallery.png" width="200" title="hover text">
-  <img src="./screenshots/playday1.png" width="200" title="hover text">
- <img src="./screenshots/playday2.png" width="200" title="hover text">
- <img src="./screenshots/playday3.png" width="200" title="hover text">
- <img src="./screenshots/playday4.png" width="200" title="hover text">
-</p>
 
 <br>
 
