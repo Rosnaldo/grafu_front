@@ -10,7 +10,7 @@ other tools: Firebase(Authentication and image storage) and Stripe (Payment) <br
 ## Architeture decisitons
 • State management ValueNotifier and Mobx <br>
 • Modular Architeture <br>
-• Widgets divided in two layers (Container and Business) <br>
+• page widgets are divided in two layers (Container and Business) <br>
 • Clean Architeture concepts <br>
 
 <br>
@@ -18,8 +18,11 @@ other tools: Firebase(Authentication and image storage) and Stripe (Payment) <br
 ValueNotifier was used for small scoped functions and triple statement when fetching data and loading the page. <br>
 Mobx is been used for global stores. <br>
 Business functionalities are divided into modules with an eye on the future in case you need to split into micro-frontends. <br>
-
-
+Page widgets has two layers so it can be tested by two diferent methods.<br>
+The business layer carry on all the business rules and services so it is tested by unit tests. <br>
+The container layer is responsible for widget view properties so it is tested by storybook. <br>
+Since container does not depend on business layer but on an abstraction, the business layer can be mocked. <br>
+The isn't a single page that is not in the storybook catalog. <br>
 
 <br>
 
