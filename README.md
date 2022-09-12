@@ -22,16 +22,16 @@ other tools: Firebase(Authentication and image storage) and Stripe (Payment) <br
 <br>
 
 ## Features 
-• login and register
-• form errors feedback
-• backend errors feedback
-• session memorization control (user not to log out alone)
-• email verification (activate user by email)
-• avatar photo upload
-• avatar image crop
-• google maps street location
-• images with cache
-• payment integration with stripe
+• login and register <br>
+• form errors feedback <br>
+• backend errors feedback <br>
+• session memorization control (user not to log out alone) <br>
+• email verification (activate user by email) <br>
+• avatar photo upload <br>
+• avatar image crop <br>
+• google maps street location <br>
+• images with cache <br>
+• payment integration with stripe <br>
 
 <br>
 
