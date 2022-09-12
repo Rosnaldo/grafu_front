@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:grafu/mocks/participant.dart';
 import 'package:grafu/module/principal/business/playday/participant_card/mock.dart';
 import 'package:grafu/module/principal/business/playday/participant_detail_popup/mock.dart';
 import 'package:grafu/module/principal/container/playday/index.dart';
@@ -23,7 +22,7 @@ class MockPlaydayPage extends StatelessWidget {
       isInvitedStore: MockIsInvitedStore(),
       myParticipantStore: MockMyParticipantStore(),
       participantCard: (participant) => MockParticipantCard(
-        participant: MakeParticipants.make()[0],
+        participant: participant,
         buildParticipantDetailPopup: MockBuildParticipantDetailPopup(),
       ),
     );
