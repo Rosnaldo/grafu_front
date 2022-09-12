@@ -2,15 +2,15 @@
 
 ## Screenshots
 <p align="center">
-  <img src="./screenshots/login.png" width="200" title="hover text">
-  <img src="./screenshots/register.png" width="200" title="hover text">
-  <img src="./screenshots/profile.png" width="200" title="hover text">
-  <img src="./screenshots/gallery.png" width="200" title="hover text">
-  <img src="./screenshots/playday1.png" width="200" title="hover text">
-  <img src="./screenshots/playday2.png" width="200" title="hover text">
-  <img src="./screenshots/playday3.png" width="200" title="hover text">
-  <img src="./screenshots/playday4.png" width="200" title="hover text">
-  <img src="./screenshots/stripe.png" width="200" title="hover text">
+  <img src="./screenshots/login.png" width="250" title="hover text">
+  <img src="./screenshots/register.png" width="250" title="hover text">
+  <img src="./screenshots/profile.png" width="250" title="hover text">
+  <img src="./screenshots/gallery.png" width="250" title="hover text">
+  <img src="./screenshots/playday1.png" width="250" title="hover text">
+  <img src="./screenshots/playday2.png" width="250" title="hover text">
+  <img src="./screenshots/playday3.png" width="250" title="hover text">
+  <img src="./screenshots/playday4.png" width="250" title="hover text">
+  <img src="./screenshots/stripe.png" width="250" title="hover text">
 </p>
 
 <br>
