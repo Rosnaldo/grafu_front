@@ -10,6 +10,7 @@
   <img src="./screenshots/playday2.png" width="200" title="hover text">
   <img src="./screenshots/playday3.png" width="200" title="hover text">
   <img src="./screenshots/playday4.png" width="200" title="hover text">
+  <img src="./screenshots/stripe.png" width="200" title="hover text">
 </p>
 
 <br>
