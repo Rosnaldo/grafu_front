@@ -166,12 +166,10 @@ class ProfilePageContainer extends StatelessWidget {
             ];
     }
 
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Center(
-          child: Column(
-            children: signedWidgets(),
-          ),
+    return SingleChildScrollView(
+      child: Center(
+        child: Column(
+          children: signedWidgets(),
         ),
       ),
     );

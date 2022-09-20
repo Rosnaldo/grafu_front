@@ -128,7 +128,8 @@ class PrincipalPageContainerState extends State<PrincipalPageContainer> {
     }
 
     if (state is SuccessGlobalState) {
-      return Container(
+      return SizedBox(
+        width: 400.0,
         child: buildScaffold(),
       );
     }
@@ -138,12 +139,10 @@ class PrincipalPageContainerState extends State<PrincipalPageContainer> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: MaterialApp(
-        home: ValueListenableBuilder<GlobalState>(
-          valueListenable: widget.globalStore,
-          builder: buildNavigatePages,
-        ),
+    return MaterialApp(
+      home: ValueListenableBuilder<GlobalState>(
+        valueListenable: widget.globalStore,
+        builder: buildNavigatePages,
       ),
     );
   }

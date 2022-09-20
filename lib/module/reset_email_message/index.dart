@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/components/link_redirect/index.dart';
+import 'package:grafu/components/screener/index.dart';
 
 class ResetEmailMessagePage extends StatefulWidget {
   const ResetEmailMessagePage({
@@ -13,33 +14,26 @@ class ResetEmailMessagePage extends StatefulWidget {
 class ResetEmailMessagePageState extends State<ResetEmailMessagePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: const [
-                Align(
-                  alignment: Alignment.center,
-                  child: Text('Email para resetar a senha foi enviado.'),
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: Text('Cheque o seu email.'),
-                ),
-                Align(
-                  child: LinkRedirect(
-                    title: 'Voltar para login',
-                    redirectLink: '/',
-                  ),
-                ),
-              ],
-            ),
+    return const Screener(
+      children: [
+        SizedBox(
+          height: 20.0,
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: Text('Email para resetar a senha foi enviado.'),
+        ),
+        Align(
+          alignment: Alignment.center,
+          child: Text('Cheque o seu email.'),
+        ),
+        Align(
+          child: LinkRedirect(
+            title: 'Voltar para login',
+            redirectLink: '/',
           ),
         ),
-      ),
+      ],
     );
   }
 }
