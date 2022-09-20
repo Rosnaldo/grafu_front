@@ -96,6 +96,7 @@ class ProfilePageContainer extends StatelessWidget {
     List<Widget> signedWidgets() {
       return (signinStore.isSignin)
           ? [
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Observer(builder: (_) {
@@ -139,6 +140,7 @@ class ProfilePageContainer extends StatelessWidget {
               ),
             ]
           : [
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Observer(builder: (_) {

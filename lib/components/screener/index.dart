@@ -14,13 +14,17 @@ class Screener extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Expanded(
-            child: Column(
-              children: [
-                SizedBox(
-                  width: 400.0,
-                  child: Column(children: children),
-                )
-              ],
+            child: SizedBox(
+              height: double.maxFinite,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    width: 400.0,
+                    child: Column(children: children),
+                  )
+                ],
+              ),
             ),
           ),
         ],

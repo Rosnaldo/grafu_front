@@ -14,26 +14,28 @@ class VerifyEmailMessagePage extends StatefulWidget {
 class VerifyEmailMessagePageState extends State<VerifyEmailMessagePage> {
   @override
   Widget build(BuildContext context) {
-    return const Screener(
-      children: [
-        SizedBox(
-          height: 20.0,
-        ),
-        Align(
-          alignment: Alignment.center,
-          child: Text('Um email de ativação de conta foi enviado.'),
-        ),
-        Align(
-          alignment: Alignment.center,
-          child: Text('Cheque o seu email.'),
-        ),
-        Align(
-          child: LinkRedirect(
-            title: 'Voltar para login',
-            redirectLink: '/',
+    return const SafeArea(
+      child: Screener(
+        children: [
+          SizedBox(
+            height: 20.0,
           ),
-        ),
-      ],
+          Align(
+            alignment: Alignment.center,
+            child: Text('Um email de ativação de conta foi enviado.'),
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: Text('Cheque o seu email.'),
+          ),
+          Align(
+            child: LinkRedirect(
+              title: 'Voltar para login',
+              redirectLink: '/',
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

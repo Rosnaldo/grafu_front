@@ -14,26 +14,28 @@ class ResetEmailMessagePage extends StatefulWidget {
 class ResetEmailMessagePageState extends State<ResetEmailMessagePage> {
   @override
   Widget build(BuildContext context) {
-    return const Screener(
-      children: [
-        SizedBox(
-          height: 20.0,
-        ),
-        Align(
-          alignment: Alignment.center,
-          child: Text('Email para resetar a senha foi enviado.'),
-        ),
-        Align(
-          alignment: Alignment.center,
-          child: Text('Cheque o seu email.'),
-        ),
-        Align(
-          child: LinkRedirect(
-            title: 'Voltar para login',
-            redirectLink: '/',
+    return const SafeArea(
+      child: Screener(
+        children: [
+          SizedBox(
+            height: 20.0,
           ),
-        ),
-      ],
+          Align(
+            alignment: Alignment.center,
+            child: Text('Email para resetar a senha foi enviado.'),
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: Text('Cheque o seu email.'),
+          ),
+          Align(
+            child: LinkRedirect(
+              title: 'Voltar para login',
+              redirectLink: '/',
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

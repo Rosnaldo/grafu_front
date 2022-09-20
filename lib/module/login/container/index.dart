@@ -34,123 +34,128 @@ class LoginPageContainerState extends State<LoginPageContainer> {
     NavigatorState navigator = Navigator.of(context);
     ScaffoldMessengerState scaffMess = ScaffoldMessenger.of(context);
 
-    return Screener(
-      children: [
-        const Padding(
-          padding: EdgeInsets.only(top: 25.0, bottom: 8.0),
-          child: Text(
-            'Login',
-            style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w700),
+    return SafeArea(
+      child: Screener(
+        children: [
+          const Padding(
+            padding: EdgeInsets.only(top: 25.0, bottom: 8.0),
+            child: Text(
+              'Login',
+              style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w700),
+            ),
           ),
-        ),
-        Form(
-          key: _formKey,
-          child: ListView(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            padding: const EdgeInsets.all(10),
-            children: <Widget>[
-              const SizedBox(height: 16),
-              EmailFormField(
-                label: 'email',
-                focusNode: emailFocusNode,
-                nextFocusNode: passwordFocusNode,
-                onSaved: (value) =>
-                    loginModel = loginModel.copyWith(email: value),
-                validator: (text) {
-                  if (text == null || text.isEmpty) {
-                    return 'Email obrigatório';
-                  }
-                  if (!RegExp(
-                          r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
-                      .hasMatch(text)) {
-                    return 'Email inválido';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 16),
-              PassworFormField(
-                label: 'senha',
-                focusNode: passwordFocusNode,
-                nextFocusNode: emailFocusNode,
-                onSaved: (value) =>
-                    loginModel = loginModel.copyWith(password: value),
-                validator: (text) {
-                  if (text == null || text.isEmpty) {
-                    return 'Senha obrigatório';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 5),
-              const LinkRedirect(
-                title: 'Primeira vez? (cadastrar)',
-                redirectLink: '/register',
-              ),
-              const LinkRedirect(
-                title: 'Esqueceu a senha?',
-                redirectLink: '/reset',
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                focusNode: loginFocusNode,
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    _formKey.currentState!.save();
-                    try {
-                      await widget.signIn.execute(loginModel);
-                      navigator.pushNamed('/principal/playday');
-                    } catch (e) {
-                      scaffMess.showSnackBar(SnackBar(
-                        content: Text(e.toString()),
-                      ));
+          Form(
+            key: _formKey,
+            child: ListView(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              padding: const EdgeInsets.all(10),
+              children: <Widget>[
+                const SizedBox(height: 16),
+                EmailFormField(
+                  label: 'email',
+                  focusNode: emailFocusNode,
+                  nextFocusNode: passwordFocusNode,
+                  onSaved: (value) =>
+                      loginModel = loginModel.copyWith(email: value),
+                  validator: (text) {
+                    if (text == null || text.isEmpty) {
+                      return 'Email obrigatório';
                     }
+                    if (!RegExp(
+                            r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
+                        .hasMatch(text)) {
+                      return 'Email inválido';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 16),
+                PassworFormField(
+                  label: 'senha',
+                  focusNode: passwordFocusNode,
+                  nextFocusNode: emailFocusNode,
+                  onSaved: (value) =>
+                      loginModel = loginModel.copyWith(password: value),
+                  validator: (text) {
+                    if (text == null || text.isEmpty) {
+                      return 'Senha obrigatório';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 5),
+                const LinkRedirect(
+                  title: 'Primeira vez? (cadastrar)',
+                  redirectLink: '/register',
+                ),
+                const LinkRedirect(
+                  title: 'Esqueceu a senha?',
+                  redirectLink: '/reset',
+                ),
+                const SizedBox(height: 20),
+                ElevatedButton(
+                  focusNode: loginFocusNode,
+                  onPressed: () async {
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                      try {
+                        await widget.signIn.execute(loginModel);
+                        navigator.pushNamed('/principal/playday');
+                      } catch (e) {
+                        scaffMess.showSnackBar(SnackBar(
+                          content: Text(e.toString()),
+                        ));
+                      }
+                    }
+                  },
+                  child: const Text('Login'),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            child: Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Text('ou'),
+            ),
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
+            child: SizedBox(
+              width: double.maxFinite,
+              child: ElevatedButton(
+                onPressed: () => {},
+                child: const Text('facebook'),
+              ),
+            ),
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
+            child: SizedBox(
+              width: double.maxFinite,
+              child: ElevatedButton(
+                onPressed: () async {
+                  try {
+                    await widget.signInWithGoogle.execute();
+                    navigator.pushNamed('/principal/playday');
+                  } catch (e) {
+                    scaffMess.showSnackBar(SnackBar(
+                      content: Text(e.toString()),
+                    ));
                   }
                 },
-                child: const Text('Login'),
+                style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all(Colors.redAccent)),
+                child: const Text('google'),
               ),
-            ],
-          ),
-        ),
-        const SizedBox(
-          child: Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text('ou'),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
-          child: SizedBox(
-            width: double.maxFinite,
-            child: ElevatedButton(
-              onPressed: () => {},
-              child: const Text('facebook'),
             ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
-          child: SizedBox(
-            width: double.maxFinite,
-            child: ElevatedButton(
-              onPressed: () async {
-                try {
-                  await widget.signInWithGoogle.execute();
-                  navigator.pushNamed('/principal/playday');
-                } catch (e) {
-                  scaffMess.showSnackBar(SnackBar(
-                    content: Text(e.toString()),
-                  ));
-                }
-              },
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.redAccent)),
-              child: const Text('google'),
-            ),
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
