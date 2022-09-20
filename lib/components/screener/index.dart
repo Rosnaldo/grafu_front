@@ -9,13 +9,13 @@ class Screener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            child: SizedBox(
-              height: double.maxFinite,
+    return SizedBox(
+      height: double.infinity,
+      child: SingleChildScrollView(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -26,8 +26,8 @@ class Screener extends StatelessWidget {
                 ],
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
