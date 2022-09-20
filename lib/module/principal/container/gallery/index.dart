@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/components/image_cache/index.dart';
 import 'package:grafu/components/image_popup/index.dart';
+import 'package:grafu/components/screener/index.dart';
 import 'package:grafu/components/switch_button/index.dart';
 import 'package:grafu/store/global_store/state.dart';
 import 'package:grafu/store/global_store/store.dart';
@@ -81,30 +82,28 @@ class GalleryPageContainer extends StatelessWidget {
     final state = store.value as SuccessGlobalState;
     GalleryStore galleryStore = GalleryStore();
 
-    return SafeArea(
-      child: ListView(children: [
-        AnimatedBuilder(
-            animation: galleryStore,
-            builder: (context, child) {
-              return Column(
-                children: [
-                  SwitchButton(
-                    option1: SwitchButtonOption(
-                        label: 'Coluna', icon: Icons.table_rows),
-                    option2: SwitchButtonOption(
-                        label: 'Grid', icon: Icons.grid_view),
-                    isSelected: galleryStore.value,
-                    onPressed: (integer) {
-                      galleryStore.setGallery(integer);
-                    },
-                  ),
-                  (galleryStore.value[0])
-                      ? buildGallery(state.playday.gallery, context)
-                      : buildGrid(state.playday.gallery, context),
-                ],
-              );
-            }),
-      ]),
-    );
+    return Screener(children: [
+      AnimatedBuilder(
+          animation: galleryStore,
+          builder: (context, child) {
+            return Column(
+              children: [
+                SwitchButton(
+                  option1: SwitchButtonOption(
+                      label: 'Coluna', icon: Icons.table_rows),
+                  option2:
+                      SwitchButtonOption(label: 'Grid', icon: Icons.grid_view),
+                  isSelected: galleryStore.value,
+                  onPressed: (integer) {
+                    galleryStore.setGallery(integer);
+                  },
+                ),
+                (galleryStore.value[0])
+                    ? buildGallery(state.playday.gallery, context)
+                    : buildGrid(state.playday.gallery, context),
+              ],
+            );
+          }),
+    ]);
   }
 }

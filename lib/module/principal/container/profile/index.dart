@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:grafu/components/image_cache/index.dart';
+import 'package:grafu/components/screener/index.dart';
 import 'package:grafu/models/user.dart';
 import 'package:grafu/services/signout/index.dart';
 import 'package:grafu/store/global_store/store.dart';
@@ -166,12 +167,8 @@ class ProfilePageContainer extends StatelessWidget {
             ];
     }
 
-    return SingleChildScrollView(
-      child: Center(
-        child: Column(
-          children: signedWidgets(),
-        ),
-      ),
+    return Screener(
+      children: signedWidgets(),
     );
   }
 }

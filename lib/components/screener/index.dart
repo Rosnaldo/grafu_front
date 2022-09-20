@@ -9,23 +9,21 @@ class Screener extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  SizedBox(
-                    width: 400.0,
-                    child: Column(children: children),
-                  )
-                ],
-              ),
+    return SingleChildScrollView(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Column(
+              children: [
+                SizedBox(
+                  width: 400.0,
+                  child: Column(children: children),
+                )
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

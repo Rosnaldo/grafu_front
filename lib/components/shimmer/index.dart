@@ -22,7 +22,7 @@ class ShimmerWidget extends StatelessWidget {
         width: width,
         height: height,
         decoration: ShapeDecoration(
-          color: Colors.grey[400]!,
+          color: Colors.grey[300]!,
           shape: shapeBorder,
         ),
       );
