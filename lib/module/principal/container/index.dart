@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grafu/components/screener/index.dart';
 import 'package:grafu/components/shimmer/index.dart';
-import 'package:grafu/module/principal/business/playday/index.dart';
 import 'package:grafu/store/global_store/state.dart';
 import 'package:grafu/store/global_store/store.dart';
 
