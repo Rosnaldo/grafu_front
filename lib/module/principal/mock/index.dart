@@ -39,7 +39,7 @@ class MockPrincipalPage extends StatelessWidget {
           label: 'Galleria',
           icon: Padding(
             padding: EdgeInsets.all(12.0),
-            child: Icon(Icons.table_rows),
+            child: Icon(Icons.image),
           ),
         )
       ],
