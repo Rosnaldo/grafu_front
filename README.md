@@ -12,7 +12,6 @@ Api repository: [https://github.com/Rosnaldo/grafu_back/blob/main/README.md](htt
   <img src="./screenshots/playday1.png" width="250" title="hover text">
   <img src="./screenshots/playday2.png" width="250" title="hover text">
   <img src="./screenshots/playday3.png" width="250" title="hover text">
-  <img src="./screenshots/playday4.png" width="250" title="hover text">
   <img src="./screenshots/stripe.png" width="250" title="hover text">
 </p>
 
