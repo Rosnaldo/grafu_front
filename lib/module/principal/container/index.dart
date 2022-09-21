@@ -54,62 +54,64 @@ class PrincipalPageContainerState extends State<PrincipalPageContainer> {
   }
 
   Widget buildShimmerEffect() {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Column(
-        children: [
-          const ShimmerWidget.rectangular(height: 180),
-          const SizedBox(height: 5.0),
-          const ListTile(
-            contentPadding: EdgeInsets.all(10.0),
-            leading: ShimmerWidget.circular(width: 25, height: 25),
-            title: ShimmerWidget.rectangular(height: 20),
-          ),
-          const SizedBox(height: 15.0),
-          const Align(
-            alignment: Alignment.centerLeft,
-            child: ShimmerWidget.rectangular(
-              height: 20,
-              width: 100,
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.all(12.0),
+        child: Column(
+          children: [
+            const ShimmerWidget.rectangular(height: 180),
+            const SizedBox(height: 5.0),
+            const ListTile(
+              contentPadding: EdgeInsets.all(10.0),
+              leading: ShimmerWidget.circular(width: 25, height: 25),
+              title: ShimmerWidget.rectangular(height: 20),
             ),
-          ),
-          const SizedBox(height: 15.0),
-          const ShimmerWidget.rectangular(height: 20),
-          const SizedBox(height: 5.0),
-          const Align(
-            alignment: Alignment.centerLeft,
-            child: ShimmerWidget.rectangular(
-              height: 20,
-              width: 220,
+            const SizedBox(height: 15.0),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: ShimmerWidget.rectangular(
+                height: 20,
+                width: 100,
+              ),
             ),
-          ),
-          const SizedBox(height: 5.0),
-          const ShimmerWidget.rectangular(height: 20),
-          const SizedBox(height: 5.0),
-          const Align(
-            alignment: Alignment.centerLeft,
-            child: ShimmerWidget.rectangular(
-              height: 20,
-              width: 220,
+            const SizedBox(height: 15.0),
+            const ShimmerWidget.rectangular(height: 20),
+            const SizedBox(height: 5.0),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: ShimmerWidget.rectangular(
+                height: 20,
+                width: 220,
+              ),
             ),
-          ),
-          const SizedBox(height: 5.0),
-          const ShimmerWidget.rectangular(height: 20),
-          Expanded(child: Container()),
-          Row(
-            children: const [
-              Spacer(),
-              ShimmerWidget.circular(width: 45, height: 45),
-              Spacer(),
-              Spacer(),
-              ShimmerWidget.circular(width: 45, height: 45),
-              Spacer(),
-              Spacer(),
-              ShimmerWidget.circular(width: 45, height: 45),
-              Spacer(),
-            ],
-          ),
-        ],
+            const SizedBox(height: 5.0),
+            const ShimmerWidget.rectangular(height: 20),
+            const SizedBox(height: 5.0),
+            const Align(
+              alignment: Alignment.centerLeft,
+              child: ShimmerWidget.rectangular(
+                height: 20,
+                width: 220,
+              ),
+            ),
+            const SizedBox(height: 5.0),
+            const ShimmerWidget.rectangular(height: 20),
+            Expanded(child: Container()),
+            Row(
+              children: const [
+                Spacer(),
+                ShimmerWidget.circular(width: 45, height: 45),
+                Spacer(),
+                Spacer(),
+                ShimmerWidget.circular(width: 45, height: 45),
+                Spacer(),
+                Spacer(),
+                ShimmerWidget.circular(width: 45, height: 45),
+                Spacer(),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
