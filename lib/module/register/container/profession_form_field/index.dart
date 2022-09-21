@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/styles/color.dart';
+import 'package:grafu/styles/text_form.dart';
 
 class ProfessionFormField extends StatelessWidget {
   final String label;
@@ -28,13 +30,14 @@ class ProfessionFormField extends StatelessWidget {
       keyboardType: TextInputType.name,
       validator: validator,
       decoration: InputDecoration(
+        filled: true,
+        fillColor: fieldGray,
         labelText: label,
+        labelStyle: const TextStyle(color: fieldSecondaryText),
         hintText: hintText,
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(4.0),
-          ),
-        ),
+        hintStyle: const TextStyle(color: fieldSecondaryText),
+        enabledBorder: grayFieldFormBorder,
+        focusedBorder: grayFieldFormBorder,
       ),
     );
   }

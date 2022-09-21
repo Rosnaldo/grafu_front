@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/styles/color.dart';
+import 'package:grafu/styles/text_form.dart';
 
 class PassworFormField extends StatefulWidget {
   final String label;
@@ -37,22 +39,23 @@ class PassworFormFieldState extends State<PassworFormField> {
       keyboardType: TextInputType.visiblePassword,
       validator: widget.validator,
       decoration: InputDecoration(
+        filled: true,
+        fillColor: fieldGray,
         errorMaxLines: 2,
         labelText: widget.label,
-        hintText: 'Preencha a senha',
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(4.0),
-          ),
-        ),
+        labelStyle: const TextStyle(color: fieldSecondaryText),
+        hintText: '********',
+        hintStyle: const TextStyle(color: fieldSecondaryText),
+        enabledBorder: grayFieldFormBorder,
+        focusedBorder: grayFieldFormBorder,
         suffixIcon: IconButton(
           onPressed: () => setState(() => _obscurePassword = !_obscurePassword),
           icon: Icon(
             _obscurePassword ? Icons.visibility_off : Icons.visibility,
-            color: Colors.blue,
+            color: fieldIcon,
           ),
         ),
-        prefixIcon: const Icon(Icons.lock),
+        prefixIcon: const Icon(Icons.lock, color: fieldIcon),
       ),
     );
   }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/styles/color.dart';
+import 'package:grafu/styles/text_form.dart';
 
 class NameFormField extends StatelessWidget {
   final String label;
@@ -28,14 +30,16 @@ class NameFormField extends StatelessWidget {
       keyboardType: TextInputType.name,
       validator: validator,
       decoration: InputDecoration(
-          labelText: label,
-          hintText: hintText,
-          border: const OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(4.0),
-            ),
-          ),
-          prefixIcon: const Icon(Icons.person)),
+        filled: true,
+        fillColor: fieldGray,
+        labelText: label,
+        labelStyle: const TextStyle(color: fieldSecondaryText),
+        hintText: hintText,
+        hintStyle: const TextStyle(color: fieldSecondaryText),
+        enabledBorder: grayFieldFormBorder,
+        focusedBorder: grayFieldFormBorder,
+        prefixIcon: const Icon(Icons.person, color: fieldIcon),
+      ),
     );
   }
 }

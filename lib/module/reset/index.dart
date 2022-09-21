@@ -39,66 +39,68 @@ class ResetPageState extends State<ResetPage> {
     ScaffoldMessengerState scaffMess = ScaffoldMessenger.of(context);
 
     return SafeArea(
-      child: Screener(
-        children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 25.0, bottom: 8.0),
-            child: Text(
-              'Resetar Email',
-              style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w700),
+      child: Scaffold(
+        body: Screener(
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(top: 25.0, bottom: 8.0),
+              child: Text(
+                'Resetar Email',
+                style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w700),
+              ),
             ),
-          ),
-          Form(
-            key: _formKey,
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              padding: const EdgeInsets.all(10),
-              children: <Widget>[
-                EmailFormField(
-                  label: 'email',
-                  focusNode: emailFocusNode,
-                  nextFocusNode: sendFocusNode,
-                  validator: (text) {
-                    if (text == null || text.isEmpty) {
-                      return 'Email obrigatório';
-                    }
-                    if (!RegExp(
-                            r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
-                        .hasMatch(text)) {
-                      return 'Email inválido';
-                    }
-                    return null;
-                  },
-                  onSaved: (value) {
-                    resetModel = resetModel.copyWith(email: value);
-                  },
-                ),
-                const LinkRedirect(
-                  title: 'Voltar para login',
-                  redirectLink: '/',
-                ),
-                ElevatedButton(
-                  focusNode: sendFocusNode,
-                  onPressed: () async {
-                    if (_formKey.currentState!.validate()) {
-                      _formKey.currentState!.save();
-                      try {
-                        await resetEmail();
-                        navigator.pushNamed('/reset-email-message');
-                      } catch (e) {
-                        scaffMess.showSnackBar(SnackBar(
-                          content: Text(e.toString()),
-                        ));
+            Form(
+              key: _formKey,
+              child: ListView(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                padding: const EdgeInsets.all(10),
+                children: <Widget>[
+                  EmailFormField(
+                    label: 'email',
+                    focusNode: emailFocusNode,
+                    nextFocusNode: sendFocusNode,
+                    validator: (text) {
+                      if (text == null || text.isEmpty) {
+                        return 'Email obrigatório';
                       }
-                    }
-                  },
-                  child: const Text('Enviar'),
-                ),
-              ],
+                      if (!RegExp(
+                              r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
+                          .hasMatch(text)) {
+                        return 'Email inválido';
+                      }
+                      return null;
+                    },
+                    onSaved: (value) {
+                      resetModel = resetModel.copyWith(email: value);
+                    },
+                  ),
+                  const LinkRedirect(
+                    title: 'Voltar para login',
+                    redirectLink: '/',
+                  ),
+                  ElevatedButton(
+                    focusNode: sendFocusNode,
+                    onPressed: () async {
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState!.save();
+                        try {
+                          await resetEmail();
+                          navigator.pushNamed('/reset-email-message');
+                        } catch (e) {
+                          scaffMess.showSnackBar(SnackBar(
+                            content: Text(e.toString()),
+                          ));
+                        }
+                      }
+                    },
+                    child: const Text('Enviar'),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

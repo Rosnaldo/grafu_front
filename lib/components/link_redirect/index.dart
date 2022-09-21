@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/styles/color.dart';
 
 class LinkRedirect extends StatelessWidget {
   final String redirectLink;
@@ -20,7 +21,7 @@ class LinkRedirect extends StatelessWidget {
         textStyle: const TextStyle(height: 1.0),
         padding: const EdgeInsets.symmetric(vertical: 0.0),
         alignment: Alignment.centerLeft,
-        primary: Colors.pink,
+        primary: mainPink,
       ),
       child: Text(
         title,

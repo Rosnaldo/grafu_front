@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/styles/color.dart';
+import 'package:grafu/styles/text_form.dart';
 
 class EmailFormField extends StatelessWidget {
   final String label;
@@ -26,14 +28,15 @@ class EmailFormField extends StatelessWidget {
       keyboardType: TextInputType.emailAddress,
       validator: validator,
       decoration: InputDecoration(
+        filled: true,
+        fillColor: fieldGray,
         labelText: label,
-        hintText: 'Preencha seu email',
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(4.0),
-          ),
-        ),
-        prefixIcon: const Icon(Icons.email),
+        labelStyle: const TextStyle(color: fieldSecondaryText),
+        hintText: 'usuario@exemplo.com.br',
+        hintStyle: const TextStyle(color: fieldSecondaryText),
+        prefixIcon: const Icon(Icons.email, color: fieldIcon),
+        enabledBorder: grayFieldFormBorder,
+        focusedBorder: grayFieldFormBorder,
       ),
     );
   }
