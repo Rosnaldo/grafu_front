@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:grafu/components/avatar/index.dart';
 import 'package:grafu/models/participant.dart';
 import 'package:grafu/module/principal/business/playday/participants_popup/index.dart';
+import 'package:grafu/module/principal/container/playday/line.dart';
+import 'package:grafu/module/principal/container/playday/section_title.dart';
 import 'package:grafu/store/is_invited_store/is_invited_store.dart';
 import 'package:grafu/store/participant_store/my_participant_store.dart';
 import 'package:grafu/store/signin_store/index.dart';
 import 'package:grafu/store/user_store/user_store.dart';
+import 'package:grafu/styles/color.dart';
+import 'package:grafu/styles/font_family.dart';
 
 class ParticipantList extends StatelessWidget {
   final List<Participant> participants;
@@ -29,15 +34,8 @@ class ParticipantList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: const [
-            Text(
-              'Convidados',
-              style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w700),
-            ),
-          ],
-        ),
+        const Line(),
+        const SectionTitle(title: 'Convidados'),
         const SizedBox(height: 12.0),
         Column(children: [
           Observer(builder: (_) {
@@ -53,20 +51,65 @@ class ParticipantList extends StatelessWidget {
               .toList()
         ]),
         const SizedBox(height: 10.0),
-        ElevatedButton.icon(
-          icon: const Icon(Icons.group, size: 15.0),
+        ElevatedButton(
           onPressed: () => {
             BuildParticipantsPopup.showMyDialog(
                 context, participants, participantCard),
           },
-          label: const Text(
-            'Ver convidados',
-            style: TextStyle(color: Colors.white, fontSize: 12.0),
-          ),
           style: ButtonStyle(
-            padding: MaterialStateProperty.all(
-                const EdgeInsets.symmetric(horizontal: 12.0, vertical: 0.0)),
-            backgroundColor: MaterialStateProperty.all(Colors.pink.shade200),
+            elevation: MaterialStateProperty.all(0),
+            backgroundColor: MaterialStateProperty.all(Colors.transparent),
+            shadowColor: MaterialStateProperty.all(Colors.transparent),
+            padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Text(
+                  'Ver convidados',
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    color: confirmedGreen,
+                    fontFamily: mainFontText,
+                    letterSpacing: 1.5,
+                  ),
+                ),
+              ),
+              Stack(
+                children: [
+                  SizedBox(
+                    width: 83,
+                    child: Row(
+                      children: [
+                        AvatarWidget(
+                          avatar: userStore.getUser().avatar,
+                          size: 32,
+                        ),
+                        const Expanded(child: SizedBox()),
+                      ],
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    left: 25,
+                    child: AvatarWidget(
+                      avatar: userStore.getUser().avatar,
+                      size: 32,
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    left: 50,
+                    child: AvatarWidget(
+                      avatar: userStore.getUser().avatar,
+                      size: 32,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ],

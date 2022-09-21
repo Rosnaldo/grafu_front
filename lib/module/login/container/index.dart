@@ -6,6 +6,7 @@ import 'package:grafu/components/or_text/index.dart';
 import 'package:grafu/components/password_form_field/index.dart';
 import 'package:grafu/components/email_form_field/index.dart';
 import 'package:grafu/components/screener/index.dart';
+import 'package:grafu/components/title/index.dart';
 import 'package:grafu/module/login/container/login_model.dart';
 import 'package:grafu/services/google_signin/index.dart';
 import 'package:grafu/services/sign_in/index.dart';
@@ -53,21 +54,7 @@ class LoginPageContainerState extends State<LoginPageContainer> {
                 ),
               ),
             ),
-            Row(
-              children: const [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                  child: Text(
-                    'Login',
-                    style: TextStyle(
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.w600,
-                      color: mainPink,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            const PageTitle(title: 'Login'),
             Form(
               key: _formKey,
               child: ListView(
@@ -124,7 +111,7 @@ class LoginPageContainerState extends State<LoginPageContainer> {
                         }
                       }
                     },
-                    child: const Text('Login'),
+                    text: 'Login',
                   ),
                   const SizedBox(height: 15),
                   const LinkRedirect(

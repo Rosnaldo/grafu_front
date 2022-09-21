@@ -6,6 +6,7 @@ import 'package:grafu/components/or_text/index.dart';
 import 'package:grafu/components/password_form_field/index.dart';
 import 'package:grafu/components/email_form_field/index.dart';
 import 'package:grafu/components/screener/index.dart';
+import 'package:grafu/components/title/index.dart';
 import 'package:grafu/module/register/container/age_form_field/index.dart';
 import 'package:grafu/module/register/container/profession_form_field/index.dart';
 import 'package:grafu/module/register/container/register_model.dart';
@@ -62,21 +63,7 @@ class RegisterPageContainerState extends State<RegisterPageContainer> {
                 ),
               ),
             ),
-            Row(
-              children: const [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0),
-                  child: Text(
-                    'Cadastrar',
-                    style: TextStyle(
-                      fontSize: 25.0,
-                      fontWeight: FontWeight.w600,
-                      color: mainPink,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+            const PageTitle(title: 'Cadastrar'),
             Form(
               key: _formKey,
               child: ListView(
@@ -206,7 +193,7 @@ class RegisterPageContainerState extends State<RegisterPageContainer> {
                         }
                       }
                     },
-                    child: const Text('Cadastrar'),
+                    text: 'Cadastrar',
                   ),
                 ],
               ),

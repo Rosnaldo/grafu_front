@@ -58,7 +58,6 @@ class PlaydayPageContainer extends StatelessWidget {
                 signinStore: signinStore,
               ),
               const Description(),
-              const Line(),
               ParticipantList(
                 participants: state.participants,
                 participantCard: participantCard,
@@ -67,23 +66,10 @@ class PlaydayPageContainer extends StatelessWidget {
                 isInvitedStore: isInvitedStore,
                 myParticipantStore: myParticipantStore,
               ),
-              const Line(),
               Conveniences(
                 conveniences: state.playday.conveniences,
               ),
-              const Line(),
               Location(address: state.playday.address),
-              const Line(),
-              Row(
-                children: const [
-                  Text(
-                    'Ingresso',
-                    style:
-                        TextStyle(fontSize: 17.0, fontWeight: FontWeight.w700),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 12.0),
               PlaydayTimeline(playday: state.playday),
               const SizedBox(height: 12.0),
               // const Line(),

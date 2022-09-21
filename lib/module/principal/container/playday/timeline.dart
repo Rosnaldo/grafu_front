@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/models/playday.dart';
+import 'package:grafu/module/principal/container/playday/line.dart';
+import 'package:grafu/module/principal/container/playday/section_title.dart';
+import 'package:grafu/styles/color.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
 class PlaydayTimeline extends StatelessWidget {
@@ -14,13 +17,16 @@ class PlaydayTimeline extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const Line(),
+        const SizedBox(height: 12.0),
+        const SectionTitle(title: 'Ingresso'),
         TimelineTile(
           alignment: TimelineAlign.manual,
           lineXY: 0.0,
           isFirst: true,
           indicatorStyle: const IndicatorStyle(
             width: 10.0,
-            color: Colors.blueAccent,
+            color: mainPink,
           ),
           endChild: Container(
             margin: const EdgeInsets.all(4.5),
@@ -29,7 +35,7 @@ class PlaydayTimeline extends StatelessWidget {
                 Text(
                   '1.º lote R\$ ${playday.firstLot.price} - vagas ${playday.firstLot.vacancyFilled}/${playday.firstLot.vacancyFilled}',
                   style: const TextStyle(
-                    color: Colors.blueAccent,
+                    color: mainPink,
                     fontSize: 15.0,
                     fontWeight: FontWeight.w700,
                   ),

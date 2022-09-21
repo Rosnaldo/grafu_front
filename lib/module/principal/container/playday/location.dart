@@ -3,6 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:grafu/models/address.dart';
+import 'package:grafu/module/principal/container/playday/line.dart';
+import 'package:grafu/module/principal/container/playday/section_title.dart';
+import 'package:grafu/styles/color.dart';
 
 class Location extends StatefulWidget {
   final Address address;
@@ -31,34 +34,40 @@ class LocationState extends State<Location> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        Row(
-          children: const [
-            Text(
-              'Local',
-              style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.w700),
-            ),
-          ],
-        ),
+        const Line(),
+        const SectionTitle(title: 'Local'),
         const SizedBox(height: 12.0),
         Row(
           children: [
-            Text(widget.address.district,
-                style: const TextStyle(
-                  fontSize: 15.0,
-                  fontWeight: FontWeight.w700,
-                )),
+            Text(
+              widget.address.district,
+              style: const TextStyle(
+                fontSize: 15.0,
+                fontWeight: FontWeight.w700,
+                color: mainText,
+              ),
+            ),
           ],
         ),
         Row(
           children: [
-            Text(widget.address.street),
+            Text(
+              widget.address.street,
+              style: const TextStyle(color: mainText),
+            ),
           ],
         ),
         Row(
           children: [
-            Text('${widget.address.city},'),
+            Text(
+              '${widget.address.city},',
+              style: const TextStyle(color: mainText),
+            ),
             const SizedBox(width: 10.0),
-            Text(widget.address.state),
+            Text(
+              widget.address.state,
+              style: const TextStyle(color: mainText),
+            ),
           ],
         ),
         const SizedBox(height: 10.0),

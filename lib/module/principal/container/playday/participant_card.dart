@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/models/participant.dart';
+import 'package:grafu/styles/color.dart';
 
 class ParticipantCardContainer extends StatelessWidget {
   final Participant participant;
@@ -16,9 +17,9 @@ class ParticipantCardContainer extends StatelessWidget {
     return InkWell(
       onTap: () => onTapCb(context),
       child: Card(
-        margin: const EdgeInsets.all(1.0),
+        margin: const EdgeInsets.symmetric(vertical: 3.0),
         child: Padding(
-          padding: const EdgeInsets.all(4.0),
+          padding: const EdgeInsets.all(12.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -41,9 +42,9 @@ class ParticipantCardContainer extends StatelessWidget {
                 Participant.statusMapper(participant.status),
                 style: TextStyle(
                   color: (participant.status == ParticipantStatus.confirmed)
-                      ? Colors.lightGreen
-                      : Colors.orangeAccent,
-                  fontWeight: FontWeight.bold,
+                      ? confirmedGreen
+                      : warnYellow,
+                  letterSpacing: 1.5,
                 ),
               ),
             ],

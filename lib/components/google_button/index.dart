@@ -14,7 +14,7 @@ class GoogleButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ButtonStyle(
-          padding: MaterialStateProperty.all(const EdgeInsets.all(12.0)),
+          padding: MaterialStateProperty.all(const EdgeInsets.all(10.0)),
           backgroundColor: MaterialStateProperty.all(Colors.white),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(

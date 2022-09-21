@@ -34,6 +34,7 @@ class EmailFormField extends StatelessWidget {
         labelStyle: const TextStyle(color: fieldSecondaryText),
         hintText: 'usuario@exemplo.com.br',
         hintStyle: const TextStyle(color: fieldSecondaryText),
+        errorStyle: const TextStyle(color: alertRed),
         prefixIcon: const Icon(Icons.email, color: fieldIcon),
         enabledBorder: grayFieldFormBorder,
         focusedBorder: grayFieldFormBorder,

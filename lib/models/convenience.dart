@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:grafu/styles/color.dart';
 
 enum ConvenienceType {
   park,
@@ -44,12 +45,14 @@ class Convenience extends Equatable {
 
   Icon mapTypeToIcon(ConvenienceType type) {
     Map<ConvenienceType, Icon> map = {
-      ConvenienceType.park: const Icon(Icons.park),
-      ConvenienceType.food: const Icon(Icons.restaurant_menu),
-      ConvenienceType.internet: const Icon(Icons.wifi),
-      ConvenienceType.sleep: const Icon(Icons.airline_seat_individual_suite),
-      ConvenienceType.parking: const Icon(Icons.directions_car_filled),
-      ConvenienceType.pool: const Icon(Icons.pool),
+      ConvenienceType.park: const Icon(Icons.park, color: mainText),
+      ConvenienceType.food: const Icon(Icons.restaurant_menu, color: mainText),
+      ConvenienceType.internet: const Icon(Icons.wifi, color: mainText),
+      ConvenienceType.sleep:
+          const Icon(Icons.airline_seat_individual_suite, color: mainText),
+      ConvenienceType.parking:
+          const Icon(Icons.directions_car_filled, color: mainText),
+      ConvenienceType.pool: const Icon(Icons.pool, color: mainText),
     };
 
     final icon = map[type];

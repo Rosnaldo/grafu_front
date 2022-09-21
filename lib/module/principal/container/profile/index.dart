@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:grafu/components/image_cache/index.dart';
+import 'package:grafu/components/avatar/index.dart';
 import 'package:grafu/components/screener/index.dart';
 import 'package:grafu/models/user.dart';
 import 'package:grafu/services/signout/index.dart';
@@ -24,42 +24,6 @@ class ProfilePageContainer extends StatelessWidget {
     required this.signinStore,
     required this.userStore,
   }) : super(key: key);
-
-  Widget buildNoAvatar() => ClipOval(
-        child: Material(
-          color: Colors.transparent,
-          child: Ink.image(
-            image: BuildImageCache.build(
-              url:
-                  'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
-              maxWidth: 128,
-              maxHeight: 128,
-            ),
-            fit: BoxFit.cover,
-            width: 128,
-            height: 128,
-          ),
-        ),
-      );
-
-  Widget buildAvatar(BuildContext context, User user) => ClipOval(
-        child: Material(
-          color: Colors.transparent,
-          child: Ink.image(
-            image: BuildImageCache.build(
-              url: userStore.getUser().avatar?.url,
-              maxWidth: 128,
-              maxHeight: 128,
-            ),
-            fit: BoxFit.cover,
-            width: 128,
-            height: 128,
-            child: InkWell(
-              onTap: () => onTapCb(context, user),
-            ),
-          ),
-        ),
-      );
 
   Widget buildEditIcon(BuildContext context, User user) => InkWell(
         onTap: () => onTapCb(context, user),
@@ -102,9 +66,11 @@ class ProfilePageContainer extends StatelessWidget {
                 child: Observer(builder: (_) {
                   return Stack(
                     children: [
-                      (userStore.getUser().avatar != null)
-                          ? buildAvatar(context, userStore.getUser())
-                          : buildNoAvatar(),
+                      AvatarWidget(
+                        avatar: userStore.getUser().avatar,
+                        onTap: () => onTapCb(context, userStore.getUser()),
+                        size: 128,
+                      ),
                       Positioned(
                         bottom: 0,
                         right: 8,
@@ -145,8 +111,10 @@ class ProfilePageContainer extends StatelessWidget {
                 padding: const EdgeInsets.all(20.0),
                 child: Observer(builder: (_) {
                   return Stack(
-                    children: [
-                      buildNoAvatar(),
+                    children: const [
+                      AvatarWidget(
+                        size: 128,
+                      ),
                     ],
                   );
                 }),

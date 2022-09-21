@@ -46,6 +46,7 @@ class PassworFormFieldState extends State<PassworFormField> {
         labelStyle: const TextStyle(color: fieldSecondaryText),
         hintText: '********',
         hintStyle: const TextStyle(color: fieldSecondaryText),
+        errorStyle: const TextStyle(color: alertRed),
         enabledBorder: grayFieldFormBorder,
         focusedBorder: grayFieldFormBorder,
         suffixIcon: IconButton(

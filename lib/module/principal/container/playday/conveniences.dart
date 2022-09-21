@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:grafu/models/convenience.dart';
+import 'package:grafu/module/principal/container/playday/line.dart';
+import 'package:grafu/module/principal/container/playday/section_title.dart';
+import 'package:grafu/styles/color.dart';
 
 class Conveniences extends StatelessWidget {
   final List<Convenience> conveniences;
@@ -21,8 +24,11 @@ class Conveniences extends StatelessWidget {
             ),
             Text(
               convenience.title,
-              style:
-                  const TextStyle(fontWeight: FontWeight.w600, fontSize: 15.0),
+              style: const TextStyle(
+                fontWeight: FontWeight.w600,
+                fontSize: 15.0,
+                color: mainText,
+              ),
             ),
           ],
         ),
@@ -33,7 +39,11 @@ class Conveniences extends StatelessWidget {
                   .map(
                     (item) => Row(
                       children: [
-                        Flexible(child: Text('• $item')),
+                        Flexible(
+                            child: Text(
+                          '• $item',
+                          style: const TextStyle(color: mainText),
+                        )),
                       ],
                     ),
                   )
@@ -46,16 +56,23 @@ class Conveniences extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MasonryGridView.count(
-      shrinkWrap: true,
-      itemCount: conveniences.length,
-      physics: const NeverScrollableScrollPhysics(),
-      crossAxisCount: 2,
-      mainAxisSpacing: 4,
-      crossAxisSpacing: 4,
-      itemBuilder: (context, index) {
-        return buildConvenience(conveniences[index]);
-      },
+    return Column(
+      children: [
+        const Line(),
+        const SectionTitle(title: 'Conveniências'),
+        const SizedBox(height: 12.0),
+        MasonryGridView.count(
+          shrinkWrap: true,
+          itemCount: conveniences.length,
+          physics: const NeverScrollableScrollPhysics(),
+          crossAxisCount: 2,
+          mainAxisSpacing: 4,
+          crossAxisSpacing: 4,
+          itemBuilder: (context, index) {
+            return buildConvenience(conveniences[index]);
+          },
+        ),
+      ],
     );
   }
 }

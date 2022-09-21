@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/styles/color.dart';
+import 'package:grafu/styles/font_family.dart';
 
 class MainPinkButton extends StatelessWidget {
-  final FocusNode focusNode;
-  final void Function() onPressed;
-  final Widget child;
+  final FocusNode? focusNode;
+  final Function() onPressed;
+  final String text;
 
   const MainPinkButton({
     Key? key,
-    required this.focusNode,
+    this.focusNode,
     required this.onPressed,
-    required this.child,
+    required this.text,
   }) : super(key: key);
 
   @override
@@ -18,7 +19,7 @@ class MainPinkButton extends StatelessWidget {
     return ElevatedButton(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(mainPink),
-        padding: MaterialStateProperty.all(const EdgeInsets.all(20.0)),
+        padding: MaterialStateProperty.all(const EdgeInsets.all(15.0)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),
@@ -27,7 +28,15 @@ class MainPinkButton extends StatelessWidget {
       ),
       focusNode: focusNode,
       onPressed: onPressed,
-      child: child,
+      child: Text(
+        text,
+        style: const TextStyle(
+          fontWeight: FontWeight.normal,
+          fontFamily: mainFontText,
+          fontSize: 17.0,
+          letterSpacing: 1,
+        ),
+      ),
     );
   }
 }

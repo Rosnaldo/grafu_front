@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:grafu/components/email_form_field/index.dart';
 import 'package:grafu/components/link_redirect/index.dart';
 import 'package:grafu/components/screener/index.dart';
+import 'package:grafu/components/title/index.dart';
 import 'package:grafu/module/reset/reset_model.dart';
+import 'package:grafu/styles/button.dart';
 import 'package:grafu/utils/failure.dart';
 
 class ResetPage extends StatefulWidget {
@@ -43,11 +45,8 @@ class ResetPageState extends State<ResetPage> {
         body: Screener(
           children: [
             const Padding(
-              padding: EdgeInsets.only(top: 25.0, bottom: 8.0),
-              child: Text(
-                'Resetar Email',
-                style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.w700),
-              ),
+              padding: EdgeInsets.symmetric(vertical: 20.0),
+              child: PageTitle(title: 'Resetar Email'),
             ),
             Form(
               key: _formKey,
@@ -79,7 +78,7 @@ class ResetPageState extends State<ResetPage> {
                     title: 'Voltar para login',
                     redirectLink: '/',
                   ),
-                  ElevatedButton(
+                  MainPinkButton(
                     focusNode: sendFocusNode,
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
@@ -94,7 +93,7 @@ class ResetPageState extends State<ResetPage> {
                         }
                       }
                     },
-                    child: const Text('Enviar'),
+                    text: 'Enviar',
                   ),
                 ],
               ),
