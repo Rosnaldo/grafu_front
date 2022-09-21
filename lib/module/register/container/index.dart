@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/components/google_button/index.dart';
 import 'package:grafu/components/link_redirect/index.dart';
 import 'package:grafu/components/or_text/index.dart';
 
@@ -211,28 +212,17 @@ class RegisterPageContainerState extends State<RegisterPageContainer> {
               ),
             ),
             const OrText(),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 4.0),
-              child: SizedBox(
-                width: double.maxFinite,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    try {
-                      await widget.signInWithGoogle.execute();
-                      navigator.pushNamed('/principal/playday');
-                    } catch (e) {
-                      scaffMess.showSnackBar(SnackBar(
-                        content: Text(e.toString()),
-                      ));
-                    }
-                  },
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.redAccent)),
-                  child: const Text('google'),
-                ),
-              ),
+            GoogleButton(
+              onPressed: () async {
+                try {
+                  await widget.signInWithGoogle.execute();
+                  navigator.pushNamed('/principal/playday');
+                } catch (e) {
+                  scaffMess.showSnackBar(SnackBar(
+                    content: Text(e.toString()),
+                  ));
+                }
+              },
             ),
             const SizedBox(height: 150.0),
           ],
