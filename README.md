@@ -5,13 +5,13 @@ Api repository: [https://github.com/Rosnaldo/grafu_back/blob/main/README.md](htt
 
 ## Screenshots
 <p align="center">
-  <img src="./screenshots/login.png" width="300" title="hover text">
-  <img src="./screenshots/register.png" width="300" title="hover text">
-  <img src="./screenshots/profile.png" width="300" title="hover text">
-  <img src="./screenshots/gallery.png" width="300" title="hover text">
-  <img src="./screenshots/playday1.png" width="300" title="hover text">
-  <img src="./screenshots/playday2.png" width="300" title="hover text">
-  <img src="./screenshots/playday3.png" width="300" title="hover text">
+  <img src="./screenshots/login.png" width="290" title="hover text">
+  <img src="./screenshots/register.png" width="290" title="hover text">
+  <img src="./screenshots/profile.png" width="290" title="hover text">
+  <img src="./screenshots/gallery.png" width="290" title="hover text">
+  <img src="./screenshots/playday1.png" width="290" title="hover text">
+  <img src="./screenshots/playday2.png" width="290" title="hover text">
+  <img src="./screenshots/playday3.png" width="290" title="hover text">
   <img src="./screenshots/stripe.png" width="250" title="hover text">
 </p>
 
