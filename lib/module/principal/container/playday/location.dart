@@ -5,7 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:grafu/models/address.dart';
 import 'package:grafu/module/principal/container/playday/line.dart';
 import 'package:grafu/module/principal/container/playday/section_title.dart';
-import 'package:grafu/styles/color.dart';
+import 'package:grafu/styles/text_style.dart';
 
 class Location extends StatefulWidget {
   final Address address;
@@ -41,11 +41,7 @@ class LocationState extends State<Location> {
           children: [
             Text(
               widget.address.district,
-              style: const TextStyle(
-                fontSize: 15.0,
-                fontWeight: FontWeight.w700,
-                color: mainText,
-              ),
+              style: textStrongStyle,
             ),
           ],
         ),
@@ -53,24 +49,24 @@ class LocationState extends State<Location> {
           children: [
             Text(
               widget.address.street,
-              style: const TextStyle(color: mainText),
+              style: textStrongStyle,
             ),
           ],
         ),
-        Row(
-          children: [
-            Text(
-              '${widget.address.city},',
-              style: const TextStyle(color: mainText),
-            ),
-            const SizedBox(width: 10.0),
-            Text(
-              widget.address.state,
-              style: const TextStyle(color: mainText),
-            ),
-          ],
-        ),
-        const SizedBox(height: 10.0),
+        // Row(
+        //   children: [
+        //     Text(
+        //       '${widget.address.city},',
+        //       style: const TextStyle(color: mainText),
+        //     ),
+        //     const SizedBox(width: 10.0),
+        //     Text(
+        //       widget.address.state,
+        //       style: const TextStyle(color: mainText),
+        //     ),
+        //   ],
+        // ),
+        const SizedBox(height: 15.0),
         SizedBox(
           width: double.maxFinite,
           height: 250.0,

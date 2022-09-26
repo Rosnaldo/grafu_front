@@ -8,6 +8,8 @@ const Color fieldSecondaryText = Color.fromRGBO(80, 85, 92, 1);
 
 const Color fieldIcon = Colors.black;
 
+const Color mainStrongText = Color.fromRGBO(59, 59, 59, 1);
+
 const Color mainText = Color.fromRGBO(79, 79, 79, 1);
 
 const Color confirmedGreen = Color.fromRGBO(111, 207, 151, 1);

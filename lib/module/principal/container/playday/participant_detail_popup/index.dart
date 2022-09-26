@@ -26,7 +26,7 @@ class ParticipantDetailPopupContainerState
             alignment: Alignment.centerRight,
             child: IconButton(
               icon: const Icon(Icons.close),
-              iconSize: 20,
+              iconSize: 15.0,
               onPressed: () {
                 Navigator.of(context).pop();
               },

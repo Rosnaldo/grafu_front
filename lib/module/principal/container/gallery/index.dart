@@ -35,7 +35,7 @@ class GalleryPageContainer extends StatelessWidget {
                     image: BuildImageCache.build(
                       url: image,
                     ),
-                    fit: BoxFit.fitWidth,
+                    fit: BoxFit.cover,
                     width: MediaQuery.of(context).size.width * 1,
                     height: 220,
                     child: InkWell(
@@ -59,7 +59,7 @@ class GalleryPageContainer extends StatelessWidget {
         physics: const NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
-          mainAxisSpacing: 8.0,
+          mainAxisSpacing: 4.0,
           crossAxisSpacing: 4.0,
         ),
         children: gallery

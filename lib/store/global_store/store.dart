@@ -112,6 +112,7 @@ class GlobalStore extends IGlobalStore {
 
     try {
       playday = await playdayRepository.get(playdayId);
+
       await setUpParticipantStatus();
 
       final participantsWithoutMy = getParticipantsWithoutMyParticipant();

@@ -4,6 +4,7 @@ import 'package:grafu/models/convenience.dart';
 import 'package:grafu/module/principal/container/playday/line.dart';
 import 'package:grafu/module/principal/container/playday/section_title.dart';
 import 'package:grafu/styles/color.dart';
+import 'package:grafu/styles/text_style.dart';
 
 class Conveniences extends StatelessWidget {
   final List<Convenience> conveniences;
@@ -24,11 +25,7 @@ class Conveniences extends StatelessWidget {
             ),
             Text(
               convenience.title,
-              style: const TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 15.0,
-                color: mainText,
-              ),
+              style: textStrongStyle,
             ),
           ],
         ),

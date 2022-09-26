@@ -11,7 +11,6 @@ dependencies:
   built_value: ^8.4.0
   built_value_generator: ^8.4.0
   cached_network_image: ^3.0.0
-  carousel_slider: ^4.1.1
   cupertino_icons: ^1.0.2
   dio: ^4.0.6
   equatable: ^2.0.3
@@ -35,7 +34,6 @@ dependencies:
   photo_view: ^0.14.0
   provider: ^6.0.3
   rename: ^2.0.1
-  smooth_page_indicator: ^1.0.0+2
   storybook_flutter: ^0.11.1
   timeline_tile: ^2.0.0
   url_launcher: ^6.1.5
@@ -51,3 +49,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/google.png
+    - assets/glass.png

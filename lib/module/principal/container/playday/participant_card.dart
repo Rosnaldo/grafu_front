@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/models/participant.dart';
 import 'package:grafu/styles/color.dart';
+import 'package:grafu/styles/font_family.dart';
 
 class ParticipantCardContainer extends StatelessWidget {
   final Participant participant;
@@ -11,6 +12,15 @@ class ParticipantCardContainer extends StatelessWidget {
     required this.participant,
     required this.onTapCb,
   }) : super(key: key);
+
+  String showParticipantName(String name) {
+    List<String> list = name.split(' ').toList();
+
+    String first = list[0];
+    String last = list[list.length - 1];
+
+    return '$first $last';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +45,14 @@ class ParticipantCardContainer extends StatelessWidget {
                 flex: 1,
                 child: Padding(
                   padding: const EdgeInsets.only(left: 8.0),
-                  child: Text(participant.name),
+                  child: Text(
+                    showParticipantName(participant.name),
+                    style: const TextStyle(
+                      fontSize: 13.0,
+                      fontFamily: mainFontText,
+                      color: mainStrongText,
+                    ),
+                  ),
                 ),
               ),
               Text(
@@ -44,7 +61,7 @@ class ParticipantCardContainer extends StatelessWidget {
                   color: (participant.status == ParticipantStatus.confirmed)
                       ? confirmedGreen
                       : warnYellow,
-                  letterSpacing: 1.5,
+                  letterSpacing: 1.3,
                 ),
               ),
             ],

@@ -89,19 +89,21 @@ class ProfilePageContainer extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              OutlinedButton.icon(
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(width: 1.0, color: Colors.pink.shade200),
-                ),
+              ElevatedButton.icon(
+                icon: const Icon(Icons.logout, size: 15.0),
                 onPressed: () async {
                   await signOut.execute();
                   Modular.to.navigate('/');
                 },
-                label:
-                    Icon(Icons.logout, color: Colors.pink.shade200, size: 16.0),
-                icon: Text(
+                label: const Text(
                   'Fazer logout',
-                  style: TextStyle(color: Colors.pink.shade200),
+                  style: TextStyle(color: Colors.white, fontSize: 12.0),
+                ),
+                style: ButtonStyle(
+                  padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 0.0)),
+                  backgroundColor:
+                      MaterialStateProperty.all(Colors.pink.shade200),
                 ),
               ),
             ]
@@ -119,19 +121,20 @@ class ProfilePageContainer extends StatelessWidget {
                   );
                 }),
               ),
-              OutlinedButton.icon(
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(width: 1.0, color: Colors.pink.shade200),
-                ),
-                onPressed: () async {
-                  await signOut.execute();
+              ElevatedButton.icon(
+                icon: const Icon(Icons.logout, size: 15.0),
+                onPressed: () {
                   Modular.to.navigate('/');
                 },
-                label:
-                    Icon(Icons.logout, color: Colors.pink.shade200, size: 16.0),
-                icon: Text(
+                label: const Text(
                   'Fazer login',
-                  style: TextStyle(color: Colors.pink.shade200),
+                  style: TextStyle(color: Colors.white, fontSize: 12.0),
+                ),
+                style: ButtonStyle(
+                  padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 0.0)),
+                  backgroundColor:
+                      MaterialStateProperty.all(Colors.pink.shade200),
                 ),
               ),
             ];

@@ -11,6 +11,7 @@ import 'package:grafu/store/signin_store/index.dart';
 import 'package:grafu/store/user_store/user_store.dart';
 import 'package:grafu/styles/color.dart';
 import 'package:grafu/styles/font_family.dart';
+import 'package:grafu/styles/text_style.dart';
 
 class ParticipantList extends StatelessWidget {
   final List<Participant> participants;
@@ -29,6 +30,11 @@ class ParticipantList extends StatelessWidget {
     required this.isInvitedStore,
     required this.myParticipantStore,
   }) : super(key: key);
+
+  String showParticipantNumber(List<Participant> participants) {
+    final participantSize = (participants.length - 3).toString();
+    return '+$participantSize';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,32 +85,58 @@ class ParticipantList extends StatelessWidget {
               ),
               Stack(
                 children: [
-                  SizedBox(
-                    width: 83,
-                    child: Row(
-                      children: [
-                        AvatarWidget(
-                          avatar: userStore.getUser().avatar,
-                          size: 32,
+                  (participants.asMap().containsKey(0))
+                      ? SizedBox(
+                          width: 113,
+                          child: Row(
+                            children: [
+                              AvatarWidget(
+                                avatar: participants[0].avatar,
+                                size: 32,
+                              ),
+                              const Expanded(child: SizedBox()),
+                            ],
+                          ),
+                        )
+                      : Container(),
+                  (participants.asMap().containsKey(1))
+                      ? Positioned(
+                          bottom: 0,
+                          left: 25,
+                          child: AvatarWidget(
+                            avatar: participants[1].avatar,
+                            size: 32,
+                          ),
+                        )
+                      : Container(),
+                  (participants.asMap().containsKey(2))
+                      ? Positioned(
+                          bottom: 0,
+                          left: 50,
+                          child: AvatarWidget(
+                            avatar: participants[2].avatar,
+                            size: 32,
+                          ),
+                        )
+                      : Container(),
+                  Positioned(
+                    bottom: 0,
+                    left: 75,
+                    child: ClipOval(
+                      child: Container(
+                        color: Colors.white60,
+                        height: 32.0,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 3.0, vertical: 1.0),
+                            child: Text(
+                              showParticipantNumber(participants),
+                              style: textStrongStyle,
+                            ),
+                          ),
                         ),
-                        const Expanded(child: SizedBox()),
-                      ],
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    left: 25,
-                    child: AvatarWidget(
-                      avatar: userStore.getUser().avatar,
-                      size: 32,
-                    ),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    left: 50,
-                    child: AvatarWidget(
-                      avatar: userStore.getUser().avatar,
-                      size: 32,
+                      ),
                     ),
                   ),
                 ],

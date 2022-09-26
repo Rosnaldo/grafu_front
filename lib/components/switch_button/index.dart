@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/styles/color.dart';
 
 class SwitchButtonOption {
   String label;
@@ -41,7 +42,7 @@ class SwitchButtonState extends State<SwitchButton> {
           isSelected: widget.isSelected,
           selectedColor: Colors.white,
           color: Colors.black,
-          fillColor: Colors.purpleAccent,
+          fillColor: mainPink,
           onPressed: widget.onPressed,
           children: [
             SizedBox(

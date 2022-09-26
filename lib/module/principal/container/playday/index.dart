@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/components/image_cache/index.dart';
 import 'package:grafu/components/screener/index.dart';
 import 'package:grafu/models/participant.dart';
 
@@ -7,7 +8,6 @@ import 'package:grafu/module/principal/container/playday/description.dart';
 import 'package:grafu/module/principal/container/playday/conveniences.dart';
 import 'package:grafu/module/principal/container/playday/is_invited_message.dart';
 import 'package:grafu/module/principal/container/playday/playday_date.dart';
-import 'package:grafu/module/principal/container/playday/footer.dart';
 import 'package:grafu/module/principal/container/playday/participant_list.dart';
 import 'package:grafu/module/principal/container/playday/line.dart';
 import 'package:grafu/module/principal/container/playday/location.dart';
@@ -18,8 +18,6 @@ import 'package:grafu/store/is_invited_store/is_invited_store.dart';
 import 'package:grafu/store/participant_store/my_participant_store.dart';
 import 'package:grafu/store/signin_store/index.dart';
 import 'package:grafu/store/user_store/user_store.dart';
-
-import 'carousel.dart';
 
 class PlaydayPageContainer extends StatelessWidget {
   final IGlobalStore store;
@@ -45,17 +43,31 @@ class PlaydayPageContainer extends StatelessWidget {
 
     return Screener(
       children: <Widget>[
-        Carousel(imgList: state.playday.gallery),
+        Image(
+          image: BuildImageCache.build(
+            url: state.playday.gallery[0],
+          ),
+          height: MediaQuery.of(context).size.height * 0.7,
+          fit: BoxFit.fitHeight,
+        ),
         const SizedBox(height: 4.0),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              PlaydayDate(date: state.playday.date),
+              PlaydayDate(
+                  date: state.playday.date, address: state.playday.address),
               const Line(),
               IsInvitedMessage(
                 isInvitedStore: isInvitedStore,
                 signinStore: signinStore,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: const [
+                  Image(image: AssetImage('assets/glass.png'), height: 100.0),
+                  SizedBox(width: 50.0),
+                ],
               ),
               const Description(),
               ParticipantList(
@@ -79,11 +91,10 @@ class PlaydayPageContainer extends StatelessWidget {
               (signinStore.isSignin)
                   ? BuyTicket(price: state.playday.firstLot.price)
                   : Container(),
+              const SizedBox(height: 45.0),
             ],
           ),
         ),
-        const SizedBox(height: 20.0),
-        const Footer(),
       ],
     );
   }
