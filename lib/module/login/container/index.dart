@@ -106,7 +106,6 @@ class LoginPageContainerState extends State<LoginPageContainer> {
                           await widget.signIn.execute(loginModel);
                           navigator.pushNamed('/principal/playday');
                         } catch (e) {
-                          print(e);
                           scaffMess.showSnackBar(SnackBar(
                             content: Text(e.toString()),
                           ));
