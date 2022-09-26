@@ -12,6 +12,7 @@ import 'package:grafu/services/google_signin/index.dart';
 import 'package:grafu/services/sign_in/index.dart';
 import 'package:grafu/styles/button.dart';
 import 'package:grafu/styles/color.dart';
+import 'package:grafu/styles/text_style.dart';
 
 class LoginPageContainer extends StatefulWidget {
   final ISignIn signIn;
@@ -105,6 +106,7 @@ class LoginPageContainerState extends State<LoginPageContainer> {
                           await widget.signIn.execute(loginModel);
                           navigator.pushNamed('/principal/playday');
                         } catch (e) {
+                          print(e);
                           scaffMess.showSnackBar(SnackBar(
                             content: Text(e.toString()),
                           ));
@@ -114,10 +116,6 @@ class LoginPageContainerState extends State<LoginPageContainer> {
                     text: 'Login',
                   ),
                   const SizedBox(height: 15),
-                  const LinkRedirect(
-                    title: 'Primeira vez? (cadastrar)',
-                    redirectLink: '/register',
-                  ),
                   const LinkRedirect(
                     title: 'Esqueceu a senha?',
                     redirectLink: '/reset',
@@ -137,6 +135,20 @@ class LoginPageContainerState extends State<LoginPageContainer> {
                   ));
                 }
               },
+            ),
+            const SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: const [
+                  Text('Primeira vez?', style: textStrongStyle),
+                  SizedBox(width: 5.0),
+                  LinkRedirect(
+                    title: 'Cadastrar',
+                    redirectLink: '/register',
+                  ),
+                ],
+              ),
             ),
             const SizedBox(height: 150.0),
           ],

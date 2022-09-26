@@ -6,14 +6,14 @@ class ParticipantResponseMapper {
   static Participant toEntity(ResponseParticipant r) {
     return Participant(
       id: r.id,
-      name: r.user.name,
-      email: r.user.email,
-      avatar: r.user.avatarUrl != null
-          ? Avatar(url: r.user.avatarUrl!, uuid: r.user.avatarUuid!)
+      name: r.user?.name ?? '',
+      email: r.user?.email ?? '',
+      avatar: r.user?.avatarUrl != null
+          ? Avatar(url: r.user?.avatarUrl ?? '', uuid: r.user?.avatarUuid ?? '')
           : null,
       status: mapStatus(r.status),
-      age: r.user.age,
-      profession: r.user.profession,
+      age: r.user?.age,
+      profession: r.user?.profession,
     );
   }
 

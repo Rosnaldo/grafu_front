@@ -13,7 +13,7 @@ abstract class ResponseParticipant
       _$responseParticipantSerializer;
 
   String get id;
-  ResponseUser get user;
+  ResponseUser? get user;
   String get status;
 
   ResponseParticipant._();

@@ -20,9 +20,10 @@ class LinkRedirect extends StatelessWidget {
       },
       style: TextButton.styleFrom(
         textStyle: const TextStyle(height: 1.0),
-        padding: const EdgeInsets.all(0.0),
+        padding: EdgeInsets.zero,
         alignment: Alignment.centerLeft,
         primary: mainPink,
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
       child: Text(
         title,

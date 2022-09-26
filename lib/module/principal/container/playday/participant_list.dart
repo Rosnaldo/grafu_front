@@ -32,7 +32,7 @@ class ParticipantList extends StatelessWidget {
   }) : super(key: key);
 
   String showParticipantNumber(List<Participant> participants) {
-    final participantSize = (participants.length - 3).toString();
+    final participantSize = (participants.length).toString();
     return '+$participantSize';
   }
 
@@ -60,7 +60,11 @@ class ParticipantList extends StatelessWidget {
         ElevatedButton(
           onPressed: () => {
             BuildParticipantsPopup.showMyDialog(
-                context, participants, participantCard),
+              context,
+              participants,
+              participantCard,
+              myParticipantStore,
+            ),
           },
           style: ButtonStyle(
             elevation: MaterialStateProperty.all(0),

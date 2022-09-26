@@ -63,6 +63,7 @@ class Participant extends Equatable {
     Map<ParticipantStatus, String> map = {
       ParticipantStatus.confirmed: 'confirmado',
       ParticipantStatus.pending: 'pendente',
+      ParticipantStatus.unregistered: 'unregistered',
     };
 
     return map[status]!;

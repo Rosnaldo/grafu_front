@@ -18,6 +18,8 @@ class MainPinkButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ButtonStyle(
+        minimumSize:
+            MaterialStateProperty.all(const Size(double.maxFinite, 0.0)),
         backgroundColor: MaterialStateProperty.all(mainPink),
         padding: MaterialStateProperty.all(const EdgeInsets.all(15.0)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -25,6 +27,7 @@ class MainPinkButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.0),
           ),
         ),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
       focusNode: focusNode,
       onPressed: onPressed,

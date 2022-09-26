@@ -74,9 +74,12 @@ class ResetPageState extends State<ResetPage> {
                       resetModel = resetModel.copyWith(email: value);
                     },
                   ),
-                  const LinkRedirect(
-                    title: 'Voltar para login',
-                    redirectLink: '/',
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                    child: LinkRedirect(
+                      title: 'Voltar para login',
+                      redirectLink: '/',
+                    ),
                   ),
                   MainPinkButton(
                     focusNode: sendFocusNode,

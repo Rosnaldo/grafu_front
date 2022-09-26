@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
 import 'package:grafu/models/participant.dart';
+import 'package:grafu/module/principal/container/playday/section_title.dart';
+import 'package:grafu/store/participant_store/my_participant_store.dart';
 
 class ParticipantsPopupContainer extends StatelessWidget {
   final List<Participant> participants;
   final Widget Function(Participant participant) participantCard;
+  final IMyParticipantStore myParticipantStore;
 
   const ParticipantsPopupContainer({
     Key? key,
     required this.participants,
     required this.participantCard,
+    required this.myParticipantStore,
   }) : super(key: key);
 
   @override
@@ -37,12 +41,9 @@ class ParticipantsPopupContainer extends StatelessWidget {
                 SingleChildScrollView(
                   child: ListBody(
                     children: [
-                      const Text(
-                        'Convidados',
-                        style: TextStyle(
-                            fontSize: 17.0, fontWeight: FontWeight.w700),
-                      ),
+                      const SectionTitle(title: 'Convidados'),
                       const SizedBox(height: 10),
+                      participantCard(myParticipantStore.getMyParticipant()),
                       ...participants
                           .map(
                             (participant) => participantCard(participant),

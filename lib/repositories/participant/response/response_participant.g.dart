@@ -26,14 +26,18 @@ class _$ResponseParticipantSerializer
     final result = <Object?>[
       'id',
       serializers.serialize(object.id, specifiedType: const FullType(String)),
-      'user',
-      serializers.serialize(object.user,
-          specifiedType: const FullType(ResponseUser)),
       'status',
       serializers.serialize(object.status,
           specifiedType: const FullType(String)),
     ];
-
+    Object? value;
+    value = object.user;
+    if (value != null) {
+      result
+        ..add('user')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(ResponseUser)));
+    }
     return result;
   }
 
@@ -72,7 +76,7 @@ class _$ResponseParticipant extends ResponseParticipant {
   @override
   final String id;
   @override
-  final ResponseUser user;
+  final ResponseUser? user;
   @override
   final String status;
 
@@ -80,11 +84,9 @@ class _$ResponseParticipant extends ResponseParticipant {
           [void Function(ResponseParticipantBuilder)? updates]) =>
       (new ResponseParticipantBuilder()..update(updates))._build();
 
-  _$ResponseParticipant._(
-      {required this.id, required this.user, required this.status})
+  _$ResponseParticipant._({required this.id, this.user, required this.status})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(id, r'ResponseParticipant', 'id');
-    BuiltValueNullFieldError.checkNotNull(user, r'ResponseParticipant', 'user');
     BuiltValueNullFieldError.checkNotNull(
         status, r'ResponseParticipant', 'status');
   }
@@ -144,7 +146,7 @@ class ResponseParticipantBuilder
     final $v = _$v;
     if ($v != null) {
       _id = $v.id;
-      _user = $v.user.toBuilder();
+      _user = $v.user?.toBuilder();
       _status = $v.status;
       _$v = null;
     }
@@ -172,14 +174,14 @@ class ResponseParticipantBuilder
           new _$ResponseParticipant._(
               id: BuiltValueNullFieldError.checkNotNull(
                   id, r'ResponseParticipant', 'id'),
-              user: user.build(),
+              user: _user?.build(),
               status: BuiltValueNullFieldError.checkNotNull(
                   status, r'ResponseParticipant', 'status'));
     } catch (_) {
       late String _$failedField;
       try {
         _$failedField = 'user';
-        user.build();
+        _user?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             r'ResponseParticipant', _$failedField, e.toString());
