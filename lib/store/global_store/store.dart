@@ -45,8 +45,6 @@ class GlobalStore extends IGlobalStore {
     const playdayId = 'fcae0492-0e36-49d0-a674-932c547e81d0';
     await signinStore.load();
 
-    print(signinStore.isSignin);
-
     if (signinStore.isSignin) {
       final user = await userRepository.get(signinStore.email);
       userStore.setUser(user);
