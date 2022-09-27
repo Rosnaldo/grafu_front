@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/models/participant.dart';
+import 'package:grafu/styles/color.dart';
 
 class ParticipantDetailPopupContainer extends StatefulWidget {
   final Participant participant;
@@ -19,6 +20,7 @@ class ParticipantDetailPopupContainerState
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
+      backgroundColor: mainBackGroundPink,
       scrollable: true,
       content: Column(
         children: [

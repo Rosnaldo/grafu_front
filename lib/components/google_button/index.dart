@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/styles/color.dart';
 
 class GoogleButton extends StatelessWidget {
   final void Function() onPressed;
@@ -15,7 +16,7 @@ class GoogleButton extends StatelessWidget {
         onPressed: onPressed,
         style: ButtonStyle(
           padding: MaterialStateProperty.all(const EdgeInsets.all(10.0)),
-          backgroundColor: MaterialStateProperty.all(Colors.white),
+          backgroundColor: MaterialStateProperty.all(mainBackGroundPink),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),

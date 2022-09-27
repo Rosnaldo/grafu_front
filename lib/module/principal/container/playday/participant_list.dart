@@ -64,6 +64,8 @@ class ParticipantList extends StatelessWidget {
               participants,
               participantCard,
               myParticipantStore,
+              isInvitedStore,
+              signinStore,
             ),
           },
           style: ButtonStyle(

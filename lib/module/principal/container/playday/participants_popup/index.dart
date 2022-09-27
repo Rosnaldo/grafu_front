@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'package:grafu/models/participant.dart';
 import 'package:grafu/module/principal/container/playday/section_title.dart';
+import 'package:grafu/store/is_invited_store/is_invited_store.dart';
 import 'package:grafu/store/participant_store/my_participant_store.dart';
+import 'package:grafu/store/signin_store/index.dart';
+import 'package:grafu/styles/color.dart';
 
 class ParticipantsPopupContainer extends StatelessWidget {
   final List<Participant> participants;
   final Widget Function(Participant participant) participantCard;
   final IMyParticipantStore myParticipantStore;
+  final IIsInvitedStore isInvitedStore;
+  final ISigninStore signinStore;
 
   const ParticipantsPopupContainer({
     Key? key,
     required this.participants,
     required this.participantCard,
     required this.myParticipantStore,
+    required this.isInvitedStore,
+    required this.signinStore,
   }) : super(key: key);
 
   @override
@@ -25,7 +33,7 @@ class ParticipantsPopupContainer extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             padding: const EdgeInsets.all(20.0),
-            color: Colors.white,
+            color: mainBackGroundPink,
             child: Column(
               children: [
                 Align(
@@ -43,7 +51,14 @@ class ParticipantsPopupContainer extends StatelessWidget {
                     children: [
                       const SectionTitle(title: 'Convidados'),
                       const SizedBox(height: 10),
-                      participantCard(myParticipantStore.getMyParticipant()),
+                      Observer(builder: (_) {
+                        if (isInvitedStore.getIsInvited() &&
+                            signinStore.isSignin) {
+                          return participantCard(
+                              myParticipantStore.getMyParticipant());
+                        }
+                        return Container();
+                      }),
                       ...participants
                           .map(
                             (participant) => participantCard(participant),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 const Color mainPink = Color.fromRGBO(222, 120, 143, 1);
 
-const Color fieldGray = Color.fromRGBO(230, 230, 255, 1);
+const Color fieldGray = Color.fromRGBO(231, 219, 242, 1);
 
 const Color fieldSecondaryText = Color.fromRGBO(80, 85, 92, 1);
 
@@ -17,3 +17,5 @@ const Color confirmedGreen = Color.fromRGBO(111, 207, 151, 1);
 const Color warnYellow = Color.fromRGBO(242, 201, 76, 1);
 
 const Color alertRed = Color.fromRGBO(235, 67, 53, 1);
+
+const Color mainBackGroundPink = Color.fromRGBO(243, 238, 249, 1);

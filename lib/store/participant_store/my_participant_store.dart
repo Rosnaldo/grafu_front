@@ -6,9 +6,9 @@ import 'package:grafu/models/participant.dart';
 part 'my_participant_store.g.dart';
 
 abstract class IMyParticipantStore {
-  final Participant participant = MakeParticipants.make()[0];
+  final Participant? participant = null;
   Participant getMyParticipant() {
-    return participant;
+    return participant!;
   }
 
   setMyParticipant(Participant p) {}

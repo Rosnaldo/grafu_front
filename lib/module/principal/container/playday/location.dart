@@ -53,19 +53,6 @@ class LocationState extends State<Location> {
             ),
           ],
         ),
-        // Row(
-        //   children: [
-        //     Text(
-        //       '${widget.address.city},',
-        //       style: const TextStyle(color: mainText),
-        //     ),
-        //     const SizedBox(width: 10.0),
-        //     Text(
-        //       widget.address.state,
-        //       style: const TextStyle(color: mainText),
-        //     ),
-        //   ],
-        // ),
         const SizedBox(height: 15.0),
         SizedBox(
           width: double.maxFinite,
