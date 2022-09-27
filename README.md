@@ -5,16 +5,16 @@ Api repository: [https://github.com/Rosnaldo/grafu_back/blob/main/README.md](htt
 
 ## Screenshots
 <p align="center">
-  <img src="./screenshots/login.png?v=2" width="280" title="hover text">
-  <img src="./screenshots/register.png?v=2" width="280" title="hover text">
-  <img src="./screenshots/profile.png?v=2" width="280" title="hover text">
-  <img src="./screenshots/playday1.png?v=2" width="280" title="hover text">
-  <img src="./screenshots/playday2.png?v=2" width="280" title="hover text">
-  <img src="./screenshots/playday3.png?v=2" width="280" title="hover text">
-  <img src="./screenshots/playday4.png?v=2" width="280" title="hover text">
-  <img src="./screenshots/gallery.png?v=2" width="280" title="hover text">
-  <img src="./screenshots/gallery2.png?v=2" width="280" title="hover text">
-  <img src="./screenshots/stripe.png?v=2" width="280" title="hover text">
+  <img src="./screenshots/login-v2.png" width="280" title="hover text">
+  <img src="./screenshots/register-v2.png" width="280" title="hover text">
+  <img src="./screenshots/profile-v2.png" width="280" title="hover text">
+  <img src="./screenshots/playday1-v2.png" width="280" title="hover text">
+  <img src="./screenshots/playday2-v2.png" width="280" title="hover text">
+  <img src="./screenshots/playday3-v2.png" width="280" title="hover text">
+  <img src="./screenshots/playday4-v2.png" width="280" title="hover text">
+  <img src="./screenshots/gallery-v2.png" width="280" title="hover text">
+  <img src="./screenshots/gallery2-v2.png" width="280" title="hover text">
+  <img src="./screenshots/stripe-v2.png" width="280" title="hover text">
 </p>
 
 <br>
