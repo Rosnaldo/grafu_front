@@ -15,7 +15,7 @@ class IsInvitedMessage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!signinStore.isSignin) {
+    if (!signinStore.isSignin()) {
       return const Padding(
         padding: EdgeInsets.all(12.0),
         child: Text('Você não está logado.', style: TextStyle(color: alertRed)),

@@ -6,7 +6,7 @@ class MakeParticipants {
     return const [
       Participant(
         id: '',
-        email: '',
+        email: 'joazinho@gmail.com',
         name: 'Joaozinho Didi',
         avatar: Avatar(
           url:
@@ -17,7 +17,7 @@ class MakeParticipants {
       ),
       Participant(
         id: '',
-        email: '',
+        email: 'taina@gmail.com',
         name: 'Tainá Santos',
         avatar: Avatar(
           url:
@@ -25,39 +25,6 @@ class MakeParticipants {
           uuid: '00bef51-543c-49f3-b3b1-312e02299d6b',
         ),
         status: ParticipantStatus.pending,
-      ),
-      Participant(
-        id: '',
-        email: '',
-        name: 'Mayrana Brito',
-        avatar: Avatar(
-          url:
-              'https://media-exp1.licdn.com/dms/image/C4D03AQG3j392gmNRfQ/profile-displayphoto-shrink_800_800/0/1622327303559?e=1665014400&v=beta&t=3sy3EDBNl507QBSEALd1BMbVBsEReWuyPS2VqBixo64',
-          uuid: '00bef51-543c-49f3-b3b1-312e02299d6b',
-        ),
-        status: ParticipantStatus.confirmed,
-      ),
-      Participant(
-        id: '',
-        email: '',
-        name: 'Luiz Roberto Fava',
-        avatar: Avatar(
-          url:
-              'https://media-exp1.licdn.com/dms/image/C4D03AQFszy6cgvKZFg/profile-displayphoto-shrink_800_800/0/1653030063690?e=1664409600&v=beta&t=CsntU7adzK0R22Sk22hut67qIw9YODPjz8THD_Q1cpU',
-          uuid: '00bef51-543c-49f3-b3b1-312e02299d6b',
-        ),
-        status: ParticipantStatus.confirmed,
-      ),
-      Participant(
-        id: '',
-        email: '',
-        name: 'Mariano Gomide',
-        avatar: Avatar(
-          url:
-              'https://media-exp1.licdn.com/dms/image/C4D03AQFvf2kCA75r_g/profile-displayphoto-shrink_800_800/0/1602959726513?e=1664409600&v=beta&t=WwDBjj-SojHVPKP8Aed1BVaIQOHVO9VhW81T1foOqAU',
-          uuid: '00bef51-543c-49f3-b3b1-312e02299d6b',
-        ),
-        status: ParticipantStatus.confirmed,
       ),
     ];
   }

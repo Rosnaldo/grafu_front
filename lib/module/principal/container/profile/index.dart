@@ -58,7 +58,7 @@ class ProfilePageContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Widget> signedWidgets() {
-      return (signinStore.isSignin)
+      return (signinStore.isSignin())
           ? [
               const SizedBox(height: 20),
               Padding(

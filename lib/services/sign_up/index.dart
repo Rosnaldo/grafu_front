@@ -4,12 +4,10 @@ import 'package:grafu/repositories/user/repository_register.dart';
 import 'package:grafu/utils/failure.dart';
 
 abstract class ISignUp {
-  ISignUp();
-
   Future execute(RegisterModel registerModel) async {}
 }
 
-class SignUp extends ISignUp {
+class SignUp implements ISignUp {
   late final UserRegisterRepository userRegisterRepository;
 
   SignUp(this.userRegisterRepository) : super();

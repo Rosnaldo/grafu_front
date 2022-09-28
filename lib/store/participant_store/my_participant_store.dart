@@ -6,15 +6,14 @@ import 'package:grafu/models/participant.dart';
 part 'my_participant_store.g.dart';
 
 abstract class IMyParticipantStore {
-  final Participant? participant = null;
   Participant getMyParticipant() {
-    return participant!;
+    return MakeParticipants.make()[0];
   }
 
   setMyParticipant(Participant p) {}
 }
 
-class MyParticipantStore extends IMyParticipantStore {
+class MyParticipantStore implements IMyParticipantStore {
   final participantMobx = MyParticipantMobx();
 
   @override

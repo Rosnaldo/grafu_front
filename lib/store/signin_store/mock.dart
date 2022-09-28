@@ -1,8 +1,6 @@
 import 'package:grafu/store/signin_store/index.dart';
 
-class MockSigninStore extends ISigninStore {
-  MockSigninStore() : super();
-
+class MockSigninStore implements ISigninStore {
   @override
   Future storeLogin(String e) async {}
 
@@ -13,8 +11,8 @@ class MockSigninStore extends ISigninStore {
   Future load() async {}
 
   @override
-  bool get isSignin => true;
+  bool isSignin() => true;
 
   @override
-  String get email => 'andreytsuzuki@gmail.com';
+  String email() => 'andreytsuzuki@gmail.com';
 }

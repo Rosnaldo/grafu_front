@@ -7,7 +7,7 @@ abstract class IIsInvitedStore {
   setIsInvited(bool i) {}
 }
 
-class IsInvitedStore extends IIsInvitedStore {
+class IsInvitedStore implements IIsInvitedStore {
   final isInvitedMobx = IsInvitedMobx();
 
   @override

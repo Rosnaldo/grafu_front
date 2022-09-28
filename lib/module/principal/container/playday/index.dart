@@ -88,7 +88,7 @@ class PlaydayPageContainer extends StatelessWidget {
               // Invite(),
               // const SizedBox(height: 15.0),
               const Line(),
-              (signinStore.isSignin)
+              (signinStore.isSignin())
                   ? BuyTicket(price: state.playday.firstLot.price)
                   : Container(),
               const SizedBox(height: 45.0),

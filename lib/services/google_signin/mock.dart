@@ -1,6 +1,6 @@
 import 'package:grafu/services/google_signin/index.dart';
 
-class MockSignInWithGoogle extends ISignInWithGoogle {
+class MockSignInWithGoogle implements ISignInWithGoogle {
   @override
   Future execute() async {}
 }

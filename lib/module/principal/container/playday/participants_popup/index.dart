@@ -53,7 +53,7 @@ class ParticipantsPopupContainer extends StatelessWidget {
                       const SizedBox(height: 10),
                       Observer(builder: (_) {
                         if (isInvitedStore.getIsInvited() &&
-                            signinStore.isSignin) {
+                            signinStore.isSignin()) {
                           return participantCard(
                               myParticipantStore.getMyParticipant());
                         }

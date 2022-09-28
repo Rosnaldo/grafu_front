@@ -2,12 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:grafu/store/signin_store/index.dart';
 
 abstract class ISignOut {
-  ISignOut();
-
   Future execute() async {}
 }
 
-class SignOut extends ISignOut {
+class SignOut implements ISignOut {
   late final SigninStore signinStore;
 
   SignOut(this.signinStore) : super();

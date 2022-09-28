@@ -19,15 +19,15 @@ abstract class IGlobalStore extends ValueNotifier<GlobalState> {
 }
 
 class GlobalStore extends IGlobalStore {
-  late final PlaydayByIdRepository playdayRepository;
-  late final ParticipantCheckInviteStatusRepository
+  late final IPlaydayByIdRepository playdayRepository;
+  late final IParticipantCheckInviteStatusRepository
       participantCheckInviteStatusRepository;
-  late final ParticipantRegisterRepository participantRegisterRepository;
-  late final UserByEmailRepository userRepository;
-  late final UserStore userStore;
-  late final SigninStore signinStore;
-  late final IsInvitedStore isInvitedStore;
-  late final MyParticipantStore myParticipantStore;
+  late final IParticipantRegisterRepository participantRegisterRepository;
+  late final IUserByEmailRepository userRepository;
+  late final IUserStore userStore;
+  late final ISigninStore signinStore;
+  late final IIsInvitedStore isInvitedStore;
+  late final IMyParticipantStore myParticipantStore;
   late final Playday playday;
 
   GlobalStore(
@@ -45,13 +45,13 @@ class GlobalStore extends IGlobalStore {
     const playdayId = 'fcae0492-0e36-49d0-a674-932c547e81d0';
     await signinStore.load();
 
-    if (signinStore.isSignin) {
-      final user = await userRepository.get(signinStore.email);
+    if (signinStore.isSignin()) {
+      final user = await userRepository.get(signinStore.email());
       userStore.setUser(user);
 
       final participantStatus =
           await participantCheckInviteStatusRepository.get(
-        signinStore.email,
+        signinStore.email(),
         playdayId,
       );
 
@@ -60,7 +60,8 @@ class GlobalStore extends IGlobalStore {
       }
 
       if (participantStatus == 'unregistered') {
-        await participantRegisterRepository.post(signinStore.email, playdayId);
+        await participantRegisterRepository.post(
+            signinStore.email(), playdayId);
         isInvitedStore.setIsInvited(true);
       }
 
@@ -71,7 +72,7 @@ class GlobalStore extends IGlobalStore {
     }
   }
 
-  getParticipantsWithoutMyParticipant() {
+  List<Participant> getParticipantsWithoutMyParticipant() {
     final index = getMyParticipantIndex();
 
     if (index == -1) {
@@ -86,10 +87,11 @@ class GlobalStore extends IGlobalStore {
   }
 
   int getMyParticipantIndex() {
-    return playday.participants.indexWhere((p) => p.email == signinStore.email);
+    return playday.participants
+        .indexWhere((p) => p.email == signinStore.email());
   }
 
-  setUpMyParticipant() {
+  void setUpMyParticipant() {
     final index = getMyParticipantIndex();
 
     final myParticipant = Participant(
@@ -107,6 +109,9 @@ class GlobalStore extends IGlobalStore {
 
   @override
   Future fetch() async {
+    print(myParticipantStore.getMyParticipant());
+    print('DDDDDDDDDDDDDDDDDDDDDDDD');
+
     const playdayId = 'fcae0492-0e36-49d0-a674-932c547e81d0';
     value = LoadingGlobalState();
 
@@ -116,6 +121,8 @@ class GlobalStore extends IGlobalStore {
       await setUpParticipantStatus();
 
       final participantsWithoutMy = getParticipantsWithoutMyParticipant();
+
+      print(myParticipantStore.getMyParticipant());
 
       value = SuccessGlobalState(playday, participantsWithoutMy);
     } catch (e) {

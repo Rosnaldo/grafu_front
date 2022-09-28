@@ -1,17 +1,14 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 abstract class ISigninStore {
-  ISigninStore();
-
-  bool get isSignin => true;
-  String? get email => '';
-
+  bool isSignin() => true;
+  String? email() => '';
   Future storeLogin(String e) async {}
   Future removeLogin() async {}
   Future load() async {}
 }
 
-class SigninStore extends ISigninStore {
+class SigninStore implements ISigninStore {
   late final FlutterSecureStorage secureStorage;
   late String? _email;
 
@@ -34,8 +31,12 @@ class SigninStore extends ISigninStore {
   }
 
   @override
-  bool get isSignin => _email != null;
+  bool isSignin() {
+    return _email != null;
+  }
 
   @override
-  String? get email => _email;
+  String? email() {
+    return _email;
+  }
 }

@@ -7,11 +7,10 @@ import 'package:uuid/uuid.dart';
 
 abstract class IFirestoreService {
   Future uploadImage(Uint8List uint8List) async {}
-
   Future removeImage(String imageUuid) async {}
 }
 
-class FirestoreService extends IFirestoreService {
+class FirestoreService implements IFirestoreService {
   FirestoreService() : super();
 
   @override

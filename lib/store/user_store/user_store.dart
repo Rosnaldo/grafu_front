@@ -13,7 +13,7 @@ abstract class IUserStore {
   setUser(User u) {}
 }
 
-class UserStore extends IUserStore {
+class UserStore implements IUserStore {
   final userMobx = UserMobx();
 
   @override

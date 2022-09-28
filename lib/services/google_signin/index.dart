@@ -5,12 +5,10 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:grafu/repositories/user/repository_register.dart';
 
 abstract class ISignInWithGoogle {
-  ISignInWithGoogle();
-
   Future execute() async {}
 }
 
-class SignInWithGoogle extends ISignInWithGoogle {
+class SignInWithGoogle implements ISignInWithGoogle {
   late final UserRegisterRepository userRegisterRepository;
 
   SignInWithGoogle(this.userRegisterRepository) : super();

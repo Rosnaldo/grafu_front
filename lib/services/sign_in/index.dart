@@ -4,12 +4,10 @@ import 'package:grafu/utils/failure.dart';
 import 'package:grafu/module/login/container/login_model.dart';
 
 abstract class ISignIn {
-  ISignIn();
-
   Future execute(LoginModel loginModel) async {}
 }
 
-class SignIn extends ISignIn {
+class SignIn implements ISignIn {
   late final SigninStore signinStore;
 
   SignIn(this.signinStore) : super();
