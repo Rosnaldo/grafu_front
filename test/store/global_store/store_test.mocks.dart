@@ -3,10 +3,14 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i4;
+import 'dart:async' as _i5;
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i2;
-import 'package:grafu/store/signin_store/index.dart' as _i3;
+import 'package:grafu/models/user.dart' as _i3;
+import 'package:grafu/repositories/participant/check_invite_status/index.dart'
+    as _i6;
+import 'package:grafu/repositories/user/repository.dart' as _i7;
+import 'package:grafu/store/signin_store/index.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -31,18 +35,28 @@ class _FakeFlutterSecureStorage_0 extends _i1.SmartFake
         );
 }
 
+class _FakeUser_1 extends _i1.SmartFake implements _i3.User {
+  _FakeUser_1(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
 /// A class which mocks [SigninStore].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockSigninStore extends _i1.Mock implements _i3.SigninStore {
+class MockSigninStore extends _i1.Mock implements _i4.SigninStore {
+  MockSigninStore() {
+    _i1.throwOnMissingStub(this);
+  }
+
   @override
   _i2.FlutterSecureStorage get secureStorage => (super.noSuchMethod(
         Invocation.getter(#secureStorage),
         returnValue: _FakeFlutterSecureStorage_0(
-          this,
-          Invocation.getter(#secureStorage),
-        ),
-        returnValueForMissingStub: _FakeFlutterSecureStorage_0(
           this,
           Invocation.getter(#secureStorage),
         ),
@@ -57,32 +71,29 @@ class MockSigninStore extends _i1.Mock implements _i3.SigninStore {
         returnValueForMissingStub: null,
       );
   @override
-  _i4.Future<dynamic> storeLogin(String? e) => (super.noSuchMethod(
+  _i5.Future<dynamic> storeLogin(String? e) => (super.noSuchMethod(
         Invocation.method(
           #storeLogin,
           [e],
         ),
-        returnValue: _i4.Future<dynamic>.value(),
-        returnValueForMissingStub: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
+        returnValue: _i5.Future<dynamic>.value(),
+      ) as _i5.Future<dynamic>);
   @override
-  _i4.Future<dynamic> removeLogin() => (super.noSuchMethod(
+  _i5.Future<dynamic> removeLogin() => (super.noSuchMethod(
         Invocation.method(
           #removeLogin,
           [],
         ),
-        returnValue: _i4.Future<dynamic>.value(),
-        returnValueForMissingStub: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
+        returnValue: _i5.Future<dynamic>.value(),
+      ) as _i5.Future<dynamic>);
   @override
-  _i4.Future<dynamic> load() => (super.noSuchMethod(
+  _i5.Future<dynamic> load() => (super.noSuchMethod(
         Invocation.method(
           #load,
           [],
         ),
-        returnValue: _i4.Future<dynamic>.value(),
-        returnValueForMissingStub: _i4.Future<dynamic>.value(),
-      ) as _i4.Future<dynamic>);
+        returnValue: _i5.Future<dynamic>.value(),
+      ) as _i5.Future<dynamic>);
   @override
   bool isSignin() => (super.noSuchMethod(
         Invocation.method(
@@ -90,6 +101,56 @@ class MockSigninStore extends _i1.Mock implements _i3.SigninStore {
           [],
         ),
         returnValue: false,
-        returnValueForMissingStub: false,
       ) as bool);
+}
+
+/// A class which mocks [ParticipantCheckInviteStatusRepository].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockParticipantCheckInviteStatusRepository extends _i1.Mock
+    implements _i6.ParticipantCheckInviteStatusRepository {
+  MockParticipantCheckInviteStatusRepository() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i5.Future<String> get(
+    dynamic email,
+    dynamic playdayId,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #get,
+          [
+            email,
+            playdayId,
+          ],
+        ),
+        returnValue: _i5.Future<String>.value(''),
+      ) as _i5.Future<String>);
+}
+
+/// A class which mocks [UserByEmailRepository].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockUserByEmailRepository extends _i1.Mock
+    implements _i7.UserByEmailRepository {
+  MockUserByEmailRepository() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i5.Future<_i3.User> get(dynamic email) => (super.noSuchMethod(
+        Invocation.method(
+          #get,
+          [email],
+        ),
+        returnValue: _i5.Future<_i3.User>.value(_FakeUser_1(
+          this,
+          Invocation.method(
+            #get,
+            [email],
+          ),
+        )),
+      ) as _i5.Future<_i3.User>);
 }

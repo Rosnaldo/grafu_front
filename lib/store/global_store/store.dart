@@ -109,9 +109,6 @@ class GlobalStore extends IGlobalStore {
 
   @override
   Future fetch() async {
-    print(myParticipantStore.getMyParticipant());
-    print('DDDDDDDDDDDDDDDDDDDDDDDD');
-
     const playdayId = 'fcae0492-0e36-49d0-a674-932c547e81d0';
     value = LoadingGlobalState();
 
@@ -121,8 +118,6 @@ class GlobalStore extends IGlobalStore {
       await setUpParticipantStatus();
 
       final participantsWithoutMy = getParticipantsWithoutMyParticipant();
-
-      print(myParticipantStore.getMyParticipant());
 
       value = SuccessGlobalState(playday, participantsWithoutMy);
     } catch (e) {
