@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:grafu/components/avatar/index.dart';
 import 'package:grafu/models/participant.dart';
 import 'package:grafu/module/principal/business/playday/participants_popup/index.dart';
-import 'package:grafu/module/principal/container/playday/line.dart';
 import 'package:grafu/module/principal/container/playday/section_title.dart';
 import 'package:grafu/store/is_invited_store/is_invited_store.dart';
 import 'package:grafu/store/participant_store/my_participant_store.dart';
@@ -40,7 +39,6 @@ class ParticipantList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Line(),
         const SectionTitle(title: 'Convidados'),
         const SizedBox(height: 12.0),
         Column(children: [

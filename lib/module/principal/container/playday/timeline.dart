@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/models/playday.dart';
-import 'package:grafu/module/principal/container/playday/line.dart';
 import 'package:grafu/module/principal/container/playday/section_title.dart';
 import 'package:grafu/styles/color.dart';
 import 'package:timeline_tile/timeline_tile.dart';
@@ -17,7 +16,6 @@ class PlaydayTimeline extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Line(),
         const SizedBox(height: 12.0),
         const SectionTitle(title: 'Ingresso'),
         TimelineTile(

@@ -9,7 +9,6 @@ import 'package:grafu/module/principal/container/playday/conveniences.dart';
 import 'package:grafu/module/principal/container/playday/is_invited_message.dart';
 import 'package:grafu/module/principal/container/playday/playday_date.dart';
 import 'package:grafu/module/principal/container/playday/participant_list.dart';
-import 'package:grafu/module/principal/container/playday/line.dart';
 import 'package:grafu/module/principal/container/playday/location.dart';
 import 'package:grafu/module/principal/container/playday/timeline.dart';
 import 'package:grafu/store/global_store/state.dart';
@@ -51,49 +50,49 @@ class PlaydayPageContainer extends StatelessWidget {
           fit: BoxFit.fitHeight,
         ),
         const SizedBox(height: 4.0),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            children: [
-              PlaydayDate(
-                  date: state.playday.date, address: state.playday.address),
-              const Line(),
-              IsInvitedMessage(
-                isInvitedStore: isInvitedStore,
-                signinStore: signinStore,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: const [
-                  Image(image: AssetImage('assets/glass.png'), height: 100.0),
-                  SizedBox(width: 50.0),
-                ],
-              ),
-              const Description(),
-              ParticipantList(
-                participants: state.participants,
-                participantCard: participantCard,
-                signinStore: signinStore,
-                userStore: userStore,
-                isInvitedStore: isInvitedStore,
-                myParticipantStore: myParticipantStore,
-              ),
-              Conveniences(
-                conveniences: state.playday.conveniences,
-              ),
-              Location(address: state.playday.address),
-              PlaydayTimeline(playday: state.playday),
-              const SizedBox(height: 12.0),
-              // const Line(),
-              // Invite(),
-              // const SizedBox(height: 15.0),
-              const Line(),
-              (signinStore.isSignin())
-                  ? BuyTicket(price: state.playday.firstLot.price)
-                  : Container(),
-              const SizedBox(height: 45.0),
-            ],
-          ),
+        Column(
+          children: [
+            PlaydayDate(
+                date: state.playday.date, address: state.playday.address),
+            IsInvitedMessage(
+              isInvitedStore: isInvitedStore,
+              signinStore: signinStore,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                  child: Image(
+                    image: const AssetImage('assets/house.jpg'),
+                    height: MediaQuery.of(context).size.height * 0.3,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ],
+            ),
+            const Description(),
+            ParticipantList(
+              participants: state.participants,
+              participantCard: participantCard,
+              signinStore: signinStore,
+              userStore: userStore,
+              isInvitedStore: isInvitedStore,
+              myParticipantStore: myParticipantStore,
+            ),
+            Conveniences(
+              conveniences: state.playday.conveniences,
+            ),
+            Location(address: state.playday.address),
+            PlaydayTimeline(playday: state.playday),
+            const SizedBox(height: 12.0),
+            // Invite(),
+            // const SizedBox(height: 15.0),
+            (signinStore.isSignin())
+                ? BuyTicket(price: state.playday.firstLot.price)
+                : Container(),
+            const SizedBox(height: 45.0),
+          ],
         ),
       ],
     );

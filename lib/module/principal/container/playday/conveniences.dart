@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:grafu/models/convenience.dart';
-import 'package:grafu/module/principal/container/playday/line.dart';
 import 'package:grafu/module/principal/container/playday/section_title.dart';
 import 'package:grafu/styles/color.dart';
 import 'package:grafu/styles/text_style.dart';
@@ -55,7 +54,6 @@ class Conveniences extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Line(),
         const SectionTitle(title: 'Conveniências'),
         const SizedBox(height: 12.0),
         MasonryGridView.count(

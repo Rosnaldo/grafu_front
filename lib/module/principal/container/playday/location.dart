@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:grafu/models/address.dart';
-import 'package:grafu/module/principal/container/playday/line.dart';
 import 'package:grafu/module/principal/container/playday/section_title.dart';
 import 'package:grafu/styles/text_style.dart';
 
@@ -34,7 +33,6 @@ class LocationState extends State<Location> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const Line(),
         const SectionTitle(title: 'Local'),
         const SizedBox(height: 12.0),
         Row(
