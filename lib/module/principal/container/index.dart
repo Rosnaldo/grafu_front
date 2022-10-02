@@ -3,6 +3,7 @@ import 'package:grafu/components/screener/index.dart';
 import 'package:grafu/components/shimmer/index.dart';
 import 'package:grafu/store/global_store/state.dart';
 import 'package:grafu/store/global_store/store.dart';
+import 'package:grafu/styles/color.dart';
 
 class PrincipalPageContainer extends StatefulWidget {
   final PageController pageViewController;
@@ -28,9 +29,12 @@ class PrincipalPageContainerState extends State<PrincipalPageContainer> {
       animation: widget.pageViewController,
       builder: (context, snapshot) {
         return BottomNavigationBar(
+          backgroundColor: mainBackGround,
+          unselectedIconTheme: const IconThemeData(color: mainStrongText),
+          unselectedLabelStyle: const TextStyle(color: mainStrongText),
           type: BottomNavigationBarType.fixed,
           currentIndex: widget.pageViewController.page?.round() ?? 0,
-          selectedItemColor: Colors.blue,
+          selectedItemColor: mainOrange,
           onTap: (index) {
             widget.pageViewController.jumpToPage(index);
           },
@@ -123,7 +127,7 @@ class PrincipalPageContainerState extends State<PrincipalPageContainer> {
   Widget buildNavigatePages(_, GlobalState state, __) {
     if (state is LoadingGlobalState) {
       return Center(
-        child: buildShimmerEffect(),
+        child: Container(),
       );
     }
 
@@ -143,6 +147,7 @@ class PrincipalPageContainerState extends State<PrincipalPageContainer> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(scaffoldBackgroundColor: mainBackGround),
       home: ValueListenableBuilder<GlobalState>(
         valueListenable: widget.globalStore,
         builder: buildNavigatePages,

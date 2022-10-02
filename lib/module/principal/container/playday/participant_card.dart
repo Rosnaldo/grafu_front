@@ -27,6 +27,7 @@ class ParticipantCardContainer extends StatelessWidget {
     return InkWell(
       onTap: () => onTapCb(context),
       child: Card(
+        color: mainBackGround,
         margin: const EdgeInsets.symmetric(vertical: 3.0),
         child: Padding(
           padding: const EdgeInsets.all(12.0),

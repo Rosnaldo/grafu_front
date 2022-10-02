@@ -22,7 +22,7 @@ class LinkRedirect extends StatelessWidget {
         textStyle: const TextStyle(height: 1.0),
         padding: EdgeInsets.zero,
         alignment: Alignment.centerLeft,
-        primary: mainPink,
+        primary: mainStrongText,
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
       child: Text(

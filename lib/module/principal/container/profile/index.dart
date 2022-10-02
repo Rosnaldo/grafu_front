@@ -8,6 +8,7 @@ import 'package:grafu/services/signout/index.dart';
 import 'package:grafu/store/global_store/store.dart';
 import 'package:grafu/store/signin_store/index.dart';
 import 'package:grafu/store/user_store/user_store.dart';
+import 'package:grafu/styles/color.dart';
 
 class ProfilePageContainer extends StatelessWidget {
   final IGlobalStore store;
@@ -102,8 +103,7 @@ class ProfilePageContainer extends StatelessWidget {
                 style: ButtonStyle(
                   padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
                       horizontal: 12.0, vertical: 0.0)),
-                  backgroundColor:
-                      MaterialStateProperty.all(Colors.pink.shade200),
+                  backgroundColor: MaterialStateProperty.all(mainOrange),
                 ),
               ),
             ]
@@ -133,8 +133,7 @@ class ProfilePageContainer extends StatelessWidget {
                 style: ButtonStyle(
                   padding: MaterialStateProperty.all(const EdgeInsets.symmetric(
                       horizontal: 12.0, vertical: 0.0)),
-                  backgroundColor:
-                      MaterialStateProperty.all(Colors.pink.shade200),
+                  backgroundColor: MaterialStateProperty.all(mainOrange),
                 ),
               ),
             ];

@@ -20,7 +20,7 @@ class SectionTitle extends StatelessWidget {
             fontSize: 17.0,
             fontWeight: FontWeight.w700,
             fontFamily: mainFontText,
-            color: mainPink,
+            color: mainStrongText,
           ),
         ),
       ],

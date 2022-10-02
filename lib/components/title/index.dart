@@ -22,7 +22,7 @@ class PageTitle extends StatelessWidget {
               fontSize: 25.0,
               fontFamily: mainFontText,
               fontWeight: FontWeight.w600,
-              color: mainPink,
+              color: mainStrongText,
             ),
           ),
         ),

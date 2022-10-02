@@ -30,15 +30,20 @@ class NameFormField extends StatelessWidget {
       keyboardType: TextInputType.name,
       validator: validator,
       decoration: InputDecoration(
+        contentPadding: const EdgeInsets.only(left: 12.0),
         filled: true,
         fillColor: fieldGray,
         labelText: label,
-        labelStyle: const TextStyle(color: fieldSecondaryText),
+        labelStyle: const TextStyle(color: fieldSecondaryText, fontSize: 14.0),
         hintText: hintText,
-        hintStyle: const TextStyle(color: fieldSecondaryText),
+        hintStyle: const TextStyle(color: fieldSecondaryText, fontSize: 14.0),
         enabledBorder: grayFieldFormBorder,
         focusedBorder: grayFieldFormBorder,
-        prefixIcon: const Icon(Icons.person, color: fieldIcon),
+        prefixIcon: const Icon(
+          Icons.person,
+          color: fieldIcon,
+          size: 18.0,
+        ),
       ),
     );
   }

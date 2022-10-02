@@ -20,8 +20,8 @@ class MainPinkButton extends StatelessWidget {
       style: ButtonStyle(
         minimumSize:
             MaterialStateProperty.all(const Size(double.maxFinite, 0.0)),
-        backgroundColor: MaterialStateProperty.all(mainPink),
-        padding: MaterialStateProperty.all(const EdgeInsets.all(15.0)),
+        backgroundColor: MaterialStateProperty.all(mainOrange),
+        padding: MaterialStateProperty.all(const EdgeInsets.all(10.0)),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),

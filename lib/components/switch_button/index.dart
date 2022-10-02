@@ -42,7 +42,7 @@ class SwitchButtonState extends State<SwitchButton> {
           isSelected: widget.isSelected,
           selectedColor: Colors.white,
           color: Colors.black,
-          fillColor: mainPink,
+          fillColor: mainOrange,
           onPressed: widget.onPressed,
           children: [
             SizedBox(

@@ -59,7 +59,7 @@ class RegisterPageContainerState extends State<RegisterPageContainer> {
                 style: TextStyle(
                   fontSize: 40.0,
                   fontWeight: FontWeight.w900,
-                  color: mainPink,
+                  color: mainStrongText,
                 ),
               ),
             ),

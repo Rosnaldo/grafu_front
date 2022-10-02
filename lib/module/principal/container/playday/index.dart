@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/components/fosted_glass_box/index.dart';
 import 'package:grafu/components/image_cache/index.dart';
 import 'package:grafu/components/screener/index.dart';
 import 'package:grafu/models/participant.dart';
@@ -7,7 +8,6 @@ import 'package:grafu/module/principal/container/playday/buy_ticket.dart';
 import 'package:grafu/module/principal/container/playday/description.dart';
 import 'package:grafu/module/principal/container/playday/conveniences.dart';
 import 'package:grafu/module/principal/container/playday/is_invited_message.dart';
-import 'package:grafu/module/principal/container/playday/playday_date.dart';
 import 'package:grafu/module/principal/container/playday/participant_list.dart';
 import 'package:grafu/module/principal/container/playday/location.dart';
 import 'package:grafu/module/principal/container/playday/timeline.dart';
@@ -42,34 +42,257 @@ class PlaydayPageContainer extends StatelessWidget {
 
     return Screener(
       children: <Widget>[
-        Image(
-          image: BuildImageCache.build(
-            url: state.playday.gallery[0],
-          ),
-          height: MediaQuery.of(context).size.height * 0.7,
-          fit: BoxFit.fitHeight,
+        Stack(
+          children: [
+            Image(
+              image: BuildImageCache.build(
+                url: state.playday.gallery[0],
+              ),
+              height: MediaQuery.of(context).size.height * 1,
+              fit: BoxFit.fitHeight,
+            ),
+            Positioned.fill(
+              top: MediaQuery.of(context).size.height * 0.35,
+              child: Align(
+                alignment: Alignment.center,
+                child: FrostedGlassBox(
+                  theWidth: 280.0,
+                  theHeight: 180.0,
+                  theChild: Column(
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(5),
+                              child: Stack(
+                                children: [
+                                  Image(
+                                    image: BuildImageCache.build(
+                                      url: state.playday.gallery[0],
+                                    ),
+                                    height: 60.0,
+                                    width: 60.0,
+                                    fit: BoxFit.fill,
+                                  ),
+                                  Container(
+                                    height: 60.0,
+                                    width: 60.0,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border: Border.all(
+                                          color:
+                                              Colors.white.withOpacity(0.13)),
+                                      gradient: LinearGradient(
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                          colors: [
+                                            //begin color
+                                            Colors.white.withOpacity(0.35),
+                                            //end color
+                                            Colors.white.withOpacity(0.15),
+                                          ]),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(right: 12.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: const [
+                                Text(
+                                  'Domingo 23, Março 2023',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16.0,
+                                  ),
+                                ),
+                                Text(
+                                  'Nova Lima / MG',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20.0,
+                        ),
+                        child: Divider(thickness: 1, color: Colors.white),
+                      ),
+                      const SizedBox(height: 5.0),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(5),
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: 40.0,
+                                  height: 40.0,
+                                  color: Colors.transparent,
+                                  child: const Center(
+                                    child: Icon(Icons.directions_car_filled,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                Container(
+                                  height: 40.0,
+                                  width: 40.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                        color: Colors.white.withOpacity(0.13)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        //begin color
+                                        Colors.white.withOpacity(0.55),
+                                        //end color
+                                        Colors.white.withOpacity(0.35),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(5),
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: 40.0,
+                                  height: 40.0,
+                                  color: Colors.transparent,
+                                  child: const Center(
+                                    child: Icon(Icons.restaurant_menu,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                Container(
+                                  height: 40.0,
+                                  width: 40.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                        color: Colors.white.withOpacity(0.13)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        //begin color
+                                        Colors.white.withOpacity(0.55),
+                                        //end color
+                                        Colors.white.withOpacity(0.35),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(5),
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: 40.0,
+                                  height: 40.0,
+                                  color: Colors.transparent,
+                                  child: const Center(
+                                    child: Icon(
+                                        Icons.airline_seat_individual_suite,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                                Container(
+                                  height: 40.0,
+                                  width: 40.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                        color: Colors.white.withOpacity(0.13)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        //begin color
+                                        Colors.white.withOpacity(0.55),
+                                        //end color
+                                        Colors.white.withOpacity(0.35),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(5),
+                            child: Stack(
+                              children: [
+                                Container(
+                                  width: 40.0,
+                                  height: 40.0,
+                                  color: Colors.transparent,
+                                  child: const Center(
+                                    child:
+                                        Icon(Icons.wifi, color: Colors.white),
+                                  ),
+                                ),
+                                Container(
+                                  height: 40.0,
+                                  width: 40.0,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                        color: Colors.white.withOpacity(0.13)),
+                                    gradient: LinearGradient(
+                                      begin: Alignment.topLeft,
+                                      end: Alignment.bottomRight,
+                                      colors: [
+                                        //begin color
+                                        Colors.white.withOpacity(0.55),
+                                        //end color
+                                        Colors.white.withOpacity(0.35),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
         const SizedBox(height: 4.0),
         Column(
           children: [
-            PlaydayDate(
-                date: state.playday.date, address: state.playday.address),
+            // PlaydayDate(
+            //     date: state.playday.date, address: state.playday.address),
             IsInvitedMessage(
               isInvitedStore: isInvitedStore,
               signinStore: signinStore,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: Image(
-                    image: const AssetImage('assets/house.jpg'),
-                    height: MediaQuery.of(context).size.height * 0.3,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ],
             ),
             const Description(),
             ParticipantList(

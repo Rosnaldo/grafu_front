@@ -15,7 +15,7 @@ class AppWidget extends StatelessWidget {
             create: (_) => SelectedParticipantPopup()),
       ],
       child: MaterialApp.router(
-        theme: ThemeData(scaffoldBackgroundColor: mainBackGroundPink),
+        theme: ThemeData(scaffoldBackgroundColor: mainBackGround),
         routeInformationParser: Modular.routeInformationParser,
         routerDelegate: Modular.routerDelegate,
       ),

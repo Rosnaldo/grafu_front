@@ -39,13 +39,14 @@ class PassworFormFieldState extends State<PassworFormField> {
       keyboardType: TextInputType.visiblePassword,
       validator: widget.validator,
       decoration: InputDecoration(
+        contentPadding: const EdgeInsets.all(0.0),
         filled: true,
         fillColor: fieldGray,
         errorMaxLines: 2,
         labelText: widget.label,
-        labelStyle: const TextStyle(color: fieldSecondaryText),
+        labelStyle: const TextStyle(color: fieldSecondaryText, fontSize: 14.0),
         hintText: '********',
-        hintStyle: const TextStyle(color: fieldSecondaryText),
+        hintStyle: const TextStyle(color: fieldSecondaryText, fontSize: 14.0),
         errorStyle: const TextStyle(color: alertRed),
         enabledBorder: grayFieldFormBorder,
         focusedBorder: grayFieldFormBorder,
@@ -54,9 +55,14 @@ class PassworFormFieldState extends State<PassworFormField> {
           icon: Icon(
             _obscurePassword ? Icons.visibility_off : Icons.visibility,
             color: fieldIcon,
+            size: 18.0,
           ),
         ),
-        prefixIcon: const Icon(Icons.lock, color: fieldIcon),
+        prefixIcon: const Icon(
+          Icons.lock,
+          color: fieldIcon,
+          size: 18.0,
+        ),
       ),
     );
   }

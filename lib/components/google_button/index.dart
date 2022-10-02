@@ -11,12 +11,12 @@ class GoogleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(4.0),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ButtonStyle(
           padding: MaterialStateProperty.all(const EdgeInsets.all(10.0)),
-          backgroundColor: MaterialStateProperty.all(mainBackGroundPink),
+          backgroundColor: MaterialStateProperty.all(mainBackGround),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(5.0),
@@ -33,7 +33,7 @@ class GoogleButton extends StatelessWidget {
           children: const [
             Image(image: AssetImage('assets/google.png'), height: 23.0),
             Padding(
-              padding: EdgeInsets.all(12.0),
+              padding: EdgeInsets.all(8.0),
               child: Text(
                 'ENTRAR COM GOOGLE',
                 style: TextStyle(color: Color.fromRGBO(80, 85, 92, 1)),

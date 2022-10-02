@@ -30,7 +30,7 @@ class PlaydayDate extends StatelessWidget {
           style: const TextStyle(
             fontSize: 15.0,
             letterSpacing: 0.5,
-            color: mainPink,
+            color: mainStrongText,
             fontFamily: mainFontText,
           ),
         ),

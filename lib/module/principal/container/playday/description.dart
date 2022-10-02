@@ -17,6 +17,7 @@ class DescriptionState extends State<Description> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: const [
+        SizedBox(height: 30.0),
         SectionTitle(title: 'Descrição'),
         SizedBox(height: 12.0),
         Text(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/styles/color.dart';
 import 'package:photo_view/photo_view.dart';
 
 class BuildImagePopup {
@@ -13,6 +14,7 @@ class BuildImagePopup {
       transitionDuration: const Duration(microseconds: 200),
       pageBuilder: (BuildContext context, Animation first, Animation second) {
         return MaterialApp(
+          theme: ThemeData(scaffoldBackgroundColor: mainBackGround),
           home: Scaffold(
             body: Center(
               child: Stack(

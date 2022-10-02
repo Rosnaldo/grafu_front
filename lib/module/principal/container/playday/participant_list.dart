@@ -39,6 +39,7 @@ class ParticipantList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        const SizedBox(height: 30.0),
         const SectionTitle(title: 'Convidados'),
         const SizedBox(height: 12.0),
         Column(children: [
@@ -133,7 +134,7 @@ class ParticipantList extends StatelessWidget {
                         child: Center(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 3.0, vertical: 1.0),
+                                horizontal: 8.0, vertical: 3.0),
                             child: Text(
                               showParticipantNumber(participants),
                               style: textStrongStyle,

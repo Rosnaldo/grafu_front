@@ -16,7 +16,7 @@ class PlaydayTimeline extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 12.0),
+        const SizedBox(height: 30.0),
         const SectionTitle(title: 'Ingresso'),
         TimelineTile(
           alignment: TimelineAlign.manual,
@@ -24,7 +24,7 @@ class PlaydayTimeline extends StatelessWidget {
           isFirst: true,
           indicatorStyle: const IndicatorStyle(
             width: 10.0,
-            color: mainPink,
+            color: mainStrongText,
           ),
           endChild: Container(
             margin: const EdgeInsets.all(4.5),
@@ -33,7 +33,7 @@ class PlaydayTimeline extends StatelessWidget {
                 Text(
                   '1.º lote R\$ ${playday.firstLot.price} - vagas ${playday.firstLot.vacancyFilled}/${playday.firstLot.vacancyFilled}',
                   style: const TextStyle(
-                    color: mainPink,
+                    color: mainStrongText,
                     fontSize: 15.0,
                     fontWeight: FontWeight.w700,
                   ),

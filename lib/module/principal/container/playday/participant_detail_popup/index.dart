@@ -20,7 +20,7 @@ class ParticipantDetailPopupContainerState
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      backgroundColor: mainBackGroundPink,
+      backgroundColor: mainBackGround,
       scrollable: true,
       content: Column(
         children: [

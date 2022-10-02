@@ -27,13 +27,14 @@ class ParticipantsPopupContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(scaffoldBackgroundColor: mainBackGround),
       home: Scaffold(
         body: Center(
           child: Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             padding: const EdgeInsets.all(20.0),
-            color: mainBackGroundPink,
+            color: mainBackGround,
             child: Column(
               children: [
                 Align(

@@ -51,75 +51,77 @@ class LoginPageContainerState extends State<LoginPageContainer> {
                 style: TextStyle(
                   fontSize: 40.0,
                   fontWeight: FontWeight.w900,
-                  color: mainPink,
+                  color: mainStrongText,
                 ),
               ),
             ),
             const PageTitle(title: 'Login'),
-            Form(
-              key: _formKey,
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                padding: const EdgeInsets.all(10.0),
-                children: <Widget>[
-                  const SizedBox(height: 5.0),
-                  EmailFormField(
-                    label: 'email',
-                    focusNode: emailFocusNode,
-                    nextFocusNode: passwordFocusNode,
-                    onSaved: (value) =>
-                        loginModel = loginModel.copyWith(email: value),
-                    validator: (text) {
-                      if (text == null || text.isEmpty) {
-                        return 'Email obrigatório';
-                      }
-                      if (!RegExp(
-                              r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
-                          .hasMatch(text)) {
-                        return 'Email inválido';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 16),
-                  PassworFormField(
-                    label: 'senha',
-                    focusNode: passwordFocusNode,
-                    nextFocusNode: emailFocusNode,
-                    onSaved: (value) =>
-                        loginModel = loginModel.copyWith(password: value),
-                    validator: (text) {
-                      if (text == null || text.isEmpty) {
-                        return 'Senha obrigatório';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 35),
-                  MainPinkButton(
-                    focusNode: loginFocusNode,
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        _formKey.currentState!.save();
-                        try {
-                          await widget.signIn.execute(loginModel);
-                          navigator.pushNamed('/principal/playday');
-                        } catch (e) {
-                          scaffMess.showSnackBar(SnackBar(
-                            content: Text(e.toString()),
-                          ));
+            GestureDetector(
+              child: Form(
+                key: _formKey,
+                child: ListView(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.all(10.0),
+                  children: <Widget>[
+                    const SizedBox(height: 5.0),
+                    EmailFormField(
+                      label: 'email',
+                      focusNode: emailFocusNode,
+                      nextFocusNode: passwordFocusNode,
+                      onSaved: (value) =>
+                          loginModel = loginModel.copyWith(email: value),
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
+                          return 'Email obrigatório';
                         }
-                      }
-                    },
-                    text: 'Login',
-                  ),
-                  const SizedBox(height: 15),
-                  const LinkRedirect(
-                    title: 'Esqueceu a senha?',
-                    redirectLink: '/reset',
-                  ),
-                ],
+                        if (!RegExp(
+                                r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
+                            .hasMatch(text)) {
+                          return 'Email inválido';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 16),
+                    PassworFormField(
+                      label: 'senha',
+                      focusNode: passwordFocusNode,
+                      nextFocusNode: emailFocusNode,
+                      onSaved: (value) =>
+                          loginModel = loginModel.copyWith(password: value),
+                      validator: (text) {
+                        if (text == null || text.isEmpty) {
+                          return 'Senha obrigatório';
+                        }
+                        return null;
+                      },
+                    ),
+                    const SizedBox(height: 35),
+                    MainPinkButton(
+                      focusNode: loginFocusNode,
+                      onPressed: () async {
+                        if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                          try {
+                            await widget.signIn.execute(loginModel);
+                            navigator.pushNamed('/principal/playday');
+                          } catch (e) {
+                            scaffMess.showSnackBar(SnackBar(
+                              content: Text(e.toString()),
+                            ));
+                          }
+                        }
+                      },
+                      text: 'Login',
+                    ),
+                    const SizedBox(height: 15),
+                    const LinkRedirect(
+                      title: 'Esqueceu a senha?',
+                      redirectLink: '/reset',
+                    ),
+                  ],
+                ),
               ),
             ),
             const OrText(),
