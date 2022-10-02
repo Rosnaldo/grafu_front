@@ -9,11 +9,11 @@ class BuyTicket extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0),
-          child: SizedBox(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Column(
+        children: [
+          SizedBox(
             width: double.maxFinite,
             child: Link(
               uri: Uri.parse('https://buy.stripe.com/test_6oE3cSdzg4yDc7efYY'),
@@ -35,8 +35,8 @@ class BuyTicket extends StatelessWidget {
               },
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

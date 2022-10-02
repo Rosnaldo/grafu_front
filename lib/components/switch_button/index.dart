@@ -34,7 +34,7 @@ class SwitchButtonState extends State<SwitchButton> {
   Widget build(BuildContext context) {
     return Container(
       width: double.maxFinite,
-      color: Colors.white,
+      color: mainBackGround,
       child: LayoutBuilder(builder: (context, constraints) {
         return ToggleButtons(
           renderBorder: false,
@@ -50,11 +50,14 @@ class SwitchButtonState extends State<SwitchButton> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Icon(widget.option1.icon),
+                    Icon(widget.option1.icon, color: mainStrongText),
                     const SizedBox(
                       width: 5.0,
                     ),
-                    Text(widget.option1.label),
+                    Text(
+                      widget.option1.label,
+                      style: const TextStyle(color: mainStrongText),
+                    ),
                   ],
                 ),
               ),
@@ -64,11 +67,14 @@ class SwitchButtonState extends State<SwitchButton> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Icon(widget.option2.icon),
+                    Icon(widget.option2.icon, color: mainStrongText),
                     const SizedBox(
                       width: 5.0,
                     ),
-                    Text(widget.option2.label),
+                    Text(
+                      widget.option2.label,
+                      style: const TextStyle(color: mainStrongText),
+                    ),
                   ],
                 ),
               ),

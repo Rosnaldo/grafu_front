@@ -37,119 +37,122 @@ class ParticipantList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 30.0),
-        const SectionTitle(title: 'Convidados'),
-        const SizedBox(height: 12.0),
-        Column(children: [
-          Observer(builder: (_) {
-            if (isInvitedStore.getIsInvited() && signinStore.isSignin()) {
-              return participantCard(myParticipantStore.getMyParticipant());
-            }
-            return Container();
-          }),
-          ...participants
-              .map(
-                (participant) => participantCard(participant),
-              )
-              .toList()
-        ]),
-        const SizedBox(height: 10.0),
-        ElevatedButton(
-          onPressed: () => {
-            BuildParticipantsPopup.showMyDialog(
-              context,
-              participants,
-              participantCard,
-              myParticipantStore,
-              isInvitedStore,
-              signinStore,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Column(
+        children: [
+          const SizedBox(height: 30.0),
+          const SectionTitle(title: 'Convidados'),
+          const SizedBox(height: 12.0),
+          Column(children: [
+            Observer(builder: (_) {
+              if (isInvitedStore.getIsInvited() && signinStore.isSignin()) {
+                return participantCard(myParticipantStore.getMyParticipant());
+              }
+              return Container();
+            }),
+            ...participants
+                .map(
+                  (participant) => participantCard(participant),
+                )
+                .toList()
+          ]),
+          const SizedBox(height: 10.0),
+          ElevatedButton(
+            onPressed: () => {
+              BuildParticipantsPopup.showMyDialog(
+                context,
+                participants,
+                participantCard,
+                myParticipantStore,
+                isInvitedStore,
+                signinStore,
+              ),
+            },
+            style: ButtonStyle(
+              elevation: MaterialStateProperty.all(0),
+              backgroundColor: MaterialStateProperty.all(Colors.transparent),
+              shadowColor: MaterialStateProperty.all(Colors.transparent),
+              padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
             ),
-          },
-          style: ButtonStyle(
-            elevation: MaterialStateProperty.all(0),
-            backgroundColor: MaterialStateProperty.all(Colors.transparent),
-            shadowColor: MaterialStateProperty.all(Colors.transparent),
-            padding: MaterialStateProperty.all(const EdgeInsets.all(0)),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Text(
-                  'Ver convidados',
-                  style: TextStyle(
-                    fontSize: 15.0,
-                    color: confirmedGreen,
-                    fontFamily: mainFontText,
-                    letterSpacing: 1.5,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.all(12.0),
+                  child: Text(
+                    'Ver convidados',
+                    style: TextStyle(
+                      fontSize: 15.0,
+                      color: confirmedGreen,
+                      fontFamily: mainFontText,
+                      letterSpacing: 1.5,
+                    ),
                   ),
                 ),
-              ),
-              Stack(
-                children: [
-                  (participants.asMap().containsKey(0))
-                      ? SizedBox(
-                          width: 113,
-                          child: Row(
-                            children: [
-                              AvatarWidget(
-                                avatar: participants[0].avatar,
-                                size: 32,
+                Stack(
+                  children: [
+                    (participants.asMap().containsKey(0))
+                        ? SizedBox(
+                            width: 113,
+                            child: Row(
+                              children: [
+                                AvatarWidget(
+                                  avatar: participants[0].avatar,
+                                  size: 32,
+                                ),
+                                const Expanded(child: SizedBox()),
+                              ],
+                            ),
+                          )
+                        : Container(),
+                    (participants.asMap().containsKey(1))
+                        ? Positioned(
+                            bottom: 0,
+                            left: 25,
+                            child: AvatarWidget(
+                              avatar: participants[1].avatar,
+                              size: 32,
+                            ),
+                          )
+                        : Container(),
+                    (participants.asMap().containsKey(2))
+                        ? Positioned(
+                            bottom: 0,
+                            left: 50,
+                            child: AvatarWidget(
+                              avatar: participants[2].avatar,
+                              size: 32,
+                            ),
+                          )
+                        : Container(),
+                    Positioned(
+                      bottom: 0,
+                      left: 75,
+                      child: ClipOval(
+                        child: Container(
+                          color: Colors.white60,
+                          height: 32.0,
+                          child: Center(
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8.5, vertical: 3.5),
+                              child: Text(
+                                showParticipantNumber(participants),
+                                style: textStrongStyle,
                               ),
-                              const Expanded(child: SizedBox()),
-                            ],
-                          ),
-                        )
-                      : Container(),
-                  (participants.asMap().containsKey(1))
-                      ? Positioned(
-                          bottom: 0,
-                          left: 25,
-                          child: AvatarWidget(
-                            avatar: participants[1].avatar,
-                            size: 32,
-                          ),
-                        )
-                      : Container(),
-                  (participants.asMap().containsKey(2))
-                      ? Positioned(
-                          bottom: 0,
-                          left: 50,
-                          child: AvatarWidget(
-                            avatar: participants[2].avatar,
-                            size: 32,
-                          ),
-                        )
-                      : Container(),
-                  Positioned(
-                    bottom: 0,
-                    left: 75,
-                    child: ClipOval(
-                      child: Container(
-                        color: Colors.white60,
-                        height: 32.0,
-                        child: Center(
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 8.5, vertical: 3.5),
-                            child: Text(
-                              showParticipantNumber(participants),
-                              style: textStrongStyle,
                             ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

@@ -52,23 +52,26 @@ class Conveniences extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const SizedBox(height: 30.0),
-        const SectionTitle(title: 'Conveniências'),
-        const SizedBox(height: 12.0),
-        MasonryGridView.count(
-          shrinkWrap: true,
-          itemCount: conveniences.length,
-          physics: const NeverScrollableScrollPhysics(),
-          crossAxisCount: 2,
-          mainAxisSpacing: 4,
-          crossAxisSpacing: 4,
-          itemBuilder: (context, index) {
-            return buildConvenience(conveniences[index]);
-          },
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Column(
+        children: [
+          const SizedBox(height: 30.0),
+          const SectionTitle(title: 'Conveniências'),
+          const SizedBox(height: 12.0),
+          MasonryGridView.count(
+            shrinkWrap: true,
+            itemCount: conveniences.length,
+            physics: const NeverScrollableScrollPhysics(),
+            crossAxisCount: 2,
+            mainAxisSpacing: 4,
+            crossAxisSpacing: 4,
+            itemBuilder: (context, index) {
+              return buildConvenience(conveniences[index]);
+            },
+          ),
+        ],
+      ),
     );
   }
 }

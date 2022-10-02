@@ -14,14 +14,16 @@ class Description extends StatefulWidget {
 class DescriptionState extends State<Description> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: const [
-        SizedBox(height: 30.0),
-        SectionTitle(title: 'Descrição'),
-        SizedBox(height: 12.0),
-        Text(
-          '''
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: const [
+          SizedBox(height: 30.0),
+          SectionTitle(title: 'Descrição'),
+          SizedBox(height: 12.0),
+          Text(
+            '''
 Final de semana junto aos amigos na chácara do Kintana com bastante natureza e ar fresco longe da cidade.
 Já está incluso café da manhã, almoço, janta.
 Nas acomodações temos quartos individuais para dormir, chuveiro elétrico e banheiro.
@@ -29,9 +31,10 @@ Piscina e churrasqueira poderam ser usadas à vontade.
 Você terá o direito de convidar amigos se quiser.
 Divirta-se.
 ''',
-          style: TextStyle(color: mainText),
-        ),
-      ],
+            style: TextStyle(color: mainText),
+          ),
+        ],
+      ),
     );
   }
 }

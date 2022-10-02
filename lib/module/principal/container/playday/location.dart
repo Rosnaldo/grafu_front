@@ -30,40 +30,46 @@ class LocationState extends State<Location> {
       zoom: 19,
     );
 
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        const SectionTitle(title: 'Local'),
-        const SizedBox(height: 12.0),
-        Row(
-          children: [
-            Text(
-              widget.address.district,
-              style: textStrongStyle,
-            ),
-          ],
-        ),
-        Row(
-          children: [
-            Text(
-              widget.address.street,
-              style: textStrongStyle,
-            ),
-          ],
-        ),
-        const SizedBox(height: 15.0),
-        SizedBox(
-          width: double.maxFinite,
-          height: 250.0,
-          child: GoogleMap(
-            mapType: MapType.normal,
-            initialCameraPosition: position,
-            onMapCreated: (GoogleMapController c) {
-              controller.complete(c);
-            },
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          const SectionTitle(title: 'Local'),
+          const SizedBox(height: 12.0),
+          Row(
+            children: [
+              Text(
+                widget.address.district,
+                style: textStrongStyle,
+              ),
+            ],
           ),
-        ),
-      ],
+          Row(
+            children: [
+              Text(
+                widget.address.street,
+                style: textStrongStyle,
+              ),
+            ],
+          ),
+          const SizedBox(height: 15.0),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: SizedBox(
+              width: double.maxFinite,
+              height: 250.0,
+              child: GoogleMap(
+                mapType: MapType.normal,
+                initialCameraPosition: position,
+                onMapCreated: (GoogleMapController c) {
+                  controller.complete(c);
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
