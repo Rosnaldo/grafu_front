@@ -49,7 +49,7 @@ class ParticipantCardContainer extends StatelessWidget {
                   child: Text(
                     showParticipantName(participant.name),
                     style: const TextStyle(
-                      fontSize: 13.0,
+                      fontSize: 16.0,
                       fontFamily: mainFontText,
                       color: mainStrongText,
                     ),

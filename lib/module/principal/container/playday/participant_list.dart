@@ -134,7 +134,7 @@ class ParticipantList extends StatelessWidget {
                         child: Center(
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0, vertical: 3.0),
+                                horizontal: 8.5, vertical: 3.5),
                             child: Text(
                               showParticipantNumber(participants),
                               style: textStrongStyle,

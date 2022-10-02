@@ -32,7 +32,7 @@ class ProfilePageContainer extends StatelessWidget {
           color: Colors.white,
           all: 1.5,
           child: buildCircle(
-            color: Colors.blue,
+            color: mainOrange,
             all: 7,
             child: const Icon(
               Icons.edit,

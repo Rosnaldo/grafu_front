@@ -1,31 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:grafu/styles/color.dart';
 import 'package:url_launcher/link.dart';
 
 class BuyTicket extends StatelessWidget {
-  final int price;
-
   const BuyTicket({
     Key? key,
-    required this.price,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            const Text('Valor:'),
-            Text(
-              'R\$ ${price.toString()}',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20.0,
-              ),
-            ),
-          ],
-        ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0),
           child: SizedBox(
@@ -44,8 +29,7 @@ class BuyTicket extends StatelessWidget {
                     padding: MaterialStateProperty.all(
                         const EdgeInsets.symmetric(
                             horizontal: 12.0, vertical: 0.0)),
-                    backgroundColor:
-                        MaterialStateProperty.all(Colors.pink.shade200),
+                    backgroundColor: MaterialStateProperty.all(mainOrange),
                   ),
                 );
               },
