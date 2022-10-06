@@ -28,18 +28,21 @@ class GoogleButton extends StatelessWidget {
             ),
           ),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Image(image: AssetImage('assets/google.png'), height: 23.0),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'ENTRAR COM GOOGLE',
-                style: TextStyle(color: Color.fromRGBO(80, 85, 92, 1)),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Image(image: AssetImage('assets/google.png'), height: 23.0),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'ENTRAR COM GOOGLE',
+                  style: TextStyle(color: Color.fromRGBO(80, 85, 92, 1)),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

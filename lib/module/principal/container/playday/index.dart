@@ -48,16 +48,16 @@ class PlaydayPageContainer extends StatelessWidget {
               image: BuildImageCache.build(
                 url: state.playday.gallery[0],
               ),
-              height: MediaQuery.of(context).size.height * 1,
+              height: MediaQuery.of(context).size.height * 0.8,
               fit: BoxFit.fitHeight,
             ),
             Positioned.fill(
-              top: MediaQuery.of(context).size.height * 0.35,
+              top: MediaQuery.of(context).size.height * 0.50,
               child: Align(
                 alignment: Alignment.center,
                 child: FrostedGlassBox(
                   theWidth: 280.0,
-                  theHeight: 180.0,
+                  theHeight: 160.0,
                   theChild: Column(
                     children: [
                       Row(

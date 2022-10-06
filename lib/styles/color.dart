@@ -19,3 +19,5 @@ const Color warnYellow = Color.fromRGBO(242, 201, 76, 1);
 const Color alertRed = Color.fromRGBO(235, 67, 53, 1);
 
 const Color mainBackGround = Color.fromRGBO(242, 231, 219, 1);
+
+const Color mainBackGroundDark = Color.fromARGB(255, 214, 190, 164);

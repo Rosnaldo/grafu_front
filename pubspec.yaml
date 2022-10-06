@@ -51,4 +51,6 @@ flutter:
   uses-material-design: true
   assets:
     - assets/google.png
-    - assets/glass.png
+    - assets/house.jpg
+    - assets/pool.jpg
+    - assets/barbecue.jpg

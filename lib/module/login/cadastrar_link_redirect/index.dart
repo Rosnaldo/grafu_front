@@ -30,7 +30,7 @@ class CadastrarLinkRedirect extends StatelessWidget {
         style: const TextStyle(
           fontFamily: mainFontText,
           height: 1.0,
-          fontSize: 15.0,
+          fontSize: 18.0,
         ),
       ),
     );

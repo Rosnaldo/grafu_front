@@ -9,6 +9,7 @@ import 'package:grafu/module/register/business/index.dart';
 import 'package:grafu/module/reset/index.dart';
 import 'package:grafu/module/reset_email_message/index.dart';
 import 'package:grafu/module/verify_email_message/index.dart';
+import 'package:grafu/module/welcome/index.dart';
 import 'package:grafu/repositories/user/repository_register.dart';
 import 'package:grafu/services/google_signin/index.dart';
 import 'package:grafu/services/sign_in/index.dart';
@@ -31,6 +32,7 @@ class AppModule extends Module {
   @override
   List<ModularRoute> get routes => [
         ChildRoute('/', child: (context, args) => const LoginPage()),
+        ChildRoute('/welcome', child: (context, args) => const WelcomePage()),
         ChildRoute('/register', child: (context, args) => const RegisterPage()),
         ChildRoute('/reset', child: (context, args) => const ResetPage()),
         ChildRoute('/reset-email-message',
