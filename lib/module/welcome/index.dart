@@ -33,13 +33,16 @@ class WelcomePageState extends State<WelcomePage>
             const SizedBox(height: 30.0),
             SizedBox(
               width: double.maxFinite,
-              height: 360.0,
+              height: 340.0,
               child: TabBarView(controller: tabController, children: [
                 Column(
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(12.0),
-                      child: Image.asset('assets/house2.png'),
+                      child: ClipPath(
+                        clipper: HouseClipPath(),
+                        child: Image.asset('assets/house2.png'),
+                      ),
                     ),
                     const Text(
                       'Bem vindo à Grafu',
@@ -54,7 +57,10 @@ class WelcomePageState extends State<WelcomePage>
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(12.0),
-                      child: Image.asset('assets/barbecue2.png'),
+                      child: ClipPath(
+                        clipper: BarbecueClipPath(),
+                        child: Image.asset('assets/barbecue2.png'),
+                      ),
                     ),
                     const Text(
                       'Conheça pessoas de qualidade',
@@ -82,7 +88,10 @@ class WelcomePageState extends State<WelcomePage>
                 Column(children: [
                   Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: Image.asset('assets/pool2.png'),
+                    child: ClipPath(
+                      clipper: BarbecueClipPath(),
+                      child: Image.asset('assets/pool2.png'),
+                    ),
                   ),
                   const Text(
                     'Faça seus próprios eventos',

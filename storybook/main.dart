@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/module/principal/mock/index.dart';
+import 'package:grafu/module/welcome/index.dart';
 import 'package:storybook_flutter/storybook_flutter.dart';
 
 import 'package:grafu/module/login/mock/index.dart';
@@ -31,6 +32,10 @@ class HomeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Storybook(
       stories: [
+        Story(
+          name: 'Welcome',
+          builder: (context) => const WelcomePage(),
+        ),
         Story(
           name: 'Login',
           builder: (context) => const MockLoginPage(),
