@@ -33,7 +33,7 @@ class WelcomePageState extends State<WelcomePage>
             const SizedBox(height: 30.0),
             SizedBox(
               width: double.maxFinite,
-              height: 380.0,
+              height: 340.0,
               child: TabBarView(controller: tabController, children: [
                 Column(
                   children: [
@@ -60,7 +60,7 @@ class WelcomePageState extends State<WelcomePage>
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: SizedBox(
-                          width: 280.0,
+                          width: 220.0,
                           child: Image.asset('assets/barbecue2.png')),
                     ),
                     const Text(
@@ -90,7 +90,7 @@ class WelcomePageState extends State<WelcomePage>
                   Padding(
                     padding: const EdgeInsets.all(12.0),
                     child: SizedBox(
-                      width: 280,
+                      width: 220,
                       child: Image.asset('assets/pool2.png'),
                     ),
                   ),
@@ -118,13 +118,13 @@ class WelcomePageState extends State<WelcomePage>
               overlayColor: MaterialStateProperty.all(mainBackGround),
               unselectedLabelColor: mainBackGroundDark,
               tabs: const [
-                Tab(text: '____'),
-                Tab(text: '____'),
-                Tab(text: '____'),
+                Tab(text: '____', height: 20.0),
+                Tab(text: '____', height: 20.0),
+                Tab(text: '____', height: 20.0),
               ],
               labelStyle: const TextStyle(fontWeight: FontWeight.w900),
             ),
-            const SizedBox(height: 45.0),
+            const SizedBox(height: 25.0),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: MainPinkButton(
