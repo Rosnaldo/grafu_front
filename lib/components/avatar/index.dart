@@ -27,7 +27,7 @@ class AvatarWidgetState extends State<AvatarWidget> {
           image: BuildImageCache.build(
             url: (widget.avatar != null)
                 ? widget.avatar!.url
-                : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
+                : 'https://firebasestorage.googleapis.com/v0/b/grafu-357616.appspot.com/o/avatar-svg%2Favatar.png?alt=media&token=20c54640-1f37-4a5a-b685-85417a0a3667',
             maxWidth: widget.size,
             maxHeight: widget.size,
           ),

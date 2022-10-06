@@ -41,7 +41,7 @@ class ParticipantDetailPopupContainerState
               height: 200.0,
               widget.participant.avatar != null
                   ? widget.participant.avatar!.url
-                  : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png',
+                  : 'https://firebasestorage.googleapis.com/v0/b/grafu-357616.appspot.com/o/avatar-svg%2Favatar.png?alt=media&token=20c54640-1f37-4a5a-b685-85417a0a3667',
             ),
           ),
           const SizedBox(height: 16.0),

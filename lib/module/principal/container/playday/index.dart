@@ -48,79 +48,35 @@ class PlaydayPageContainer extends StatelessWidget {
               image: BuildImageCache.build(
                 url: state.playday.gallery[0],
               ),
-              height: MediaQuery.of(context).size.height * 0.8,
+              height: MediaQuery.of(context).size.height * 0.9,
               fit: BoxFit.fitHeight,
             ),
             Positioned.fill(
-              top: MediaQuery.of(context).size.height * 0.50,
+              top: MediaQuery.of(context).size.height * 0.60,
               child: Align(
                 alignment: Alignment.center,
                 child: FrostedGlassBox(
                   theWidth: 280.0,
-                  theHeight: 160.0,
+                  theHeight: 120.0,
                   theChild: Column(
                     children: [
-                      Row(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(5),
-                              child: Stack(
-                                children: [
-                                  Image(
-                                    image: BuildImageCache.build(
-                                      url: state.playday.gallery[0],
-                                    ),
-                                    height: 60.0,
-                                    width: 60.0,
-                                    fit: BoxFit.fill,
-                                  ),
-                                  Container(
-                                    height: 60.0,
-                                    width: 60.0,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      border: Border.all(
-                                          color:
-                                              Colors.white.withOpacity(0.13)),
-                                      gradient: LinearGradient(
-                                          begin: Alignment.topLeft,
-                                          end: Alignment.bottomRight,
-                                          colors: [
-                                            //begin color
-                                            Colors.white.withOpacity(0.35),
-                                            //end color
-                                            Colors.white.withOpacity(0.15),
-                                          ]),
-                                    ),
-                                  ),
-                                ],
-                              ),
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          SizedBox(height: 12.0),
+                          Text(
+                            'Domingo 23, Março 2023',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16.0,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 12.0),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                Text(
-                                  'Domingo 23, Março 2023',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16.0,
-                                  ),
-                                ),
-                                Text(
-                                  'Nova Lima / MG',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14.0,
-                                  ),
-                                ),
-                              ],
+                          Text(
+                            'Nova Lima / MG',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 14.0,
                             ),
                           ),
                         ],
