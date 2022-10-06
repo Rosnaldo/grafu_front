@@ -10,6 +10,7 @@ import 'package:grafu/module/reset/index.dart';
 import 'package:grafu/module/reset_email_message/index.dart';
 import 'package:grafu/module/verify_email_message/index.dart';
 import 'package:grafu/module/welcome/index.dart';
+import 'package:grafu/repositories/user/repository_find_one.dart';
 import 'package:grafu/repositories/user/repository_register.dart';
 import 'package:grafu/services/google_signin/index.dart';
 import 'package:grafu/services/sign_in/index.dart';
@@ -23,10 +24,11 @@ class AppModule extends Module {
         Bind.lazySingleton((i) => const FlutterSecureStorage()),
         Bind.lazySingleton((i) => SigninStore(i())),
         Bind.lazySingleton((i) => UserRegisterRepository()),
+        Bind.lazySingleton((i) => UserFindOneRepository()),
         Bind.lazySingleton((i) => SignUp(i())),
         Bind.lazySingleton((i) => SignIn(i())),
         Bind.lazySingleton((i) => SignOut(i())),
-        Bind.lazySingleton((i) => SignInWithGoogle(i())),
+        Bind.lazySingleton((i) => SignInWithGoogle(i(), i())),
       ];
 
   @override
