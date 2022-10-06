@@ -78,7 +78,7 @@ class ResetPageState extends State<ResetPage> {
                     padding: EdgeInsets.symmetric(vertical: 10.0),
                     child: LinkRedirect(
                       title: 'Voltar para login',
-                      redirectLink: '/',
+                      redirectLink: '/login',
                     ),
                   ),
                   MainPinkButton(

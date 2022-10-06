@@ -41,7 +41,7 @@ class VerifyEmailMessagePageState extends State<VerifyEmailMessagePage> {
             Align(
               child: LinkRedirect(
                 title: 'Voltar para login',
-                redirectLink: '/',
+                redirectLink: '/login',
               ),
             ),
           ],

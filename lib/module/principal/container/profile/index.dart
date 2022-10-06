@@ -94,7 +94,7 @@ class ProfilePageContainer extends StatelessWidget {
                 icon: const Icon(Icons.logout, size: 15.0),
                 onPressed: () async {
                   await signOut.execute();
-                  Modular.to.navigate('/');
+                  Modular.to.navigate('/login');
                 },
                 label: const Text(
                   'Fazer logout',
@@ -124,7 +124,7 @@ class ProfilePageContainer extends StatelessWidget {
               ElevatedButton.icon(
                 icon: const Icon(Icons.logout, size: 15.0),
                 onPressed: () {
-                  Modular.to.navigate('/');
+                  Modular.to.navigate('/login');
                 },
                 label: const Text(
                   'Fazer login',

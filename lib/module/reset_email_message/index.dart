@@ -36,7 +36,7 @@ class ResetEmailMessagePageState extends State<ResetEmailMessagePage> {
             Align(
               child: LinkRedirect(
                 title: 'Voltar para login',
-                redirectLink: '/',
+                redirectLink: '/login',
               ),
             ),
           ],

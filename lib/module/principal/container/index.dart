@@ -126,8 +126,8 @@ class PrincipalPageContainerState extends State<PrincipalPageContainer> {
 
   Widget buildNavigatePages(_, GlobalState state, __) {
     if (state is LoadingGlobalState) {
-      return Center(
-        child: Container(),
+      return const Center(
+        child: CircularProgressIndicator(),
       );
     }
 

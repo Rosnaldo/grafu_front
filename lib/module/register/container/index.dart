@@ -175,7 +175,7 @@ class RegisterPageContainerState extends State<RegisterPageContainer> {
                   const SizedBox(height: 5),
                   const LinkRedirect(
                     title: 'Já está cadastrado? (login)',
-                    redirectLink: '/',
+                    redirectLink: '/login',
                   ),
                   const SizedBox(height: 20),
                   MainPinkButton(
