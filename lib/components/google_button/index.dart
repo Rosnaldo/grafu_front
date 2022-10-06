@@ -35,7 +35,7 @@ class GoogleButton extends StatelessWidget {
             children: const [
               Image(image: AssetImage('assets/google.png'), height: 23.0),
               Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.only(left: 8.0),
                 child: Text(
                   'ENTRAR COM GOOGLE',
                   style: TextStyle(color: Color.fromRGBO(80, 85, 92, 1)),
