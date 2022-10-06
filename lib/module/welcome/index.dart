@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:grafu/components/screener/index.dart';
-import 'package:grafu/module/welcome/barbecue_clip_path.dart';
-import 'package:grafu/module/welcome/house_clip_path.dart';
 import 'package:grafu/styles/button.dart';
 import 'package:grafu/styles/color.dart';
 
@@ -39,9 +37,8 @@ class WelcomePageState extends State<WelcomePage>
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(12.0),
-                      child: ClipPath(
-                        clipper: HouseClipPath(),
-                        child: Image.asset('assets/house2.png'),
+                      child: Image.asset(
+                        'assets/house2.png',
                       ),
                     ),
                     const Text(
@@ -57,10 +54,7 @@ class WelcomePageState extends State<WelcomePage>
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(12.0),
-                      child: ClipPath(
-                        clipper: BarbecueClipPath(),
-                        child: Image.asset('assets/barbecue2.png'),
-                      ),
+                      child: Image.asset('assets/barbecue2.png'),
                     ),
                     const Text(
                       'Conheça pessoas de qualidade',
@@ -88,10 +82,7 @@ class WelcomePageState extends State<WelcomePage>
                 Column(children: [
                   Padding(
                     padding: const EdgeInsets.all(12.0),
-                    child: ClipPath(
-                      clipper: BarbecueClipPath(),
-                      child: Image.asset('assets/pool2.png'),
-                    ),
+                    child: Image.asset('assets/pool2.png'),
                   ),
                   const Text(
                     'Faça seus próprios eventos',
