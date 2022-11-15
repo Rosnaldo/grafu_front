@@ -36,7 +36,7 @@ other tools: Firebase(Authentication and image storage) and Stripe (Payment) <br
 
 <br>
 
-## Architeture decisitons
+## Architeture decisions
 • State management ValueNotifier and Mobx <br>
 • Modular Architeture <br>
 • Page widgets are divided in two layers (Container and Business) <br>
